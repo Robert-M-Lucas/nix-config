@@ -144,7 +144,7 @@
   programs.git.enable = true;
   environment.systemPackages = with pkgs; [
     neofetch
-    home-manager
+    # home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
