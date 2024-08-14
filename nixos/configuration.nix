@@ -186,6 +186,16 @@
     };
   };
 
+  programs.bash = {
+    interactiveShellInit = ''
+      if [[ -x ${pkgs.fish}/bin/fish && $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
+  };
+
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     robert = {
@@ -193,6 +203,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       # initialPassword = "correcthorsebatterystaple";
+      description = "Robert Lucas";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # Add your SSH public key(s) here, if you plan on using SSH to connect
