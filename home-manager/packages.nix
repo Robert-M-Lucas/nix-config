@@ -10,6 +10,6 @@
     google-chrome
     oh-my-fish
     gnomeExtensions.ddterm
-    (writeShellScriptBin "hi" (builtins.readFile ./scripts/nix-config.sh))
+    (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
   ];
 }
