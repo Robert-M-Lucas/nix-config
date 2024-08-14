@@ -8,6 +8,6 @@
 }: {
   home.packages = with pkgs; [ 
     vscodium
-    chromium
+    google-chrome
   ];
 }

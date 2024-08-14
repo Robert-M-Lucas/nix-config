@@ -10,6 +10,8 @@
 }: {
   # You can import other NixOS modules here
   imports = [
+    inputs.home-manager.nixosModules.home-manager
+
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
@@ -23,6 +25,14 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      robert = import ../home-manager/home.nix;
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -132,9 +142,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   programs.git.enable = true;
-  programs.home-manager.enable = true;
   environment.systemPackages = with pkgs; [
     neofetch
+    home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
