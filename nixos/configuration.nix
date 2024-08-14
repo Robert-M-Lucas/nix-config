@@ -132,9 +132,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   programs.git.enable = true;
+  programs.home-manager.enable = true;
   environment.systemPackages = with pkgs; [
     neofetch
-    home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

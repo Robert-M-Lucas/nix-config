@@ -18,7 +18,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    # ./packages.nix
+    ./packages.nix
   ];
 
   nixpkgs = {
@@ -50,16 +50,6 @@
     username = "robert";
     homeDirectory = "/home/robert";
   };
-
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  home.packages = with pkgs; [ 
-    vscodium
-    chromium
-  ];
-
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
