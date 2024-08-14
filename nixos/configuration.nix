@@ -164,6 +164,7 @@
   environment.systemPackages = with pkgs; [
     neofetch
     nixVersions.latest
+    python3
     # home-manager
   ];
 
