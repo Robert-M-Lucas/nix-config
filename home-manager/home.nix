@@ -47,6 +47,43 @@
     };
   };
 
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/shell" = {
+        disable-user-extensions = false; # enables user extensions
+        enabled-extensions = [
+          # Put UUIDs of extensions that you want to enable here.
+          # If the extension you want to enable is packaged in nixpkgs,
+          # you can easily get its UUID by accessing its extensionUuid
+          # field (look at the following example).
+          pkgs.gnomeExtensions.hide-top-bar.extensionUuid
+          pkgs.gnomeExtensions.ddterm.extensionUuid
+          # Alternatively, you can manually pass UUID as a string.  
+          # "blur-my-shell@aunetx"
+          # ...
+        ];
+      };
+
+      # Configure individual extensions
+      # dconf dump /
+      "com/github/amezin/ddterm" = {
+        ddterm-toggle-hotkey= ["<Primary>grave"];
+        hide-animation="disable";
+        shortcut-win-new-tab=["<Primary>t"];
+        show-animation="disable";
+        tab-policy="automatic";
+        window-maximize=false;
+        show-scrollbar=false;
+        window-size=0.40553435114503816;
+      };
+      "org/gnome/shell/extensions/hidetopbar" = {
+        enable-active-window=false;
+        enable-intellihide=false;
+      };
+    };
+  };
+
   home = {
     username = "robert";
     homeDirectory = "/home/robert";

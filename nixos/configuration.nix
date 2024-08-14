@@ -35,8 +35,26 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  boot.loader.grub = {
+    enable = true;
+    useOSProber = true;
+    devices = [ "nodev" ];
+    efiSupport = true;
+    theme = pkgs.stdenv.mkDerivation {
+      pname = "distro-grub-themes";
+      version = "3.1";
+      src = pkgs.fetchFromGitHub {
+        owner = "AdisonCavani";
+        repo = "distro-grub-themes";
+        rev = "v3.1";
+        hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+      };
+      installPhase = "cp -r customize/nixos $out";
+    };
+  };
 
   nixpkgs = {
     # You can add overlays here
@@ -147,6 +165,17 @@
     nixVersions.latest
     # home-manager
   ];
+
+  environment.gnome.excludePackages = (with pkgs; [
+    # for packages that are pkgs.*
+    gnome-tour
+    gnome-connections
+  ]) ++ (with pkgs.gnome; [
+    # for packages that are pkgs.gnome.*
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+  ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

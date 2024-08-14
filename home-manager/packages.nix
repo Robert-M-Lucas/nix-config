@@ -6,18 +6,10 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [ 
-    vscodium
+  home.packages = with pkgs; [
     google-chrome
     oh-my-fish
     gnomeExtensions.ddterm
-
-    vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with vscode-extensions; [
-        vscode-extensions.rust-lang.rust-analyzer
-        vscode-extensions.jnoortheen.nix-ide
-      ];
-    }
+    (writeShellScriptBin "hi" (builtins.readFile ./scripts/nix-config.sh))
   ];
 }
