@@ -144,6 +144,7 @@
   programs.git.enable = true;
   environment.systemPackages = with pkgs; [
     neofetch
+    nixVersions.latest
     # home-manager
   ];
 
