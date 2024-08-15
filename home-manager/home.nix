@@ -74,6 +74,10 @@
         ];
       };
 
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout=":minimize,maximize,close";
+      };
+
       "org/gnome/desktop/background" = {
         color-shading-type = "solid";
         picture-options = "zoom";
