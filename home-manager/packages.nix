@@ -42,6 +42,7 @@ in {
       xclip
       nodejs_22
       wolfram-engine
+      ffmpeg
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
