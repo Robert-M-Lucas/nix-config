@@ -58,6 +58,14 @@
     };
   };
 
+
+  swapDevices = [ 
+    { 
+      device = "/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
