@@ -11,7 +11,6 @@
     x = with pkgs; [
   # ====== GUI Apps ======
       libreoffice
-      google-chrome
       calibre
       obsidian
       protonvpn-gui

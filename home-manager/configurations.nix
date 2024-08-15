@@ -46,4 +46,9 @@
       jnoortheen.nix-ide
     ];
   };
+
+  programs.chromium = {
+    enable = true;
+    package = pkgs.google-chrome;
+  };
 }

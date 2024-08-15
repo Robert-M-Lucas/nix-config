@@ -1,4 +1,5 @@
 cd ~/nix-config
+git pull
 codium -w .
 read -p "Press enter to switch"
 sudo nixos-rebuild --flake .#default switch
