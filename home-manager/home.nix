@@ -73,10 +73,16 @@
       };
 
       "org/gnome/desktop/background" = {
-        "picture-uri" = "/home/${home.username}/.background-image";
+        color-shading-type = "solid";
+        picture-options = "zoom";
+        picture-uri = "file:///home/robert/.background-image";
+        picture-uri-dark = "file:///home/robert/.background-image";
       };
       "org/gnome/desktop/screensaver" = {
-          "picture-uri" = "/home/${home.username}/.background-image";
+        color-shading-type = "solid";
+        picture-options = "zoom";
+        picture-uri = "file:///home/robert/.background-image";
+        picture-uri-dark = "file:///home/robert/.background-image";
       };
 
       # Configure individual extensions
