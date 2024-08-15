@@ -5,8 +5,21 @@
   config,
   pkgs,
   pkgs-unstable,
+  home,
   ...
-}: {
+}: 
+let
+  # Adding the local file to the Nix store
+  wolframSH = builtins.fetchurl {
+    url = "https://account.wolfram.com/dl/WolframEngine?version=13.3&platform=Linux&downloadManager=false&includesDocumentation=false";
+    sha256 = "96106ac8ed6d0e221a68d846117615c14025320f927e5e0ed95b1965eda68e31";
+  };
+
+  # Overriding the wolfram-engine package to include the file
+  customWolframEngine = pkgs.wolfram-engine.overrideAttrs (oldAttrs: {
+    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];
+  });
+in {
   home.packages = let 
     x = with pkgs; [
   # ====== GUI Apps ======
@@ -28,6 +41,7 @@
       neovim
       xclip
       nodejs_22
+      customWolframEngine
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
