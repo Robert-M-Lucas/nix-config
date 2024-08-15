@@ -8,6 +8,7 @@
   pkgs,
   pkgs-unstable,
   system,
+  hardware-config,
   ...
 }: {
   # You can import other NixOS modules here
@@ -25,7 +26,7 @@
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
+    ./${hardware-config}/hardware-configuration.nix
   ];
 
   home-manager = {

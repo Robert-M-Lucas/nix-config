@@ -1,8 +1,9 @@
 cd ~/nix-config
 git pull
 codium -w .
-read -p "Press enter to switch"
-sudo nixos-rebuild --flake .#default switch
+echo "Enter hostname to switch to:"
+read hostname
+sudo nixos-rebuild --flake .#$hostname switch
 read -p "Press enter to git diff"
 git diff
 read -p "Press enter to git add *"

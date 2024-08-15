@@ -55,7 +55,7 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
+      pc = nixpkgs.lib.nixosSystem {
         # pkgs = import nixpkgs { inherit system; };
         specialArgs = {
           inherit inputs outputs system;
@@ -63,6 +63,22 @@
               inherit system;
               config.allowUnfree = true;
           };
+          hardware-config = "pc";
+        };
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/configuration.nix
+        ];
+      };
+      laptop = nixpkgs.lib.nixosSystem {
+        # pkgs = import nixpkgs { inherit system; };
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+          };
+          hardware-config = "laptop";
         };
         modules = [
           # > Our main nixos configuration file <
