@@ -27,6 +27,7 @@
       cloc
       neovim
       xclip
+      nodejs_22
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
