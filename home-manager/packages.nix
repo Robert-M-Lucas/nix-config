@@ -41,6 +41,7 @@
 # ====== Extensions ======
     gnomeExtensions.ddterm
     gnomeExtensions.hide-top-bar
+    gnomeExtensions.caffeine
 
 # ====== Other ======
     diff-so-fancy

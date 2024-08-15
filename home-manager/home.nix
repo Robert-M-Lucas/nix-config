@@ -59,6 +59,7 @@
           # field (look at the following example).
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
+          pkgs.gnomeExtensions.caffeine.extensionUuid
           # Alternatively, you can manually pass UUID as a string.  
           # "blur-my-shell@aunetx"
           # ...
