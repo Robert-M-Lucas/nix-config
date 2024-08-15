@@ -58,6 +58,7 @@
     settings = {
       "org/gnome/shell" = {
         disable-user-extensions = false; # enables user extensions
+        disable-extension-version-validation = true;
         enabled-extensions = [
           # Put UUIDs of extensions that you want to enable here.
           # If the extension you want to enable is packaged in nixpkgs,
