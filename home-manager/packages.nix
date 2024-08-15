@@ -42,6 +42,11 @@
     gnomeExtensions.ddterm
     gnomeExtensions.hide-top-bar
     gnomeExtensions.caffeine
+    # gnomeExtensions.custom-accent-colors
+    
+    # graphite-gtk-theme
+    # gtk-engine-murrine
+    # gnome.gnome-themes-extra
 
 # ====== Other ======
     diff-so-fancy

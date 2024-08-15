@@ -60,6 +60,7 @@
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
+          # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid
           # Alternatively, you can manually pass UUID as a string.  
           # "blur-my-shell@aunetx"
           # ...
@@ -82,6 +83,14 @@
         enable-active-window=false;
         enable-intellihide=false;
       };
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Graphite-Dark";
+      package = pkgs.graphite-gtk-theme;
     };
   };
 
