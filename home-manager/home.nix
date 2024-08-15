@@ -86,13 +86,13 @@
     };
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Graphite-Dark";
-      package = pkgs.graphite-gtk-theme;
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Graphite-Dark";
+  #     package = pkgs.graphite-gtk-theme;
+  #   };
+  # };
 
   home = {
     username = "robert";

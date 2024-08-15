@@ -15,6 +15,8 @@
     protonvpn-gui
     pomodoro-gtk
     wireshark
+    arduino-ide
+    zed-editor
 
 # ====== CMD ======
     # oh-my-fish
