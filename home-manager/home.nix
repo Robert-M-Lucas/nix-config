@@ -47,6 +47,11 @@
     };
   };
 
+  home = {
+    username = "robert";
+    homeDirectory = "/home/robert";
+  };
+
   dconf = {
     enable = true;
     settings = {
@@ -65,6 +70,13 @@
           # "blur-my-shell@aunetx"
           # ...
         ];
+      };
+
+      "org/gnome/desktop/background" = {
+        "picture-uri" = "/home/${home.username}/.background-image";
+      };
+      "org/gnome/desktop/screensaver" = {
+          "picture-uri" = "/home/${home.username}/.background-image";
       };
 
       # Configure individual extensions
@@ -86,6 +98,8 @@
     };
   };
 
+  home.file.".background-image".source = ./assets/wallpaper.png;
+
   # gtk = {
   #   enable = true;
   #   theme = {
@@ -94,10 +108,7 @@
   #   };
   # };
 
-  home = {
-    username = "robert";
-    homeDirectory = "/home/robert";
-  };
+  
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
