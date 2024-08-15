@@ -17,6 +17,13 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
+  };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''

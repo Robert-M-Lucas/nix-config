@@ -35,6 +35,7 @@
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
     };
+    backupFileExtension = "backup";
   };
 
   # Bootloader.

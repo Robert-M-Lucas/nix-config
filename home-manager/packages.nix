@@ -35,7 +35,7 @@ in {
 
   # ====== CMD ======
       # oh-my-fish
-      gh
+      # gh
       rustup
       cloc
       neovim
