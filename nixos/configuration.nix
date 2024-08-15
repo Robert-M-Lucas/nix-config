@@ -6,6 +6,8 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
+  system,
   ...
 }: {
   # You can import other NixOS modules here
@@ -27,7 +29,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs system pkgs-unstable; };
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;

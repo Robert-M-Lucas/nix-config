@@ -14,12 +14,13 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     ...
-  } @ inputs: let
+  }: let
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -32,7 +33,9 @@
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
+
+    system = "x86_64-linux";
+  in with inputs; {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -53,7 +56,14 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        # pkgs = import nixpkgs { inherit system; };
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+          };
+        };
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
