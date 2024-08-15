@@ -11,6 +11,10 @@
     userName = "Robert-M-Lucas";
     userEmail = "100799838+Robert-M-Lucas@users.noreply.github.com";
     lfs.enable = true;
+    extraConfig = {
+      core.pager = "diff-so-fancy | less --tabs=4 -RF";
+      interactive.diffFilter = "diff-so-fancy --patch";
+    };
   };
 
   programs.fish = {

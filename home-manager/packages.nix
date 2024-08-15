@@ -41,5 +41,8 @@
 # ====== Extensions ======
     gnomeExtensions.ddterm
     gnomeExtensions.hide-top-bar
+
+# ====== Other ======
+    diff-so-fancy
   ];
 }
