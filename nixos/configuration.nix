@@ -167,6 +167,7 @@
     neofetch
     nixVersions.latest
     python3
+    gcc
     # home-manager
   ];
 
