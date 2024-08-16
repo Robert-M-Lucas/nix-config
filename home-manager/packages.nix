@@ -43,6 +43,12 @@ in {
       nodejs_22
       wolfram-engine
       ffmpeg
+      clang
+      clang-tools
+      libgcc
+      gnumake
+      cmake
+      extra-cmake-modules
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
