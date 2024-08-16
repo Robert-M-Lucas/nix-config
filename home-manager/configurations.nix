@@ -36,7 +36,6 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      alias cd=z
       set fish_greeting # Disable greeting
     '';
     plugins = [
