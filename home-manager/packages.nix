@@ -68,16 +68,17 @@ in {
       neovim
       xclip
       nodejs_22
-      wolfram-engine
+      # wolfram-engine
       ffmpeg
-      clang
-      clang-tools
-      libgcc
-      gnumake
-      cmake
-      extra-cmake-modules
-      stdenv.cc.cc.lib
+      # clang
+      # clang-tools
+      # libgcc
+      # gnumake
+      # cmake
+      # extra-cmake-modules
+      # stdenv.cc.cc.lib
       pythonEnv
+      zoxide
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
