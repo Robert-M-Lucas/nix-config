@@ -79,6 +79,7 @@ in {
       # stdenv.cc.cc.lib
       pythonEnv
       # zoxide
+      nasm
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
