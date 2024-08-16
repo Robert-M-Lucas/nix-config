@@ -67,4 +67,9 @@
     enable = true;
     package = pkgs.google-chrome;
   };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }

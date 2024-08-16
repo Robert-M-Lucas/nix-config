@@ -78,7 +78,7 @@ in {
       # extra-cmake-modules
       # stdenv.cc.cc.lib
       pythonEnv
-      zoxide
+      # zoxide
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
