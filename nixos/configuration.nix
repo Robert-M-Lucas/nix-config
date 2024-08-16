@@ -198,7 +198,7 @@
     # for packages that are pkgs.gnome.*
     epiphany # web browser
     geary # email reader
-    evince # document viewer
+    # evince # document viewer
   ]);
 
   # Some programs need SUID wrappers, can be configured further or are

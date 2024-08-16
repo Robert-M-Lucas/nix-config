@@ -1,0 +1,1 @@
+nix-shell "~/nix-config/shells/$1.nix"

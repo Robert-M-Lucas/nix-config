@@ -69,6 +69,7 @@
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
+          pkgs.gnomeExtensions.vitals.extensionUuid
           # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid
           # Alternatively, you can manually pass UUID as a string.  
           # "blur-my-shell@aunetx"
@@ -120,9 +121,7 @@
   #     name = "Graphite-Dark";
   #     package = pkgs.graphite-gtk-theme;
   #   };
-  # };
-
-  
+  # };  
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
