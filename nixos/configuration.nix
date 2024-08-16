@@ -9,6 +9,7 @@
   pkgs-unstable,
   system,
   hardware-config,
+  use-cuda,
   ...
 }: {
   # You can import other NixOS modules here
@@ -30,7 +31,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs system pkgs-unstable; };
+    extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda; };
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
@@ -173,10 +174,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   programs.git.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     neofetch
     nixVersions.latest
-    python3
+    # python3
     gcc
     # home-manager
   ];

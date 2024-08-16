@@ -4,14 +4,16 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
-    ];
-  };
+  # pkgs.mkShell = {
+  #   buildInputs = [
+  #     # pkgs.python3
+  #     pkgs.libstdcxx5
+  #     # (pkgs.python3Packages.your-package-here)
+  #   ];
+  # };
 
   programs.git = {
     enable = true;

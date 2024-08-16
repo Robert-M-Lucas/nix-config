@@ -7,6 +7,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  use-cuda,
   ...
 }: {
   # You can import other home-manager modules here
@@ -45,6 +46,7 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+      cudaSupport = use-cuda;
     };
   };
 

@@ -64,6 +64,7 @@
               config.allowUnfree = true;
           };
           hardware-config = "pc";
+          use-cuda = true;
         };
         modules = [
           # > Our main nixos configuration file <
@@ -79,6 +80,7 @@
               config.allowUnfree = true;
           };
           hardware-config = "laptop";
+          use-cuda = false;
         };
         modules = [
           # > Our main nixos configuration file <

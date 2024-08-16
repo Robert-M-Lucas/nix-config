@@ -19,6 +19,33 @@ let
   # customWolframEngine = pkgs.wolfram-engine.overrideAttrs (oldAttrs: {
   #   nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];
   # });
+  pythonEnv = pkgs.python3.withPackages (ps: with ps; [
+    # Add your Python packages here
+    # numpy
+    # torch-bin
+    # torchsde
+    # torchvision-bin
+    # torchaudio-bin
+    # einops
+    # transformers
+    # tokenizers
+    # sentencepiece
+    # safetensors
+    # aiohttp
+    # pyyaml
+    # pillow
+    # scipy
+    # tqdm
+    # psutil
+
+    #non essential dependencies:
+    # kornia
+    # spandrel
+    # soundfile
+
+    # Include libstdc++ for your environment
+    # pkgs.libstdcxx5
+  ]);
 in {
   home.packages = let 
     x = with pkgs; [
@@ -49,6 +76,8 @@ in {
       gnumake
       cmake
       extra-cmake-modules
+      stdenv.cc.cc.lib
+      pythonEnv
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
@@ -69,6 +98,7 @@ in {
       gnomeExtensions.ddterm
       gnomeExtensions.hide-top-bar
       gnomeExtensions.caffeine
+      gnomeExtensions.vitals
       # gnomeExtensions.custom-accent-colors
       
       # graphite-gtk-theme
