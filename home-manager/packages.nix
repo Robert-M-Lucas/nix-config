@@ -58,7 +58,8 @@ in {
       wireshark
       arduino-ide
       zed-editor
-      
+      krita
+      gimp
 
   # ====== CMD ======
       # oh-my-fish
@@ -115,7 +116,6 @@ in {
 
     y = with pkgs-unstable; [
       discord
-      discordo
     ];
   in
     x ++ y;
