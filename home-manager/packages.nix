@@ -69,7 +69,7 @@ in {
       neovim
       xclip
       nodejs_22
-      # wolfram-engine
+      wolfram-engine
       ffmpeg
       # clang
       # clang-tools
