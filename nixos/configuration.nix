@@ -175,6 +175,9 @@
   # $ nix search wget
   programs.git.enable = true;
 
+  # TODO: Move to home-manager if possible
+  programs.steam.enable = true;
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [

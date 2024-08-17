@@ -60,7 +60,6 @@ in {
       zed-editor
       krita
       gimp
-      steam
 
   # ====== CMD ======
       # oh-my-fish
