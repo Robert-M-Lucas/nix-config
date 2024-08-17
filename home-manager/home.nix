@@ -96,7 +96,9 @@
       "org/gnome/shell/extensions/vitals" = {
         hot-sensors=["__network-rx_max__" "__temperature_avg__" "_processor_usage_" "_storage_free_" "_memory_free_"];
       };
-
+      "org/gnome/desktop/input-sources" = { 
+        xkb-options=["terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock"];
+      };
 
       # Configure individual extensions
       # dconf dump /
@@ -118,7 +120,7 @@
   };
 
   home.sessionPath = [
-    "$HOME/.npm-global"
+    "$HOME/.npm-global/bin/"
   ];
 
   home.file.".background-image".source = ./assets/wallpaper.png;
