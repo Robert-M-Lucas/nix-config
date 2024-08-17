@@ -93,6 +93,10 @@
         picture-uri = "file:///home/robert/.background-image";
         picture-uri-dark = "file:///home/robert/.background-image";
       };
+      "org/gnome/shell/extensions/vitals" = {
+        hot-sensors=["__network-rx_max__" "__temperature_avg__" "_processor_usage_" "_storage_free_" "_memory_free_"];
+      };
+
 
       # Configure individual extensions
       # dconf dump /
