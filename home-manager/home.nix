@@ -117,6 +117,10 @@
     };
   };
 
+  home.sessionPath = [
+    "$HOME/.npm-global"
+  ];
+
   home.file.".background-image".source = ./assets/wallpaper.png;
 
   # gtk = {
