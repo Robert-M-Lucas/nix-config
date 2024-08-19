@@ -60,6 +60,7 @@ in {
       zed-editor
       krita
       gimp
+      obs-studio
 
   # ====== CMD ======
       # oh-my-fish
