@@ -188,6 +188,7 @@
   virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
+    fprintd
     neofetch
     nixVersions.latest
     # python3
