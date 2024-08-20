@@ -70,7 +70,8 @@
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
-          pkgs.gnomeExtensions.enhanced-osk.extensionUuid
+          # pkgs.gnomeExtensions.improved-osk.extensionUuid
+          pkgs.gnomeExtensions.osk-toggle.extensionUuid
           # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid
           # Alternatively, you can manually pass UUID as a string.  
           # "blur-my-shell@aunetx"
