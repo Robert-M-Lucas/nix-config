@@ -87,6 +87,22 @@
           ./nixos/configuration.nix
         ];
       };
+      fastop = nixpkgs.lib.nixosSystem {
+        # pkgs = import nixpkgs { inherit system; };
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+          };
+          hardware-config = "fastop";
+          use-cuda = false;
+        };
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/configuration.nix
+        ];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
