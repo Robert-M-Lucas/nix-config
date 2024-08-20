@@ -202,6 +202,7 @@
     gcc
     usbutils
     # home-manager
+    (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
   ];
 
   environment.gnome.excludePackages = (with pkgs; [

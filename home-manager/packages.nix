@@ -20,6 +20,7 @@ let
   #   nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];
   # });
   pythonEnv = pkgs.python3.withPackages (ps: with ps; [
+    # torchWithCuda
     # Add your Python packages here
     # numpy
     # torch-bin
@@ -37,6 +38,7 @@ let
     # scipy
     # tqdm
     # psutil
+    # torchWithCuda
 
     #non essential dependencies:
     # kornia
