@@ -61,6 +61,7 @@ in {
       krita
       gimp
       obs-studio
+      mediawriter
 
   # ====== CMD ======
       # oh-my-fish
