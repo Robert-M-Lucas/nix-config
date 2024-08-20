@@ -105,6 +105,7 @@ in {
       gnomeExtensions.hide-top-bar
       gnomeExtensions.caffeine
       gnomeExtensions.vitals
+      gnomeExtensions.enhanced-osk
       # gnomeExtensions.custom-accent-colors
       
       # graphite-gtk-theme
