@@ -13,7 +13,7 @@ read hostname
 
 echo "> Update flake? (y/N):"
 read user_input
-if [ "$user_input" == "y" | "$user_input" == "Y" ]; then
+if [ "$user_input" = "y" ] || [ "$user_input" = "Y" ]; then
     echo "| Updating flake"
     nix flake update
 fi
