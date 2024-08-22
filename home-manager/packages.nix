@@ -85,6 +85,7 @@ in {
       pythonEnv
       # zoxide
       nasm
+      texlive.combined.scheme-medium
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
