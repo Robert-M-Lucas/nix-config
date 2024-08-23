@@ -61,6 +61,9 @@
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       james-yu.latex-workshop
+      catppuccin.catppuccin-vsc
+      catppuccin.catppuccin-vsc-icons
+      aaron-bond.better-comments
     ];
   };
 
