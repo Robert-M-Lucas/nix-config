@@ -9,6 +9,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    catppuccin.url = "github:catppuccin/nix";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +20,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    catppuccin,
     home-manager,
     ...
   }: let
@@ -68,6 +71,7 @@
         };
         modules = [
           # > Our main nixos configuration file <
+          catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
@@ -84,6 +88,7 @@
         };
         modules = [
           # > Our main nixos configuration file <
+          catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
@@ -100,6 +105,7 @@
         };
         modules = [
           # > Our main nixos configuration file <
+          catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
