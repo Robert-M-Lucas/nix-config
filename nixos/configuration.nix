@@ -213,6 +213,11 @@
     # for packages that are pkgs.gnome.*
     epiphany # web browser
     geary # email reader
+    yelp
+    seahorse
+    gnome-clocks
+    gnome-maps
+    gnome-weather
     # evince # document viewer
   ]);
 

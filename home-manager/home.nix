@@ -36,10 +36,10 @@
   gtk.catppuccin.icon.enable = true;
   programs.fish.catppuccin.enable = false;
   
-  programs.starship = {
-    enable = true;
-    catppuccin.enable = true;
-  };
+  # programs.starship = {
+  #   enable = true;
+  #   catppuccin.enable = true;
+  # };
 
   nixpkgs = {
     # You can add overlays here
