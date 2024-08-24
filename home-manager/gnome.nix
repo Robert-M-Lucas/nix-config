@@ -49,6 +49,11 @@
       };
       "org/gnome/shell/extensions/vitals" = {
         hot-sensors=["__network-rx_max__" "__temperature_avg__" "_processor_usage_" "_storage_free_" "_memory_free_"];
+        hide-icons = false;
+        icon-style = 0;
+        menu-centered = false;
+        position-in-panel = 0;
+        use-higher-precision = true;
       };
       "org/gnome/desktop/input-sources" = { 
         xkb-options=["terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock"];
