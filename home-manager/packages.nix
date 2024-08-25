@@ -22,7 +22,8 @@ let
   pythonEnv = pkgs.python3.withPackages (ps: with ps; [
     # torchWithCuda
     # Add your Python packages here
-    # numpy
+    numpy
+    matplotlib
     # torch-bin
     # torchsde
     # torchvision-bin
@@ -85,6 +86,7 @@ in {
       pythonEnv
       # zoxide
       nasm
+      blas
       texlive.combined.scheme-full
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
