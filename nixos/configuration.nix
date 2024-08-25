@@ -53,6 +53,10 @@
     menuentry "UEFI Settings" {
       fwsetup
     }
+
+    menuentry "Shutdown" {
+      halt
+    }
     '';
 
     theme = pkgs.stdenv.mkDerivation {
