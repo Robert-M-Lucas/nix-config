@@ -60,7 +60,6 @@ in {
       pomodoro-gtk
       wireshark
       arduino-ide
-      zed-editor
       krita
       gimp
       obs-studio
@@ -126,6 +125,7 @@ in {
 
     y = with pkgs-unstable; [
       discord
+      zed-editor
     ];
   in
     x ++ y;
