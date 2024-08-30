@@ -16,14 +16,16 @@
           # If the extension you want to enable is packaged in nixpkgs,
           # you can easily get its UUID by accessing its extensionUuid
           # field (look at the following example).
+
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
-          # pkgs.gnomeExtensions.improved-osk.extensionUuid
           pkgs.gnomeExtensions.osk-toggle.extensionUuid
           pkgs.gnomeExtensions.blur-my-shell.extensionUuid
           pkgs.gnomeExtensions.appindicator.extensionUuid
+
+          # pkgs.gnomeExtensions.improved-osk.extensionUuid
           # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid
           # Alternatively, you can manually pass UUID as a string.  
           # "blur-my-shell@aunetx"

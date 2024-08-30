@@ -64,6 +64,7 @@ in {
       gimp
       obs-studio
       mediawriter
+      gephi
 
   # ====== CMD ======
       # oh-my-fish
