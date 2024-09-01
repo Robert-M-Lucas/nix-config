@@ -64,7 +64,6 @@ in {
       gimp
       obs-studio
       mediawriter
-      gephi
 
   # ====== CMD ======
       # oh-my-fish
@@ -91,6 +90,7 @@ in {
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
+      (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
       (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
       (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
@@ -114,6 +114,7 @@ in {
       gnomeExtensions.enhanced-osk
       gnomeExtensions.blur-my-shell
       gnomeExtensions.appindicator
+      gnomeExtensions.shutdowntimer
       # gnomeExtensions.custom-accent-colors
       
       # graphite-gtk-theme
@@ -127,6 +128,7 @@ in {
     y = with pkgs-unstable; [
       discord
       zed-editor
+      gephi
     ];
   in
     x ++ y;

@@ -2,6 +2,7 @@
 
 pkgs.mkShell {
   nativeBuildInputs = [ 
-    pkgs.nodePackages.firebase-tools 
+    pkgs.gephi
+    pkgs.zulu8
   ];
 }

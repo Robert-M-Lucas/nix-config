@@ -10,10 +10,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Robert-M-Lucas"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Robert-M-Lucas/nix-config",
+    "accountId": "c0510f70-2ce1-400d-82ef-8b6dd607ae94"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2l4lsaYuvzSVMNXFrCXe62kDE03" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,7 +35,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/robert/Documents/Computer-Science-Notes/Year 1/CM12001 - Artificial Intelligence 1/Semester 2/Files/spam_filter",
+    "last_opened_file_path": "/home/robert/nix-config",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -45,6 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724447438649</updated>
       <workItem from="1724447440043" duration="97000" />
+      <workItem from="1724987857843" duration="32000" />
     </task>
     <servers />
   </component>
