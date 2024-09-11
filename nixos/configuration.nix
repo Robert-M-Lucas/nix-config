@@ -80,6 +80,12 @@
     }
   ];
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8081 ];
+    allowedUDPPorts = [ 8081 ];
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
