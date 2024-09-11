@@ -71,7 +71,7 @@ in {
       rustup
       cloc
       neovim
-      xclip
+      # xclip
       nodejs_22
       # wolfram-engine
       ffmpeg

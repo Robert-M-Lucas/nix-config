@@ -124,6 +124,11 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
   
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8081 ];
+    allowedUDPPorts = [ 8081 ];
+};
 
   # Set your time zone.
   time.timeZone = "Europe/London";
