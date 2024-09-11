@@ -64,10 +64,10 @@ in {
       gimp
       obs-studio
       mediawriter
-      qimgv # Consider removing
-      libsForQt5.dolphin
+      # qimgv # Consider removing
+      # libsForQt5.dolphin
       darktable
-      meld
+      # meld
 
   # ====== CMD ======
       # oh-my-fish
@@ -89,10 +89,10 @@ in {
       pythonEnv
       # zoxide
       nasm
-      blas
+      # blas
       texlive.combined.scheme-full
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5ct
+      # libsForQt5.qtstyleplugin-kvantum
+      # libsForQt5.qt5ct
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
@@ -134,7 +134,7 @@ in {
     y = with pkgs-unstable; [
       discord
       zed-editor
-      gephi
+      # gephi
     ];
   in
     x ++ y;

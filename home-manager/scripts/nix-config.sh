@@ -3,7 +3,18 @@ cd ~/nix-config
 echo "| Git pull"
 git pull
 
-codium -w .
+for arg in "$@"
+do
+  if [[ "$arg" == "--apply" ]]; then
+    apply_mode=true
+    break
+  fi
+done
+
+if [[ -z "$apply_mode" ]]; then
+  codium -w .
+fi
+
 
 echo "| Git add"
 git add *
