@@ -64,6 +64,9 @@ in {
       gimp
       obs-studio
       mediawriter
+      qimgv # Consider removing
+      libsForQt5.dolphin
+      darktable
       meld
 
   # ====== CMD ======
@@ -88,6 +91,8 @@ in {
       nasm
       blas
       texlive.combined.scheme-full
+      libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))

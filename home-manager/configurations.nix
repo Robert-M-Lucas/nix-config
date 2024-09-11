@@ -64,6 +64,7 @@
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
       aaron-bond.better-comments
+      k--kato.intellij-idea-keybindings
     ];
   };
 
