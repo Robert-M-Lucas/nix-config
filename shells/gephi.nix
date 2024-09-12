@@ -1,8 +1,11 @@
 { pkgs ? import <nixpkgs> {}}:
 
 pkgs.mkShell {
+  packages = [
+    pkgs.awscli
+  ];
+
   nativeBuildInputs = [ 
-    pkgs.gephi
-    pkgs.zulu8
+    pkgs.awscli
   ];
 }

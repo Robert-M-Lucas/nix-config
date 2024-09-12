@@ -95,8 +95,8 @@ in {
       # libsForQt5.qt5ct
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
-      (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
-      (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
+      # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
+      # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
       (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
       (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
       (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
