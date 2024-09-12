@@ -204,6 +204,7 @@
   virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
+    vesktop
     fprintd
     neofetch
     nixVersions.latest
