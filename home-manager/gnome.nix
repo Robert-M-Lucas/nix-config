@@ -76,7 +76,7 @@
       };
       "org/gnome/shell/extensions/hidetopbar" = {
         enable-active-window=false;
-        enable-intellihide=true;
+        enable-intellihide=false;
       };
     };
   };
