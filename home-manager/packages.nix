@@ -94,6 +94,10 @@ in {
       # libsForQt5.qtstyleplugin-kvantum
       # libsForQt5.qt5ct
 
+      pkg-config 
+      alsa-lib
+      libudev-zero
+
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
       # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
@@ -102,15 +106,7 @@ in {
       (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
   # ====== IDEs ======
-      jetbrains.rust-rover
-      jetbrains.webstorm
-      jetbrains.rider
-      jetbrains.pycharm-professional
-      jetbrains.jdk
-      jetbrains.idea-ultimate
-      jetbrains.goland
-      jetbrains.clion
-      android-studio
+      
 
   # ====== Extensions ======
       gnomeExtensions.ddterm
@@ -132,9 +128,21 @@ in {
     ];
 
     y = with pkgs-unstable; [
-      discord
+      # ====== IDEs ======
+      jetbrains.rust-rover
+      jetbrains.webstorm
+      jetbrains.rider
+      jetbrains.pycharm-professional
+      jetbrains.jdk
+      jetbrains.idea-ultimate
+      jetbrains.goland
+      jetbrains.clion
+      android-studio
       zed-editor
+
+      
       # gephi
+      discord
     ];
   in
     x ++ y;
