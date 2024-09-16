@@ -67,6 +67,7 @@ in {
       # qimgv # Consider removing
       # libsForQt5.dolphin
       darktable
+      qbittorrent
       # meld
 
   # ====== CMD ======
