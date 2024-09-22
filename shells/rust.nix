@@ -26,6 +26,8 @@ pkgs.mkShell rec {
     alsa-lib
     libudev-zero
 
+    SDL2
+
     shaderc
     directx-shader-compiler
     libGL

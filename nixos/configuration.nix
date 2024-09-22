@@ -136,6 +136,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
+  i18n.inputMethod.enabled = "ibus"; # Enables Super + . emoji picker
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
     LC_IDENTIFICATION = "en_GB.UTF-8";
