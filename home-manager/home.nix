@@ -75,6 +75,7 @@
 
   home.sessionPath = [
     "$HOME/.npm-global/bin/"
+    "$HOME/.cargo/bin"
   ];
 
   home.file.".background-image".source = ./assets/wallpaper.png;
