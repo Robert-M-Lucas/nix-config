@@ -99,6 +99,8 @@ in {
       # libsForQt5.qt5ct
       google-cloud-sdk
       fortune
+      zip
+      unzip
 
       pkg-config 
       alsa-lib
