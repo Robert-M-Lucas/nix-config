@@ -13,6 +13,22 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  hardware.opengl = { 
+     enable = true; 
+     driSupport = true; 
+     driSupport32Bit = true;
+     extraPackages = with pkgs; [
+      rocmPackages_5.clr.icd
+      rocmPackages_5.clr
+      rocmPackages_5.rocminfo
+      rocmPackages_5.rocm-runtime
+     ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"
+  ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/abb178ef-1a00-4e1f-9a6e-51b67aad30da";
       fsType = "ext4";

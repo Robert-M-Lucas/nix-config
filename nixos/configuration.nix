@@ -10,6 +10,7 @@
   system,
   hardware-config,
   use-cuda,
+  overlays,
   ...
 }: {
   # You can import other NixOS modules here
@@ -31,7 +32,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda; };
+    extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda overlays; };
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;

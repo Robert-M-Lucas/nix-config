@@ -69,8 +69,11 @@ in {
       darktable
       qbittorrent
       # meld
+      davinci-resolve
+      blender
 
   # ====== CMD ======
+      sl
       # oh-my-fish
       # gh
       rustup
@@ -147,6 +150,10 @@ in {
       # gephi
       discord
     ];
+
+    z = [
+      # overlays.davinci-resolve
+    ];
   in
-    x ++ y;
+    x ++ y ++ z;
 }

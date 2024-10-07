@@ -1,0 +1,2 @@
+Did this to PyCharm on fastop
+-Dide.browser.jcef.enabled=false

@@ -67,6 +67,9 @@
       catppuccin.catppuccin-vsc-icons
       aaron-bond.better-comments
       k--kato.intellij-idea-keybindings
+      bungcip.better-toml
+      rust-lang.rust-analyzer
+      serayuzgur.crates
     ];
   };
 

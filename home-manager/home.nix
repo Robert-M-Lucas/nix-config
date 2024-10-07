@@ -76,6 +76,7 @@
   home.sessionPath = [
     "$HOME/.npm-global/bin/"
     "$HOME/.cargo/bin"
+    "$HOME/RustroverProjects/rss/target/release"
   ];
 
   home.file.".background-image".source = ./assets/wallpaper.png;

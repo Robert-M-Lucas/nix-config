@@ -10,6 +10,13 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    davinci-resolve = prev.davinci-resolve.override (old: {
+      buildFHSEnv = a: (old.buildFHSEnv (a // {
+        extraBwrapArgs = a.extraBwrapArgs ++ [
+          "--bind /run/opengl-driver/etc/OpenCL /etc/OpenCL"
+        ];
+      }));
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

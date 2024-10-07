@@ -11,7 +11,7 @@ pkgs.mkShell rec {
   packages = [ toolchain ];
 
   nativeBuildInputs = with pkgs; [ 
-    pkg-config 
+    pkg-config
   ];
 
   buildInputs = with pkgs; [
