@@ -218,6 +218,10 @@
     (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
   ];
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
+
   environment.gnome.excludePackages = (with pkgs; [
     # for packages that are pkgs.*
     gnome-tour

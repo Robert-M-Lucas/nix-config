@@ -23,6 +23,8 @@ let
     # torchWithCuda
     # Add your Python packages here
     numpy
+    scikit-learn
+    jupyter
     matplotlib
     # torch-bin
     # torchsde
