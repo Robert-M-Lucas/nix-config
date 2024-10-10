@@ -73,6 +73,9 @@ in {
       # meld
       davinci-resolve
       blender
+      qalculate-gtk
+      vesktop
+      steam
 
   # ====== CMD ======
       sl
@@ -103,6 +106,7 @@ in {
       fortune
       zip
       unzip
+      libqalculate
 
       pkg-config 
       alsa-lib
