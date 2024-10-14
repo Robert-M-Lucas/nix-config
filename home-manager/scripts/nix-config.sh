@@ -17,7 +17,7 @@ fi
 
 
 echo "| Git add"
-git add *
+git add -A
 
 echo "> Enter hostname to switch to:"
 read hostname
