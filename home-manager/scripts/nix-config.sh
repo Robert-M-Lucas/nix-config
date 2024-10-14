@@ -29,7 +29,7 @@ if [ "$user_input" = "y" ] || [ "$user_input" = "Y" ]; then
     nix flake update
 fi
 
-echo "| Switching"
+echo "| [sudo] Switching"
 sudo nixos-rebuild --flake .#$hostname switch
 
 read -p "> Press enter to git diff"
@@ -38,6 +38,6 @@ git diff
 echo "> Enter commit message:"
 read commit_msg
 git commit -a -m "$commit_msg"
-
+  
 echo "Git push"
 git push

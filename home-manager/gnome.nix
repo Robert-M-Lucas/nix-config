@@ -25,6 +25,7 @@
           pkgs.gnomeExtensions.blur-my-shell.extensionUuid
           pkgs.gnomeExtensions.appindicator.extensionUuid
           pkgs.gnomeExtensions.shutdowntimer.extensionUuid
+          pkgs.gnomeExtensions.color-picker.extensionUuid
 
           # pkgs.gnomeExtensions.improved-osk.extensionUuid
           # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid

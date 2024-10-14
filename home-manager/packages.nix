@@ -26,6 +26,7 @@ let
     scikit-learn
     jupyter
     matplotlib
+    pooch
     # torch-bin
     # torchsde
     # torchvision-bin
@@ -131,6 +132,7 @@ in {
       gnomeExtensions.blur-my-shell
       gnomeExtensions.appindicator
       gnomeExtensions.shutdowntimer
+      gnomeExtensions.color-picker
       # gnomeExtensions.custom-accent-colors
       
       # graphite-gtk-theme

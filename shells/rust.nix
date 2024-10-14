@@ -11,6 +11,7 @@ pkgs.mkShell rec {
   packages = [ toolchain ];
 
   nativeBuildInputs = with pkgs; [ 
+    openssl
     pkg-config
   ];
 
