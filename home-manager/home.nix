@@ -23,6 +23,7 @@
     ./packages.nix
     ./configurations.nix
     ./gnome.nix
+    ./dotconfig.nix
     inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
