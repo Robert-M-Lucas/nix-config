@@ -107,6 +107,7 @@ in {
       fortune
       zip
       unzip
+      xclip
       libqalculate
 
       pkg-config 
