@@ -4,9 +4,9 @@
 "
 "   Last updated 2024-04-18
 "
+"   Significatly improved by Robert Lucas
+"
 " -------------------------------------
-
-" Test Comment
 
 " Options
 
@@ -388,7 +388,7 @@ nnoremap <leader>pr :ProjectRoot<CR>
 
 " Themes: (must be after plugin config)
 "
-colo catppuccin-mocha
+colo catppuccin-frappe
 set bg=dark
 let g:airline_theme='catppuccin'
 let g:airline_powerline_fonts=1
