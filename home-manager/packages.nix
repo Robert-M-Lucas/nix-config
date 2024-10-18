@@ -115,6 +115,7 @@ in {
       libudev-zero
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
+      (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
       # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
       # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
       (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
@@ -122,7 +123,6 @@ in {
       (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
   # ====== IDEs ======
-      
 
   # ====== Extensions ======
       gnomeExtensions.ddterm
@@ -157,7 +157,6 @@ in {
       android-studio
       zed-editor
 
-      
       # gephi
       discord
     ];
