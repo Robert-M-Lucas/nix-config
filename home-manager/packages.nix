@@ -79,6 +79,7 @@ in {
       steam
 
   # ====== CMD ======
+      platformio-core
       sl
       # oh-my-fish
       # gh
