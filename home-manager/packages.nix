@@ -77,6 +77,7 @@ in {
       qalculate-gtk
       vesktop
       steam
+      blender
 
   # ====== CMD ======
       platformio-core
