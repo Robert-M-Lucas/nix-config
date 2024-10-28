@@ -27,6 +27,7 @@ let
         jupyter
         matplotlib
         pooch
+        opencv4
         # torch-bin
         # torchsde
         # torchvision-bin

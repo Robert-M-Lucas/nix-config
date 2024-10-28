@@ -1,7 +1,12 @@
 cd ~/nix-config
 
-echo "| Git pull"
-git pull
+echo "> Git pull? (Y/n):"
+read user_input
+if ! [ "$user_input" = "n" ] && ! [ "$user_input" = "N" ]; then
+  echo "| Git pull"
+  git pull
+fi
+
 
 for arg in "$@"
 do
