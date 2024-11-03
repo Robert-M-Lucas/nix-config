@@ -80,6 +80,7 @@ in {
             vesktop
             steam
             blender
+            rare
 
     # ====== CMD ======
             platformio-core
@@ -117,6 +118,8 @@ in {
             pkg-config 
             alsa-lib
             libudev-zero
+
+            legendary-gl
 
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
             (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
