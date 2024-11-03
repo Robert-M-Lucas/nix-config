@@ -28,6 +28,7 @@ let
         matplotlib
         pooch
         opencv4
+        ffmpeg-python
         # torch-bin
         # torchsde
         # torchvision-bin
