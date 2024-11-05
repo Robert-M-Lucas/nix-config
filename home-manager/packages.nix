@@ -82,6 +82,7 @@ in {
             blender
             rare
             musescore
+            insomnia
 
     # ====== CMD ======
             platformio-core
