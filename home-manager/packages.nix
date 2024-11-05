@@ -167,6 +167,7 @@ in {
 
             # gephi
             discord
+            muse-sounds-manager
         ];
 
         z = [
