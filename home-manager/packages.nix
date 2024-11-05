@@ -145,6 +145,7 @@ in {
             gnomeExtensions.appindicator
             gnomeExtensions.shutdowntimer
             gnomeExtensions.color-picker
+            gnomeExtensions.desktop-clock
             # gnomeExtensions.custom-accent-colors
             
             # graphite-gtk-theme

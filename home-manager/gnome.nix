@@ -26,6 +26,7 @@
                     pkgs.gnomeExtensions.appindicator.extensionUuid
                     pkgs.gnomeExtensions.shutdowntimer.extensionUuid
                     pkgs.gnomeExtensions.color-picker.extensionUuid
+                    pkgs.gnomeExtensions.desktop-clock.extensionUuid
 
                     # pkgs.gnomeExtensions.improved-osk.extensionUuid
                     # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid
