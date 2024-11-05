@@ -72,7 +72,7 @@ in {
             # qimgv # Consider removing
             # libsForQt5.dolphin
             darktable
-            qbittorrent
+            # qbittorrent # Removed due to vulnerability atm
             # meld
             davinci-resolve
             blender
