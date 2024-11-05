@@ -1,0 +1,2 @@
+echo "[using fastfetch]"
+fastfetch

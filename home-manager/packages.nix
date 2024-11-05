@@ -128,8 +128,10 @@ in {
             # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
             # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
             (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
-            (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
-            (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
+            (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
+            
+            # (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
+            # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
     # ====== IDEs ======
 
