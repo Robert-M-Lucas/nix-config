@@ -123,6 +123,8 @@ in {
 
             legendary-gl
 
+            dconf2nix
+
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
             (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
             # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
