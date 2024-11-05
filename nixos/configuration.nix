@@ -210,7 +210,7 @@
 
     environment.systemPackages = with pkgs; [
         fprintd
-        neofetch
+        fastfetch
         nixVersions.latest
         # python3
         gcc
