@@ -80,7 +80,7 @@
         "$HOME/RustroverProjects/rss/target/release"
     ];
 
-    home.file.".background-image".source = ./assets/wallpaper.png;
+    home.file.".background-image".source = ./assets/wallpaper.JPG;
 
     # gtk = {
     #     enable = true;

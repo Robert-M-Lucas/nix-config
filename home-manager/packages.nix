@@ -81,6 +81,7 @@ in {
             steam
             blender
             rare
+            musescore
 
     # ====== CMD ======
             platformio-core
