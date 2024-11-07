@@ -29,6 +29,7 @@ let
         pooch
         opencv4
         ffmpeg-python
+        pygobject3
         # torch-bin
         # torchsde
         # torchvision-bin
@@ -83,6 +84,7 @@ in {
             rare
             musescore
             insomnia
+            alacarte
 
     # ====== CMD ======
             platformio-core
@@ -147,7 +149,6 @@ in {
             gnomeExtensions.appindicator
             gnomeExtensions.shutdowntimer
             gnomeExtensions.color-picker
-            gnomeExtensions.desktop-clock
             # gnomeExtensions.custom-accent-colors
             
             # graphite-gtk-theme
