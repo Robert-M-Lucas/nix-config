@@ -85,6 +85,7 @@ in {
             musescore
             insomnia
             alacarte
+            prismlauncher
 
     # ====== CMD ======
             platformio-core
