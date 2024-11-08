@@ -75,7 +75,6 @@ in {
             darktable
             # qbittorrent # Removed due to vulnerability atm
             # meld
-            davinci-resolve
             blender
             qalculate-gtk
             vesktop
@@ -176,6 +175,7 @@ in {
             # gephi
             discord
             muse-sounds-manager
+            davinci-resolve
         ];
 
         z = [
