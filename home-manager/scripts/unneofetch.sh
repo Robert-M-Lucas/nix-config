@@ -1,2 +1,2 @@
-echo "[using fastfetch]"
+echo "[Using fastfetch - ignoring arguments]"
 fastfetch

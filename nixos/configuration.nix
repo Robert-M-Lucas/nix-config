@@ -294,6 +294,9 @@
         '';
     };
 
+    programs.captive-browser.enable = true;
+    programs.captive-browser.interface = "wlp2s0";
+
     # Configure your system-wide user settings (groups, etc), add more users as needed.
     users.users = {
         robert = {
@@ -310,6 +313,9 @@
             extraGroups = ["wheel" "networkmanager" "docker"];
         };
     };
+
+    # ? Last time running `nix-store --optimise` it only saved ~7GB for a very long execution time
+    # nix.settings.auto-optimise-store = true;
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     system.stateVersion = "24.05";
