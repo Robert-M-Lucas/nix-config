@@ -24,7 +24,7 @@
         nixpkgs-unstable,
         catppuccin,
         home-manager,
-        rust-overlay,
+        # rust-overlay,
         ...
     }: let
         inherit (self) outputs;
