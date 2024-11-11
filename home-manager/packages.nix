@@ -30,6 +30,7 @@ let
         opencv4
         ffmpeg-python
         pygobject3
+        tensorflow
         # torch-bin
         # torchsde
         # torchvision-bin
