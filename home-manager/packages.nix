@@ -138,6 +138,7 @@ in {
             # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
     # ====== IDEs ======
+            jetbrains.pycharm-community
 
     # ====== Extensions ======
             gnomeExtensions.ddterm

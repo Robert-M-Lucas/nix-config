@@ -1,0 +1,159 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024__01_32__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024__01_32__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024__01_32__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024__01_32__Changes_.xml	(revision d177d0f17deaf7a06bb3727090a4471618a0bb26)
++++ /dev/null	(revision d177d0f17deaf7a06bb3727090a4471618a0bb26)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]" date="1729211571584" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 18/10/2024, 01:32 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]/shelved.patch	(revision d177d0f17deaf7a06bb3727090a4471618a0bb26)
++++ /dev/null	(revision d177d0f17deaf7a06bb3727090a4471618a0bb26)
+@@ -1,97 +0,0 @@
+-Index: home-manager/packages.nix
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>{\n  inputs,\n  outputs,\n  lib,\n  config,\n  pkgs,\n  pkgs-unstable,\n  home,\n  ...\n}: \nlet\n  # Adding the local file to the Nix store\n  # wolframSH = builtins.fetchurl {\n  #   url = \"https://raw.githubusercontent.com/Robert-M-Lucas/nix-config/master/home-manager/assets/WolframEngine_13.3.0_LINUX.sh\";\n  #   sha256 = \"96106ac8ed6d0e221a68d846117615c14025320f927e5e0ed95b1965eda68e31\";\n  # };\n\n  # # Overriding the wolfram-engine package to include the file\n  # customWolframEngine = pkgs.wolfram-engine.overrideAttrs (oldAttrs: {\n  #   nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];\n  # });\n  pythonEnv = pkgs.python3.withPackages (ps: with ps; [\n    # torchWithCuda\n    # Add your Python packages here\n    numpy\n    scikit-learn\n    jupyter\n    matplotlib\n    # torch-bin\n    # torchsde\n    # torchvision-bin\n    # torchaudio-bin\n    # einops\n    # transformers\n    # tokenizers\n    # sentencepiece\n    # safetensors\n    # aiohttp\n    # pyyaml\n    # pillow\n    # scipy\n    # tqdm\n    # psutil\n    # torchWithCuda\n\n    #non essential dependencies:\n    # kornia\n    # spandrel\n    # soundfile\n\n    # Include libstdc++ for your environment\n    # pkgs.libstdcxx5\n  ]);\nin {\n  home.packages = let \n    x = with pkgs; [\n  # ====== GUI Apps ======\n      libreoffice\n      calibre\n      obsidian\n      protonvpn-gui\n      pomodoro-gtk\n      wireshark\n      arduino-ide\n      krita\n      gimp\n      obs-studio\n      mediawriter\n      # qimgv # Consider removing\n      # libsForQt5.dolphin\n      darktable\n      qbittorrent\n      # meld\n      davinci-resolve\n      blender\n      qalculate-gtk\n      vesktop\n      steam\n\n  # ====== CMD ======\n      sl\n      # oh-my-fish\n      # gh\n      rustup\n      cloc\n      neovim\n      # xclip\n      nodejs_22\n      # wolfram-engine\n      ffmpeg\n      # clang\n      # clang-tools\n      # libgcc\n      # gnumake\n      # cmake\n      # extra-cmake-modules\n      # stdenv.cc.cc.lib\n      pythonEnv\n      # zoxide\n      nasm\n      # blas\n      texlive.combined.scheme-full\n      # libsForQt5.qtstyleplugin-kvantum\n      # libsForQt5.qt5ct\n      google-cloud-sdk\n      fortune\n      zip\n      unzip\n      libqalculate\n\n      pkg-config \n      alsa-lib\n      libudev-zero\n\n      (writeShellScriptBin \"nix-config\" (builtins.readFile ./scripts/nix-config.sh))\n      # (writeShellScriptBin \"shell\" (builtins.readFile ./scripts/shell.sh))\n      # (writeShellScriptBin \"shell-pure\" (builtins.readFile ./scripts/shell-pure.sh))\n      (writeShellScriptBin \"shell-config\" (builtins.readFile ./scripts/shell-config.sh))\n      (writeShellScriptBin \"cdd\" (builtins.readFile ./scripts/cdd.sh))\n      (writeShellScriptBin \"cdu\" (builtins.readFile ./scripts/cdu.sh))\n\n  # ====== IDEs ======\n      \n\n  # ====== Extensions ======\n      gnomeExtensions.ddterm\n      gnomeExtensions.hide-top-bar\n      gnomeExtensions.caffeine\n      gnomeExtensions.vitals\n      gnomeExtensions.enhanced-osk\n      gnomeExtensions.blur-my-shell\n      gnomeExtensions.appindicator\n      gnomeExtensions.shutdowntimer\n      # gnomeExtensions.custom-accent-colors\n      \n      # graphite-gtk-theme\n      # gtk-engine-murrine\n      # gnome.gnome-themes-extra\n\n  # ====== Other ======\n      diff-so-fancy\n    ];\n\n    y = with pkgs-unstable; [\n      # ====== IDEs ======\n      jetbrains.rust-rover\n      jetbrains.webstorm\n      jetbrains.rider\n      jetbrains.pycharm-professional\n      jetbrains.jdk\n      jetbrains.idea-ultimate\n      jetbrains.goland\n      jetbrains.clion\n      android-studio\n      zed-editor\n\n      \n      # gephi\n      discord\n    ];\n\n    z = [\n      # overlays.davinci-resolve\n    ];\n  in\n    x ++ y ++ z;\n}\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/home-manager/packages.nix b/home-manager/packages.nix
+---- a/home-manager/packages.nix	(revision d29ffb35e137ec204bd8978036299ca9d4eea7fe)
+-+++ b/home-manager/packages.nix	(date 1729211495477)
+-@@ -113,6 +113,7 @@
+-       libudev-zero
+- 
+-       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
+-+      (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
+-       # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
+-       # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
+-       (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
+-@@ -120,7 +121,6 @@
+-       (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
+- 
+-   # ====== IDEs ======
+--      
+- 
+-   # ====== Extensions ======
+-       gnomeExtensions.ddterm
+-@@ -154,7 +154,6 @@
+-       android-studio
+-       zed-editor
+- 
+--      
+-       # gephi
+-       discord
+-     ];
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"3efbb5bd-54e4-4716-95a8-94f44b65991b\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;Robert-M-Lucas&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/Robert-M-Lucas/nix-config&quot;,\n    &quot;accountId&quot;: &quot;c0510f70-2ce1-400d-82ef-8b6dd607ae94&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 0\n}</component>\n  <component name=\"ProjectId\" id=\"2l4lsaYuvzSVMNXFrCXe62kDE03\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"git-widget-placeholder\": \"main\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"/home/robert/nix-config\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1\" />\n        <option value=\"bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"3efbb5bd-54e4-4716-95a8-94f44b65991b\" name=\"Changes\" comment=\"\" />\n      <created>1724447438649</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1724447438649</updated>\n      <workItem from=\"1724447440043\" duration=\"97000\" />\n      <workItem from=\"1724987857843\" duration=\"32000\" />\n      <workItem from=\"1726057996893\" duration=\"55000\" />\n      <workItem from=\"1726154963210\" duration=\"36000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision d29ffb35e137ec204bd8978036299ca9d4eea7fe)
+-+++ b/.idea/workspace.xml	(date 1728897992215)
+-@@ -1,7 +1,9 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="ChangeListManager">
+--    <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="" />
+-+    <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="">
+-+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-+    </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -31,21 +33,21 @@
+-     <option name="hideEmptyMiddlePackages" value="true" />
+-     <option name="showLibraryContents" value="true" />
+-   </component>
+--  <component name="PropertiesComponent"><![CDATA[{
+--  "keyToString": {
+--    "RunOnceActivity.ShowReadmeOnStart": "true",
+--    "git-widget-placeholder": "main",
+--    "kotlin-language-version-configured": "true",
+--    "last_opened_file_path": "/home/robert/nix-config",
+--    "nodejs_package_manager_path": "npm",
+--    "vue.rearranger.settings.migration": "true"
+-+  <component name="PropertiesComponent">{
+-+  &quot;keyToString&quot;: {
+-+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-+    &quot;last_opened_file_path&quot;: &quot;/home/robert/nix-config&quot;,
+-+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+-   }
+--}]]></component>
+-+}</component>
+-   <component name="SharedIndexes">
+-     <attachedChunks>
+-       <set>
+--        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+--        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+-+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23339.19" />
+-+        <option value="bundled-python-sdk-0029f7779945-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23339.19" />
+-       </set>
+-     </attachedChunks>
+-   </component>
+-@@ -61,6 +63,8 @@
+-       <workItem from="1724987857843" duration="32000" />
+-       <workItem from="1726057996893" duration="55000" />
+-       <workItem from="1726154963210" duration="36000" />
+-+      <workItem from="1727994735721" duration="27000" />
+-+      <workItem from="1728897971049" duration="22000" />
+-     </task>
+-     <servers />
+-   </component>
+Index: home-manager/packages.nix
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n    inputs,\n    outputs,\n    lib,\n    config,\n    pkgs,\n    pkgs-unstable,\n    home,\n    ...\n}: \nlet\n    # Adding the local file to the Nix store\n    # wolframSH = builtins.fetchurl {\n    #     url = \"https://raw.githubusercontent.com/Robert-M-Lucas/nix-config/master/home-manager/assets/WolframEngine_13.3.0_LINUX.sh\";\n    #     sha256 = \"96106ac8ed6d0e221a68d846117615c14025320f927e5e0ed95b1965eda68e31\";\n    # };\n\n    # # Overriding the wolfram-engine package to include the file\n    # customWolframEngine = pkgs.wolfram-engine.overrideAttrs (oldAttrs: {\n    #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];\n    # });\n    pythonEnv = pkgs.python3.withPackages (ps: with ps; [\n        # torchWithCuda\n        # Add your Python packages here\n        numpy\n        scikit-learn\n        jupyter\n        matplotlib\n        pooch\n        opencv4\n        # torch-bin\n        # torchsde\n        # torchvision-bin\n        # torchaudio-bin\n        # einops\n        # transformers\n        # tokenizers\n        # sentencepiece\n        # safetensors\n        # aiohttp\n        # pyyaml\n        # pillow\n        # scipy\n        # tqdm\n        # psutil\n        # torchWithCuda\n\n        #non essential dependencies:\n        # kornia\n        # spandrel\n        # soundfile\n\n        # Include libstdc++ for your environment\n        # pkgs.libstdcxx5\n    ]);\nin {\n    home.packages = let \n        x = with pkgs; [\n    # ====== GUI Apps ======\n            libreoffice\n            calibre\n            obsidian\n            protonvpn-gui\n            pomodoro-gtk\n            wireshark\n            arduino-ide\n            krita\n            gimp\n            obs-studio\n            mediawriter\n            # qimgv # Consider removing\n            # libsForQt5.dolphin\n            darktable\n            qbittorrent\n            # meld\n            davinci-resolve\n            blender\n            qalculate-gtk\n            vesktop\n            steam\n            blender\n\n    # ====== CMD ======\n            platformio-core\n            sl\n            # oh-my-fish\n            # gh\n            rustup\n            cloc\n            neovim\n            # xclip\n            nodejs_22\n            # wolfram-engine\n            ffmpeg\n            # clang\n            # clang-tools\n            # libgcc\n            # gnumake\n            # cmake\n            # extra-cmake-modules\n            # stdenv.cc.cc.lib\n            pythonEnv\n            # zoxide\n            nasm\n            # blas\n            texlive.combined.scheme-full\n            # libsForQt5.qtstyleplugin-kvantum\n            # libsForQt5.qt5ct\n            google-cloud-sdk\n            fortune\n            zip\n            unzip\n            xclip\n            libqalculate\n\n            pkg-config \n            alsa-lib\n            libudev-zero\n\n            (writeShellScriptBin \"nix-config\" (builtins.readFile ./scripts/nix-config.sh))\n            (writeShellScriptBin \"nix-clean\" (builtins.readFile ./scripts/nix-clean.sh))\n            # (writeShellScriptBin \"shell\" (builtins.readFile ./scripts/shell.sh))\n            # (writeShellScriptBin \"shell-pure\" (builtins.readFile ./scripts/shell-pure.sh))\n            (writeShellScriptBin \"shell-config\" (builtins.readFile ./scripts/shell-config.sh))\n            (writeShellScriptBin \"cdd\" (builtins.readFile ./scripts/cdd.sh))\n            (writeShellScriptBin \"cdu\" (builtins.readFile ./scripts/cdu.sh))\n\n    # ====== IDEs ======\n\n    # ====== Extensions ======\n            gnomeExtensions.ddterm\n            gnomeExtensions.hide-top-bar\n            gnomeExtensions.caffeine\n            gnomeExtensions.vitals\n            gnomeExtensions.enhanced-osk\n            gnomeExtensions.blur-my-shell\n            gnomeExtensions.appindicator\n            gnomeExtensions.shutdowntimer\n            gnomeExtensions.color-picker\n            # gnomeExtensions.custom-accent-colors\n            \n            # graphite-gtk-theme\n            # gtk-engine-murrine\n            # gnome.gnome-themes-extra\n\n    # ====== Other ======\n            diff-so-fancy\n        ];\n\n        y = with pkgs-unstable; [\n            # ====== IDEs ======\n            jetbrains.rust-rover\n            jetbrains.webstorm\n            jetbrains.rider\n            jetbrains.pycharm-professional\n            jetbrains.jdk\n            jetbrains.idea-ultimate\n            jetbrains.goland\n            jetbrains.clion\n            android-studio\n            zed-editor\n\n            # gephi\n            discord\n        ];\n\n        z = [\n            # overlays.davinci-resolve\n        ];\n    in\n        x ++ y ++ z;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/home-manager/packages.nix b/home-manager/packages.nix
+--- a/home-manager/packages.nix	(revision d177d0f17deaf7a06bb3727090a4471618a0bb26)
++++ b/home-manager/packages.nix	(date 1730302976758)
+@@ -126,6 +126,7 @@
+             (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
+ 
+     # ====== IDEs ======
++            jetbrains.pycharm-community
+ 
+     # ====== Extensions ======
+             gnomeExtensions.ddterm
+Index: flake.lock
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"nodes\": {\n    \"catppuccin\": {\n      \"locked\": {\n        \"lastModified\": 1730036420,\n        \"narHash\": \"sha256-rv2bz7J6Wo7AenPiu4+ptCB1AFyaMcS77y89zbRAtI8=\",\n        \"owner\": \"catppuccin\",\n        \"repo\": \"nix\",\n        \"rev\": \"0b7bf04628414a402d255924f65e9a0d1a53d92b\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"catppuccin\",\n        \"repo\": \"nix\",\n        \"type\": \"github\"\n      }\n    },\n    \"home-manager\": {\n      \"inputs\": {\n        \"nixpkgs\": [\n          \"nixpkgs\"\n        ]\n      },\n      \"locked\": {\n        \"lastModified\": 1726989464,\n        \"narHash\": \"sha256-Vl+WVTJwutXkimwGprnEtXc/s/s8sMuXzqXaspIGlwM=\",\n        \"owner\": \"nix-community\",\n        \"repo\": \"home-manager\",\n        \"rev\": \"2f23fa308a7c067e52dfcc30a0758f47043ec176\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"nix-community\",\n        \"ref\": \"release-24.05\",\n        \"repo\": \"home-manager\",\n        \"type\": \"github\"\n      }\n    },\n    \"nixpkgs\": {\n      \"locked\": {\n        \"lastModified\": 1729973466,\n        \"narHash\": \"sha256-knnVBGfTCZlQgxY1SgH0vn2OyehH9ykfF8geZgS95bk=\",\n        \"owner\": \"nixos\",\n        \"repo\": \"nixpkgs\",\n        \"rev\": \"cd3e8833d70618c4eea8df06f95b364b016d4950\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"nixos\",\n        \"ref\": \"nixos-24.05\",\n        \"repo\": \"nixpkgs\",\n        \"type\": \"github\"\n      }\n    },\n    \"nixpkgs-unstable\": {\n      \"locked\": {\n        \"lastModified\": 1729880355,\n        \"narHash\": \"sha256-RP+OQ6koQQLX5nw0NmcDrzvGL8HDLnyXt/jHhL1jwjM=\",\n        \"owner\": \"nixos\",\n        \"repo\": \"nixpkgs\",\n        \"rev\": \"18536bf04cd71abd345f9579158841376fdd0c5a\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"nixos\",\n        \"ref\": \"nixos-unstable\",\n        \"repo\": \"nixpkgs\",\n        \"type\": \"github\"\n      }\n    },\n    \"root\": {\n      \"inputs\": {\n        \"catppuccin\": \"catppuccin\",\n        \"home-manager\": \"home-manager\",\n        \"nixpkgs\": \"nixpkgs\",\n        \"nixpkgs-unstable\": \"nixpkgs-unstable\"\n      }\n    }\n  },\n  \"root\": \"root\",\n  \"version\": 7\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/flake.lock b/flake.lock
+--- a/flake.lock	(revision d177d0f17deaf7a06bb3727090a4471618a0bb26)
++++ b/flake.lock	(date 1730312391437)
+@@ -38,11 +38,11 @@
+     },
+     "nixpkgs": {
+       "locked": {
+-        "lastModified": 1729973466,
+-        "narHash": "sha256-knnVBGfTCZlQgxY1SgH0vn2OyehH9ykfF8geZgS95bk=",
++        "lastModified": 1730137625,
++        "narHash": "sha256-9z8oOgFZiaguj+bbi3k4QhAD6JabWrnv7fscC/mt0KE=",
+         "owner": "nixos",
+         "repo": "nixpkgs",
+-        "rev": "cd3e8833d70618c4eea8df06f95b364b016d4950",
++        "rev": "64b80bfb316b57cdb8919a9110ef63393d74382a",
+         "type": "github"
+       },
+       "original": {
