@@ -31,6 +31,7 @@ let
         ffmpeg-python
         pygobject3
         tensorflow
+        keras
         # torch-bin
         # torchsde
         # torchvision-bin
