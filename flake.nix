@@ -67,7 +67,7 @@
                         config.allowUnfree = true;
                     };
                     hardware-config = "pc";
-                    use-cuda = true;
+                    use-cuda = false;
                     lite = true;
                 };
                 modules = [

@@ -210,7 +210,7 @@
     virtualisation.docker.enable = true;
 
     environment.systemPackages = with pkgs; [
-	    tmux
+	tmux
         fprintd
         fastfetch
         nixVersions.latest
