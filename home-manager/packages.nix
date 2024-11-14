@@ -67,7 +67,6 @@ in {
             obsidian
             protonvpn-gui
             pomodoro-gtk
-            wireshark
             arduino-ide
             krita
             gimp
@@ -167,16 +166,12 @@ in {
             # ====== IDEs ======
             jetbrains.rust-rover
             jetbrains.webstorm
-            
-            jetbrains.pycharm-professional
             jetbrains.jdk
             jetbrains.clion
-            zed-editor
-
+            jetbrains.pycharm-professional
             # gephi
             discord
-            muse-sounds-manager
-            davinci-resolve
+            
         ];
 
         z = [
@@ -188,7 +183,11 @@ in {
             pkgs-unstable.android-studio
             pkgs-unstable.jetbrains.idea-ultimate
             pkgs-unstable.jetbrains.rider
+            pkgs-unstable.zed-editor
+            pkgs-unstable.muse-sounds-manager
+            pkgs-unstable.davinci-resolve
             pkgs.jetbrains.pycharm-community
+            pkgs.wireshark
         ];
     in
         x ++ y ++ z ++ (if lite then [] else non-lite);

@@ -10,6 +10,7 @@
     system,
     hardware-config,
     use-cuda,
+    lite,
     overlays,
     ...
 }: {
@@ -32,7 +33,7 @@
     ];
 
     home-manager = {
-        extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda overlays; };
+        extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda overlays lite; };
         users = {
             # Import your home-manager configuration
             robert = import ../home-manager/home.nix;
@@ -209,7 +210,7 @@
     virtualisation.docker.enable = true;
 
     environment.systemPackages = with pkgs; [
-	tmux
+	    tmux
         fprintd
         fastfetch
         nixVersions.latest

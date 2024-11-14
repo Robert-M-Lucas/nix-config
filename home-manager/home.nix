@@ -8,6 +8,7 @@
     pkgs,
     pkgs-unstable,
     use-cuda,
+    lite,
     ...
 }: {
     # You can import other home-manager modules here
