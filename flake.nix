@@ -63,11 +63,12 @@
                 specialArgs = {
                     inherit inputs outputs system;
                     pkgs-unstable = import nixpkgs-unstable {
-                            inherit system;
-                            config.allowUnfree = true;
+                        inherit system;
+                        config.allowUnfree = true;
                     };
                     hardware-config = "pc";
                     use-cuda = true;
+                    lite = true;
                 };
                 modules = [
                     # > Our main nixos configuration file <
@@ -85,6 +86,7 @@
                     };
                     hardware-config = "laptop";
                     use-cuda = false;
+                    lite = false;
                 };
                 modules = [
                     # > Our main nixos configuration file <
@@ -102,6 +104,7 @@
                     };
                     hardware-config = "fastop";
                     use-cuda = false;
+                    lite = false;
                 };
                 modules = [
                     # > Our main nixos configuration file <

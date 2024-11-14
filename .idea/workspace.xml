@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024,_01_32_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_10_2024__01_32__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flake.nix" beforeDir="false" afterPath="$PROJECT_DIR$/flake.nix" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home-manager/packages.nix" beforeDir="false" afterPath="$PROJECT_DIR$/home-manager/packages.nix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nixos/configuration.nix" beforeDir="false" afterPath="$PROJECT_DIR$/nixos/configuration.nix" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +70,7 @@
       <workItem from="1729211563094" duration="16000" />
       <workItem from="1729674190632" duration="21000" />
       <workItem from="1731290831458" duration="22000" />
+      <workItem from="1731554205460" duration="22000" />
     </task>
     <servers />
   </component>

@@ -6,6 +6,7 @@
     pkgs,
     pkgs-unstable,
     home,
+    lite,
     ...
 }: 
 let
@@ -140,7 +141,7 @@ in {
             # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
     # ====== IDEs ======
-            jetbrains.pycharm-community
+            
 
     # ====== Extensions ======
             gnomeExtensions.ddterm
@@ -166,13 +167,10 @@ in {
             # ====== IDEs ======
             jetbrains.rust-rover
             jetbrains.webstorm
-            jetbrains.rider
+            
             jetbrains.pycharm-professional
             jetbrains.jdk
-            jetbrains.idea-ultimate
-            jetbrains.goland
             jetbrains.clion
-            android-studio
             zed-editor
 
             # gephi
@@ -184,6 +182,14 @@ in {
         z = [
             # overlays.davinci-resolve
         ];
+
+        non-lite = [
+            pkgs-unstable.jetbrains.goland
+            pkgs-unstable.android-studio
+            pkgs-unstable.jetbrains.idea-ultimate
+            pkgs-unstable.jetbrains.rider
+            pkgs.jetbrains.pycharm-community
+        ];
     in
-        x ++ y ++ z;
+        x ++ y ++ z ++ (if lite then [] else non-lite);
 }
