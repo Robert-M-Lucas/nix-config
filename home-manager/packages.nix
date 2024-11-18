@@ -20,7 +20,7 @@ let
     # customWolframEngine = pkgs.wolfram-engine.overrideAttrs (oldAttrs: {
     #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];
     # });
-    pythonEnv = pkgs.python3.withPackages (ps: with ps; [
+    pythonEnv = pkgs.python311.withPackages (ps: with ps; [
         # torchWithCuda
         # Add your Python packages here
         numpy
@@ -63,7 +63,7 @@ in {
         x = with pkgs; [
     # ====== GUI Apps ======
             libreoffice
-            calibre
+            # calibre
             obsidian
             protonvpn-gui
             pomodoro-gtk
@@ -183,7 +183,7 @@ in {
             pkgs-unstable.android-studio
             pkgs-unstable.jetbrains.idea-ultimate
             pkgs-unstable.jetbrains.rider
-            pkgs-unstable.zed-editor
+            # pkgs-unstable.zed-editor
             pkgs-unstable.muse-sounds-manager
             pkgs-unstable.davinci-resolve
             pkgs.jetbrains.pycharm-community

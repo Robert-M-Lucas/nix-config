@@ -21,7 +21,7 @@
                     pkgs.gnomeExtensions.ddterm.extensionUuid
                     pkgs.gnomeExtensions.caffeine.extensionUuid
                     pkgs.gnomeExtensions.vitals.extensionUuid
-                    pkgs.gnomeExtensions.osk-toggle.extensionUuid
+                    # pkgs.gnomeExtensions.osk-toggle.extensionUuid
                     pkgs.gnomeExtensions.blur-my-shell.extensionUuid
                     pkgs.gnomeExtensions.appindicator.extensionUuid
                     pkgs.gnomeExtensions.shutdowntimer.extensionUuid
