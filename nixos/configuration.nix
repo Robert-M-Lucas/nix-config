@@ -125,6 +125,7 @@
             flake-registry = "";
             # Workaround for https://github.com/NixOS/nix/issues/9574
             nix-path = config.nix.nixPath;
+            max-jobs = if lite then 1 else "auto";
         };
         # Opinionated: disable channels
         channel.enable = false;
