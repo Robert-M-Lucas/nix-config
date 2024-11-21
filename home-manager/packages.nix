@@ -80,7 +80,7 @@ in {
             blender
             qalculate-gtk
             vesktop
-            steam
+            # steam - stable version seems to not work
             blender
             rare
             musescore
@@ -171,7 +171,7 @@ in {
             jetbrains.pycharm-professional
             # gephi
             discord
-            
+            steam
         ];
 
         z = [
