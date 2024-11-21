@@ -171,7 +171,7 @@ in {
             jetbrains.pycharm-professional
             # gephi
             discord
-            steam
+            # steam
         ];
 
         z = [
