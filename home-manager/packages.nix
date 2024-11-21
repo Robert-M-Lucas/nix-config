@@ -33,6 +33,7 @@ let
         pygobject3
         tensorflow
         keras
+        pygame
         # torch-bin
         # torchsde
         # torchvision-bin
