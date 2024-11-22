@@ -136,6 +136,7 @@ in {
             # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
             (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
             (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
+            (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
             
             # (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
             # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
