@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2024,_02_07_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2024__02_07__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_11_2024,_03_16_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_11_2024__03_16__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flake.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flake.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flake.nix" beforeDir="false" afterPath="$PROJECT_DIR$/flake.nix" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home-manager/packages.nix" beforeDir="false" afterPath="$PROJECT_DIR$/home-manager/packages.nix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home-manager/home.nix" beforeDir="false" afterPath="$PROJECT_DIR$/home-manager/home.nix" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nixos/configuration.nix" beforeDir="false" afterPath="$PROJECT_DIR$/nixos/configuration.nix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/overlays/default.nix" beforeDir="false" afterPath="$PROJECT_DIR$/overlays/default.nix" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +77,7 @@
       <workItem from="1729674190632" duration="21000" />
       <workItem from="1731290831458" duration="22000" />
       <workItem from="1731554205460" duration="22000" />
+      <workItem from="1732593139180" duration="69000" />
     </task>
     <servers />
   </component>
