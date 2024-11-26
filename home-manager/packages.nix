@@ -91,6 +91,7 @@ in {
 
     # ====== CMD ======
             platformio-core
+            clang-tools
             sl
             # oh-my-fish
             # gh

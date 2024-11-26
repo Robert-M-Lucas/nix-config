@@ -10,8 +10,23 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
   boot.extraModulePackages = [ ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+  security.polkit.enable = true;
+
+  hardware.opengl = { 
+    enable = true; 
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      rocmPackages_5.clr.icd
+      rocmPackages_5.clr
+      rocmPackages_5.rocminfo
+      rocmPackages_5.rocm-runtime
+    ];
+  };
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/4151f2c0-6492-4345-b76d-253f0d5f894e";
