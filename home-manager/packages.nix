@@ -172,6 +172,7 @@ in {
             jetbrains.jdk
             jetbrains.clion
             jetbrains.pycharm-professional
+            davinci-resolve
             # gephi
             discord
             # steam
@@ -188,7 +189,6 @@ in {
             pkgs-unstable.jetbrains.rider
             # pkgs-unstable.zed-editor
             pkgs-unstable.muse-sounds-manager
-            pkgs-unstable.davinci-resolve
             pkgs.jetbrains.pycharm-community
             pkgs.wireshark
         ];
