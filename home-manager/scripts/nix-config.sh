@@ -1,25 +1,31 @@
 cd ~/nix-config
 
-echo "> Git pull? (Y/n):"
-read user_input
-if ! [ "$user_input" = "n" ] && ! [ "$user_input" = "N" ]; then
-  echo "| Git pull"
-  git pull
-fi
-
-
 for arg in "$@"
 do
   if [[ "$arg" == "--apply" ]]; then
     apply_mode=true
     break
   fi
+  if [[ "$arg" == "--full" ]]; then
+    full_mode=true
+    break
+  fi
 done
 
-if [[ -z "$apply_mode" ]]; then
-  codium -w .
+if [[ -z "$full_mode" ]]; then
+  echo "> Git pull? (Y/n):"
+  read user_input
 fi
 
+if [ "$full_mode" == "true" ] || ! ([ "$user_input" == "n" ] && ! [ "$user_input" == "N" ]); then
+  echo "| Git pull"
+  git pull
+fi
+
+
+if [[ -z "$apply_mode" ]] && [[ -z "$full_mode" ]]; then
+  codium -w .
+fi
 
 echo "| Git add"
 git add -A
@@ -27,9 +33,12 @@ git add -A
 echo "> Enter hostname to switch to:"
 read hostname
 
-echo "> Update flake? (y/N):"
-read user_input
-if [ "$user_input" = "y" ] || [ "$user_input" = "Y" ]; then
+if [[ -z "$full_mode" ]]; then
+  echo "> Update flake? (y/N):"
+  read user_input
+fi
+
+if [ "$full_mode" == "true" ] || [ "$user_input" == "y" ] || [ "$user_input" == "Y" ]; then
     echo "| Updating flake"
     nix flake update
 fi
@@ -37,8 +46,10 @@ fi
 echo "| [sudo] Switching"
 sudo nixos-rebuild --flake .#$hostname switch
 
-read -p "> Press enter to git diff"
-git diff
+if [[ -z "$full_mode" ]]; then
+  read -p "> Press enter to git diff"
+  git diff
+fi
 
 echo "> Enter commit message:"
 read commit_msg
