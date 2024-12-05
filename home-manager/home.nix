@@ -77,6 +77,7 @@
 
     home.sessionPath = [
         "$HOME/.npm-global/bin/"
+        "$HOME/.cache/npm/global/bin"
         "$HOME/.cargo/bin"
         "$HOME/RustroverProjects/rss/target/release"
     ];
