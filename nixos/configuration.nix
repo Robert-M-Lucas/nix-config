@@ -86,8 +86,8 @@
 
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8081 ];
-        allowedUDPPorts = [ 8081 ];
+        allowedTCPPorts = [ 8081 5173 ];
+        allowedUDPPorts = [ 8081 5173 ];
     };
 
     nixpkgs = {
