@@ -34,6 +34,8 @@ let
         tensorflow
         keras
         pygame
+        scikit-image
+        trimesh
         # torch-bin
         # torchsde
         # torchvision-bin
