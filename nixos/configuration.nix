@@ -323,11 +323,11 @@
             # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
             extraGroups = ["wheel" "networkmanager" "docker"];
         };
-        temp = {
-            isNormalUser=true;
-            password="";
-            extraGroups = ["wheel" "networkmanager" "docker"];
-        };
+        # temp = {
+        #     isNormalUser=true;
+        #     password="";
+        #     extraGroups = ["wheel" "networkmanager" "docker"];
+        # };
     };
 
     # ? Last time running `nix-store --optimise` it only saved ~7GB for a very long execution time
