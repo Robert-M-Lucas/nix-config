@@ -69,15 +69,26 @@
             # Configure individual extensions
             # dconf dump /
             "com/github/amezin/ddterm" = {
+                background-color="rgb(31,31,31)";
+                background-opacity=1.0;
+                bold-color-same-as-fg=true;
+                cursor-colors-set=false;
                 custom-font="FiraCode Nerd Font Propo Medium 10";
-                ddterm-toggle-hotkey= ["<Primary>grave"];
+                ddterm-toggle-hotkey=["<Primary>grave"];
+                foreground-color="rgb(255,255,255)";
                 hide-animation="disable";
+                notebook-border=false;
+                palette=["rgb(23,20,33)" "rgb(192,28,40)" "rgb(38,162,105)" "rgb(162,115,76)" "rgb(18,72,139)" "rgb(163,71,186)" "rgb(42,161,179)" "rgb(208,207,204)" "rgb(94,92,100)" "rgb(246,97,81)" "rgb(51,209,122)" "rgb(233,173,12)" "rgb(42,123,222)" "rgb(192,97,203)" "rgb(51,199,222)" "rgb(255,255,255)"];
                 shortcut-win-new-tab=["<Primary>t"];
                 show-animation="disable";
-                tab-policy="automatic";
-                window-maximize=false;
                 show-scrollbar=false;
-                window-size=0.40553435114503816;
+                tab-policy="automatic";
+                theme-variant="dark";
+                transparent-background=false;
+                use-system-font=false;
+                use-theme-colors=false;
+                window-maximize=false;
+                window-size=0.35553400000000002;
             };
             "org/gnome/shell/extensions/hidetopbar" = {
                 enable-active-window=false;
