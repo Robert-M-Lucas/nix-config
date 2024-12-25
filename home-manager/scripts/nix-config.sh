@@ -1,5 +1,9 @@
 cd ~/nix-config
 
+echo "Pre-acquiring sudo"
+echo "| [sudo] echo \"Sudo acquired\""
+sudo echo "Sudo acquired"
+
 for arg in "$@"
 do
   if [[ "$arg" == "--apply" ]]; then
