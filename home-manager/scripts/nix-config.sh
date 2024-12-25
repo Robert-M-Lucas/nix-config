@@ -4,6 +4,9 @@ echo "Pre-acquiring sudo"
 echo "| [sudo] echo \"Sudo acquired\""
 sudo echo "Sudo acquired"
 
+echo "> Enter hostname to switch to:"
+read hostname
+
 for arg in "$@"
 do
   if [[ "$arg" == "--apply" ]]; then
@@ -34,8 +37,6 @@ fi
 echo "| Git add"
 git add -A
 
-echo "> Enter hostname to switch to:"
-read hostname
 
 if [[ -z "$full_mode" ]]; then
   echo "> Update flake? (y/N):"
