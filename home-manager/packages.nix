@@ -136,6 +136,8 @@ in {
 
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
             (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
+
+            (writeShellScriptBin "rust-shell" (builtins.readFile ./scripts/rust-shell.sh))
             # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
             # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
             (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
