@@ -1,14 +1,14 @@
 echo "> Are you sure you want to clean? (y/N):"
 
-echo "Pre-acquiring sudo"
-echo "| [sudo] echo \"Sudo acquired\""
-sudo echo "Sudo acquired"
-
 read user_input
 if ! ([ "$user_input" = "y" ] || [ "$user_input" = "Y" ]); then
     echo "| Exitting"
     exit
 fi
+
+echo "Pre-acquiring sudo"
+echo "| [sudo] echo \"Sudo acquired\""
+sudo echo "Sudo acquired"
 
 echo "| nix-env --delete-generations old"
 nix-env --delete-generations old
