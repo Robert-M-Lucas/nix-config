@@ -75,6 +75,7 @@ in {
             gimp
             obs-studio
             mediawriter
+            rpi-imager
             # qimgv # Consider removing
             # libsForQt5.dolphin
             darktable
