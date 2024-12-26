@@ -388,7 +388,7 @@ nnoremap <leader>pr :ProjectRoot<CR>
 
 " Themes: (must be after plugin config)
 "
-colo catppuccin-frappe
+colo catppuccin-mocha
 set bg=dark
 let g:airline_theme='catppuccin'
 let g:airline_powerline_fonts=1

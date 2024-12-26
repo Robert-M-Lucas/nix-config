@@ -28,7 +28,7 @@
         inputs.catppuccin.homeManagerModules.catppuccin
     ];
 
-    catppuccin.flavor = "frappe";
+    catppuccin.flavor = "mocha";
     catppuccin.accent = "sapphire";
     # catppuccin.enable = true;
     catppuccin.pointerCursor.enable = true;
