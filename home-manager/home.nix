@@ -31,11 +31,11 @@
     catppuccin.flavor = "mocha";
     catppuccin.accent = "sapphire";
     # catppuccin.enable = true;
-    catppuccin.pointerCursor.enable = true;
-    gtk.enable = true;
-    gtk.catppuccin.enable = true;
-    gtk.catppuccin.gnomeShellTheme = true;
-    gtk.catppuccin.icon.enable = true;
+    # catppuccin.pointerCursor.enable = true;
+    # gtk.enable = true;
+    # gtk.catppuccin.enable = true;
+    # gtk.catppuccin.gnomeShellTheme = true;
+    # gtk.catppuccin.icon.enable = true;
     qt.style.catppuccin.enable = true;
     programs.fish.catppuccin.enable = false;
     

@@ -112,6 +112,7 @@
         config = {
             # Disable if you don't want unfree packages
             allowUnfree = true;
+            android_sdk.accept_license = true;
         };
     };
 
@@ -227,6 +228,12 @@
         gcc
         usbutils
         # home-manager
+
+        # TODO: TEMP
+        flutter
+        dart
+        jdk17
+
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
     ];
 

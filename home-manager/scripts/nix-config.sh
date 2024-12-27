@@ -4,8 +4,14 @@ echo "Pre-acquiring sudo"
 echo "| [sudo] echo \"Sudo acquired\""
 sudo echo "Sudo acquired"
 
-echo "> Enter hostname to switch to:"
-read hostname
+if [ -e /home/robert/.nix-hostname ]; then
+    echo "Hostname found at /home/robert/.nix-hostname"
+    hostname=$(cat /home/robert/.nix-hostname)
+else
+    echo "Hostname not found at /home/robert/.nix-hostname"
+    echo "> Enter hostname to switch to:"
+    read hostname
+fi
 
 for arg in "$@"
 do

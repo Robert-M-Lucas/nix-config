@@ -64,7 +64,7 @@ let
 in {
     home.packages = let 
         x = with pkgs; [
-    # ====== GUI Apps ======
+        # ====== GUI Apps ======
             libreoffice
             # calibre
             obsidian
@@ -92,7 +92,7 @@ in {
             alacarte
             prismlauncher
 
-    # ====== CMD ======
+        # ====== CMD ======
             platformio-core
             clang-tools
             sl
@@ -136,6 +136,8 @@ in {
 
             qemu
 
+            
+
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
             (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
 
@@ -149,10 +151,10 @@ in {
             # (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
             # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
-    # ====== IDEs ======
+        # ====== IDEs ======
             
 
-    # ====== Extensions ======
+        # ====== Extensions ======
             gnomeExtensions.ddterm
             gnomeExtensions.hide-top-bar
             gnomeExtensions.caffeine
@@ -167,23 +169,60 @@ in {
             # graphite-gtk-theme
             # gtk-engine-murrine
             # gnome.gnome-themes-extra
+    
+        # ====== Shell Deps ====== (Prevent shells redownloading)
 
-    # ====== Other ======
+            xorg.libX11
+            xorg.libXcursor
+            xorg.libXrandr
+            xorg.libXi
+            xorg.libxcb
+            libxkbcommon
+            alsa-lib
+            libudev-zero
+
+            SDL2
+
+            shaderc
+            directx-shader-compiler
+            libGL
+            vulkan-headers
+            vulkan-loader
+            vulkan-tools
+            vulkan-tools-lunarg
+            vulkan-validation-layers
+
+            openssl
+            pkg-config
+
+        # (symlinkJoin {
+        #   name = "dart-symlink";
+        #   paths = [ dart ];
+        #   symlink = { "${dart.src}" = "/home/robert/dart"; };
+        # })
+        # (symlinkJoin {
+        #   name = "flutter-symlink";
+        #   paths = [ flutter ];
+        #   symlink = { "${flutter.sdk}/" = "/home/robert/flutter"; };
+        # })
+
+
+        # ====== Other ======
             diff-so-fancy
-        ];
+    ];
 
-        y = with pkgs-unstable; [
-            # ====== IDEs ======
-            jetbrains.rust-rover
-            jetbrains.webstorm
-            jetbrains.jdk
-            jetbrains.clion
-            jetbrains.pycharm-professional
-            davinci-resolve
-            # gephi
-            discord
-            # steam
-        ];
+    y = with pkgs-unstable; [
+        # ====== IDEs ======
+        jetbrains.rust-rover
+        jetbrains.webstorm
+        jetbrains.jdk
+        jetbrains.clion
+        jetbrains.pycharm-professional
+        davinci-resolve
+        # gephi
+        discord
+        # steam
+    ];
 
         z = [
             # overlays.davinci-resolve

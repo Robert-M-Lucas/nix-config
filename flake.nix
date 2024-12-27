@@ -65,6 +65,7 @@
                     pkgs-unstable = import nixpkgs-unstable {
                         inherit system;
                         config.allowUnfree = true;
+                        android_sdk.accept_license = true;
                     };
                     hardware-config = "pc";
                     use-cuda = false;
@@ -81,8 +82,9 @@
                 specialArgs = {
                     inherit inputs outputs system;
                     pkgs-unstable = import nixpkgs-unstable {
-                            inherit system;
-                            config.allowUnfree = true;
+                        inherit system;
+                        config.allowUnfree = true;
+                        android_sdk.accept_license = true;
                     };
                     hardware-config = "laptop";
                     use-cuda = false;
@@ -99,8 +101,9 @@
                 specialArgs = {
                     inherit inputs outputs system;
                     pkgs-unstable = import nixpkgs-unstable {
-                            inherit system;
-                            config.allowUnfree = true;
+                        inherit system;
+                        config.allowUnfree = true;
+                        android_sdk.accept_license = true;
                     };
                     hardware-config = "fastop";
                     use-cuda = false;
