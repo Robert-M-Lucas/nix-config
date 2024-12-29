@@ -91,6 +91,7 @@ in {
             insomnia
             alacarte
             prismlauncher
+            gthumb
 
         # ====== CMD ======
             platformio-core

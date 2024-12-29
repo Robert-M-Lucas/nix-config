@@ -36,8 +36,8 @@
     # gtk.catppuccin.enable = true;
     # gtk.catppuccin.gnomeShellTheme = true;
     # gtk.catppuccin.icon.enable = true;
-    qt.style.catppuccin.enable = true;
-    programs.fish.catppuccin.enable = false;
+    # qt.style.catppuccin.enable = true;
+    # programs.fish.catppuccin.enable = false;
     
     # programs.starship = {
     #     enable = true;
