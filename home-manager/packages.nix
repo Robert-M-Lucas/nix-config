@@ -128,7 +128,7 @@ in {
             libqalculate
 
             pkg-config 
-            alsa-lib
+
             libudev-zero
 
             legendary-gl
@@ -136,7 +136,6 @@ in {
             dconf2nix
 
             qemu
-
             
 
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
@@ -160,7 +159,7 @@ in {
             gnomeExtensions.hide-top-bar
             gnomeExtensions.caffeine
             gnomeExtensions.vitals
-            gnomeExtensions.enhanced-osk
+            # gnomeExtensions.enhanced-osk
             gnomeExtensions.blur-my-shell
             gnomeExtensions.appindicator
             gnomeExtensions.shutdowntimer
@@ -170,31 +169,6 @@ in {
             # graphite-gtk-theme
             # gtk-engine-murrine
             # gnome.gnome-themes-extra
-    
-        # ====== Shell Deps ====== (Prevent shells redownloading)
-
-            xorg.libX11
-            xorg.libXcursor
-            xorg.libXrandr
-            xorg.libXi
-            xorg.libxcb
-            libxkbcommon
-            alsa-lib
-            libudev-zero
-
-            SDL2
-
-            shaderc
-            directx-shader-compiler
-            libGL
-            vulkan-headers
-            vulkan-loader
-            vulkan-tools
-            vulkan-tools-lunarg
-            vulkan-validation-layers
-
-            openssl
-            pkg-config
 
         # (symlinkJoin {
         #   name = "dart-symlink";
@@ -238,6 +212,33 @@ in {
             pkgs-unstable.muse-sounds-manager
             pkgs.jetbrains.pycharm-community
             pkgs.wireshark
+
+        # ====== Shell Deps ====== (Prevent shells redownloading)
+
+            pkgs.xorg.libX11
+            pkgs.xorg.libXcursor
+            pkgs.xorg.libXrandr
+            pkgs.xorg.libXi
+            pkgs.xorg.libxcb
+            pkgs.libxkbcommon
+            pkgs.alsa-lib
+            pkgs.libudev-zero
+
+            pkgs.SDL2
+
+            pkgs.shaderc
+            pkgs.directx-shader-compiler
+            pkgs.libGL
+            pkgs.vulkan-headers
+            pkgs.vulkan-loader
+            pkgs.vulkan-tools
+            pkgs.vulkan-tools-lunarg
+            pkgs.vulkan-validation-layers
+
+            pkgs.openssl
+            pkgs.pkg-config
+
+            pkgs.alsa-lib
         ];
     in
         x ++ y ++ z ++ (if lite then [] else non-lite);
