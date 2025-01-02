@@ -217,6 +217,8 @@
     };
 
     virtualisation.docker.enable = true;
+    virtualisation.libvirtd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
 
     environment.systemPackages = with pkgs; [
 	tmux
@@ -336,6 +338,8 @@
         #     extraGroups = ["wheel" "networkmanager" "docker"];
         # };
     };
+
+    users.groups.libvirtd.members = ["robert"];
 
     # ? Last time running `nix-store --optimise` it only saved ~7GB for a very long execution time
     # nix.settings.auto-optimise-store = true;
