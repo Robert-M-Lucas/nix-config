@@ -164,6 +164,7 @@ in {
             gnomeExtensions.appindicator
             gnomeExtensions.shutdowntimer
             gnomeExtensions.color-picker
+            gnomeExtensions.wintile-beyond
             # gnomeExtensions.custom-accent-colors
             
             # graphite-gtk-theme
@@ -212,7 +213,7 @@ in {
             pkgs-unstable.muse-sounds-manager
             pkgs.jetbrains.pycharm-community
             pkgs.wireshark
-            pkgs.virtualbox
+            # pkgs.virtualbox
             pkgs.virt-manager
 
         # ====== Shell Deps ====== (Prevent shells redownloading)
