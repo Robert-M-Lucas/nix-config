@@ -212,6 +212,8 @@ in {
             pkgs-unstable.muse-sounds-manager
             pkgs.jetbrains.pycharm-community
             pkgs.wireshark
+            pkgs.virtualbox
+            pkgs.virt-manager
 
         # ====== Shell Deps ====== (Prevent shells redownloading)
 
