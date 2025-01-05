@@ -264,6 +264,7 @@
                     rainbow #
                     vim-devicons
                     vim-nerdtree-syntax-highlight
+                    gruvbox-nvim
                 ];
             };
         };
