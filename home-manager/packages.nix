@@ -136,6 +136,8 @@ in {
             dconf2nix
 
             qemu
+
+            # rust-analyzer
             
 
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))

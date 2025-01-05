@@ -205,6 +205,43 @@
         vimAlias = true;
         defaultEditor = true;
         configure = {
+            customRC = ''
+                syntax on                       " Enable syntax highlighting
+                filetype plugin indent on       " Indent based of file type
+                let mapleader = " "
+                set nocompatible
+                set showcmd
+                set noswapfile
+                set noerrorbells
+                set laststatus=2
+                set mouse=a                     " Allow mouse to move the cursor
+                set cursorline                  " Highlight the line under the cursor
+                set clipboard+=unnamedplus      " Use system clipboard as primary register
+                set shortmess=I                 " Prevent Vim startup screen
+                set backspace=indent,eol,start  " Fix backspace in Insert mode
+                set nowrap                      " Do not wrap lines
+                set ic
+                set sc
+                set tabstop=4
+                set shiftwidth=4
+                set softtabstop=4
+                set expandtab                   " Expand a tab key into spaces
+                set autoindent                  " Simple indentation for text files
+                set number                      " Display line number
+                set relativenumber              " Display line numbers relative to cursor
+                set hidden                      " Allow hidden buffers (more than one tab)
+                set exrc                        " Execute .vimrc in project directory
+                set secure                      " .vimrc in project directory can not run system commands
+                set textwidth=100
+                set completeopt-=preview
+                set nobackup                    " Recommended by CoC
+                set nowritebackup
+                set wildchar=<Tab>
+                set wildmenu
+                set wildmode=full
+                set shell=fish
+            '';
+
             packages.myVimPackage = with pkgs.vimPlugins; {
                 start = [ 
                     nerdtree
