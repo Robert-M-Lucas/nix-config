@@ -199,6 +199,20 @@
     # $ nix search wget
     programs.git.enable = true;
 
+    programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+        defaultEditor = true;
+        configure = {
+            packages.myVimPackage = with pkgs.vimPlugins; {
+                start = [ 
+                    ctrlp 
+                ];
+            };
+        };
+    };
+
     # Move to home-manager if possible
     # programs.steam.enable = true;
 

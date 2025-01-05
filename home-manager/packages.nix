@@ -101,7 +101,7 @@ in {
             # gh
             rustup
             cloc
-            neovim
+            # neovim
             # xclip
             nodejs_22
             # wolfram-engine
