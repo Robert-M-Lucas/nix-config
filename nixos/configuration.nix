@@ -240,6 +240,8 @@
                 set wildmenu
                 set wildmode=full
                 set shell=fish
+                set background=dark
+                colorscheme gruvbox
             '';
 
             packages.myVimPackage = with pkgs.vimPlugins; {
