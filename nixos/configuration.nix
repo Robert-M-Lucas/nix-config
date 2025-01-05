@@ -207,7 +207,26 @@
         configure = {
             packages.myVimPackage = with pkgs.vimPlugins; {
                 start = [ 
-                    ctrlp 
+                    nerdtree
+                    coc-nvim
+                    coc-rust-analyzer
+                    plenary-nvim
+                    telescope-nvim
+                    telescope-fzf-native-nvim
+                    vista-vim
+                    project-nvim
+                    vim-polyglot
+                    wgsl-vim
+                    vim-commentary
+                    nvim-surround
+                    quick-scope
+                    auto-pairs
+                    vim-signature
+                    vim-airline
+                    vim-airline-themes
+                    rainbow #
+                    vim-devicons
+                    vim-nerdtree-syntax-highlight
                 ];
             };
         };
