@@ -20,10 +20,10 @@
     '';
     security.polkit.enable = true;
 
-    hardware.opengl = { 
-         enable = true; 
+    hardware.graphics.enable = true;
+    hardware.graphics.enable32Bit = true;
+    hardware.opengl = {
          driSupport = true; 
-         driSupport32Bit = true;
          extraPackages = with pkgs; [
             rocmPackages_5.clr.icd
             rocmPackages_5.clr
