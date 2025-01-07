@@ -125,11 +125,11 @@
             # Opinionated: disable global registry
             flake-registry = "";
             # Workaround for https://github.com/NixOS/nix/issues/9574
-            nix-path = config.nix.nixPath;
-            max-jobs = if lite then 1 else "auto";
+            # nix-path = config.nix.nixPath;
+            # max-jobs = if lite then 1 else "auto";
         };
         # Opinionated: disable channels
-        channel.enable = false;
+        # channel.enable = false; 
 
         # Opinionated: make flake registry and nix path match flake inputs
         registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
@@ -142,7 +142,7 @@
     # Select internationalisation properties.
     i18n.defaultLocale = "en_GB.UTF-8";
 
-    i18n.inputMethod.enabled = "ibus"; # Enables Super + . emoji picker
+    # i18n.inputMethod.enabled = "ibus"; # Enables Super + . emoji picker
 
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "en_GB.UTF-8";
