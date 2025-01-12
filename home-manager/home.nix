@@ -25,11 +25,11 @@
         ./configurations.nix
         ./gnome.nix
         ./dotconfig.nix
-        inputs.catppuccin.homeManagerModules.catppuccin
+        # inputs.catppuccin.homeManagerModules.catppuccin
     ];
 
-    catppuccin.flavor = "mocha";
-    catppuccin.accent = "sapphire";
+    # catppuccin.flavor = "mocha";
+    # catppuccin.accent = "sapphire";
     # catppuccin.enable = true;
     # catppuccin.pointerCursor.enable = true;
     # gtk.enable = true;
