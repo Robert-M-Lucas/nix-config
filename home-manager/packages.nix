@@ -157,6 +157,7 @@ in {
             
 
         # ====== Extensions ======
+            gnome-shell-extensions
             gnomeExtensions.ddterm
             gnomeExtensions.hide-top-bar
             gnomeExtensions.caffeine
