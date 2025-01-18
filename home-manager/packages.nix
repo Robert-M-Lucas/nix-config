@@ -92,6 +92,7 @@ in {
             alacarte
             prismlauncher
             gthumb
+            amberol
 
         # ====== CMD ======
             platformio-core
@@ -138,6 +139,8 @@ in {
             qemu
 
             # rust-analyzer
+
+            spotdl
             
 
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
