@@ -200,6 +200,7 @@ in {
         jetbrains.jdk
         jetbrains.clion
         jetbrains.pycharm-professional
+        jetbrains.pycharm-community
         davinci-resolve
         # gephi
         discord
@@ -217,7 +218,6 @@ in {
             pkgs-unstable.jetbrains.rider
             # pkgs-unstable.zed-editor
             pkgs-unstable.muse-sounds-manager
-            pkgs.jetbrains.pycharm-community
             pkgs.wireshark
             # pkgs.virtualbox
             pkgs.virt-manager
