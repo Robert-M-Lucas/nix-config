@@ -93,6 +93,7 @@ in {
             prismlauncher
             gthumb
             amberol
+            emblem
 
         # ====== CMD ======
             platformio-core
