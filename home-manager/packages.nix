@@ -36,6 +36,7 @@ let
         pygame
         scikit-image
         trimesh
+        notebook
         # torch-bin
         # torchsde
         # torchvision-bin
