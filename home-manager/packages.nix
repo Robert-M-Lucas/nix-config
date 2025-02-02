@@ -204,6 +204,8 @@ in {
         jetbrains.clion
         jetbrains.pycharm-professional
         jetbrains.pycharm-community
+        android-studio
+        jetbrains.idea-ultimate
         davinci-resolve
         # gephi
         discord
@@ -216,8 +218,6 @@ in {
 
         non-lite = [
             pkgs-unstable.jetbrains.goland
-            pkgs-unstable.android-studio
-            pkgs-unstable.jetbrains.idea-ultimate
             pkgs-unstable.jetbrains.rider
             # pkgs-unstable.zed-editor
             pkgs-unstable.muse-sounds-manager
