@@ -171,7 +171,7 @@ in {
             # gnomeExtensions.enhanced-osk
             gnomeExtensions.blur-my-shell
             gnomeExtensions.appindicator
-            gnomeExtensions.shutdowntimer
+            # gnomeExtensions.shutdowntimer
             gnomeExtensions.color-picker
             # gnomeExtensions.wintile-beyond
             # gnomeExtensions.custom-accent-colors

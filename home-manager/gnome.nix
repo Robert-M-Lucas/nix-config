@@ -24,7 +24,7 @@
                     # pkgs.gnomeExtensions.osk-toggle.extensionUuid
                     pkgs.gnomeExtensions.blur-my-shell.extensionUuid
                     pkgs.gnomeExtensions.appindicator.extensionUuid
-                    pkgs.gnomeExtensions.shutdowntimer.extensionUuid
+                    # pkgs.gnomeExtensions.shutdowntimer.extensionUuid
                     pkgs.gnomeExtensions.color-picker.extensionUuid
                     # pkgs.gnomeExtensions.desktop-clock.extensionUuid
                     # pkgs.gnomeExtensions.wintile-beyond.extensionUuid
