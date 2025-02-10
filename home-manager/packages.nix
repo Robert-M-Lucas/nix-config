@@ -160,7 +160,14 @@ in {
             # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
         # ====== IDEs ======
-            
+            jetbrains.rust-rover
+            jetbrains.webstorm
+            jetbrains.jdk
+            jetbrains.clion
+            jetbrains.pycharm-professional
+            jetbrains.pycharm-community
+            android-studio
+            jetbrains.idea-ultimate
 
         # ====== Extensions ======
             gnome-shell-extensions
@@ -198,14 +205,6 @@ in {
 
     y = with pkgs-unstable; [
         # ====== IDEs ======
-        jetbrains.rust-rover
-        jetbrains.webstorm
-        jetbrains.jdk
-        jetbrains.clion
-        jetbrains.pycharm-professional
-        jetbrains.pycharm-community
-        android-studio
-        jetbrains.idea-ultimate
         davinci-resolve
         # gephi
         discord

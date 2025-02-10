@@ -12,6 +12,7 @@
     use-cuda,
     lite,
     overlays,
+    overlays-unstable,
     ...
 }: {
     # You can import other NixOS modules here
@@ -33,7 +34,7 @@
     ];
 
     home-manager = {
-        extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda overlays lite; };
+        extraSpecialArgs = { inherit inputs outputs system pkgs-unstable use-cuda overlays overlays-unstable lite; };
         users = {
             # Import your home-manager configuration
             robert = import ../home-manager/home.nix;
@@ -74,9 +75,6 @@
         };
     };
 
-    
-
-
     swapDevices = [ 
         { 
             device = "/swapfile";
@@ -86,8 +84,8 @@
 
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8081 5173 ];
-        allowedUDPPorts = [ 8081 5173 ];
+        allowedTCPPorts = [ 8081 5173 22 ];
+        allowedUDPPorts = [ 8081 5173 22 ];
     };
 
     nixpkgs = {
@@ -373,13 +371,15 @@
     # Feel free to remove if you don't need it.
     services.openssh = {
         enable = true;
+        allowSFTP = true;
         ports = [ 22 ];
         settings = {
             # Opinionated: forbid root login through SSH.
             PermitRootLogin = "no";
             # Opinionated: use keys only.
             # Remove if you want to SSH using passwords
-            PasswordAuthentication = false;
+            PasswordAuthentication = true;
+            AllowUsers = ["demo"];
         };
     };
 
@@ -410,6 +410,10 @@
             ];
             # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
             extraGroups = ["wheel" "networkmanager" "docker"];
+        };
+        demo = {
+            description = "Demo User for SSH";
+            isNormalUser = true;
         };
         # temp = {
         #     isNormalUser=true;
