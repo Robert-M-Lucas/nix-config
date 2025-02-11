@@ -78,7 +78,7 @@
     swapDevices = [ 
         { 
             device = "/swapfile";
-            size = 8 * 1024; # 16GB
+            size = if lite then 8 * 1024 else 24 * 1024; 
         }
     ];
 
