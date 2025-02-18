@@ -26,6 +26,7 @@ pkgs.mkShell rec {
         libxkbcommon
         alsa-lib
         libudev-zero
+        cairo
 
         SDL2
 
