@@ -41,6 +41,7 @@ let
         lxml
         requests
         termcolor
+        flask
         # torch-bin
         # torchsde
         # torchvision-bin
