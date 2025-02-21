@@ -37,6 +37,10 @@ let
         scikit-image
         trimesh
         notebook
+        beautifulsoup4
+        lxml
+        requests
+        termcolor
         # torch-bin
         # torchsde
         # torchvision-bin
