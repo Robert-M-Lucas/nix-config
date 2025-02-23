@@ -144,6 +144,8 @@ in {
             # rust-analyzer
 
             spotdl
+
+            lcov
             
 
             (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
@@ -223,6 +225,8 @@ in {
             pkgs.wireshark
             # pkgs.virtualbox
             pkgs.virt-manager
+
+            pkgs-unstable.dotnet-sdk_9
 
         # ====== Shell Deps ====== (Prevent shells redownloading)
 
