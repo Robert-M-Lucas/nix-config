@@ -211,8 +211,6 @@ in {
         # gephi
         discord
         # steam
-
-        flutter
     ];
 
         z = [

@@ -297,7 +297,7 @@
     virtualisation.spiceUSBRedirection.enable = true;
 
     environment.systemPackages = with pkgs; [
-	tmux
+	    tmux
         fprintd
         fastfetch
         nixVersions.latest
@@ -307,6 +307,8 @@
         usbutils
         # home-manager
 
+        flutter
+        dart
         jdk17
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
