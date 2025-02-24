@@ -307,9 +307,6 @@
         usbutils
         # home-manager
 
-        # TODO: TEMP
-        flutter
-        dart
         jdk17
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
