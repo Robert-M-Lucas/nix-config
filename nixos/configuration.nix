@@ -308,6 +308,7 @@
         # home-manager
 
         protonvpn-gui
+        google-chrome
 
         # TODO: TEMP
         flutter
