@@ -74,7 +74,6 @@ in {
             libreoffice
             # calibre
             obsidian
-            protonvpn-gui
             pomodoro-gtk
             arduino-ide
             krita
