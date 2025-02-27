@@ -96,6 +96,7 @@ in {
             amberol
             emblem
             spicetify-cli
+            spotify
 
         # ====== CMD ======
             platformio-core
