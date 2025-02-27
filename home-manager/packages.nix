@@ -95,6 +95,7 @@ in {
             gthumb
             amberol
             emblem
+            spicetify-cli
 
         # ====== CMD ======
             platformio-core
