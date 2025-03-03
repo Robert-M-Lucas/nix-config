@@ -37,6 +37,11 @@ let
         scikit-image
         trimesh
         notebook
+        beautifulsoup4
+        lxml
+        requests
+        termcolor
+        flask
         # torch-bin
         # torchsde
         # torchvision-bin
@@ -69,7 +74,6 @@ in {
             libreoffice
             # calibre
             obsidian
-            protonvpn-gui
             pomodoro-gtk
             arduino-ide
             krita

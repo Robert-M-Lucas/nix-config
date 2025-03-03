@@ -307,6 +307,10 @@
         usbutils
         # home-manager
 
+        protonvpn-gui
+        google-chrome
+
+        # TODO: TEMP
         flutter
         dart
         jdk17
