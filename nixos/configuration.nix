@@ -307,6 +307,9 @@
         usbutils
         # home-manager
 
+        wget
+        gnumake
+
         protonvpn-gui
         google-chrome
 
