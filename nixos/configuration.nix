@@ -311,7 +311,7 @@
         google-chrome
 
         # TODO: TEMP
-        flutter
+        # flutter
         dart
         jdk17
 
