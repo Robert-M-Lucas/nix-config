@@ -309,6 +309,7 @@
 
         wget
         gnumake
+        go
 
         protonvpn-gui
         google-chrome
