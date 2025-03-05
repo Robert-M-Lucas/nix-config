@@ -287,10 +287,8 @@ in
         enabledExtensions = with spicePkgs.extensions; [
             adblockify
             shuffle
-            oneko
         ];
-        theme = spicePkgs.themes.catppuccin;
-        colorScheme = "mocha";
+        theme = spicePkgs.themes.defaultDynamic;
     };
 
     programs.nix-ld = {
