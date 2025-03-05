@@ -287,7 +287,7 @@ in
         enabledExtensions = with spicePkgs.extensions; [
             adblockify
             shuffle
-            fullAppDisplay
+            fullAppDisplayMod
             popupLyrics
             beautifulLyrics
         ];
