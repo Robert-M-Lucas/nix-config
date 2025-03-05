@@ -15,6 +15,8 @@
         home-manager.url = "github:nix-community/home-manager/release-24.11";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+        spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
         # rust-overlay.url = "github:oxalica/rust-overlay";
     };
 
@@ -24,6 +26,7 @@
         nixpkgs-unstable,
         # catppuccin,
         home-manager,
+        spicetify-nix,
         # rust-overlay,
         ...
     }: let
@@ -75,6 +78,7 @@
                     # > Our main nixos configuration file <
                     # catppuccin.nixosModules.catppuccin
                     ./nixos/configuration.nix
+                    spicetify-nix.nixosModules.default
                 ];
             };
             laptop = nixpkgs.lib.nixosSystem {
@@ -94,6 +98,7 @@
                     # > Our main nixos configuration file <
                     # catppuccin.nixosModules.catppuccin
                     ./nixos/configuration.nix
+                    spicetify-nix.nixosModules.default
                 ];
             };
             fastop = nixpkgs.lib.nixosSystem {
@@ -113,6 +118,7 @@
                     # > Our main nixos configuration file <
                     # catppuccin.nixosModules.catppuccin
                     ./nixos/configuration.nix
+                    spicetify-nix.nixosModules.default
                 ];
             };
         };

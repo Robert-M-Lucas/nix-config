@@ -14,7 +14,11 @@
     overlays,
     overlays-unstable,
     ...
-}: {
+}: 
+let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+in
+{
     # You can import other NixOS modules here
     imports = [
         inputs.home-manager.nixosModules.home-manager
@@ -277,6 +281,17 @@
 
     # Move to home-manager if possible
     # programs.steam.enable = true;
+
+    programs.spicetify = {
+        enable = true;
+        enabledExtensions = with spicePkgs.extensions; [
+        adblockify
+        hidePodcasts
+        shuffle # shuffle+ (special characters are sanitized out of extension names)
+        ];
+        theme = spicePkgs.themes.catppuccin;
+        colorScheme = "mocha";
+    };
 
     programs.nix-ld = {
         enable = true;
