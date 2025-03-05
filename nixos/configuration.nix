@@ -287,8 +287,12 @@ in
         enabledExtensions = with spicePkgs.extensions; [
             adblockify
             shuffle
+            fullAppDisplay
+            popupLyrics
+            beautifulLyrics
         ];
-        theme = spicePkgs.themes.defaultDynamic;
+        theme = spicePkgs.themes.catppuccin;
+        colorScheme = "frappe";
     };
 
     programs.nix-ld = {
