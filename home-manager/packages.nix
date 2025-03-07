@@ -211,7 +211,7 @@ in {
 
     y = with pkgs-unstable; [
         # ====== IDEs ======
-        davinci-resolve
+        # davinci-resolve
         # gephi
         discord
         # steam

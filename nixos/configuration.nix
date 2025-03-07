@@ -333,7 +333,7 @@ in
 
         # TODO: TEMP
         # flutter
-        dart
+        # dart
         jdk17
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
@@ -435,10 +435,10 @@ in
             # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
             extraGroups = ["wheel" "networkmanager" "docker"];
         };
-        demo = {
-            description = "Demo User for SSH";
-            isNormalUser = true;
-        };
+        # demo = {
+        #     description = "Demo User for SSH";
+        #     isNormalUser = true;
+        # };
         # temp = {
         #     isNormalUser=true;
         #     password="";
