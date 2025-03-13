@@ -99,6 +99,7 @@ in {
             gthumb
             amberol
             emblem
+            spotify
 
         # ====== CMD ======
             platformio-core

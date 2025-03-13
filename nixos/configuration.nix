@@ -282,18 +282,18 @@ in
     # Move to home-manager if possible
     # programs.steam.enable = true;
 
-    programs.spicetify = {
-        enable = true;
-        enabledExtensions = with spicePkgs.extensions; [
-            adblockify
-            shuffle
-            fullAppDisplayMod
-            popupLyrics
-            beautifulLyrics
-        ];
-        theme = spicePkgs.themes.catppuccin;
-        colorScheme = "frappe";
-    };
+    # programs.spicetify = {
+    #     enable = true;
+    #     enabledExtensions = with spicePkgs.extensions; [
+    #         adblockify
+    #         shuffle
+    #         fullAppDisplayMod
+    #         popupLyrics
+    #         beautifulLyrics
+    #     ];
+    #     theme = spicePkgs.themes.catppuccin;
+    #     colorScheme = "frappe";
+    # };
 
     programs.nix-ld = {
         enable = true;
