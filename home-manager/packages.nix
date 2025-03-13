@@ -43,6 +43,7 @@ let
         termcolor
         flask
         pynput
+        pyautogui
         # torch-bin
         # torchsde
         # torchvision-bin
