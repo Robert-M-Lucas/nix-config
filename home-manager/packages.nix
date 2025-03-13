@@ -42,6 +42,7 @@ let
         requests
         termcolor
         flask
+        pynput
         # torch-bin
         # torchsde
         # torchvision-bin
