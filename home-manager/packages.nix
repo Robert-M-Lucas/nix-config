@@ -44,6 +44,7 @@ let
         flask
         pynput
         pyautogui
+        keyboard
         # torch-bin
         # torchsde
         # torchvision-bin
