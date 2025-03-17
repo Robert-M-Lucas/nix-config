@@ -5,6 +5,7 @@
     config,
     pkgs,
     pkgs-unstable,
+    use-cuda,
     home,
     lite,
     ...
@@ -31,7 +32,6 @@ let
         opencv4
         ffmpeg-python
         pygobject3
-        tensorflow
         keras
         pygame
         scikit-image
@@ -43,6 +43,9 @@ let
         termcolor
         flask
         torch
+        pynput
+        pyautogui
+        keyboard
         # torch-bin
         # torchsde
         # torchvision-bin
@@ -67,7 +70,7 @@ let
 
         # Include libstdc++ for your environment
         # pkgs.libstdcxx5
-    ]);
+    ] ++ (if use-cuda then [tensorflowWithCuda] else [tensorflow]));
 in {
     home.packages = let 
         x = with pkgs; [
@@ -76,7 +79,6 @@ in {
             # calibre
             obsidian
             pomodoro-gtk
-            arduino-ide
             krita
             gimp
             obs-studio
@@ -231,7 +233,7 @@ in {
             pkgs.wireshark
             # pkgs.virtualbox
             pkgs.virt-manager
-
+            pkgs.arduino-ide
             pkgs-unstable.dotnet-sdk_9
 
         # ====== Shell Deps ====== (Prevent shells redownloading)

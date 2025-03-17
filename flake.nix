@@ -71,7 +71,7 @@
                         android_sdk.accept_license = true;
                     };
                     hardware-config = "pc";
-                    use-cuda = false;
+                    use-cuda = true;
                     lite = true;
                 };
                 modules = [
