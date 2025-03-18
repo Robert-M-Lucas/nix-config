@@ -32,6 +32,8 @@
          enable32Bit = true; 
     };
 
+    hardware.nvidia-container-toolkit.enable = true;
+
     environment.sessionVariables.NIXOS_OZONE_WL = "1"; 
 
     # Load nvidia driver for Xorg and Wayland

@@ -105,29 +105,13 @@ in {
             platformio-core
             clang-tools
             sl
-            # oh-my-fish
-            # gh
             rustup
             cloc
-            # neovim
-            # xclip
             nodejs_22
-            # wolfram-engine
             ffmpeg
-            # clang
-            # clang-tools
-            # libgcc
-            # gnumake
-            # cmake
-            # extra-cmake-modules
-            # stdenv.cc.cc.lib
             pythonEnv
-            # zoxide
             nasm
-            # blas
             texlive.combined.scheme-full
-            # libsForQt5.qtstyleplugin-kvantum
-            # libsForQt5.qt5ct
             google-cloud-sdk
             fortune
             zip
@@ -135,21 +119,13 @@ in {
             xclip
             libqalculate
             gradle
-
             pkg-config 
-
             libudev-zero
-
             legendary-gl
-
             dconf2nix
-
             qemu
-
             # rust-analyzer
-
             spotdl
-
             lcov
             
 
