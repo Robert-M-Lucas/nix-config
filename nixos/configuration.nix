@@ -319,6 +319,8 @@ in
     };
 
     virtualisation.docker.enable = true;
+    virtualisation.docker.package = pkgs.docker_25;
+    
     virtualisation.libvirtd.enable = true;
     virtualisation.spiceUSBRedirection.enable = true;
 
