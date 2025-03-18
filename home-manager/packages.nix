@@ -22,8 +22,6 @@ let
     #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];
     # });
     pythonEnv = pkgs.python311.withPackages (ps: with ps; [
-        # torchWithCuda
-        # Add your Python packages here
         numpy
         scikit-learn
         jupyter
@@ -42,34 +40,9 @@ let
         requests
         termcolor
         flask
-        torch
         pynput
         pyautogui
         keyboard
-        # torch-bin
-        # torchsde
-        # torchvision-bin
-        # torchaudio-bin
-        # einops
-        # transformers
-        # tokenizers
-        # sentencepiece
-        # safetensors
-        # aiohttp
-        # pyyaml
-        # pillow
-        # scipy
-        # tqdm
-        # psutil
-        # torchWithCuda
-
-        #non essential dependencies:
-        # kornia
-        # spandrel
-        # soundfile
-
-        # Include libstdc++ for your environment
-        # pkgs.libstdcxx5
     ] ++ (if use-cuda then [tensorflowWithCuda] else [tensorflow]));
 in {
     home.packages = let 
@@ -124,7 +97,6 @@ in {
             # cmake
             # extra-cmake-modules
             # stdenv.cc.cc.lib
-            pythonEnv
             # zoxide
             nasm
             # blas
@@ -264,5 +236,5 @@ in {
             pkgs.alsa-lib
         ];
     in
-        x ++ y ++ z ++ (if lite then [] else non-lite);
+        x ++ y ++ z ++ (if lite then [] else non-lite) ++ [pythonEnv];
 }
