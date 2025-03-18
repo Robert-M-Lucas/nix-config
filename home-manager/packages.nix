@@ -32,7 +32,6 @@ let
         opencv4
         ffmpeg-python
         pygobject3
-        keras
         pygame
         scikit-image
         trimesh
@@ -69,7 +68,7 @@ let
 
         # Include libstdc++ for your environment
         # pkgs.libstdcxx5
-    ] ++ (if use-cuda then [tensorflowWithCuda] else [tensorflow]));
+    ]);
 in {
     home.packages = let 
         x = with pkgs; [

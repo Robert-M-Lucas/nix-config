@@ -68,6 +68,7 @@
                     pkgs-unstable = import nixpkgs-unstable {
                         inherit system;
                         config.allowUnfree = true;
+                        config.cudaSupport = true;
                         android_sdk.accept_license = true;
                     };
                     hardware-config = "pc";

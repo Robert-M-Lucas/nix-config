@@ -114,6 +114,7 @@ in
         config = {
             # Disable if you don't want unfree packages
             allowUnfree = true;
+            cudaSupport = use-cuda;
             android_sdk.accept_license = true;
         };
     };
@@ -129,6 +130,14 @@ in
             # Workaround for https://github.com/NixOS/nix/issues/9574
             # nix-path = config.nix.nixPath;
             # max-jobs = if lite then 1 else "auto";
+
+            substituters = [
+            "https://nix-community.cachix.org"
+            ];
+
+            trusted-public-keys = [
+                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            ];
         };
         # Opinionated: disable channels
         # channel.enable = false; 
@@ -399,11 +408,11 @@ in
         ports = [ 22 ];
         settings = {
             # Opinionated: forbid root login through SSH.
-            PermitRootLogin = "no";
+            PermitRootLogin = "yes";
             # Opinionated: use keys only.
             # Remove if you want to SSH using passwords
             PasswordAuthentication = true;
-            AllowUsers = ["demo"];
+            AllowUsers = ["robert"];
         };
     };
 
@@ -433,7 +442,7 @@ in
                 # Add your SSH public key(s) here, if you plan on using SSH to connect
             ];
             # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-            extraGroups = ["wheel" "networkmanager" "docker"];
+            extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
         };
         # demo = {
         #     description = "Demo User for SSH";
