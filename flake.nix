@@ -27,7 +27,6 @@
     # catppuccin,
     home-manager,
     spicetify-nix,
-    # rust-overlay,
     ...
   }: let
     inherit (self) outputs;
@@ -83,26 +82,6 @@
             spicetify-nix.nixosModules.default
           ];
         };
-        laptop = nixpkgs.lib.nixosSystem {
-          # pkgs = import nixpkgs { inherit system; };
-          specialArgs = {
-            inherit inputs outputs system;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            hardware-config = "laptop";
-            use-cuda = false;
-            lite = false;
-          };
-          modules = [
-            # > Our main nixos configuration file <
-            # catppuccin.nixosModules.catppuccin
-            ./nixos/configuration.nix
-            spicetify-nix.nixosModules.default
-          ];
-        };
         fastop = nixpkgs.lib.nixosSystem {
           # pkgs = import nixpkgs { inherit system; };
           specialArgs = {
@@ -124,18 +103,5 @@
           ];
         };
       };
-
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      # homeConfigurations = {
-      #     "robert@default" = home-manager.lib.homeManagerConfiguration {
-      #         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-      #         extraSpecialArgs = {inherit inputs outputs;};
-      #         modules = [
-      #             # > Our main home-manager configuration file <
-      #             ./home-manager/home.nix
-      #         ];
-      #     };
-      # };
     };
 }

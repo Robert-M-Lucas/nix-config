@@ -35,6 +35,33 @@ in {
     ./${hardware-config}/hardware-configuration.nix
   ];
 
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      # outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #     hi = final.hello.overrideAttrs (oldAttrs: {
+      #         patches = [ ./change-hello-to-hi.patch ];
+      #     });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      cudaSupport = use-cuda;
+      android_sdk.accept_license = true;
+    };
+  };
+
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs system pkgs-unstable use-cuda overlays overlays-unstable lite;};
     users = {
@@ -80,10 +107,7 @@ in {
   swapDevices = [
     {
       device = "/swapfile";
-      size =
-        if lite
-        then 8 * 1024
-        else 24 * 1024;
+      size = 24 * 1024;
     }
   ];
 
@@ -93,38 +117,10 @@ in {
     allowedUDPPorts = [8081 5173 22];
   };
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #     hi = final.hello.overrideAttrs (oldAttrs: {
-      #         patches = [ ./change-hello-to-hi.patch ];
-      #     });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      cudaSupport = use-cuda;
-      android_sdk.accept_license = true;
-    };
-  };
-
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
-      # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
       flake-registry = "";
@@ -207,8 +203,149 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_25;
+
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["FiraCode"];})
+  ];
+
+  # Configure your system-wide user settings (groups, etc), add more users as needed.
+  users.users = {
+    robert = {
+      # You can set an initial password for your user.
+      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
+      # Be sure to change it (using passwd) after rebooting!
+      # initialPassword = "correcthorsebatterystaple";
+      description = "Robert Lucas";
+      isNormalUser = true;
+      openssh.authorizedKeys.keys = [
+        # Add your SSH public key(s) here, if you plan on using SSH to connect
+      ];
+      # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
+      extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
+    };
+    # demo = {
+    #     description = "Demo User for SSH";
+    #     isNormalUser = true;
+    # };
+    # temp = {
+    #     isNormalUser=true;
+    #     password="";
+    #     extraGroups = ["wheel" "networkmanager" "docker"];
+    # };
+  };
+
+  users.groups.libvirtd.members = ["robert"];
+
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #     enable = true;
+  #     enableSSHSupport = true;
+  # };
+
+  networking.networkmanager.enable = true;
+  networking.hostName = "nixos";
+
+  # This setups a SSH server. Very important if you're setting up a headless system.
+  # Feel free to remove if you don't need it.
+  services.openssh = {
+    enable = true;
+    allowSFTP = true;
+    ports = [22];
+    settings = {
+      # Opinionated: forbid root login through SSH.
+      PermitRootLogin = "yes";
+      # Opinionated: use keys only.
+      # Remove if you want to SSH using passwords
+      PasswordAuthentication = true;
+      AllowUsers = ["robert"];
+    };
+  };
+
+  # Programs
+
+  # programs.spicetify = {
+  #     enable = true;
+  #     enabledExtensions = with spicePkgs.extensions; [
+  #         adblockify
+  #         shuffle
+  #         fullAppDisplayMod
+  #         popupLyrics
+  #         beautifulLyrics
+  #     ];
+  #     theme = spicePkgs.themes.catppuccin;
+  #     colorScheme = "frappe";
+  # };
+
+  environment.systemPackages = with pkgs; [
+    tmux
+    fprintd
+    fastfetch
+    nixVersions.latest
+    mutter
+    # python3
+    gcc
+    usbutils
+    # home-manager
+
+    wget
+    gnumake
+    go
+
+    protonvpn-gui
+    google-chrome
+
+    # TODO: TEMP
+    # flutter
+    # dart
+    jdk17
+
+    (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
+  ];
+
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      # for packages that are pkgs.*
+      gnome-tour
+      gnome-connections
+    ])
+    ++ (with pkgs; [
+      # for packages that are pkgs.gnome.*
+      epiphany # web browser
+      geary # email reader
+      yelp
+      seahorse
+      gnome-clocks
+      gnome-maps
+      gnome-weather
+      # evince # document viewer
+    ]);
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+    ];
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   programs.git.enable = true;
 
   programs.neovim = {
@@ -289,137 +426,6 @@ in {
     };
   };
 
-  # Move to home-manager if possible
-  # programs.steam.enable = true;
-
-    # programs.spicetify = {
-    #     enable = true;
-    #     enabledExtensions = with spicePkgs.extensions; [
-    #         adblockify
-    #         shuffle
-    #         fullAppDisplayMod
-    #         popupLyrics
-    #         beautifulLyrics
-    #     ];
-    #     theme = spicePkgs.themes.catppuccin;
-    #     colorScheme = "frappe";
-    # };
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
-    ];
-  };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
-
-  virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_25;
-
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    tmux
-    fprintd
-    fastfetch
-    nixVersions.latest
-    mutter
-    # python3
-    gcc
-    usbutils
-    # home-manager
-
-    wget
-    gnumake
-    go
-
-    protonvpn-gui
-    google-chrome
-
-    # TODO: TEMP
-    # flutter
-    # dart
-    jdk17
-
-    (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
-  ];
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode"];})
-  ];
-
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      # for packages that are pkgs.*
-      gnome-tour
-      gnome-connections
-    ])
-    ++ (with pkgs; [
-      # for packages that are pkgs.gnome.*
-      epiphany # web browser
-      geary # email reader
-      yelp
-      seahorse
-      gnome-clocks
-      gnome-maps
-      gnome-weather
-      # evince # document viewer
-    ]);
-
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #     enable = true;
-  #     enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.hostName = "nixos";
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    allowSFTP = true;
-    ports = [22];
-    settings = {
-      # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "yes";
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
-      PasswordAuthentication = true;
-      AllowUsers = ["robert"];
-    };
-  };
-
   programs.bash = {
     interactiveShellInit = ''
       if [[ -x ${pkgs.fish}/bin/fish && $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -432,37 +438,6 @@ in {
 
   programs.captive-browser.enable = true;
   programs.captive-browser.interface = "wlp2s0";
-
-  # Configure your system-wide user settings (groups, etc), add more users as needed.
-  users.users = {
-    robert = {
-      # You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      # initialPassword = "correcthorsebatterystaple";
-      description = "Robert Lucas";
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        # Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
-    };
-    # demo = {
-    #     description = "Demo User for SSH";
-    #     isNormalUser = true;
-    # };
-    # temp = {
-    #     isNormalUser=true;
-    #     password="";
-    #     extraGroups = ["wheel" "networkmanager" "docker"];
-    # };
-  };
-
-  users.groups.libvirtd.members = ["robert"];
-
-  # ? Last time running `nix-store --optimise` it only saved ~7GB for a very long execution time
-  # nix.settings.auto-optimise-store = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";

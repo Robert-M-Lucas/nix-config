@@ -10,15 +10,6 @@
   lite,
   ...
 }: let
-  # Adding the local file to the Nix store
-  # wolframSH = builtins.fetchurl {
-  #     url = "https://raw.githubusercontent.com/Robert-M-Lucas/nix-config/master/home-manager/assets/WolframEngine_13.3.0_LINUX.sh";
-  #     sha256 = "96106ac8ed6d0e221a68d846117615c14025320f927e5e0ed95b1965eda68e31";
-  # };
-  # # Overriding the wolfram-engine package to include the file
-  # customWolframEngine = pkgs.wolfram-engine.overrideAttrs (oldAttrs: {
-  #     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ wolframSH ];
-  # });
   pythonEnv = pkgs.python311.withPackages (ps:
     with ps; [
       # torchWithCuda
@@ -69,37 +60,32 @@
       # pkgs.libstdcxx5
     ]);
 in {
-    home.packages = let 
-        x = with pkgs; [
-        # ====== GUI Apps ======
-            libreoffice
-            # calibre
-            obsidian
-            pomodoro-gtk
-            krita
-            gimp
-            obs-studio
-            mediawriter
-            rpi-imager
-            # qimgv # Consider removing
-            # libsForQt5.dolphin
-            darktable
-            # qbittorrent # Removed due to vulnerability atm
-            # meld
-            blender
-            qalculate-gtk
-            vesktop
-            # steam - stable version seems to not work
-            blender
-            rare
-            musescore
-            insomnia
-            alacarte
-            prismlauncher
-            gthumb
-            amberol
-            emblem
-            spotify
+  home.packages = let
+    x = with pkgs; [
+      # ====== GUI Apps ======
+      libreoffice
+      calibre
+      obsidian
+      pomodoro-gtk
+      krita
+      gimp
+      obs-studio
+      mediawriter
+      rpi-imager
+      darktable
+      blender
+      qalculate-gtk
+      vesktop
+      blender
+      rare
+      musescore
+      insomnia
+      alacarte
+      prismlauncher
+      gthumb
+      amberol
+      emblem
+      spotify
 
       # ====== CMD ======
       platformio-core
@@ -124,7 +110,6 @@ in {
       legendary-gl
       dconf2nix
       qemu
-      # rust-analyzer
       spotdl
       lcov
 
@@ -157,29 +142,9 @@ in {
       gnomeExtensions.hide-top-bar
       gnomeExtensions.caffeine
       gnomeExtensions.vitals
-      # gnomeExtensions.enhanced-osk
       gnomeExtensions.blur-my-shell
       gnomeExtensions.appindicator
-      # gnomeExtensions.shutdowntimer
       gnomeExtensions.color-picker
-      # gnomeExtensions.wintile-beyond
-      # gnomeExtensions.custom-accent-colors
-
-      # graphite-gtk-theme
-      # gtk-engine-murrine
-      # gnome.gnome-themes-extra
-
-      # (symlinkJoin {
-      #   name = "dart-symlink";
-      #   paths = [ dart ];
-      #   symlink = { "${dart.src}" = "/home/robert/dart"; };
-      # })
-      # (symlinkJoin {
-      #   name = "flutter-symlink";
-      #   paths = [ flutter ];
-      #   symlink = { "${flutter.sdk}/" = "/home/robert/flutter"; };
-      # })
-
       # ====== Other ======
       diff-so-fancy
     ];
