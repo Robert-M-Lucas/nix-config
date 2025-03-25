@@ -34,6 +34,7 @@
       pynput
       pyautogui
       keyboard
+
       # torch-bin
       # torchsde
       # torchvision-bin
@@ -165,6 +166,7 @@ in {
       pkgs-unstable.jetbrains.goland
       pkgs-unstable.jetbrains.rider
       # pkgs-unstable.zed-editor
+      pkgs-unstable.davinci-resolve
       pkgs-unstable.muse-sounds-manager
       pkgs.wireshark
       # pkgs.virtualbox
