@@ -1,12 +1,15 @@
 {
-description = "Flutter 3.13.x";
-inputs = {
-  nixpkgs.url = "github:NixOS/nixpkgs/24.11";
-  flake-utils.url = "github:numtide/flake-utils";
-};
-outputs = { self, nixpkgs, flake-utils }:
-  flake-utils.lib.eachDefaultSystem (system:
-    let
+  description = "Flutter 3.13.x";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/24.11";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
         config = {
@@ -15,10 +18,9 @@ outputs = { self, nixpkgs, flake-utils }:
         };
       };
       androidSdk = pkgs.androidenv.androidPkgs_9_0.androidsdk;
-    in
-    {
-      devShell =
-        with pkgs; mkShell rec {
+    in {
+      devShell = with pkgs;
+        mkShell rec {
           ANDROID_SDK_ROOT = "${androidSdk}/libexec/android-sdk";
           buildInputs = [
             flutter
