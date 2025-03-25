@@ -69,36 +69,37 @@
       # pkgs.libstdcxx5
     ]);
 in {
-  home.packages = let
-    x = with pkgs; [
-      # ====== GUI Apps ======
-      libreoffice
-      # calibre
-      obsidian
-      pomodoro-gtk
-      krita
-      gimp
-      obs-studio
-      mediawriter
-      rpi-imager
-      # qimgv # Consider removing
-      # libsForQt5.dolphin
-      darktable
-      # qbittorrent # Removed due to vulnerability atm
-      # meld
-      blender
-      qalculate-gtk
-      vesktop
-      # steam - stable version seems to not work
-      blender
-      rare
-      musescore
-      insomnia
-      alacarte
-      prismlauncher
-      gthumb
-      amberol
-      emblem
+    home.packages = let 
+        x = with pkgs; [
+        # ====== GUI Apps ======
+            libreoffice
+            # calibre
+            obsidian
+            pomodoro-gtk
+            krita
+            gimp
+            obs-studio
+            mediawriter
+            rpi-imager
+            # qimgv # Consider removing
+            # libsForQt5.dolphin
+            darktable
+            # qbittorrent # Removed due to vulnerability atm
+            # meld
+            blender
+            qalculate-gtk
+            vesktop
+            # steam - stable version seems to not work
+            blender
+            rare
+            musescore
+            insomnia
+            alacarte
+            prismlauncher
+            gthumb
+            amberol
+            emblem
+            spotify
 
       # ====== CMD ======
       platformio-core
