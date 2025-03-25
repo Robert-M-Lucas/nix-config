@@ -73,7 +73,7 @@
             };
             hardware-config = "pc";
             use-cuda = true;
-            lite = true;
+            lite = false;
           };
           modules = [
             # > Our main nixos configuration file <

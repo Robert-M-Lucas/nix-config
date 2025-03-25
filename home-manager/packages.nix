@@ -163,8 +163,8 @@ in {
     ];
 
     non-lite = [
-      pkgs-unstable.jetbrains.goland
-      pkgs-unstable.jetbrains.rider
+      pkgs.jetbrains.goland
+      pkgs.jetbrains.rider
       # pkgs-unstable.zed-editor
       pkgs-unstable.davinci-resolve
       pkgs-unstable.muse-sounds-manager
