@@ -7,7 +7,7 @@
   pkgs-unstable,
   use-cuda,
   home,
-  lite,
+  is-pc,
   ...
 }: let
   pythonEnv = pkgs.python311.withPackages (ps:
@@ -205,9 +205,5 @@ in {
     x
     ++ y
     ++ z
-    ++ (
-      if lite
-      then []
-      else non-lite
-    );
+    ++ non-lite;
 }

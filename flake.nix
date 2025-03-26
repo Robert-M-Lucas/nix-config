@@ -73,7 +73,7 @@
             };
             hardware-config = "pc";
             use-cuda = true;
-            lite = false;
+            is-pc = true;
           };
           modules = [
             # > Our main nixos configuration file <
@@ -93,7 +93,7 @@
             };
             hardware-config = "fastop";
             use-cuda = false;
-            lite = false;
+            is-pc = false;
           };
           modules = [
             # > Our main nixos configuration file <

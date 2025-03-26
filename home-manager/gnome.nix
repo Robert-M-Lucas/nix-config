@@ -25,6 +25,7 @@
           pkgs.gnomeExtensions.appindicator.extensionUuid
           # pkgs.gnomeExtensions.shutdowntimer.extensionUuid
           pkgs.gnomeExtensions.color-picker.extensionUuid
+          pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           # pkgs.gnomeExtensions.desktop-clock.extensionUuid
           # pkgs.gnomeExtensions.wintile-beyond.extensionUuid
 
@@ -65,7 +66,24 @@
       "org/gnome/desktop/input-sources" = {
         xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock"];
       };
-
+      "org/gnome/shell/extensions/display-brightness-ddcutil" = {
+        allow-zero-brightness=true;
+        button-location=1;
+        ddcutil-binary-path="/run/current-system/sw/bin/ddcutil";
+        ddcutil-queue-ms=130.0;
+        ddcutil-sleep-multiplier=40.0;
+        decrease-brightness-shortcut=["<Control>XF86MonBrightnessDown"];
+        disable-display-state-check=true;
+        hide-system-indicator=true;
+        increase-brightness-shortcut=["<Control>XF86MonBrightnessUp"];
+        position-system-menu=3.0;
+        show-all-slider=false;
+        show-display-name=false;
+        show-osd=true;
+        show-value-label=true;
+        step-change-keyboard=2.0;
+        verbose-debugging=false;
+      };
       # Configure individual extensions
       # dconf dump /
       "com/github/amezin/ddterm" = {

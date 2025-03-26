@@ -10,7 +10,7 @@
   system,
   hardware-config,
   use-cuda,
-  lite,
+  is-pc,
   overlays,
   overlays-unstable,
   ...
@@ -63,7 +63,7 @@ in {
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable use-cuda overlays overlays-unstable lite;};
+    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable use-cuda overlays overlays-unstable is-pc;};
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
