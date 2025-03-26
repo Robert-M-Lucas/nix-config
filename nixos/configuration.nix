@@ -306,6 +306,8 @@ in {
     protonvpn-gui
     google-chrome
 
+    ddcutil
+
     # TODO: TEMP
     # flutter
     # dart
