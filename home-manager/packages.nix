@@ -59,7 +59,7 @@
 
       # Include libstdc++ for your environment
       # pkgs.libstdcxx5
-    ]);
+    ]); # ++  (if use-cuda then [tensorflowWithCuda torchWithCuda] else [tensorflow torch]));
 in {
   home.packages = let
     x = with pkgs; [

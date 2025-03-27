@@ -302,6 +302,7 @@ in {
     wget
     gnumake
     go
+    dig
 
     protonvpn-gui
     google-chrome
