@@ -87,6 +87,7 @@ in {
       amberol
       emblem
       spotify
+      gnome-clocks
 
       # ====== CMD ======
       platformio-core
