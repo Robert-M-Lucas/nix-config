@@ -304,6 +304,8 @@ in {
     go
     dig
 
+    firefox-bin # No, we don't need another package built from source
+
     protonvpn-gui
     google-chrome
 
