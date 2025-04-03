@@ -72,6 +72,8 @@
       bungcip.better-toml
       rust-lang.rust-analyzer
       serayuzgur.crates
+      ms-python.python
+      ms-python.vscode-pylance
     ];
   };
 
