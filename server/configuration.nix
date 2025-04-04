@@ -78,7 +78,7 @@
     gh
     tmux
     google-chrome
-    vscodium
+    vscode
     python3
   ];
 
