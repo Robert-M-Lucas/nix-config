@@ -38,6 +38,16 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.autoSuspend = false;
 
+  programs.dconf.enable = true;
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+    [org.gnome.settings-daemon.plugins.media-keys]
+    custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/toggle-display/']
+
+    [org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.toggle-display]
+    name='Toggle Display'
+    command='bash /home/robert/nix-config/server/toggle_display.sh'
+    binding='<Super>D' # Change this keybinding as needed
+  '';
 
   services.printing.enable = true;
 
@@ -62,6 +72,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.bash = {
+  interactiveShellInit = ''
+    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    then
+      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+    fi
+  '';
+  };
+
   environment.gnome.excludePackages =
     (with pkgs; [
       gnome-tour
@@ -82,6 +102,7 @@
     google-chrome
     vscode
     python3
+    diff-so-fancy
   ];
 
   services.openssh.enable = true;
