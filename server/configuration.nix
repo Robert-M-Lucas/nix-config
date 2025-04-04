@@ -59,19 +59,6 @@
     ];
   };
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      aaron-bond.better-comments
-      k--kato.intellij-idea-keybindings
-      bungcip.better-toml
-      serayuzgur.crates
-      ms-python.python
-    ];
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -80,10 +67,11 @@
     gh
     tmux
     google-chrome
+    vscodium
+    python3
   ];
 
   services.openssh.enable = true;
-
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ 22 ];
 
