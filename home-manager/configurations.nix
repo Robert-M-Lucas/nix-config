@@ -63,7 +63,6 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       james-yu.latex-workshop
@@ -74,6 +73,7 @@
       serayuzgur.crates
       ms-python.python
       ms-python.vscode-pylance
+      ms-vscode-remote.remote-ssh
     ];
   };
 
