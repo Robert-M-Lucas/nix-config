@@ -324,8 +324,6 @@ in {
       # for packages that are pkgs.*
       gnome-tour
       gnome-connections
-    ])
-    ++ (with pkgs; [
       # for packages that are pkgs.gnome.*
       epiphany # web browser
       geary # email reader

@@ -61,6 +61,18 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-tour
+      gnome-connections
+      epiphany
+      geary
+      yelp
+      seahorse
+      gnome-clocks
+      gnome-maps
+      gnome-weather
+    ]);
   environment.systemPackages = with pkgs; [
     wget
     git
