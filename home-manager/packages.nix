@@ -65,7 +65,6 @@ in {
     x = with pkgs; [
       # ====== GUI Apps ======
       libreoffice
-      calibre
       obsidian
       pomodoro-gtk
       krita
@@ -157,6 +156,7 @@ in {
       # davinci-resolve
       # gephi
       discord
+      # calibre
       # steam
     ];
 
