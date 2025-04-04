@@ -67,6 +67,7 @@
     packages = with pkgs; [
       (writeShellScriptBin "nix-clean" (builtins.readFile /home/robert/nix-config/home-manager/scripts/nix-clean.sh))
       (writeShellScriptBin "server-update" (builtins.readFile /home/robert/nix-config/server/server-update.sh))
+      (writeShellScriptBin "doff" (builtins.readFile /home/robert/nix-config/server/doff.sh))
     ];
   };
 

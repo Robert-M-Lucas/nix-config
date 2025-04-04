@@ -1,0 +1,1 @@
+setterm --blank force; read ans; setterm --blank poke
