@@ -54,8 +54,8 @@
     description = "Robert Lucas";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      (writeShellScriptBin "nix-clean" (builtins.readFile ../home-manager/scripts/nix-clean.sh))
-      (writeShellScriptBin "server-update" (builtins.readFile ./server-update.sh))
+      (writeShellScriptBin "nix-clean" (builtins.readFile /home/robert/nix-config/home-manager/scripts/nix-clean.sh))
+      (writeShellScriptBin "server-update" (builtins.readFile /home/robert/nix-config/server/server-update.sh))
     ];
   };
 
