@@ -270,6 +270,13 @@ in {
       # Remove if you want to SSH using passwords
       PasswordAuthentication = true;
       AllowUsers = ["robert"];
+      Macs = 
+        [
+          "hmac-sha2-512-etm@openssh.com"
+          "hmac-sha2-256-etm@openssh.com"
+          "umac-128-etm@openssh.com"
+          "hmac-sha2-512" # Might be less secure - needed for dartssh2
+        ];
     };
   };
 

@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "nixos-server";
 
   networking.networkmanager.enable = true;
 
@@ -39,15 +39,6 @@
   services.xserver.displayManager.gdm.autoSuspend = false;
 
   programs.dconf.enable = true;
-  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-    [org.gnome.settings-daemon.plugins.media-keys]
-    custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/toggle-display/']
-
-    [org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.toggle-display]
-    name='Toggle Display'
-    command='bash /home/robert/nix-config/server/toggle_display.sh'
-    binding='<Super>D' # Change this keybinding as needed
-  '';
 
   services.printing.enable = true;
 
