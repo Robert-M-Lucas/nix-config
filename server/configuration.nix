@@ -105,6 +105,7 @@
     vscode
     python3
     diff-so-fancy
+    fastfetch
   ];
 
   services.openssh.enable = true;
