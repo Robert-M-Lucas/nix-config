@@ -51,6 +51,7 @@
     ];
     shellInit = "
             set PATH ~/flutter/bin:$PATH
+            set PATH ~/RustroverProjects/rss2/target/release:$PATH
             export RGH=\"https://github.com/Robert-M-Lucas\"
             export SHS=/home/robert/nix-config/shells
             export RUST_SHELL=/home/robert/nix-config/shells/rust.nix
