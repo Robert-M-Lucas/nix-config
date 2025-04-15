@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="-">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_03_2025,_15_02_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_03_2025__15_02__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home-manager/packages.nix" beforeDir="false" afterPath="$PROJECT_DIR$/home-manager/packages.nix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_03_2025,_15_02_[Changes]/shelved.patch" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +47,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PY-243.24978.54" />
-        <option value="bundled-python-sdk-91e3b7efe1d4-466328ff949b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.24978.54" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
+        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
       </set>
     </attachedChunks>
   </component>
@@ -82,6 +80,7 @@
       <workItem from="1742254292165" duration="156000" />
       <workItem from="1742289411744" duration="17000" />
       <workItem from="1742920964794" duration="119000" />
+      <workItem from="1744463962132" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <option name="closed" value="true" />

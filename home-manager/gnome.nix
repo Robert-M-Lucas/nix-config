@@ -114,4 +114,15 @@
       };
     };
   };
+
+  # xdg.desktopErntries = {
+  #   rss-open = {
+  #     name = "Rust Script";
+  #     genericName = "Rust Script";
+  #     exec = "rss run %U";
+  #     terminal = true;
+  #     categories = [ ];
+  #     mimeType = [ "application/rss" ];
+  #   };
+  # };
 }
