@@ -31,7 +31,7 @@ if [[ -z "$full_mode" ]]; then
 fi
 
 if [ "$full_mode" == "true" ] || ! ([ "$user_input" == "n" ] && ! [ "$user_input" == "N" ]); then
-  echo "| Git pull"
+  echo "| git pull"
   git pull
 fi
 
@@ -40,7 +40,7 @@ if [[ -z "$apply_mode" ]] && [[ -z "$full_mode" ]]; then
   codium -w .
 fi
 
-echo "| Git add"
+echo "| git add"
 git add -A
 
 
@@ -50,11 +50,11 @@ if [[ -z "$full_mode" ]]; then
 fi
 
 if [ "$full_mode" == "true" ] || [ "$user_input" == "y" ] || [ "$user_input" == "Y" ]; then
-    echo "| Updating flake"
+    echo "| nix flake update"
     nix flake update
 fi
 
-echo "| [sudo] Switching"
+echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch"
 sudo nixos-rebuild --flake .#$hostname switch
 
 if [[ -z "$full_mode" ]]; then
@@ -64,7 +64,8 @@ fi
 
 echo "> Enter commit message:"
 read commit_msg
+echo "| git commit -a -m \"$commit_msg\""
 git commit -a -m "$commit_msg"
-  
-echo "Git push"
+
+echo "| git push"
 git push
