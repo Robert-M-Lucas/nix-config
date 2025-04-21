@@ -203,6 +203,8 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.virt-manager.enable = true;
+
   virtualisation.docker.enable = true;
   virtualisation.docker.package = pkgs.docker_25;
 

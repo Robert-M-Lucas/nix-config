@@ -172,7 +172,6 @@ in {
       pkgs-unstable.muse-sounds-manager
       pkgs.wireshark
       # pkgs.virtualbox
-      pkgs.virt-manager
       pkgs.arduino-ide
       pkgs-unstable.dotnet-sdk_9
 
