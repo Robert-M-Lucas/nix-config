@@ -38,6 +38,7 @@
       };
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
+        color-scheme = "";
       };
       "org/gnome/desktop/wm/preferences" = {
         button-layout = ":minimize,maximize,close";
