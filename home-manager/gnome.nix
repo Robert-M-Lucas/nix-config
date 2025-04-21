@@ -16,6 +16,8 @@
           # you can easily get its UUID by accessing its extensionUuid
           # field (look at the following example).
 
+          pkgs.gnomeExtensions.light-style.extensionUuid
+
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
