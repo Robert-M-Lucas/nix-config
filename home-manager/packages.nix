@@ -66,11 +66,10 @@ in {
       # ====== GUI Apps ======
       libreoffice
       obsidian
-      pomodoro-gtk
+      gnome-solanum
       krita
       gimp
       obs-studio
-      mediawriter
       rpi-imager
       darktable
       blender
@@ -87,6 +86,9 @@ in {
       emblem
       spotify
       gnome-clocks
+      keypunch
+      impression
+      wike
 
       # ====== CMD ======
       platformio-core
