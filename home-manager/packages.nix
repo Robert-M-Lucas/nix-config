@@ -131,7 +131,6 @@ in {
       # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
       # ====== IDEs ======
-      jetbrains.rust-rover
       jetbrains.webstorm
       jetbrains.jdk
       jetbrains.clion
@@ -154,6 +153,8 @@ in {
     ];
 
     y = with pkgs-unstable; [
+      jetbrains.rust-rover
+
       # ====== IDEs ======
       # davinci-resolve
       # gephi
