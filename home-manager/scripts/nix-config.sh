@@ -1,4 +1,6 @@
-cd /home/nix-config
+#!/run/current-system/sw/bin/bash
+
+cd /home/robert/nix-config
 
 echo "Pre-acquiring sudo"
 echo "| [sudo] echo \"Sudo acquired\""
