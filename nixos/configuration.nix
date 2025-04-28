@@ -15,7 +15,7 @@
   overlays-unstable,
   ...
 }: let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+  # spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in {
   # You can import other NixOS modules here
   imports = [

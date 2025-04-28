@@ -1,5 +1,3 @@
-#!/bin/bash
-
 if [ -z "$1" ]; then
   echo "Usage: $0 <shell-name>"
   exit 1

@@ -23,6 +23,10 @@ do
     full_mode=true
     break
   fi
+  if [[ "$arg" == "--light" ]]; then
+    light_mode=true
+    break
+  fi
 done
 
 if [[ -z "$full_mode" ]]; then
@@ -54,8 +58,16 @@ if [ "$full_mode" == "true" ] || [ "$user_input" == "y" ] || [ "$user_input" == 
     nix flake update
 fi
 
-echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch"
-sudo nixos-rebuild --flake .#$hostname switch
+
+
+if [ "$light_mode" == "true" ]; then
+  echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3"
+  sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3
+else
+  echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch"
+  sudo nixos-rebuild --flake .#$hostname switch
+fi
+
 
 if [[ -z "$full_mode" ]]; then
   read -p "> Press enter to git diff"
