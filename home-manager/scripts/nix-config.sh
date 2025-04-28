@@ -1,4 +1,4 @@
-cd ~/nix-config
+cd /home/nix-config
 
 echo "Pre-acquiring sudo"
 echo "| [sudo] echo \"Sudo acquired\""
@@ -15,6 +15,7 @@ fi
 
 for arg in "$@"
 do
+  echo $arg
   if [[ "$arg" == "--apply" ]]; then
     apply_mode=true
     break
@@ -25,6 +26,7 @@ do
   fi
   if [[ "$arg" == "--light" ]]; then
     light_mode=true
+    echo Light mode $light_mode
     break
   fi
 done
