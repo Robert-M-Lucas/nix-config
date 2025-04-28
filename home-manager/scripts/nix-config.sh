@@ -17,19 +17,14 @@ fi
 
 for arg in "$@"
 do
-  echo $arg
   if [[ "$arg" == "--apply" ]]; then
     apply_mode=true
-    break
   fi
   if [[ "$arg" == "--full" ]]; then
     full_mode=true
-    break
   fi
   if [[ "$arg" == "--light" ]]; then
     light_mode=true
-    echo Light mode $light_mode
-    break
   fi
 done
 
