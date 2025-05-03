@@ -135,7 +135,6 @@ in {
       jetbrains.jdk
       jetbrains.clion
       jetbrains.pycharm-professional
-      jetbrains.pycharm-community
       android-studio
       jetbrains.idea-ultimate
 
