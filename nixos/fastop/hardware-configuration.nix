@@ -12,6 +12,8 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  networking.hostName = "artemis";
+
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd" "v4l2loopback"];
