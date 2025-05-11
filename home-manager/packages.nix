@@ -34,6 +34,7 @@
       pynput
       pyautogui
       keyboard
+      websockets
 
       # torch-bin
       # torchsde
