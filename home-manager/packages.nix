@@ -10,7 +10,7 @@
   is-pc,
   ...
 }: let
-  pythonEnv = pkgs.python311.withPackages (ps:
+  pythonEnv = pkgs.python312.withPackages (ps:
     with ps; [
       # torchWithCuda
       # Add your Python packages here

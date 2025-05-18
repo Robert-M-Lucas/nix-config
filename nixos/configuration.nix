@@ -185,7 +185,7 @@ in {
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -211,8 +211,8 @@ in {
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode"];})
+  fonts.packages = [
+    pkgs.nerd-fonts.fira-code
   ];
 
   # Configure your system-wide user settings (groups, etc), add more users as needed.
