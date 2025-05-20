@@ -59,7 +59,15 @@
         picture-uri-dark = "file:///home/robert/.background-image";
       };
       "org/gnome/shell/extensions/vitals" = {
-        hot-sensors = ["__network-rx_max__" "_processor_usage_" "_storage_free_" "_memory_available_" "_memory_swap_free_" "__temperature_max__"];
+        hot-sensors = [
+          "_network_public_ip_" 
+          "__network-rx_max__" 
+          "_processor_usage_" 
+          "__temperature_max__"
+          "_memory_available_" 
+          "_memory_swap_free_" 
+          "_storage_free_"
+        ];
         hide-icons = false;
         icon-style = 0;
         menu-centered = false;
