@@ -67,6 +67,7 @@
           "_memory_available_" 
           "_memory_swap_free_" 
           "_storage_free_"
+          "_battery_time_left_"
         ];
         hide-icons = false;
         icon-style = 0;
