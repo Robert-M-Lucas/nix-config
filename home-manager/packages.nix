@@ -90,6 +90,7 @@ in {
       keypunch
       impression
       wike
+      smile
 
       # ====== CMD ======
       platformio-core
