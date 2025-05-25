@@ -75,7 +75,6 @@ in {
       darktable
       blender
       qalculate-gtk
-      vesktop
       blender
       rare
       musescore

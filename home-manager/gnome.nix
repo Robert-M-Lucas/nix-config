@@ -68,8 +68,7 @@
       };
       "org/gnome/shell/extensions/vitals" = {
         hot-sensors = [
-          "_network_public_ip_" 
-          "__network-rx_max__" 
+          "_network_public_ip_"
           "_processor_usage_" 
           "__temperature_max__"
           "_memory_available_" 
@@ -77,6 +76,16 @@
           "_storage_free_"
           "_battery_time_left_"
         ];
+        # hot-sensors = [
+        #   "_network_public_ip_" 
+        #   "__network-rx_max__" 
+        #   "_processor_usage_" 
+        #   "__temperature_max__"
+        #   "_memory_available_" 
+        #   "_memory_swap_free_" 
+        #   "_storage_free_"
+        #   "_battery_time_left_"
+        # ];
         hide-icons = false;
         icon-style = 0;
         menu-centered = false;
