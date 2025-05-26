@@ -39,6 +39,7 @@ in {
     x = with pkgs; [
       # ====== GUI Apps ======
       libreoffice
+      onlyoffice-bin
       obsidian
       gnome-solanum
       krita
