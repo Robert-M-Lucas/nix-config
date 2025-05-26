@@ -11,31 +11,16 @@
         disable-user-extensions = false; # enables user extensions
         disable-extension-version-validation = true;
         enabled-extensions = [
-          # Put UUIDs of extensions that you want to enable here.
-          # If the extension you want to enable is packaged in nixpkgs,
-          # you can easily get its UUID by accessing its extensionUuid
-          # field (look at the following example).
-
           pkgs.gnomeExtensions.light-style.extensionUuid
 
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
-          # pkgs.gnomeExtensions.osk-toggle.extensionUuid
           pkgs.gnomeExtensions.blur-my-shell.extensionUuid
           pkgs.gnomeExtensions.appindicator.extensionUuid
-          # pkgs.gnomeExtensions.shutdowntimer.extensionUuid
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
-          # pkgs.gnomeExtensions.desktop-clock.extensionUuid
-          # pkgs.gnomeExtensions.wintile-beyond.extensionUuid
-
-          # pkgs.gnomeExtensions.improved-osk.extensionUuid
-          # pkgs.gnomeExtensions.custom-accent-colors.extensionUuid
-          # Alternatively, you can manually pass UUID as a string.
-          # "blur-my-shell@aunetx"
-          # ...
         ];
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -76,16 +61,6 @@
           "_storage_free_"
           "_battery_time_left_"
         ];
-        # hot-sensors = [
-        #   "_network_public_ip_" 
-        #   "__network-rx_max__" 
-        #   "_processor_usage_" 
-        #   "__temperature_max__"
-        #   "_memory_available_" 
-        #   "_memory_swap_free_" 
-        #   "_storage_free_"
-        #   "_battery_time_left_"
-        # ];
         hide-icons = false;
         icon-style = 0;
         menu-centered = false;
@@ -143,15 +118,4 @@
       };
     };
   };
-
-  # xdg.desktopErntries = {
-  #   rss-open = {
-  #     name = "Rust Script";
-  #     genericName = "Rust Script";
-  #     exec = "rss run %U";
-  #     terminal = true;
-  #     categories = [ ];
-  #     mimeType = [ "application/rss" ];
-  #   };
-  # };
 }

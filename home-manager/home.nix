@@ -39,11 +39,6 @@
   # qt.style.catppuccin.enable = true;
   # programs.fish.catppuccin.enable = false;
 
-  # programs.starship = {
-  #     enable = true;
-  #     catppuccin.enable = true;
-  # };
-
   nixpkgs = {
     # You can add overlays here
     overlays = [

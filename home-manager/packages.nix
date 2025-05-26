@@ -12,8 +12,6 @@
 }: let
   pythonEnv = pkgs.python312.withPackages (ps:
     with ps; [
-      # torchWithCuda
-      # Add your Python packages here
       numpy
       scikit-learn
       jupyter
@@ -35,32 +33,7 @@
       pyautogui
       keyboard
       websockets
-
-      # torch-bin
-      # torchsde
-      # torchvision-bin
-      # torchaudio-bin
-      # einops
-      # transformers
-      # tokenizers
-      # sentencepiece
-      # safetensors
-      # aiohttp
-      # pyyaml
-      # pillow
-      # scipy
-      # tqdm
-      # psutil
-      # torchWithCuda
-
-      #non essential dependencies:
-      # kornia
-      # spandrel
-      # soundfile
-
-      # Include libstdc++ for your environment
-      # pkgs.libstdcxx5
-    ]); # ++  (if use-cuda then [tensorflowWithCuda torchWithCuda] else [tensorflow torch]));
+    ]);
 in {
   home.packages = let
     x = with pkgs; [
@@ -123,14 +96,9 @@ in {
       (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
 
       (writeShellScriptBin "rust-shell" (builtins.readFile ./scripts/rust-shell.sh))
-      # (writeShellScriptBin "shell" (builtins.readFile ./scripts/shell.sh))
-      # (writeShellScriptBin "shell-pure" (builtins.readFile ./scripts/shell-pure.sh))
       (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
       (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
       (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
-
-      # (writeShellScriptBin "cdd" (builtins.readFile ./scripts/cdd.sh))
-      # (writeShellScriptBin "cdu" (builtins.readFile ./scripts/cdu.sh))
 
       # ====== IDEs ======
       jetbrains.webstorm
@@ -157,25 +125,19 @@ in {
       jetbrains.rust-rover
 
       # ====== IDEs ======
-      # davinci-resolve
-      # gephi
       discord
-      # calibre
-      # steam
     ];
 
     z = [
-      # overlays.davinci-resolve
+
     ];
 
     non-lite = [
       pkgs.jetbrains.goland
       pkgs.jetbrains.rider
-      # pkgs-unstable.zed-editor
       pkgs-unstable.davinci-resolve
       pkgs-unstable.muse-sounds-manager
       pkgs.wireshark
-      # pkgs.virtualbox
       pkgs.arduino-ide
       pkgs-unstable.dotnet-sdk_9
 

@@ -7,14 +7,6 @@
   pkgs-unstable,
   ...
 }: {
-  # pkgs.mkShell = {
-  #     buildInputs = [
-  #         # pkgs.python3
-  #         pkgs.libstdcxx5
-  #         # (pkgs.python3Packages.your-package-here)
-  #     ];
-  # };
-
   programs.git = {
     enable = true;
     userName = "Robert-M-Lucas";
