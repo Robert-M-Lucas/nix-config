@@ -327,6 +327,8 @@ in {
     (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
   ];
 
+  programs.gnome-terminal.enable = true;
+  console.enable = false;
   environment.gnome.excludePackages =
     (with pkgs; [
       # for packages that are pkgs.*
