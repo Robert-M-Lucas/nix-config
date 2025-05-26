@@ -99,6 +99,7 @@ in {
       (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
       (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
       (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
+      (writeShellScriptBin "chx" (builtins.readFile ./scripts/chx.sh))
 
       # ====== IDEs ======
       jetbrains.webstorm
