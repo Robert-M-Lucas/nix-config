@@ -1,0 +1,9 @@
+{
+  "logo": {
+    "source": "ascii",
+    "ascii": {
+      "file": "~/.config/fastfetch/logo.txt",
+      "size": 30
+    }
+  }
+}
