@@ -300,6 +300,7 @@ in {
     tmux
     fprintd
     fastfetch
+    htop
     nixVersions.latest
     mutter
     # python3
