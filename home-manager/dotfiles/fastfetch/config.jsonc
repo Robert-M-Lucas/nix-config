@@ -1,9 +1,8 @@
 {
-  "logo": {
-    "source": "ascii",
-    "ascii": {
-      "file": "~/.config/fastfetch/logo.txt",
-      "size": 30
-    }
+  "ascii": {
+    "type": "input",
+    "file": "~/.config/fastfetch/logo.txt",
+    "size": 30,
+    "colors": ["red", "yellow", "white"]
   }
 }
