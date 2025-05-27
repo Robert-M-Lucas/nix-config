@@ -12,38 +12,27 @@
         }
     },
     "modules": [
+        // Title
         "title",
+        "datetime",
         "separator",
-        "os",
-        "host",
+
+        // Board / BIOS / OS
+        "chassis",
+        "board",
+        "tpm",
         "bios",
         "bootmgr",
-        "board",
-        "chassis",
         "kernel",
         "initsystem",
-        "uptime",
-        "loadavg",
-        "processes",
+        "os",
+        "host",
+        "users",
         "packages",
-        "shell",
-        "editor",
-        "display",
-        "brightness",
-        "monitor",
-        "lm",
-        "de",
-        "wm",
-        "wmtheme",
-        "theme",
-        "icons",
-        "font",
-        "cursor",
-        "wallpaper",
-        "terminal",
-        "terminalfont",
-        "terminalsize",
-        "terminaltheme",
+        "uptime",
+        "break",
+
+        // CPU
         {
             "type": "cpu",
             "showPeCoreCount": true,
@@ -51,24 +40,41 @@
         },
         "cpucache",
         "cpuusage",
+        "loadavg",
+        "processes",
+        "break",
+
+        // GPU
         {
             "type": "gpu",
             "driverSpecific": true,
             "temp": true
         },
+        "vulkan",
+        "opengl",
+        "opencl",
+        "display",
+        "brightness",
+        "monitor",
+        "break",
+
+        // Memory
         "memory",
         "physicalmemory",
         "swap",
+        "break",
+
+        // Disk
         "disk",
-        "btrfs",
-        "zpool",
+        "btrfs", // Not visible
+        "diskio",
         {
-            "type": "battery",
+            "type": "physicaldisk",
             "temp": true
         },
-        "poweradapter",
-        "player",
-        "media",
+        "break",
+        
+        // Net
         {
             "type": "publicip",
             "timeout": 1000
@@ -85,12 +91,16 @@
         },
         "dns",
         "wifi",
-        "datetime",
-        "locale",
-        "vulkan",
-        "opengl",
-        "opencl",
-        "users",
+        "netio",
+        "break",
+
+        // Other hardware
+        "zpool",
+        {
+            "type": "battery",
+            "temp": true
+        },
+        "poweradapter", // Not visible        
         "bluetooth",
         "bluetoothradio",
         "sound",
@@ -98,19 +108,39 @@
         "gamepad",
         "mouse",
         "keyboard",
-        {
-            "type": "weather",
-            "timeout": 1000
-        },
-        "netio",
-        "diskio",
-        {
-            "type": "physicaldisk",
-            "temp": true
-        },
-        "tpm",
-        "version",
+        // {
+        //     "type": "weather",
+        //     "timeout": 1000
+        // },
         "break",
+
+        // Shell
+        "shell",
+        "editor",
+        "terminal",
+        "terminalfont",
+        "terminalsize",
+        "terminaltheme",
+        "break",
+        
+        // DE
+        "locale",
+        "lm",
+        "de",
+        "wm",
+        "wmtheme",
+        "theme",
+        "icons",
+        "font",
+        "cursor",
+        "wallpaper",
+        "break",
+
+        "player", // Not visible
+        "media", // Not visible
+
+        "break",
+        "version",
         "colors"
     ]
 }
