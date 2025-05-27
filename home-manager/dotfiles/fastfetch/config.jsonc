@@ -1,0 +1,16 @@
+{
+  "ascii": {
+    "type": "input",
+    "file": "/home/robert/.config/fastfetch/logo.txt",
+    "size": 30,
+    "colors": ["red", "yellow", "white"]
+  },
+  "modules": [
+    "title",
+    "os",
+    "kernel",
+    "cpu",
+    "memory",
+    "gpu"
+  ]
+}
