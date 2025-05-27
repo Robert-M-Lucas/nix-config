@@ -1,8 +1,0 @@
-{
-  "ascii": {
-    "type": "input",
-    "file": "~/.config/fastfetch/logo.txt",
-    "size": 30,
-    "colors": ["red", "yellow", "white"]
-  }
-}
