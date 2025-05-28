@@ -49,7 +49,7 @@
       export SHLS=/home/robert/nix-config/shells
       export CHROME_EXECUTABLE=google-chrome-stable 
       export ANDROID_HOME=/home/robert/Android/Sdk/
-      tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time='24-hour format' --rainbow_prompt_separators=Angled --powerline_prompt_heads=Sharp --powerline_prompt_tails=Flat --powerline_prompt_style='One line' --prompt_spacing=Compact --icons='Many icons' --transient=Yes
+      tide configure --auto --style=Rainbow --prompt_colors='True color' --show_time='24-hour format' --rainbow_prompt_separators=Angled --powerline_prompt_heads=Sharp --powerline_prompt_tails=Flat --powerline_prompt_style='One line' --prompt_spacing=Compact --icons='Many icons' --transient=Yes
       set -U fish_color_normal CBCCC6
       set -U fish_color_command 5CCFE6
       set -U fish_color_keyword 5CCFE6
