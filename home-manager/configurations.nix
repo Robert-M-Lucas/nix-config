@@ -25,6 +25,11 @@
     };
   };
 
+  services.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
