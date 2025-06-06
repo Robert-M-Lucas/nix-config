@@ -21,6 +21,7 @@
           pkgs.gnomeExtensions.appindicator.extensionUuid
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
+          pkgs.gnomeExtensions.gsconnect.extensionUuid
         ];
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
