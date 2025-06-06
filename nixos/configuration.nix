@@ -362,6 +362,11 @@ in {
 
   programs.git.enable = true;
 
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
   programs.neovim = {
     enable = true;
     viAlias = true;
