@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 cd /home/robert/nix-config
 
@@ -61,10 +61,10 @@ fi
 
 if [ "$light_mode" == "true" ]; then
   echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3"
-  sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3
+  sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3 |& nom
 else
   echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch"
-  sudo nixos-rebuild --flake .#$hostname switch
+  sudo nixos-rebuild --flake .#$hostname switch |& nom
 fi
 
 
