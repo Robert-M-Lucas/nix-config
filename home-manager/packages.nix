@@ -103,6 +103,8 @@ in {
       (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
       (writeShellScriptBin "chx" (builtins.readFile ./scripts/chx.sh))
 
+      (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
+
       # ====== IDEs ======
       jetbrains.webstorm
       jetbrains.jdk
