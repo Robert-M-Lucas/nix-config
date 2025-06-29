@@ -113,6 +113,7 @@ in {
       jetbrains.pycharm-professional
       android-studio
       jetbrains.idea-ultimate
+      unityhub
 
       # ====== Extensions ======
       gnome-shell-extensions
