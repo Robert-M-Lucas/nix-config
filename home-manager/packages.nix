@@ -64,6 +64,7 @@ in {
       impression
       wike
       smile
+      lutris
 
       # ====== CMD ======
       platformio-core
