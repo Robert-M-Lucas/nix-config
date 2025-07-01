@@ -50,7 +50,6 @@ in {
       blender
       qalculate-gtk
       blender
-      rare
       musescore
       insomnia
       alacarte
