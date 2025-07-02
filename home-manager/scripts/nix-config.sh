@@ -76,7 +76,7 @@ if [[ -z "$full_mode" ]]; then
   git diff
 fi
 
-if [[ -z "$shutdown_mode" ]]; then
+if [ "$shutdown_mode" == "true" ]; then
   echo "| [sudo] sudo shutdown -h now"
   sudo shutdown -h now
   exit
