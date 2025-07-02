@@ -2,6 +2,8 @@
 
 cd /home/robert/nix-config
 
+echo "v2"
+
 echo "Pre-acquiring sudo"
 echo "| [sudo] echo \"Sudo acquired\""
 sudo echo "Sudo acquired"
@@ -27,6 +29,7 @@ do
     light_mode=true
   fi
   if [[ "$arg" == "--shutdown" ]]; then
+    echo "Shutdown mode"
     shutdown_mode=true
   fi
 done

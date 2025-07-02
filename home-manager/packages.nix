@@ -108,12 +108,6 @@ in {
       (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
 
       # ====== IDEs ======
-      jetbrains.webstorm
-      jetbrains.jdk
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      android-studio
-      jetbrains.idea-ultimate
       unityhub
 
       # ====== Extensions ======
@@ -130,10 +124,16 @@ in {
     ];
 
     y = with pkgs-unstable; [
-      jetbrains.rust-rover
+      discord
 
       # ====== IDEs ======
-      discord
+      jetbrains.rust-rover
+      jetbrains.webstorm
+      jetbrains.jdk
+      jetbrains.clion
+      jetbrains.pycharm-professional
+      android-studio
+      jetbrains.idea-ultimate
     ];
 
     z = [
@@ -141,40 +141,40 @@ in {
     ];
 
     non-lite = [
-      pkgs.jetbrains.goland
-      pkgs.jetbrains.rider
+      pkgs-unstable.jetbrains.goland
+      pkgs-unstable.jetbrains.rider
       pkgs-unstable.davinci-resolve
       pkgs-unstable.muse-sounds-manager
       pkgs.wireshark
-      pkgs.arduino-ide
+      pkgs-unstable.arduino-ide
       pkgs-unstable.dotnet-sdk_9
 
       # ====== Shell Deps ====== (Prevent shells redownloading)
 
-      pkgs.xorg.libX11
-      pkgs.xorg.libXcursor
-      pkgs.xorg.libXrandr
-      pkgs.xorg.libXi
-      pkgs.xorg.libxcb
-      pkgs.libxkbcommon
-      pkgs.alsa-lib
-      pkgs.libudev-zero
+      # pkgs.xorg.libX11
+      # pkgs.xorg.libXcursor
+      # pkgs.xorg.libXrandr
+      # pkgs.xorg.libXi
+      # pkgs.xorg.libxcb
+      # pkgs.libxkbcommon
+      # pkgs.alsa-lib
+      # pkgs.libudev-zero
 
-      pkgs.SDL2
+      # pkgs.SDL2
 
-      pkgs.shaderc
-      pkgs.directx-shader-compiler
-      pkgs.libGL
-      pkgs.vulkan-headers
-      pkgs.vulkan-loader
-      pkgs.vulkan-tools
-      pkgs.vulkan-tools-lunarg
-      pkgs.vulkan-validation-layers
+      # pkgs.shaderc
+      # pkgs.directx-shader-compiler
+      # pkgs.libGL
+      # pkgs.vulkan-headers
+      # pkgs.vulkan-loader
+      # pkgs.vulkan-tools
+      # pkgs.vulkan-tools-lunarg
+      # pkgs.vulkan-validation-layers
 
-      pkgs.openssl
-      pkgs.pkg-config
+      # pkgs.openssl
+      # pkgs.pkg-config
 
-      pkgs.alsa-lib
+      # pkgs.alsa-lib
     ];
   in
     x
