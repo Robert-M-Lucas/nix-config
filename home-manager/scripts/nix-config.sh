@@ -26,6 +26,9 @@ do
   if [[ "$arg" == "--light" ]]; then
     light_mode=true
   fi
+  if [[ "$arg" == "--shutdown" ]]; then
+    shutdown_mode=true
+  fi
 done
 
 if [[ -z "$full_mode" ]]; then
@@ -71,6 +74,11 @@ fi
 if [[ -z "$full_mode" ]]; then
   read -p "> Press enter to git diff"
   git diff
+fi
+
+if [[ -z "$shutdown_mode" ]]; then
+  shutdown -h now
+  exit
 fi
 
 echo "> Enter commit message:"

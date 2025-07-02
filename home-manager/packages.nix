@@ -93,6 +93,7 @@ in {
       android-tools
       poetry
       nix-output-monitor
+      wine
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
