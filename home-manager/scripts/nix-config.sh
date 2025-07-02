@@ -77,7 +77,8 @@ if [[ -z "$full_mode" ]]; then
 fi
 
 if [[ -z "$shutdown_mode" ]]; then
-  shutdown -h now
+  echo "| [sudo] sudo shutdown -h now"
+  sudo shutdown -h now
   exit
 fi
 
