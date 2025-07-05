@@ -64,6 +64,7 @@ in {
       wike
       smile
       lutris
+      resources
 
       # ====== CMD ======
       platformio-core
