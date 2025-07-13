@@ -65,6 +65,7 @@ in {
       smile
       lutris
       resources
+      thunderbird
 
       # ====== CMD ======
       platformio-core
