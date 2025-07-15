@@ -94,12 +94,13 @@
       set -U fish_pager_color_secondary_background 
       set -U fish_pager_color_secondary_description 
       set -U fish_pager_color_selected_completion
+      direnv hook fish | source
     ";
   };
 
   programs.direnv = {
     enable = true;
-    enableFishIntegration = true;
+    # enableFishIntegration = true;
     nix-direnv.enable = true;
   };
 
