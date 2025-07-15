@@ -2,22 +2,22 @@
   description = "Nix Config";
 
   inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-
-    # catppuccin.url = "github:catppuccin/nix";
-
-    # Home manager
+    nixpkgs = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-25.05";
+      rev = "34627c90f062da515ea358360f448da57769236e";
+    };
+    nixpkgs-unstable = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
+      rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
+    };
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
-    # rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = inputs @ {

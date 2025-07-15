@@ -131,7 +131,6 @@ in {
       # ====== IDEs ======
       jetbrains.rust-rover
       jetbrains.webstorm
-      jetbrains.jdk
       jetbrains.clion
       jetbrains.pycharm-professional
       android-studio

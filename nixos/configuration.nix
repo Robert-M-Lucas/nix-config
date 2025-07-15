@@ -325,6 +325,9 @@ in {
     # dart
     jdk17
 
+    direnv
+    nix-direnv
+
     (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
   ];
 
@@ -340,7 +343,6 @@ in {
       geary # email reader
       yelp
       seahorse
-      gnome-clocks
       gnome-maps
       gnome-weather
       # evince # document viewer
