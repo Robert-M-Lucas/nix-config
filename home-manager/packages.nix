@@ -108,6 +108,7 @@ in {
 
       (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
       (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
+      (writeShellScriptBin "nft" (builtins.readFile ./scripts/nft.sh))
 
       # ====== IDEs ======
       unityhub
