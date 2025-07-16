@@ -3,4 +3,5 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$1"
+cp -r "/home/robert/nix-config/dev-flakes/$1/." .
+direnv allow
