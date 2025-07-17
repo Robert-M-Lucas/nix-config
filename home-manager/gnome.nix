@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  is-pc,
   ...
 }
 : {
@@ -53,7 +54,12 @@
         picture-uri-dark = "file:///home/robert/.background-image";
       };
       "org/gnome/shell/extensions/vitals" = {
-        hot-sensors = [
+        hot-sensors = if is-pc then ["_network_public_ip_"
+          "_processor_usage_" 
+          "__temperature_max__"
+          "_memory_available_" 
+          "_memory_swap_free_" 
+          "_storage_free_"] else [
           "_network_public_ip_"
           "_processor_usage_" 
           "__temperature_max__"
