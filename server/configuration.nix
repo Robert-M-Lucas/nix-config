@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -54,7 +55,7 @@
   users.users.robert = {
     isNormalUser = true;
     description = "Robert Lucas";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       (writeShellScriptBin "nix-clean" (builtins.readFile /home/robert/nix-config/home-manager/scripts/nix-clean.sh))
       (writeShellScriptBin "server-update" (builtins.readFile /home/robert/nix-config/server/server-update.sh))
@@ -65,28 +66,27 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.bash = {
-  interactiveShellInit = ''
-    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    fi
-    set fish_greeting
-  '';
+    interactiveShellInit = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+      set fish_greeting
+    '';
   };
 
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-tour
-      gnome-connections
-      epiphany
-      geary
-      yelp
-      seahorse
-      gnome-clocks
-      gnome-maps
-      gnome-weather
-    ]);
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-connections
+    epiphany
+    geary
+    yelp
+    seahorse
+    gnome-clocks
+    gnome-maps
+    gnome-weather
+  ];
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -101,8 +101,8 @@
   ];
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedUDPPorts = [22];
 
   system.stateVersion = "24.11";
 }

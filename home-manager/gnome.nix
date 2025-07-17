@@ -29,9 +29,9 @@
         custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        binding="<Super>period";
-        command="smile";
-        name="Emoji Picker";
+        binding = "<Super>period";
+        command = "smile";
+        name = "Emoji Picker";
       };
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
@@ -54,47 +54,52 @@
         picture-uri-dark = "file:///home/robert/.background-image";
       };
       "org/gnome/shell/extensions/vitals" = {
-        hot-sensors = if is-pc then ["_network_public_ip_"
-          "_processor_usage_" 
-          "__temperature_max__"
-          "_memory_available_" 
-          "_memory_swap_free_" 
-          "_storage_free_"] else [
-          "_network_public_ip_"
-          "_processor_usage_" 
-          "__temperature_max__"
-          "_memory_available_" 
-          "_memory_swap_free_" 
-          "_storage_free_"
-          "_battery_time_left_"
-        ];
+        hot-sensors =
+          if is-pc
+          then [
+            "_network_public_ip_"
+            "_processor_usage_"
+            "__temperature_max__"
+            "_memory_available_"
+            "_memory_swap_free_"
+            "_storage_free_"
+          ]
+          else [
+            "_network_public_ip_"
+            "_processor_usage_"
+            "__temperature_max__"
+            "_memory_available_"
+            "_memory_swap_free_"
+            "_storage_free_"
+            "_battery_time_left_"
+          ];
         hide-icons = false;
         icon-style = 0;
         menu-centered = false;
         position-in-panel = 0;
         use-higher-precision = true;
-        fixed-widths=false;
+        fixed-widths = false;
       };
       "org/gnome/desktop/input-sources" = {
         xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock"];
       };
       "org/gnome/shell/extensions/display-brightness-ddcutil" = {
-        allow-zero-brightness=true;
-        button-location=1;
-        ddcutil-binary-path="/run/current-system/sw/bin/ddcutil";
-        ddcutil-queue-ms=130.0;
-        ddcutil-sleep-multiplier=40.0;
-        decrease-brightness-shortcut=["<Control>XF86MonBrightnessDown"];
-        disable-display-state-check=true;
-        hide-system-indicator=true;
-        increase-brightness-shortcut=["<Control>XF86MonBrightnessUp"];
-        position-system-menu=3.0;
-        show-all-slider=false;
-        show-display-name=false;
-        show-osd=true;
-        show-value-label=true;
-        step-change-keyboard=2.0;
-        verbose-debugging=false;
+        allow-zero-brightness = true;
+        button-location = 1;
+        ddcutil-binary-path = "/run/current-system/sw/bin/ddcutil";
+        ddcutil-queue-ms = 130.0;
+        ddcutil-sleep-multiplier = 40.0;
+        decrease-brightness-shortcut = ["<Control>XF86MonBrightnessDown"];
+        disable-display-state-check = true;
+        hide-system-indicator = true;
+        increase-brightness-shortcut = ["<Control>XF86MonBrightnessUp"];
+        position-system-menu = 3.0;
+        show-all-slider = false;
+        show-display-name = false;
+        show-osd = true;
+        show-value-label = true;
+        step-change-keyboard = 2.0;
+        verbose-debugging = false;
       };
       # Configure individual extensions
       # dconf dump /
@@ -108,7 +113,7 @@
         foreground-color = "rgb(255,255,255)";
         hide-animation = "disable";
         notebook-border = false;
-        palette=[
+        palette = [
           "rgb(23,20,33)"
           "rgb(192,28,40)"
           "rgb(38,162,105)"
