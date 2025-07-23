@@ -7,9 +7,16 @@
       owner = "NixOS";
       repo = "nixpkgs";
       ref = "nixos-25.05";
-      rev = "34627c90f062da515ea358360f448da57769236e";
+      # rev = "34627c90f062da515ea358360f448da57769236e";
     };
     nixpkgs-unstable = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
+      # rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
+    };
+    nixpkgs-jb-fix = {
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
@@ -24,6 +31,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nixpkgs-jb-fix,
     # catppuccin,
     home-manager,
     # spicetify-nix,
@@ -71,6 +79,12 @@
               config.cudaSupport = true;
               android_sdk.accept_license = true;
             };
+            pkgs-jb-fix = import nixpkgs-jb-fix {
+              inherit system;
+              config.allowUnfree = true;
+              config.cudaSupport = true;
+              android_sdk.accept_license = true;
+            };
             hardware-config = "pc";
             use-cuda = true;
             is-pc = true;
@@ -89,6 +103,12 @@
             pkgs-unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
+              android_sdk.accept_license = true;
+            };
+            pkgs-jb-fix = import nixpkgs-jb-fix {
+              inherit system;
+              config.allowUnfree = true;
+              config.cudaSupport = true;
               android_sdk.accept_license = true;
             };
             hardware-config = "fastop";

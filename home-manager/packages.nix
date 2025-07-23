@@ -5,6 +5,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  pkgs-jb-fix,
   use-cuda,
   home,
   is-pc,
@@ -130,56 +131,29 @@ in {
       discord
 
       # ====== IDEs ======
+      muse-sounds-manager
+      wireshark
+      arduino-ide
+      dotnet-sdk_9
+    ];
+
+    z = [
+    ];
+
+    ides = with pkgs-jb-fix; [
       jetbrains.rust-rover
       jetbrains.webstorm
       jetbrains.clion
       jetbrains.pycharm-professional
       android-studio
       jetbrains.idea-ultimate
-    ];
-
-    z = [
-    ];
-
-    non-lite = [
-      pkgs-unstable.jetbrains.goland
-      pkgs-unstable.jetbrains.rider
-      pkgs-unstable.davinci-resolve
-      pkgs-unstable.muse-sounds-manager
-      pkgs.wireshark
-      pkgs-unstable.arduino-ide
-      pkgs-unstable.dotnet-sdk_9
-
-      # ====== Shell Deps ====== (Prevent shells redownloading)
-
-      # pkgs.xorg.libX11
-      # pkgs.xorg.libXcursor
-      # pkgs.xorg.libXrandr
-      # pkgs.xorg.libXi
-      # pkgs.xorg.libxcb
-      # pkgs.libxkbcommon
-      # pkgs.alsa-lib
-      # pkgs.libudev-zero
-
-      # pkgs.SDL2
-
-      # pkgs.shaderc
-      # pkgs.directx-shader-compiler
-      # pkgs.libGL
-      # pkgs.vulkan-headers
-      # pkgs.vulkan-loader
-      # pkgs.vulkan-tools
-      # pkgs.vulkan-tools-lunarg
-      # pkgs.vulkan-validation-layers
-
-      # pkgs.openssl
-      # pkgs.pkg-config
-
-      # pkgs.alsa-lib
+      jetbrains.goland
+      jetbrains.rider
+      davinci-resolve
     ];
   in
     x
     ++ y
     ++ z
-    ++ non-lite;
+    ++ ides;
 }

@@ -7,6 +7,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  pkgs-jb-fix,
   use-cuda,
   is-pc,
   ...

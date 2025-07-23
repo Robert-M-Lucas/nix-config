@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752780124,
-        "narHash": "sha256-5dn97vIYxn6VozKePOQSDxVCsrl38nDdMJXx86KIJH0=",
+        "lastModified": 1753198507,
+        "narHash": "sha256-NCG6izg+B3zsCwcT6+ssiWT3Y202jhOqGL/zh6fofa4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c718918222bdb104397762dea67e6b397a7927fe",
+        "rev": "fce051eaf881220843401df545a1444ab676520c",
         "type": "github"
       },
       "original": {
@@ -23,22 +23,21 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1751479989,
-        "narHash": "sha256-M5KgdpVBVcW4HRVq9/OSRbrxlwsQ1ogEKqnvzsClDqU=",
+        "lastModified": 1753115646,
+        "narHash": "sha256-yLuz5cz5Z+sn8DRAfNkrd2Z1cV6DaYO9JMrEz4KZo/c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "34627c90f062da515ea358360f448da57769236e",
+        "rev": "92c2e04a475523e723c67ef872d8037379073681",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixos-25.05",
         "repo": "nixpkgs",
-        "rev": "34627c90f062da515ea358360f448da57769236e",
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
+    "nixpkgs-jb-fix": {
       "locked": {
         "lastModified": 1751271578,
         "narHash": "sha256-P/SQmKDu06x8yv7i0s8bvnnuJYkxVGBWLWHaU+tt4YY=",
@@ -55,10 +54,27 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1752950548,
+        "narHash": "sha256-NS6BLD0lxOrnCiEOcvQCDVPXafX1/ek1dfJHX1nUIzc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c87b95e25065c028d31a94f06a62927d18763fdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-jb-fix": "nixpkgs-jb-fix",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }
