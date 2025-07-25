@@ -369,7 +369,7 @@ in {
     enable = true;
     viAlias = true;
     vimAlias = true;
-    defaultEditor = true;
+    defaultEditor = false;
     configure = {
       customRC = ''
         syntax on                       " Enable syntax highlighting
