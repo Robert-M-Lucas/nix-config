@@ -21,7 +21,7 @@
       owner = "NixOS";
       repo = "nixpkgs";
       ref = "nixos-unstable";
-      rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
+      # rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
     };
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
