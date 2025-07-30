@@ -97,6 +97,7 @@ in {
       poetry
       nix-output-monitor
       wine
+      diesel-cli
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
