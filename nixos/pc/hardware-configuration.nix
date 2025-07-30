@@ -29,9 +29,7 @@
   boot.kernelParams = [
     "nvidia-modeset.disable_vrr_memclk_switch=1"
   ];
-  # services.udev.extraRules = ''
-  #       KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
-  # '';
+  services.udev.packages = with pkgs; [ platformio-core.udev ];
   services.udev.extraRules = ''
     SUBSYSTEM=="i2c-dev", KERNEL=="i2c-[0-9]*", ATTRS{class}=="0x030000", TAG+="uaccess"
     SUBSYSTEM=="dri", KERNEL=="card[0-9]*", TAG+="uaccess"
