@@ -5,3 +5,4 @@ fi
 
 cp -r "/home/robert/nix-config/dev-flakes/$1/." .
 direnv allow
+echo -e "\n/.direnv" >> .gitignore
