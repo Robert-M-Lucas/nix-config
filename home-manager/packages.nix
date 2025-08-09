@@ -85,7 +85,6 @@ in {
       unzip
       xclip
       libqalculate
-      gradle
       pkg-config
       libudev-zero
       legendary-gl
