@@ -99,6 +99,12 @@ in {
       wine
       diesel-cli
 
+      pipes-rs
+      cbonsai
+      asciiquarium
+      nyancat
+      neo
+
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
 
@@ -111,6 +117,8 @@ in {
       (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
       (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
       (writeShellScriptBin "nft" (builtins.readFile ./scripts/nft.sh))
+
+      (writeShellScriptBin "wbb" (builtins.readFile ./scripts/wbb.sh))
 
       # ====== IDEs ======
       unityhub
