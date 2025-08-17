@@ -67,6 +67,7 @@ in {
       lutris
       resources
       thunderbird
+      calibre
 
       # ====== CMD ======
       platformio-core
