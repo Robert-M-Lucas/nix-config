@@ -121,6 +121,8 @@ in {
 
       (writeShellScriptBin "wbb" (builtins.readFile ./scripts/wbb.sh))
 
+      (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
+
       # ====== IDEs ======
       unityhub
 
