@@ -97,7 +97,6 @@ in {
       android-tools
       poetry
       nix-output-monitor
-      wine
       diesel-cli
 
       pipes-rs
@@ -141,6 +140,7 @@ in {
 
     y = with pkgs-unstable; [
       discord
+      wineWowPackages.staging
 
       # ====== IDEs ======
       muse-sounds-manager
