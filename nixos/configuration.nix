@@ -231,15 +231,10 @@ in {
       # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
     };
-    # demo = {
-    #     description = "Demo User for SSH";
-    #     isNormalUser = true;
-    # };
-    # temp = {
-    #     isNormalUser=true;
-    #     password="";
-    #     extraGroups = ["wheel" "networkmanager" "docker"];
-    # };
+    temp = {
+        isNormalUser=true;
+        extraGroups = ["wheel" "networkmanager" "docker"];
+    };
   };
 
   users.groups.libvirtd.members = ["robert"];
