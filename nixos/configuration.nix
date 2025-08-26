@@ -307,6 +307,7 @@ in {
     gnumake
     go
     dig
+    ripgrep
 
     firefox-bin # No, we don't need another package built from source
 
