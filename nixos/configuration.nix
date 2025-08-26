@@ -233,6 +233,7 @@ in {
     };
     guest = {
         description = "Guest";
+        password = "guest";
         isNormalUser=true;
         extraGroups = ["networkmanager" "docker"];
     };
