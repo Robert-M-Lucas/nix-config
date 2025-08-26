@@ -235,11 +235,11 @@ in {
         description = "Guest";
         password = "guest";
         isNormalUser=true;
-        extraGroups = ["networkmanager" "docker"];
+        extraGroups = ["networkmanager"];
     };
     temp = {
         isNormalUser=true;
-        extraGroups = ["networkmanager" "docker"];
+        extraGroups = ["networkmanager"];
     };
   };
 
