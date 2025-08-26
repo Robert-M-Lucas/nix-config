@@ -39,19 +39,10 @@ in {
   home.packages = let
     x = with pkgs; [
       # ====== GUI Apps ======
-      libreoffice
       onlyoffice-bin
-      obsidian
       gnome-solanum
-      krita
-      gimp
-      obs-studio
       rpi-imager
-      darktable
-      blender
       qalculate-gtk
-      blender
-      musescore
       insomnia
       alacarte
       prismlauncher
@@ -66,7 +57,6 @@ in {
       smile
       lutris
       resources
-      thunderbird
       calibre
 
       # ====== CMD ======

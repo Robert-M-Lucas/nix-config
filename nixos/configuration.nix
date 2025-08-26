@@ -319,6 +319,15 @@ in {
 
     protonvpn-gui
     google-chrome
+    libreoffice
+    obsidian
+    krita
+    gimp
+    obs-studio
+    darktable
+    blender
+    musescore
+    thunderbird
 
     ddcutil
 
