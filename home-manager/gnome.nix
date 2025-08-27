@@ -23,7 +23,16 @@
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
-        ];
+        ] ++ (if is-pc then [ ] else [ pkgs.gnomeExtensions.custom-command-toggle.extensionUuid ]);
+      };
+      "org/gnome/shell/extensions/custom-command-toggle" = {
+        checkexitcode1-setting=true;
+        entryrow1-setting="nohup systemd-inhibit --what=handle-lid-switch --why=\"TEMP_LID_DISABLE\" sleep infinity & disown";
+        entryrow2-setting="pkill -f \"TEMP_LID_DISABLE\"";
+        entryrow3-setting="No Lid Sleep";
+        entryrow4-setting="view-reveal-symbolic";
+        initialtogglestate1-setting=1;
+        togglestate1-setting=false;
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
