@@ -297,6 +297,8 @@ in {
   #     colorScheme = "frappe";
   # };
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   environment.systemPackages = with pkgs; [
     tmux
     fprintd
