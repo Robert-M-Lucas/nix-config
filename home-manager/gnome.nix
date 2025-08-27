@@ -23,7 +23,8 @@
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
-        ] ++ (if is-pc then [ ] else [ pkgs.gnomeExtensions.custom-command-toggle.extensionUuid ]);
+          pkgs.gnomeExtensions.custom-command-toggle.extensionUuid
+        ] ++ (if is-pc then [ ] else [  ]);
       };
       "org/gnome/shell/extensions/custom-command-toggle" = {
         checkexitcode1-setting=true;
