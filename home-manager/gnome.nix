@@ -13,7 +13,6 @@
         disable-extension-version-validation = true;
         enabled-extensions = [
           pkgs.gnomeExtensions.light-style.extensionUuid
-
           pkgs.gnomeExtensions.hide-top-bar.extensionUuid
           pkgs.gnomeExtensions.ddterm.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
@@ -23,8 +22,7 @@
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
-          pkgs.gnomeExtensions.custom-command-toggle.extensionUuid
-        ] ++ (if is-pc then [ ] else [  ]);
+        ] ++ (if is-pc then [ ] else [ pkgs.gnomeExtensions.custom-command-toggle.extensionUuid ]);
       };
       "org/gnome/shell/extensions/custom-command-toggle" = {
         checkexitcode1-setting=true;
