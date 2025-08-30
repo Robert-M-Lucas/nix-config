@@ -329,7 +329,7 @@ in {
     darktable
     blender
     musescore
-    thunderbird
+    thunderbird-bin
 
     ddcutil
 

@@ -57,7 +57,6 @@ in {
       smile
       lutris
       resources
-      calibre
 
       # ====== CMD ======
       platformio-core
@@ -88,6 +87,7 @@ in {
       poetry
       nix-output-monitor
       diesel-cli
+      valgrind
 
       pipes-rs
       cbonsai
@@ -139,7 +139,8 @@ in {
       dotnet-sdk_9
     ];
 
-    z = [
+    pc-only = [
+      pkgs.calibre
     ];
 
     ides = with pkgs-jb-fix; [
@@ -156,6 +157,6 @@ in {
   in
     x
     ++ y
-    ++ z
-    ++ ides;
+    ++ ides
+    ++ (if pc-only then z else []);
 }
