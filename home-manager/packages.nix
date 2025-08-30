@@ -158,5 +158,5 @@ in {
     x
     ++ y
     ++ ides
-    ++ (if pc-only then z else []);
+    ++ (if pc-only then pc-only else []);
 }
