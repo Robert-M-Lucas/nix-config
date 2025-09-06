@@ -104,8 +104,8 @@
   ];
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [22];
-  networking.firewall.allowedUDPPorts = [22];
+  networking.firewall.allowedTCPPorts = [22 8081];
+  networking.firewall.allowedUDPPorts = [22 8081];
 
   system.stateVersion = "24.11";
 }
