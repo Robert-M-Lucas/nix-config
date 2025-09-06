@@ -52,6 +52,8 @@
     pulse.enable = true;
   };
 
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   users.users.robert = {
     isNormalUser = true;
     description = "Robert Lucas";
