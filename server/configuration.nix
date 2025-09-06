@@ -100,6 +100,7 @@
     diff-so-fancy
     fastfetch
     rustup
+    htop
   ];
 
   services.openssh.enable = true;
