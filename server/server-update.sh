@@ -5,8 +5,8 @@ cd ~/nix-config
 echo "| git pull"
 git pull
 
-echo "| sudo cp ./server/configuration.nix /etc/nixos/configuration.nix"
-sudo cp ./server/configuration.nix /etc/nixos/configuration.nix
+echo "| sudo cp /home/robert/nix-config/server/configuration.nix /etc/nixos/configuration.nix"
+sudo cp /home/robert/nix-config/configuration.nix /etc/nixos/configuration.nix
 
 echo "| sudo nixos-rebuild switch"
 sudo nixos-rebuild switch
