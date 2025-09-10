@@ -57,6 +57,7 @@ in {
       smile
       lutris
       resources
+      # calibre
 
       # ====== CMD ======
       platformio-core
@@ -140,7 +141,7 @@ in {
     ];
 
     pc-only = [
-      pkgs.calibre
+      
     ];
 
     ides = with pkgs-jb-fix; [
