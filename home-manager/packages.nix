@@ -57,7 +57,7 @@ in {
       smile
       lutris
       resources
-      # calibre
+      calibre
 
       # ====== CMD ======
       platformio-core
