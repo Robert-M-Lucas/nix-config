@@ -153,7 +153,7 @@ in {
       jetbrains.idea-ultimate
       jetbrains.goland
       jetbrains.rider
-      davinci-resolve
+      # davinci-resolve
     ];
   in
     x
