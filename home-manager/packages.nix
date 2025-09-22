@@ -57,8 +57,7 @@ in {
       smile
       lutris
       resources
-      calibre
-
+      
       # ====== CMD ======
       platformio-core
       clang-tools
@@ -144,6 +143,10 @@ in {
       
     ];
 
+    fastop-only = [
+      pkgs.calibre
+    ];
+
     ides = with pkgs-jb-fix; [
       jetbrains.rust-rover
       jetbrains.webstorm
@@ -159,5 +162,5 @@ in {
     x
     ++ y
     ++ ides
-    ++ (if is-pc then pc-only else []);
+    ++ (if is-pc then pc-only else fastop-only);
 }
