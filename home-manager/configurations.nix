@@ -30,6 +30,9 @@
   #   package = pkgs.gnomeExtensions.gsconnect;
   # };
 
+
+  services.flameshot.enable = true;
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''

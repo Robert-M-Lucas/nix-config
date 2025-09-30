@@ -301,8 +301,6 @@ in {
 
   environment.systemPackages = let
     systemPackages  = with pkgs; [
-      (flameshot.override { enableWlrSupport = true; })
-
       tmux
       fprintd
       fastfetch
