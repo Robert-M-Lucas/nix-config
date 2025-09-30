@@ -57,6 +57,7 @@ in {
       smile
       lutris
       resources
+      (flameshot.override { enableWlrSupport = true; })
       
       # ====== CMD ======
       platformio-core
