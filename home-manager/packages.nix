@@ -112,6 +112,9 @@ in {
 
       (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
 
+      (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
+
+
       # ====== IDEs ======
       unityhub
 
