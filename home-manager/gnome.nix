@@ -41,6 +41,11 @@
         command = "smile";
         name = "Emoji Picker";
       };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+        binding = "<Control>Print";
+        command = "flameshot-gui";
+        name = "Flameshot";
+      };
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
         color-scheme = "";
