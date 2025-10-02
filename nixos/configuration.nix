@@ -299,47 +299,53 @@ in {
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  environment.systemPackages = with pkgs; [
-    tmux
-    fprintd
-    fastfetch
-    htop
-    nixVersions.latest
-    mutter
-    # python3
-    gcc
-    usbutils
-    # home-manager
+  environment.systemPackages = let
+    systemPackages  = with pkgs; [
+      tmux
+      fprintd
+      fastfetch
+      htop
+      nixVersions.latest
+      mutter
+      # python3
+      gcc
+      usbutils
+      # home-manager
 
-    wget
-    gnumake
-    go
-    dig
-    ripgrep
+      wget
+      gnumake
+      go
+      dig
+      ripgrep
 
-    firefox-bin # No, we don't need another package built from source
+      firefox-bin # No, we don't need another package built from source
 
-    protonvpn-gui
-    google-chrome
-    libreoffice
-    obsidian
-    krita
-    gimp
-    obs-studio
-    darktable
-    blender
-    musescore
-    thunderbird-bin
+      protonvpn-gui
+      google-chrome
+      libreoffice
+      krita
+      gimp
+      obs-studio
+      darktable
+      blender
+      musescore
+      thunderbird-bin
 
-    ddcutil
+      ddcutil
 
-    # TODO: TEMP
-    # flutter
-    # dart
-    jdk17
+      # TODO: TEMP
+      # flutter
+      # dart
+      jdk17
 
-    (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
-  ];
+      (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
+    ];
+
+    unstableSystemPackages = with pkgs-unstable; [ 
+      obsidian
+    ];
+  in systemPackages ++ unstableSystemPackages;
+  
 
   programs.gnome-terminal.enable = true;
   console.enable = false;

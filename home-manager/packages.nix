@@ -57,8 +57,7 @@ in {
       smile
       lutris
       resources
-      calibre
-
+      
       # ====== CMD ======
       platformio-core
       clang-tools
@@ -113,6 +112,9 @@ in {
 
       (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
 
+      (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
+
+
       # ====== IDEs ======
       unityhub
 
@@ -144,6 +146,10 @@ in {
       
     ];
 
+    fastop-only = [
+      pkgs.calibre
+    ];
+
     ides = with pkgs-jb-fix; [
       jetbrains.rust-rover
       jetbrains.webstorm
@@ -159,5 +165,5 @@ in {
     x
     ++ y
     ++ ides
-    ++ (if is-pc then pc-only else []);
+    ++ (if is-pc then pc-only else fastop-only);
 }
