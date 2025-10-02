@@ -92,17 +92,23 @@ in {
       }
     '';
 
-    theme = pkgs.stdenv.mkDerivation {
-      pname = "distro-grub-themes";
-      version = "3.2";
-      src = pkgs.fetchFromGitHub {
-        owner = "AdisonCavani";
-        repo = "distro-grub-themes";
-        rev = "v3.2";
-        hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-      };
-      installPhase = "cp -r customize/nixos $out";
+    minegrub-theme = {
+      enable = true;
+      splash = "100% Flakes!";
+      background = "background_options/1.8  - [Classic Minecraft].png";
+      boot-options-count = 4;
     };
+    # theme = pkgs.stdenv.mkDerivation {
+    #   pname = "distro-grub-themes";
+    #   version = "3.2";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "AdisonCavani";
+    #     repo = "distro-grub-themes";
+    #     rev = "v3.1";
+    #     hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+    #   };
+    #   installPhase = "cp -r customize/nixos $out";
+    # };
   };
 
   swapDevices = [
