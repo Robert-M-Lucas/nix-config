@@ -22,7 +22,7 @@
       repo = "nixpkgs";
       ref = "nixos-unstable";
     };
-    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -35,7 +35,7 @@
     # catppuccin,
     home-manager,
     # spicetify-nix,
-    minegrub-theme,
+    # minegrub-theme,
     ...
   }: let
     inherit (self) outputs;
@@ -95,7 +95,7 @@
             # catppuccin.nixosModules.catppuccin
             ./nixos/configuration.nix
             # spicetify-nix.nixosModules.default
-            minegrub-theme.nixosModules.default
+            # minegrub-theme.nixosModules.default
           ];
         };
         fastop = nixpkgs.lib.nixosSystem {
@@ -122,7 +122,7 @@
             # catppuccin.nixosModules.catppuccin
             ./nixos/configuration.nix
             # spicetify-nix.nixosModules.default
-            minegrub-theme.nixosModules.default
+            # minegrub-theme.nixosModules.default
           ];
         };
       };
