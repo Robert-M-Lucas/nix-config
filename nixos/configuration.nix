@@ -312,6 +312,8 @@ in {
 
   environment.systemPackages = let
     systemPackages  = with pkgs; [
+      sweet-nova
+
       tmux
       fprintd
       fastfetch
