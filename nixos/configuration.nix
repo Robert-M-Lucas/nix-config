@@ -175,9 +175,14 @@ in {
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.excludePackages = [pkgs.xterm];
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.excludePackages = [pkgs.xterm];
+
+  # Enable plasma
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -385,10 +390,11 @@ in {
 
   programs.git.enable = true;
 
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
+  # TODO reenable
+  # programs.kdeconnect = {
+  #   enable = true;
+  #   package = pkgs.gnomeExtensions.gsconnect;
+  # };
 
   programs.neovim = {
     enable = true;
