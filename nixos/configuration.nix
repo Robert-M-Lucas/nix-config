@@ -69,7 +69,7 @@ in {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
     };
-    backupFileExtension = "backup";
+    backupFileExtension = "backup_v2";
   };
 
   # Bootloader.
