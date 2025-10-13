@@ -6,7 +6,7 @@ fi
 
 local target_dir="$1"
 
-#-
+#
 
 # Initialize the queue with the current directory
 local queue=("./")
