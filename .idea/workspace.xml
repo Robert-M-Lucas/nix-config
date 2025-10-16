@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="-" />
+    <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="-">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_10_2025,_23_51_[Changes]/shelved.patch" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +20,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Robert-M-Lucas/nix-config",
-    "accountId": "2b5a1940-401f-4095-87e3-25f4d581748f"
+    "url": "https://github.com/robert-m-lucas/nix-config",
+    "accountId": "34335359-fade-4abd-9066-32f4b67f16a2"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -85,6 +87,7 @@
       <workItem from="1754917668899" duration="84000" />
       <workItem from="1754920955926" duration="5000" />
       <workItem from="1759864301834" duration="50000" />
+      <workItem from="1760645031107" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <option name="closed" value="true" />
