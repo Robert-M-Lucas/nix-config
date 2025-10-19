@@ -339,7 +339,6 @@ in {
       krita
       gimp
       obs-studio
-      darktable
       blender
       musescore
       thunderbird-bin

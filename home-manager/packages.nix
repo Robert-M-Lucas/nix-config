@@ -135,6 +135,8 @@ in {
       discord
       wineWowPackages.staging
 
+      darktable
+
       # ====== IDEs ======
       muse-sounds-manager
       wireshark
