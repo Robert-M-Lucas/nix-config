@@ -132,6 +132,7 @@
       data = {
         path = "/data";
         browseable = true;
+        "valid users" = "robert";
         "read only" = false;
         "guest ok" = false;
         "create mask" = "0644";
