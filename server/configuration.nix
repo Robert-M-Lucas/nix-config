@@ -113,7 +113,7 @@
   services.cockpit = {
     enable = true;
     openFirewall = true;
-  } 
+  };
 
   services.tlp.enable = true;
   powerManagement.powertop.enable = true;
