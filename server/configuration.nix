@@ -34,23 +34,23 @@
   };
   console.keyMap = "uk";
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.autoSuspend = false;
+  # services.xserver.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.autoSuspend = false;
 
-  programs.dconf.enable = true;
+  # programs.dconf.enable = true;
 
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  # hardware.pulseaudio.enable = false;
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  # };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -78,24 +78,24 @@
     '';
   };
 
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-connections
-    epiphany
-    geary
-    yelp
-    seahorse
-    gnome-clocks
-    gnome-maps
-    gnome-weather
-  ];
+  # environment.gnome.excludePackages = with pkgs; [
+  #   gnome-tour
+  #   gnome-connections
+  #   epiphany
+  #   geary
+  #   yelp
+  #   seahorse
+  #   gnome-clocks
+  #   gnome-maps
+  #   gnome-weather
+  # ];
   environment.systemPackages = with pkgs; [
     wget
     git
     gh
     tmux
-    google-chrome
-    vscode
+    # google-chrome
+    # vscode
     python3
     diff-so-fancy
     fastfetch
@@ -141,6 +141,30 @@
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
+
+  services.samba = {
+    enable = true;
+    openFirewall = true; # still needed for LAN/Tailscale access
+    shares = {
+      data = {
+        path = "/data";
+        browseable = true;
+        "read only" = false;
+        "guest ok" = false;
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+
+  # --- NFS ---
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /data 192.168.1.0/24(rw,sync,no_subtree_check)
+      /data 100.64.0.0/10(rw,sync,no_subtree_check)  # Tailscale subnet
+    '';
+  };
 
   networking.firewall = {
     enable = true;
