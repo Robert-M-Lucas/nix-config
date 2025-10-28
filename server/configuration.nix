@@ -125,8 +125,6 @@
     openFirewall = true;           # open Tailscale ports
   };
 
-  security.pam.services.sshd.googleAuthenticator.enable = true;
-
   services.samba = {
     enable = true;
     openFirewall = true; # still needed for LAN/Tailscale access
