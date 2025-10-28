@@ -114,7 +114,6 @@
 
   services.tlp.enable = true;
   powerManagement.powertop.enable = true;
-  services.fail2ban.enable = true;
 
   services.tailscale = {
     enable = true;
