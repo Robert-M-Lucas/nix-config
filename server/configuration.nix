@@ -110,7 +110,10 @@
     MaxAuthTries = 6;
   };
 
-  services.cockpit.enable = true;
+  services.cockpit = {
+    enable = true;
+    openFirewall = true;
+  } 
 
   services.tlp.enable = true;
   powerManagement.powertop.enable = true;
@@ -152,6 +155,8 @@
     allowedUDPPorts = [ 41641 ]; # Tailscale wireguard traffic
     trustedInterfaces = [ "tailscale0" ]; # trust VPN
   };
+
+  security.polkit.enable = true;
 
   system.stateVersion = "24.11";
 }
