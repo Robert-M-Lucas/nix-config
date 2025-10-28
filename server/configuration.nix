@@ -120,6 +120,7 @@
     enable = true;
     useRoutingFeatures = "client"; # acts as client only
     openFirewall = true;           # open Tailscale ports
+    extraUpFlags = [ "--hostname=nas" ];
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;

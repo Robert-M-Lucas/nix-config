@@ -122,7 +122,10 @@ in {
     enable = true;
     allowedTCPPorts = [8081 5173 22];
     allowedUDPPorts = [8081 5173 22];
+    trustedInterfaces = [ "tailscale0" ];
   };
+
+  security.pam.services.sshd.googleAuthenticator.enable = true;
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
