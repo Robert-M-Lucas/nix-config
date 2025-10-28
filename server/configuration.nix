@@ -101,7 +101,13 @@
     fastfetch
     rustup
     htop
+    cockpit
+    pcp
   ];
+
+  services.pcp = {
+    enable = true;
+  };
 
   services.openssh.enable = true;
   services.openssh.settings = {
@@ -146,8 +152,11 @@
     enable = true;
     exports = ''
       /data 192.168.1.0/24(rw,sync,no_subtree_check)
-      /data 100.64.0.0/10(rw,sync,no_subtree_check)  # Tailscale subnet
+      /data 100.64.0.0/10(rw,sync,no_subtree_check)
     '';
+    # mountdPort = 20048;
+    # statdport = 32765;
+    # lockdPort = 32767;
   };
 
   networking.firewall = {
