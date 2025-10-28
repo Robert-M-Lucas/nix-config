@@ -57,7 +57,7 @@
   users.users.robert = {
     isNormalUser = true;
     description = "Robert Lucas";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["wheel"];
     packages = with pkgs; [
       (writeShellScriptBin "nix-clean" (builtins.readFile /home/robert/nix-config/home-manager/scripts/nix-clean.sh))
       (writeShellScriptBin "server-update" (builtins.readFile /home/robert/nix-config/server/server-update.sh))
@@ -104,8 +104,49 @@
   ];
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [22 8081];
-  networking.firewall.allowedUDPPorts = [22 8081];
+  services.openssh.settings = {
+    PermitRootLogin = "no";
+    PasswordAuthentication = true;
+    MaxAuthTries = 6;
+  };
+
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    shares = {
+      data = {
+        path = "/data";
+        browseable = true;
+        "read only" = false;
+        "guest ok" = false;
+      };
+    };
+  };
+
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /data 192.168.1.0/24(rw,sync,no_subtree_check)
+  '';
+
+  services.cockpit.enable = true;
+
+  services.tlp.enable = true;
+  powerManagement.powertop.enable = true;
+  services.fail2ban.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client"; # acts as client only
+    openFirewall = true;           # open Tailscale ports
+  };
+
+  security.pam.services.sshd.googleAuthenticator.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowedUDPPorts = [ 41641 ]; # Tailscale wireguard traffic
+    trustedInterfaces = [ "tailscale0" ]; # trust VPN
+  };
 
   system.stateVersion = "24.11";
 }

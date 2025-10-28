@@ -310,6 +310,12 @@ in {
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client"; # acts as client only
+    openFirewall = true;           # open Tailscale ports
+  };
+
   environment.systemPackages = let
     systemPackages  = with pkgs; [
       sweet-nova
