@@ -140,17 +140,17 @@
     };
   };
 
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   # --- NFS ---
   services.nfs.server = {
     enable = true;
     exports = ''
       /data 192.168.1.0/24(rw,sync,no_subtree_check)
       /data 100.64.0.0/10(rw,sync,no_subtree_check)
-    '';
-
-    extraOptions = ''
-      # NFSv4 pseudo-root export
-      fsid=0
     '';
 
     # mountdPort = 20048;
