@@ -128,9 +128,9 @@
   services.samba = {
     enable = true;
     openFirewall = true; # still needed for LAN/Tailscale access
-    shares = {
+    settings = {
       data = {
-        path = "/data";
+        path = "/home/robert/data";
         browseable = true;
         "valid users" = "robert";
         "read only" = false;
@@ -150,8 +150,8 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /data 192.168.1.0/24(rw,sync,no_subtree_check)
-      /data 100.64.0.0/10(rw,sync,no_subtree_check)
+      /home/robert/data 192.168.1.0/24(rw,sync,no_subtree_check)
+      /home/robert/data 100.64.0.0/10(rw,sync,no_subtree_check)
     '';
 
     # mountdPort = 20048;
