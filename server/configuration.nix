@@ -150,7 +150,7 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /home/robert/data 192.168.1.0/24(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=1000) /home/robert/data 100.64.0.0/10(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=1000)
+      /home/robert/data 192.168.1.0/24(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=100) /home/robert/data 100.64.0.0/10(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=100)
     '';
 
     # mountdPort = 20048;
