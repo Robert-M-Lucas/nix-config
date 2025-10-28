@@ -102,12 +102,7 @@
     rustup
     htop
     cockpit
-    pcp
   ];
-
-  services.pcp = {
-    enable = true;
-  };
 
   services.openssh.enable = true;
   services.openssh.settings = {
