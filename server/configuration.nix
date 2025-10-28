@@ -110,24 +110,6 @@
     MaxAuthTries = 6;
   };
 
-  services.samba = {
-    enable = true;
-    openFirewall = true;
-    shares = {
-      data = {
-        path = "/data";
-        browseable = true;
-        "read only" = false;
-        "guest ok" = false;
-      };
-    };
-  };
-
-  services.nfs.server.enable = true;
-  services.nfs.server.exports = ''
-    /data 192.168.1.0/24(rw,sync,no_subtree_check)
-  '';
-
   services.cockpit.enable = true;
 
   services.tlp.enable = true;
