@@ -75,7 +75,7 @@ in {
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFileSystems = [ "nfs" ];
+  boot.supportedFilesystems = [ "nfs" ];
 
   boot.loader.grub = {
     enable = true;

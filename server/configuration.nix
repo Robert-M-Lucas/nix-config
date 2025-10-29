@@ -141,7 +141,7 @@
     };
   };
 
-  boot.supportedFileSystems = [ "nfs" ];
+  boot.supportedFilesystems = [ "nfs" ];
 
 
   services.samba-wsdd = {
