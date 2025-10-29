@@ -130,7 +130,7 @@
     openFirewall = true; # still needed for LAN/Tailscale access
     settings = {
       data = {
-        path = "/data";
+        path = "/home/robert/data";
         browseable = true;
         "valid users" = "robert";
         "read only" = false;
