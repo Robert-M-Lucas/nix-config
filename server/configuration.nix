@@ -149,27 +149,28 @@
     openFirewall = true;
   };
 
-  # --- NFS ---
-  services.nfs.server = {
-    enable = true;
-    exports = ''
-      /data 192.168.1.0/24(rw,fsid=0,nohide,insecure,no_subtree_check) 100.64.0.0/10(rw,fsid=0,nohide,insecure,no_subtree_check)
-    '';
+  # # --- NFS ---
+  # services.nfs.server = {
+  #   enable = true;
+  #   exports = ''
+  #     /data 192.168.1.0/24(rw,fsid=0,nohide,insecure,no_subtree_check) 100.64.0.0/10(rw,fsid=0,nohide,insecure,no_subtree_check)
+  #   '';
 
-    lockdPort = 4001;
-    mountdPort = 4002;
-    statdPort = 4000;
-    extraNfsdConfig = '''';
+  #   lockdPort = 4001;
+  #   mountdPort = 4002;
+  #   statdPort = 4000;
+  #   extraNfsdConfig = '''';
 
-    # mountdPort = 20048;
-    # statdport = 32765;
-    # lockdPort = 32767;
-  };
+  #   # mountdPort = 20048;
+  #   # statdport = 32765;
+  #   # lockdPort = 32767;
+  # };
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 111  2049 4000 4001 4002 20048 ];
-    allowedUDPPorts = [ 111 2049 4000 4001  4002 41641 20048 ];
+    allowedUDPPorts = [ 41641 ];
+    # allowedTCPPorts = [ 111  2049 4000 4001 4002 20048 ];
+    # allowedUDPPorts = [ 111 2049 4000 4001  4002 41641 20048 ];
     trustedInterfaces = [ "tailscale0" ]; # trust VPN
   };
 
