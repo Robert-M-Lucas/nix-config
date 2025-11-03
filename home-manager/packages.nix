@@ -41,7 +41,7 @@ in {
       # ====== GUI Apps ======
       onlyoffice-bin
       gnome-solanum
-      rpi-imager
+      # rpi-imager
       qalculate-gtk
       insomnia
       alacarte

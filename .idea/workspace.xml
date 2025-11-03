@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="-" />
+    <list default="true" id="3efbb5bd-54e4-4716-95a8-94f44b65991b" name="Changes" comment="-">
+      <change beforePath="$PROJECT_DIR$/nixos/configuration.nix" beforeDir="false" afterPath="$PROJECT_DIR$/nixos/configuration.nix" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,8 +48,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178" />
-        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.26830.99" />
+        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
       </set>
     </attachedChunks>
   </component>
@@ -88,6 +90,7 @@
       <workItem from="1760645031107" duration="8000" />
       <workItem from="1760736161274" duration="17000" />
       <workItem from="1760998692531" duration="29000" />
+      <workItem from="1762129894193" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <option name="closed" value="true" />
