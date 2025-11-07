@@ -79,7 +79,7 @@ in {
 
   boot.loader.grub = {
     enable = true;
-    useOSProber = true;
+    useOSProber = false;
     devices = ["nodev"];
     efiSupport = true;
     configurationLimit = 1;
