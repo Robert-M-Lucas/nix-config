@@ -82,6 +82,7 @@ in {
     useOSProber = true;
     devices = ["nodev"];
     efiSupport = true;
+    configurationLimit = 3;
 
     extraEntries = ''
       menuentry "UEFI Settings" {
