@@ -89,6 +89,7 @@
             hardware-config = "pc";
             use-cuda = true;
             is-pc = true;
+            is-worktop = false;
           };
           modules = [
             # > Our main nixos configuration file <
@@ -116,6 +117,35 @@
             hardware-config = "fastop";
             use-cuda = false;
             is-pc = false;
+            is-worktop = false;
+          };
+          modules = [
+            # > Our main nixos configuration file <
+            # catppuccin.nixosModules.catppuccin
+            ./nixos/configuration.nix
+            # spicetify-nix.nixosModules.default
+            # minegrub-theme.nixosModules.default
+          ];
+        };
+        worktop = nixpkgs.lib.nixosSystem {
+          # pkgs = import nixpkgs { inherit system; };
+          specialArgs = {
+            inherit inputs outputs system;
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+              android_sdk.accept_license = true;
+            };
+            pkgs-jb-fix = import nixpkgs-jb-fix {
+              inherit system;
+              config.allowUnfree = true;
+              config.cudaSupport = true;
+              android_sdk.accept_license = true;
+            };
+            hardware-config = "worktop";
+            use-cuda = false;
+            is-pc = false;
+            is-worktop = true;
           };
           modules = [
             # > Our main nixos configuration file <

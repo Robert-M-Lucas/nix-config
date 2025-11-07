@@ -13,45 +13,45 @@
 }: let
   pythonEnv = pkgs.python312.withPackages (ps:
     with ps; [
-      numpy
-      scikit-learn
-      jupyter
-      matplotlib
-      pooch
-      opencv4
-      ffmpeg-python
-      pygobject3
-      pygame
-      scikit-image
-      trimesh
-      notebook
-      beautifulsoup4
-      lxml
-      requests
-      termcolor
-      flask
-      pynput
-      pyautogui
-      keyboard
-      websockets
+      # numpy
+      # scikit-learn
+      # jupyter
+      # matplotlib
+      # pooch
+      # opencv4
+      # ffmpeg-python
+      # pygobject3
+      # pygame
+      # scikit-image
+      # trimesh
+      # notebook
+      # beautifulsoup4
+      # lxml
+      # requests
+      # termcolor
+      # flask
+      # pynput
+      # pyautogui
+      # keyboard
+      # websockets
     ]);
 in {
   home.packages = let
     x = with pkgs; [
       # ====== GUI Apps ======
       onlyoffice-bin
-      gnome-solanum
+      # gnome-solanum
       # rpi-imager
-      qalculate-gtk
+      # qalculate-gtk
       insomnia
-      alacarte
-      prismlauncher
+      #alacarte
+      #prismlauncher
       gthumb
       amberol
       emblem
-      spotify
+      #spotify
       gnome-clocks
-      keypunch
+      #keypunch
       impression
       wike
       smile
@@ -59,34 +59,34 @@ in {
       resources
       
       # ====== CMD ======
-      platformio-core
+      #platformio-core
       clang-tools
       sl
       rustup
       cloc
-      nodejs_22
-      ffmpeg
+      #nodejs_22
+      #ffmpeg
       pythonEnv
       nasm
-      texlive.combined.scheme-full
-      google-cloud-sdk
+      #texlive.combined.scheme-full
+      #google-cloud-sdk
       fortune
       zip
       unzip
       xclip
       libqalculate
-      gradle
+      #gradle
       pkg-config
       libudev-zero
       legendary-gl
       dconf2nix
-      qemu
-      spotdl
+      #qemu
+      #spotdl
       lcov
-      android-tools
+      #android-tools
       poetry
       nix-output-monitor
-      diesel-cli
+      #diesel-cli
       valgrind
 
       pipes-rs
@@ -116,7 +116,7 @@ in {
 
 
       # ====== IDEs ======
-      unityhub
+      #unityhub
 
       # ====== Extensions ======
       gnome-shell-extensions
@@ -132,40 +132,40 @@ in {
     ];
 
     y = with pkgs-unstable; [
-      discord
+      #discord
       wineWowPackages.staging
 
-      darktable
+      #darktable
 
       # ====== IDEs ======
-      muse-sounds-manager
+      #muse-sounds-manager
       wireshark
-      arduino-ide
-      dotnet-sdk_9
+      #arduino-ide
+      #dotnet-sdk_9
     ];
 
     pc-only = [
       
     ];
 
-    fastop-only = [
-      pkgs.calibre
+    laptop-only = [
+      #pkgs.calibre
     ];
 
     ides = with pkgs-jb-fix; [
-      jetbrains.rust-rover
-      jetbrains.webstorm
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      android-studio
-      jetbrains.idea-ultimate
-      jetbrains.goland
-      jetbrains.rider
+      #jetbrains.rust-rover
+      #jetbrains.webstorm
+      #jetbrains.clion
+      #jetbrains.pycharm-professional
+      #android-studio
+      #jetbrains.idea-ultimate
+      #jetbrains.goland
+      #jetbrains.rider
       # davinci-resolve
     ];
   in
     x
     ++ y
     ++ ides
-    ++ (if is-pc then pc-only else fastop-only);
+    ++ (if is-pc then pc-only else laptop-only);
 }

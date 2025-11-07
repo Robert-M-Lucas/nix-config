@@ -15,29 +15,29 @@
 
 let
   # Define Neuwaita icon theme package inline
-  neuwaita-icon-theme = pkgs.stdenv.mkDerivation {
-    pname = "neuwaita-icon-theme";
-    version = "latest";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "RusticBard";
-      repo = "Neuwaita";
-      rev = "main";
-      sha256 = "sha256-NL8/ceugdGNSMpa8G/a4Eolutf5BcN6PXiQ9qDmHM1U=";
-    };
-
-    installPhase = ''
-      mkdir -p $out/share/icons/Neuwaita
-      cp -r * $out/share/icons/Neuwaita
-    '';
-
-    meta = with pkgs.lib; {
-      description = "Neuwaita GNOME icon theme (Adwaita variant)";
-      homepage = "https://github.com/RusticBard/Neuwaita";
-      license = licenses.gpl3;
-      platforms = platforms.all;
-    };
-  };
+  # neuwaita-icon-theme = pkgs.stdenv.mkDerivation {
+  #   pname = "neuwaita-icon-theme";
+  #   version = "latest";
+# 
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "RusticBard";
+  #     repo = "Neuwaita";
+  #     rev = "main";
+  #     sha256 = "sha256-NL8/ceugdGNSMpa8G/a4Eolutf5BcN6PXiQ9qDmHM1U=";
+  #   };
+# 
+  #   installPhase = ''
+  #     mkdir -p $out/share/icons/Neuwaita
+  #     cp -r * $out/share/icons/Neuwaita
+  #   '';
+# 
+  #   meta = with pkgs.lib; {
+  #     description = "Neuwaita GNOME icon theme (Adwaita variant)";
+  #     homepage = "https://github.com/RusticBard/Neuwaita";
+  #     license = licenses.gpl3;
+  #     platforms = platforms.all;
+  #   };
+  # };
 in {
   # You can import other home-manager modules here
   imports = [
@@ -76,10 +76,10 @@ in {
   # Enable GTK and apply Neuwaita icons
   gtk = {
     enable = true;
-    iconTheme = {
-      package = neuwaita-icon-theme;
-      name = "Neuwaita";
-    };
+   #iconTheme = {
+   #  package = neuwaita-icon-theme;
+   #  name = "Neuwaita";
+   #};
   };
 
   programs.nix-index = {
