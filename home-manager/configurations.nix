@@ -5,6 +5,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  is-worktop,
   ...
 }: {
   programs.git = {

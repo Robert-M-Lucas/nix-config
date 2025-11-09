@@ -10,6 +10,7 @@
   pkgs-jb-fix,
   use-cuda,
   is-pc,
+  is-worktop,
   ...
 }: 
 

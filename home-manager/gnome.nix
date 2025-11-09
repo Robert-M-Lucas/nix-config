@@ -2,6 +2,7 @@
   pkgs,
   pkgs-unstable,
   is-pc,
+  is-worktop,
   ...
 }
 : {

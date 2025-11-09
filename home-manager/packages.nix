@@ -9,10 +9,11 @@
   use-cuda,
   home,
   is-pc,
+  is-worktop,
   ...
 }: let
   pythonEnv = pkgs.python312.withPackages (ps:
-    with ps; [
+     (if !is-worktop then with ps; [
       numpy
       scikit-learn
       jupyter
@@ -34,61 +35,48 @@
       pyautogui
       keyboard
       websockets
-    ]);
+    ] else with ps; [numpy matplotlib])
+    );
 in {
   home.packages = let
     x = with pkgs; [
       # ====== GUI Apps ======
       onlyoffice-bin
       gnome-solanum
-      # rpi-imager
       qalculate-gtk
       insomnia
       alacarte
-      prismlauncher
       gthumb
       amberol
       emblem
       spotify
       gnome-clocks
-      keypunch
       impression
-      wike
       smile
-      # lutris
       resources
       
       # ====== CMD ======
+      pythonEnv
       platformio-core
       clang-tools
       sl
       rustup
       cloc
-      nodejs_22
-      ffmpeg
-      pythonEnv
       nasm
-      texlive.combined.scheme-full
-      google-cloud-sdk
       fortune
       zip
       unzip
       xclip
       libqalculate
-      gradle
       pkg-config
       libudev-zero
-      legendary-gl
       dconf2nix
       qemu
       spotdl
       lcov
-      android-tools
       poetry
       nix-output-monitor
-      diesel-cli
       valgrind
-
       pipes-rs
       cbonsai
       asciiquarium
@@ -109,14 +97,9 @@ in {
       (writeShellScriptBin "nft" (builtins.readFile ./scripts/nft.sh))
 
       (writeShellScriptBin "wbb" (builtins.readFile ./scripts/wbb.sh))
-
       (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
-
       (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
 
-
-      # ====== IDEs ======
-      unityhub
 
       # ====== Extensions ======
       gnome-shell-extensions
@@ -127,21 +110,17 @@ in {
       gnomeExtensions.blur-my-shell
       gnomeExtensions.appindicator
       gnomeExtensions.color-picker
+
       # ====== Other ======
       diff-so-fancy
     ];
 
     y = with pkgs-unstable; [
-      discord
       wineWowPackages.staging
 
-      darktable
-
       # ====== IDEs ======
-      muse-sounds-manager
       wireshark
       arduino-ide
-      dotnet-sdk_9
     ];
 
     pc-only = [
@@ -152,20 +131,42 @@ in {
       pkgs.calibre
     ];
 
-    ides = with pkgs-jb-fix; [
-      jetbrains.rust-rover
-      jetbrains.webstorm
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      android-studio
-      jetbrains.idea-ultimate
-      jetbrains.goland
-      jetbrains.rider
-      # davinci-resolve
+    non-work = [
+      # ====== GUI Apps ======
+      pkgs.prismlauncher
+      pkgs.keypunch
+      pkgs.unityhub
+      pkgs.legendary-gl
+
+      pkgs-unstable.discord
+      pkgs-unstable.darktable
+      pkgs-unstable.muse-sounds-manager
+
+      # ====== CMD ======
+      pkgs.nodejs_22
+      pkgs.ffmpeg
+      pkgs.texlive.combined.scheme-full
+      pkgs.google-cloud-sdk
+      pkgs.gradle
+      pkgs.diesel-cli
+      pkgs.dotnet-sdk_9
+      pkgs.android-tools
+    ];
+
+    jetbrains-ides = [
+      pkgs.jetbrains.rust-rover
+      pkgs.jetbrains.webstorm
+      pkgs.jetbrains.clion
+      pkgs.jetbrains.pycharm-professional
+      pkgs.android-studio
+      pkgs.jetbrains.idea-ultimate
+      pkgs.jetbrains.goland
+      pkgs.jetbrains.rider
     ];
   in
     x
     ++ y
-    ++ ides
+    ++ (if !is-worktop then jetbrains-ides else [])
+    ++ (if !is-worktop then non-work else [])
     ++ (if is-pc then pc-only else fastop-only);
 }

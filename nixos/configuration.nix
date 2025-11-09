@@ -12,6 +12,7 @@
   hardware-config,
   use-cuda,
   is-pc,
+  is-worktop,
   overlays,
   overlays-unstable,
   ...
@@ -43,16 +44,6 @@ in {
       outputs.overlays.additions
       outputs.overlays.modifications
       # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #     hi = final.hello.overrideAttrs (oldAttrs: {
-      #         patches = [ ./change-hello-to-hi.patch ];
-      #     });
-      # })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -82,6 +73,7 @@ in {
     useOSProber = true;
     devices = ["nodev"];
     efiSupport = true;
+    configurationLimit = if is-worktop then 3 else 100;
 
     extraEntries = ''
       menuentry "UEFI Settings" {
@@ -93,13 +85,8 @@ in {
       }
     '';
 
-    # minegrub-theme = {
-    #   enable = true;
-    #   splash = "100% Flakes!";
-    #   background = "background_options/1.8  - [Classic Minecraft].png";
-    #   boot-options-count = 5;
-    # };
-    theme = pkgs.stdenv.mkDerivation {
+
+    theme = if is-worktop then null else pkgs.stdenv.mkDerivation {
       pname = "distro-grub-themes";
       version = "3.2";
       src = pkgs.fetchFromGitHub {
@@ -299,19 +286,6 @@ in {
 
   # Programs
 
-  # programs.spicetify = {
-  #     enable = true;
-  #     enabledExtensions = with spicePkgs.extensions; [
-  #         adblockify
-  #         shuffle
-  #         fullAppDisplayMod
-  #         popupLyrics
-  #         beautifulLyrics
-  #     ];
-  #     theme = spicePkgs.themes.catppuccin;
-  #     colorScheme = "frappe";
-  # };
-
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services.tailscale = {
@@ -321,7 +295,7 @@ in {
   };
 
   environment.systemPackages = let
-    systemPackages  = with pkgs; [
+    systemPackages = with pkgs; [
       sweet-nova
 
       tmux
@@ -329,11 +303,8 @@ in {
       fastfetch
       htop
       nixVersions.latest
-      mutter
-      # python3
       gcc
       usbutils
-      # home-manager
 
       wget
       gnumake
@@ -346,22 +317,19 @@ in {
       protonvpn-gui
       google-chrome
       libreoffice
+      thunderbird-bin
+      ddcutil
+
+      (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
+    ] ++ (if is-worktop then [] else [
       krita
       gimp
       obs-studio
       blender
       musescore
-      thunderbird-bin
 
-      ddcutil
-
-      # TODO: TEMP
-      # flutter
-      # dart
       jdk17
-
-      (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
-    ];
+    ]);
 
     unstableSystemPackages = with pkgs-unstable; [ 
       obsidian
@@ -372,17 +340,14 @@ in {
   programs.gnome-terminal.enable = true;
   console.enable = false;
   environment.gnome.excludePackages = with pkgs; [
-    # for packages that are pkgs.*
     gnome-tour
     gnome-connections
-    # for packages that are pkgs.gnome.*
     epiphany # web browser
     geary # email reader
     yelp
     seahorse
     gnome-maps
     gnome-weather
-    # evince # document viewer
   ];
 
   programs.nix-ld = {
