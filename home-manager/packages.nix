@@ -140,6 +140,7 @@ in {
       pkgs.keypunch
       pkgs.unityhub
       pkgs.legendary-gl
+      pkgs.cutechess
 
       pkgs-unstable.discord
       pkgs-unstable.darktable
