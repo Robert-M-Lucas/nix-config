@@ -55,7 +55,7 @@ in {
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable pkgs-jb-fix use-cuda overlays overlays-unstable is-pc;};
+    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable pkgs-jb-fix use-cuda overlays overlays-unstable is-pc is-worktop;};
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;

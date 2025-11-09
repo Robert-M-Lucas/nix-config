@@ -141,6 +141,7 @@ in {
       pkgs-unstable.discord
       pkgs-unstable.darktable
       pkgs-unstable.muse-sounds-manager
+      pkgs.is-worktop
 
       # ====== CMD ======
       pkgs.nodejs_22
