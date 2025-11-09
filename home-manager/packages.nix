@@ -12,31 +12,36 @@
   is-worktop,
   ...
 }: let
-  pythonEnv = pkgs.python312.withPackages (ps:
-     (if !is-worktop then with ps; [
-      numpy
-      scikit-learn
-      jupyter
-      matplotlib
-      pooch
-      opencv4
-      ffmpeg-python
-      pygobject3
-      pygame
-      scikit-image
-      trimesh
-      notebook
-      beautifulsoup4
-      lxml
-      requests
-      termcolor
-      flask
-      pynput
-      pyautogui
-      keyboard
-      websockets
-    ] else with ps; [numpy matplotlib])
-    );
+  pythonEnv = pkgs.python312.withPackages (
+    ps: (
+      if !is-worktop
+      then
+        with ps; [
+          numpy
+          scikit-learn
+          jupyter
+          matplotlib
+          pooch
+          opencv4
+          ffmpeg-python
+          pygobject3
+          pygame
+          scikit-image
+          trimesh
+          notebook
+          beautifulsoup4
+          lxml
+          requests
+          termcolor
+          flask
+          pynput
+          pyautogui
+          keyboard
+          websockets
+        ]
+      else with ps; [numpy matplotlib]
+    )
+  );
 in {
   home.packages = let
     x = with pkgs; [
@@ -54,7 +59,7 @@ in {
       impression
       smile
       resources
-      
+
       # ====== CMD ======
       pythonEnv
       platformio-core
@@ -100,7 +105,6 @@ in {
       (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
       (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
 
-
       # ====== Extensions ======
       gnome-shell-extensions
       gnomeExtensions.ddterm
@@ -124,7 +128,6 @@ in {
     ];
 
     pc-only = [
-      
     ];
 
     fastop-only = [
@@ -167,7 +170,19 @@ in {
   in
     x
     ++ y
-    ++ (if !is-worktop then jetbrains-ides else [])
-    ++ (if !is-worktop then non-work else [])
-    ++ (if is-pc then pc-only else fastop-only);
+    ++ (
+      if !is-worktop
+      then jetbrains-ides
+      else []
+    )
+    ++ (
+      if !is-worktop
+      then non-work
+      else []
+    )
+    ++ (
+      if is-pc
+      then pc-only
+      else fastop-only
+    );
 }

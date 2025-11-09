@@ -29,10 +29,10 @@
   boot.kernelParams = [
     "nvidia-modeset.disable_vrr_memclk_switch=1"
   ];
-  services.udev.packages = with pkgs; [ 
-    platformio-core.udev 
+  services.udev.packages = with pkgs; [
+    platformio-core.udev
     openocd
-    ];
+  ];
   services.udev.extraRules = ''
     SUBSYSTEM=="i2c-dev", KERNEL=="i2c-[0-9]*", ATTRS{class}=="0x030000", TAG+="uaccess"
     SUBSYSTEM=="dri", KERNEL=="card[0-9]*", TAG+="uaccess"
@@ -69,9 +69,9 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     open = true;
 

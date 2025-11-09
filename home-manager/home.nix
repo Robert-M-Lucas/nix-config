@@ -12,9 +12,7 @@
   is-pc,
   is-worktop,
   ...
-}: 
-
-let
+}: let
   # Define Neuwaita icon theme package inline
   neuwaita-icon-theme = pkgs.stdenv.mkDerivation {
     pname = "neuwaita-icon-theme";
@@ -58,7 +56,6 @@ in {
       cudaSupport = use-cuda;
     };
   };
-
 
   home = {
     username = "robert";

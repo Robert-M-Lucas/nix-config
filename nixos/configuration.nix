@@ -66,14 +66,17 @@ in {
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "nfs" ];
+  boot.supportedFilesystems = ["nfs"];
 
   boot.loader.grub = {
     enable = true;
     useOSProber = true;
     devices = ["nodev"];
     efiSupport = true;
-    configurationLimit = if is-worktop then 3 else 100;
+    configurationLimit =
+      if is-worktop
+      then 3
+      else 100;
 
     extraEntries = ''
       menuentry "UEFI Settings" {
@@ -85,18 +88,21 @@ in {
       }
     '';
 
-
-    theme = if is-worktop then null else pkgs.stdenv.mkDerivation {
-      pname = "distro-grub-themes";
-      version = "3.2";
-      src = pkgs.fetchFromGitHub {
-        owner = "AdisonCavani";
-        repo = "distro-grub-themes";
-        rev = "v3.1";
-        hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-      };
-      installPhase = "cp -r customize/nixos $out";
-    };
+    theme =
+      if is-worktop
+      then null
+      else
+        pkgs.stdenv.mkDerivation {
+          pname = "distro-grub-themes";
+          version = "3.2";
+          src = pkgs.fetchFromGitHub {
+            owner = "AdisonCavani";
+            repo = "distro-grub-themes";
+            rev = "v3.1";
+            hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+          };
+          installPhase = "cp -r customize/nixos $out";
+        };
   };
 
   swapDevices = [
@@ -110,7 +116,7 @@ in {
     enable = true;
     allowedTCPPorts = [8081 5173 22];
     allowedUDPPorts = [8081 5173 22];
-    trustedInterfaces = [ "tailscale0" ];
+    trustedInterfaces = ["tailscale0"];
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
@@ -234,14 +240,14 @@ in {
       extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
     };
     guest = {
-        description = "Guest";
-        password = "guest";
-        isNormalUser=true;
-        extraGroups = ["networkmanager"];
+      description = "Guest";
+      password = "guest";
+      isNormalUser = true;
+      extraGroups = ["networkmanager"];
     };
     temp = {
-        isNormalUser=true;
-        extraGroups = ["networkmanager"];
+      isNormalUser = true;
+      extraGroups = ["networkmanager"];
     };
   };
 
@@ -291,51 +297,57 @@ in {
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client"; # acts as client only
-    openFirewall = true;           # open Tailscale ports
+    openFirewall = true; # open Tailscale ports
   };
 
   environment.systemPackages = let
-    systemPackages = with pkgs; [
-      sweet-nova
+    systemPackages = with pkgs;
+      [
+        sweet-nova
 
-      tmux
-      fprintd
-      fastfetch
-      htop
-      nixVersions.latest
-      gcc
-      usbutils
+        tmux
+        fprintd
+        fastfetch
+        htop
+        nixVersions.latest
+        gcc
+        usbutils
 
-      wget
-      gnumake
-      go
-      dig
-      ripgrep
+        wget
+        gnumake
+        go
+        dig
+        ripgrep
 
-      firefox-bin # No, we don't need another package built from source
+        firefox-bin # No, we don't need another package built from source
 
-      protonvpn-gui
-      google-chrome
-      libreoffice
-      thunderbird-bin
-      ddcutil
+        protonvpn-gui
+        google-chrome
+        libreoffice
+        thunderbird-bin
+        ddcutil
 
-      (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
-    ] ++ (if is-worktop then [] else [
-      krita
-      gimp
-      obs-studio
-      blender
-      musescore
+        (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
+      ]
+      ++ (
+        if is-worktop
+        then []
+        else [
+          krita
+          gimp
+          obs-studio
+          blender
+          musescore
 
-      jdk17
-    ]);
+          jdk17
+        ]
+      );
 
-    unstableSystemPackages = with pkgs-unstable; [ 
+    unstableSystemPackages = with pkgs-unstable; [
       obsidian
     ];
-  in systemPackages ++ unstableSystemPackages;
-  
+  in
+    systemPackages ++ unstableSystemPackages;
 
   programs.gnome-terminal.enable = true;
   console.enable = false;

@@ -122,7 +122,7 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client"; # acts as client only
-    openFirewall = true;           # open Tailscale ports
+    openFirewall = true; # open Tailscale ports
   };
 
   services.samba = {
@@ -141,8 +141,7 @@
     };
   };
 
-  boot.supportedFilesystems = [ "nfs" ];
-
+  boot.supportedFilesystems = ["nfs"];
 
   services.samba-wsdd = {
     enable = true;
@@ -168,10 +167,10 @@
 
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [ 41641 ];
+    allowedUDPPorts = [41641];
     # allowedTCPPorts = [ 111  2049 4000 4001 4002 20048 ];
     # allowedUDPPorts = [ 111 2049 4000 4001  4002 41641 20048 ];
-    trustedInterfaces = [ "tailscale0" ]; # trust VPN
+    trustedInterfaces = ["tailscale0"]; # trust VPN
   };
 
   security.polkit.enable = true;
