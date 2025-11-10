@@ -123,6 +123,7 @@
       ms-vscode.cpptools
       ms-vscode.cmake-tools
       ms-vscode.makefile-tools
+      dan-c-underwood.arm
     ] ++ (if is-worktop then with pkgs.vscode-extensions; [
       # johnstoncode.svn-scm
     ] else []);

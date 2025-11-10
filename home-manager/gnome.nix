@@ -99,6 +99,7 @@
         position-in-panel = 0;
         use-higher-precision = true;
         fixed-widths = false;
+        show-battery=true;
       };
       "org/gnome/desktop/input-sources" = {
         xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock"];
