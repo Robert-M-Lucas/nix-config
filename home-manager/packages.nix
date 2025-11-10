@@ -64,6 +64,8 @@ in {
       pythonEnv
       platformio-core
       clang-tools
+      cmake
+      ninja
       sl
       rustup
       cloc
@@ -87,6 +89,7 @@ in {
       asciiquarium
       nyancat
       neo
+      
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
@@ -131,7 +134,7 @@ in {
     ];
 
     fastop-only = [
-      pkgs.calibre
+      
     ];
 
     non-work = [
@@ -142,6 +145,7 @@ in {
       pkgs.legendary-gl
       pkgs.cutechess
 
+      pkgs-unstable.calibre
       pkgs-unstable.discord
       pkgs-unstable.darktable
       pkgs-unstable.muse-sounds-manager
@@ -155,6 +159,10 @@ in {
       pkgs.diesel-cli
       pkgs.dotnet-sdk_9
       pkgs.android-tools
+    ];
+
+    work-only = [
+      pkgs.subversion
     ];
 
     jetbrains-ides = [
@@ -176,9 +184,9 @@ in {
       else []
     )
     ++ (
-      if !is-worktop
-      then non-work
-      else []
+      if is-worktop
+      then work-only
+      else non-work
     )
     ++ (
       if is-pc

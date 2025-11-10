@@ -5,6 +5,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  is-worktop,
   ...
 }: {
   programs.git = {
@@ -113,13 +114,18 @@
       james-yu.latex-workshop
       aaron-bond.better-comments
       k--kato.intellij-idea-keybindings
-      bungcip.better-toml
+      tamasfe.even-better-toml
       rust-lang.rust-analyzer
-      serayuzgur.crates
+      fill-labs.dependi
       ms-python.python
       ms-python.vscode-pylance
       ms-vscode-remote.remote-ssh
-    ];
+      ms-vscode.cpptools
+      ms-vscode.cmake-tools
+      ms-vscode.makefile-tools
+    ] ++ (if is-worktop then with pkgs.vscode-extensions; [
+      # johnstoncode.svn-scm
+    ] else []);
   };
 
   programs.chromium = {
