@@ -22,18 +22,7 @@ in {
   # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
-
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
-
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
+    
     ./${hardware-config}/hardware-configuration.nix
   ];
 
@@ -88,21 +77,21 @@ in {
       }
     '';
 
-    theme =
-      if is-worktop
-      then null
-      else
-        pkgs.stdenv.mkDerivation {
-          pname = "distro-grub-themes";
-          version = "3.2";
-          src = pkgs.fetchFromGitHub {
-            owner = "AdisonCavani";
-            repo = "distro-grub-themes";
-            rev = "v3.1";
-            hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-          };
-          installPhase = "cp -r customize/nixos $out";
-        };
+    # theme =
+    #   if is-worktop
+    #   then null
+    #   else
+    #     pkgs.stdenv.mkDerivation {
+    #       pname = "distro-grub-themes";
+    #       version = "3.2";
+    #       src = pkgs.fetchFromGitHub {
+    #         owner = "AdisonCavani";
+    #         repo = "distro-grub-themes";
+    #         rev = "v3.1";
+    #         hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+    #       };
+    #       installPhase = "cp -r customize/nixos $out";
+    #     };
   };
 
   swapDevices = [
@@ -128,9 +117,6 @@ in {
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
       flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      # nix-path = config.nix.nixPath;
-      # max-jobs = if lite then 1 else "auto";
 
       substituters = [
         "https://nix-community.cachix.org"
@@ -224,19 +210,12 @@ in {
     pkgs.nerd-fonts.fira-code
   ];
 
-  # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     robert = {
-      # You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      # initialPassword = "correcthorsebatterystaple";
       description = "Robert Lucas";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
-        # Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
     };
     guest = {
@@ -268,24 +247,19 @@ in {
 
   networking.networkmanager.enable = true;
 
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
     allowSFTP = true;
     ports = [22];
     settings = {
-      # Opinionated: forbid root login through SSH.
       PermitRootLogin = "yes";
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
       PasswordAuthentication = true;
       AllowUsers = ["robert"];
       Macs = [
         "hmac-sha2-512-etm@openssh.com"
         "hmac-sha2-256-etm@openssh.com"
         "umac-128-etm@openssh.com"
-        "hmac-sha2-512" # Might be less secure - needed for dartssh2
+        # "hmac-sha2-512" # Might be less secure - needed for dartssh2
       ];
     };
   };
