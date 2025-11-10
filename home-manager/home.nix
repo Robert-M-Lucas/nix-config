@@ -21,8 +21,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "RusticBard";
       repo = "Neuwaita";
-      rev = "main";
-      sha256 = "sha256-NL8/ceugdGNSMpa8G/a4Eolutf5BcN6PXiQ9qDmHM1U=";
+      rev = "1130e2ef16baf6b40749c9733c2de093d7bf2d30";
+      sha256 = "sha256-WYDIa5/hv6ksUk6nNzQD7VrOVp1TuMHSEbO0Gt86AwQ=";
     };
 
     installPhase = ''
