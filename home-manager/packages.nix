@@ -60,6 +60,10 @@ in {
       smile
       resources
 
+      # ====== IDEs ======
+      wireshark
+      arduino-ide
+
       # ====== CMD ======
       pythonEnv
       platformio-core
@@ -89,7 +93,10 @@ in {
       asciiquarium
       nyancat
       neo
-      
+      wineWowPackages.staging
+      diff-so-fancy
+
+      # ====== Scripts ======
 
       (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
       (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
@@ -117,17 +124,12 @@ in {
       gnomeExtensions.blur-my-shell
       gnomeExtensions.appindicator
       gnomeExtensions.color-picker
-
-      # ====== Other ======
-      diff-so-fancy
     ];
 
     y = with pkgs-unstable; [
-      wineWowPackages.staging
+      
 
-      # ====== IDEs ======
-      wireshark
-      arduino-ide
+      
     ];
 
     pc-only = [
