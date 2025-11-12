@@ -330,10 +330,10 @@ in {
     gnome-connections
     epiphany # web browser
     geary # email reader
-    yelp
-    seahorse
+    yelp # help viewer
     gnome-maps
     gnome-weather
+    gnome-system-monitor
   ];
 
   programs.nix-ld = {
