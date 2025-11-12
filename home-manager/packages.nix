@@ -127,16 +127,12 @@ in {
     ];
 
     y = with pkgs-unstable; [
-      
-
-      
     ];
 
     pc-only = [
     ];
 
     fastop-only = [
-      
     ];
 
     non-work = [

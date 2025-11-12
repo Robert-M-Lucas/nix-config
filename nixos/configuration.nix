@@ -22,7 +22,7 @@ in {
   # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    
+
     ./${hardware-config}/hardware-configuration.nix
   ];
 
@@ -103,9 +103,18 @@ in {
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = if is-worktop then [] else [8081 5173 22];
-    allowedUDPPorts = if is-worktop then [] else [8081 5173 22];
-    trustedInterfaces = if is-worktop then [] else ["tailscale0"];
+    allowedTCPPorts =
+      if is-worktop
+      then []
+      else [8081 5173 22];
+    allowedUDPPorts =
+      if is-worktop
+      then []
+      else [8081 5173 22];
+    trustedInterfaces =
+      if is-worktop
+      then []
+      else ["tailscale0"];
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;

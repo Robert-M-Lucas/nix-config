@@ -41,7 +41,10 @@
         togglestate1-setting = false;
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
-        custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        ];
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Super>period";
@@ -99,7 +102,7 @@
         position-in-panel = 0;
         use-higher-precision = true;
         fixed-widths = false;
-        show-battery=true;
+        show-battery = true;
       };
       "org/gnome/desktop/input-sources" = {
         xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock"];
