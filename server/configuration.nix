@@ -146,9 +146,9 @@
     enable = true;
     port = 2283;
     openFirewall = true;
-    accelerationDevices = null;
-
+    host = "0.0.0.0";
   };
+  services.immich.accelerationDevices = null;
 
   users.users.immich.extraGroups = [ "video" "render" ];
   hardware.graphics = {
