@@ -102,6 +102,7 @@
     rustup
     htop
     cockpit
+    immich 
   ];
 
   services.openssh.enable = true;
@@ -141,8 +142,14 @@
     };
   };
 
-  services.immich.enable = true;
-  services.immich.port = 2283;
+  services.immich = {
+    enable = true;
+    port = 2283;
+    openFirewall = true;
+    accelerationDevices = null;
+
+  };
+
   users.users.immich.extraGroups = [ "video" "render" ];
   hardware.graphics = {
     enable = true;
