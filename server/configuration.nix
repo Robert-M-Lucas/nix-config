@@ -148,7 +148,7 @@
     openFirewall = true;
     host = "0.0.0.0";
   };
-  services.immich.accelerationDevices = null;
+  # services.immich.accelerationDevices = null;
 
   users.users.immich.extraGroups = [ "video" "render" ];
   hardware.graphics = {
