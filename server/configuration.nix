@@ -1,8 +1,19 @@
+let
+  unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+  in
 {
   config,
   pkgs,
   ...
 }: {
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
   imports = [
     ./hardware-configuration.nix
   ];
@@ -143,6 +154,7 @@
   };
 
   services.immich = {
+    package = pkgs.unstable.immich;
     enable = true;
     port = 2283;
     openFirewall = true;
