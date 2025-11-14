@@ -141,6 +141,17 @@
     };
   };
 
+  services.immich.enable = true;
+  services.immich.port = 2283;
+  users.users.immich.extraGroups = [ "video" "render" ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
   boot.supportedFilesystems = ["nfs"];
 
   services.samba-wsdd = {
@@ -168,6 +179,7 @@
   networking.firewall = {
     enable = true;
     allowedUDPPorts = [41641];
+    allowedTCPPorts = [ 2238 ];
     # allowedTCPPorts = [ 111  2049 4000 4001 4002 20048 ];
     # allowedUDPPorts = [ 111 2049 4000 4001  4002 41641 20048 ];
     trustedInterfaces = ["tailscale0"]; # trust VPN
