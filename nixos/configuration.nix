@@ -64,7 +64,7 @@ in {
     efiSupport = true;
     configurationLimit =
       if is-worktop
-      then 3
+      then 2
       else 100;
 
     extraEntries = ''
