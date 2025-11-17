@@ -294,6 +294,7 @@ in {
         htop
         nixVersions.latest
         gcc
+        gdb
         usbutils
 
         wget
