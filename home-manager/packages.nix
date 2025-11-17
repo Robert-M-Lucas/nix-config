@@ -93,7 +93,8 @@ in {
       asciiquarium
       nyancat
       neo
-      wineWowPackages.staging
+      wineWowPackages.stableFull
+      winetricks
       diff-so-fancy
 
       # ====== Scripts ======
