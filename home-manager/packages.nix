@@ -108,6 +108,7 @@ in {
       (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
       (writeShellScriptBin "chx" (builtins.readFile ./scripts/chx.sh))
       (writeShellScriptBin "where" (builtins.readFile ./scripts/where.sh))
+      (writeShellScriptBin "netports" (builtins.readFile ./scripts/netports.sh))
 
       (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
       (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
