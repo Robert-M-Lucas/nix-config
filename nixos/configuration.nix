@@ -105,11 +105,11 @@ in {
     enable = true;
     allowedTCPPorts =
       if is-worktop
-      then []
+      then [8081]
       else [8081 5173 22];
     allowedUDPPorts =
       if is-worktop
-      then []
+      then [8081]
       else [8081 5173 22];
     trustedInterfaces =
       if is-worktop
