@@ -12,10 +12,14 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  networking.hostName = "rlucas-nixos";
+
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.kernelModules = ["kvm-intel" "ddcci_backlight"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    ddcci-driver
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/38000cb8-9c8f-4922-bd8e-538a50e24c19";
