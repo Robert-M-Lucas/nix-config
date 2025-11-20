@@ -34,36 +34,34 @@ do
   fi
 done
 
-if [[ -z "$full_mode" ]]; then
-  echo "> Git pull? (Y/n):"
-  read user_input
-fi
+if [[ -z "$apply_mode"]]; then
+  if [[ -z "$full_mode" ]]; then
+    echo "> Git pull? (Y/n):"
+    read user_input
+  fi
 
-if [ "$full_mode" == "true" ] || ! ([ "$user_input" == "n" ] && ! [ "$user_input" == "N" ]); then
-  echo "| git pull"
-  git pull
-fi
+  if [ "$full_mode" == "true" ] || ! ([ "$user_input" == "n" ] && ! [ "$user_input" == "N" ]); then
+    echo "| git pull"
+    git pull
+  fi
 
+  if [[ -z "$full_mode" ]]; then
+    codium -w .
+  fi
 
-if [[ -z "$apply_mode" ]] && [[ -z "$full_mode" ]]; then
-  codium -w .
+  if [[ -z "$full_mode" ]]; then
+    echo "> Update flake? (y/N):"
+    read user_input
+  fi
+
+  if [ "$full_mode" == "true" ] || [ "$user_input" == "y" ] || [ "$user_input" == "Y" ]; then
+      echo "| nix flake update"
+      nix flake update
+  fi
 fi
 
 echo "| git add"
 git add -A
-
-
-if [[ -z "$full_mode" ]]; then
-  echo "> Update flake? (y/N):"
-  read user_input
-fi
-
-if [ "$full_mode" == "true" ] || [ "$user_input" == "y" ] || [ "$user_input" == "Y" ]; then
-    echo "| nix flake update"
-    nix flake update
-fi
-
-
 
 if [ "$light_mode" == "true" ]; then
   echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3"
