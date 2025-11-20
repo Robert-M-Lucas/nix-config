@@ -34,7 +34,7 @@ do
   fi
 done
 
-if [[ -z "$apply_mode"]]; then
+if [[ -z "$apply_mode" ]]; then
   if [[ -z "$full_mode" ]]; then
     echo "> Git pull? (Y/n):"
     read user_input
