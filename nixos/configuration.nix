@@ -58,6 +58,7 @@ in {
   boot.supportedFilesystems = ["nfs"];
 
   boot.loader.grub = {
+    splashImage = null;
     enable = true;
     useOSProber = true;
     devices = ["nodev"];

@@ -25,7 +25,7 @@ do
   if [[ "$arg" == "--full" ]]; then
     full_mode=true
   fi
-  if [[ "$arg" == "--light" ]]; then
+  if [[ "$arg" == "--light" || "$arg" == "--lite" ]]; then
     light_mode=true
   fi
   if [[ "$arg" == "--shutdown" ]]; then
