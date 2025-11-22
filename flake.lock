@@ -37,7 +37,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-jb-fix": {
+    "nixpkgs-jb": {
       "locked": {
         "lastModified": 1763421233,
         "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
@@ -73,7 +73,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-jb-fix": "nixpkgs-jb-fix",
+        "nixpkgs-jb": "nixpkgs-jb",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }

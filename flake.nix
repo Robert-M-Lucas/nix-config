@@ -16,7 +16,7 @@
       ref = "nixos-unstable";
       # rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
     };
-    nixpkgs-jb-fix = {
+    nixpkgs-jb = {
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
@@ -31,7 +31,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    nixpkgs-jb-fix,
+    nixpkgs-jb,
     home-manager,
     ...
   }: let
@@ -73,17 +73,17 @@
             pkgs-unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
-              config.cudaSupport = true;
+              config.cudaSupport = false;
               android_sdk.accept_license = true;
             };
-            pkgs-jb-fix = import nixpkgs-jb-fix {
+            pkgs-jb = import nixpkgs-jb {
               inherit system;
               config.allowUnfree = true;
-              config.cudaSupport = true;
+              config.cudaSupport = false;
               android_sdk.accept_license = true;
             };
             hardware-config = "pc";
-            use-cuda = true;
+            use-cuda = false;
             is-pc = true;
             is-worktop = false;
           };
@@ -101,10 +101,9 @@
               config.allowUnfree = true;
               android_sdk.accept_license = true;
             };
-            pkgs-jb-fix = import nixpkgs-jb-fix {
+            pkgs-jb = import nixpkgs-jb {
               inherit system;
               config.allowUnfree = true;
-              config.cudaSupport = true;
               android_sdk.accept_license = true;
             };
             hardware-config = "fastop";
@@ -128,10 +127,9 @@
               config.allowUnfree = true;
               android_sdk.accept_license = true;
             };
-            pkgs-jb-fix = import nixpkgs-jb-fix {
+            pkgs-jb = import nixpkgs-jb {
               inherit system;
               config.allowUnfree = true;
-              config.cudaSupport = true;
               android_sdk.accept_license = true;
             };
             hardware-config = "worktop";

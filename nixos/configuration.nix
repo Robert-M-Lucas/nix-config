@@ -7,7 +7,7 @@
   config,
   pkgs,
   pkgs-unstable,
-  pkgs-jb-fix,
+  pkgs-jb,
   system,
   hardware-config,
   use-cuda,
@@ -44,7 +44,7 @@ in {
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable pkgs-jb-fix use-cuda overlays overlays-unstable is-pc is-worktop;};
+    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable pkgs-jb use-cuda overlays overlays-unstable is-pc is-worktop;};
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;

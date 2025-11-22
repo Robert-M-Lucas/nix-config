@@ -5,7 +5,7 @@
   config,
   pkgs,
   pkgs-unstable,
-  pkgs-jb-fix,
+  pkgs-jb,
   use-cuda,
   home,
   is-pc,
@@ -167,14 +167,14 @@ in {
     ];
 
     jetbrains-ides = [
-      pkgs.jetbrains.rust-rover
-      pkgs.jetbrains.webstorm
-      pkgs.jetbrains.clion
-      pkgs.jetbrains.pycharm-professional
-      pkgs.android-studio
-      pkgs.jetbrains.idea-ultimate
-      pkgs.jetbrains.goland
-      pkgs.jetbrains.rider
+      pkgs-jb.jetbrains.rust-rover
+      pkgs-jb.jetbrains.webstorm
+      pkgs-jb.jetbrains.clion
+      pkgs-jb.jetbrains.pycharm-professional
+      pkgs-jb.android-studio
+      pkgs-jb.jetbrains.idea-ultimate
+      pkgs-jb.jetbrains.goland
+      pkgs-jb.jetbrains.rider
     ];
   in
     x
