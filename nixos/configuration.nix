@@ -78,6 +78,14 @@ in {
       }
     '';
 
+
+    extraConfig = ''
+      set lang=en
+      export lang
+      set locale_dir=
+    '';
+
+
     # theme =
     #   if is-worktop
     #   then null
