@@ -78,13 +78,11 @@ in {
       }
     '';
 
-
     extraConfig = ''
       set lang=en
       export lang
       set locale_dir=
     '';
-
 
     # theme =
     #   if is-worktop
@@ -346,8 +344,6 @@ in {
     ];
   in
     systemPackages ++ unstableSystemPackages;
-
-  
 
   programs.gnome-terminal.enable = false;
   console.enable = false;
