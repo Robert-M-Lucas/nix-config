@@ -335,7 +335,9 @@ in {
   in
     systemPackages ++ unstableSystemPackages;
 
-  programs.gnome-terminal.enable = true;
+  programs.wireshark.enable = true;
+
+  programs.gnome-terminal.enable = false;
   console.enable = false;
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour

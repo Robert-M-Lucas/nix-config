@@ -61,7 +61,6 @@ in {
       resources
 
       # ====== IDEs ======
-      wireshark
       arduino-ide
 
       # ====== CMD ======

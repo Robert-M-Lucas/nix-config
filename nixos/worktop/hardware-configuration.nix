@@ -18,10 +18,10 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = [
     "kvm-intel" 
-    # "ddcci_backlight"
+    "ddcci_backlight"
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    # ddcci-driver
+    ddcci-driver
   ];
 
   fileSystems."/" = {
