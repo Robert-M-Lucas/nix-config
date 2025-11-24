@@ -284,14 +284,17 @@ in {
   };
 
   # Programs
-  
+
   services.tailscale = {
     enable = !is-worktop;
     useRoutingFeatures = "client"; # acts as client only
     openFirewall = true; # open Tailscale ports
   };
 
-  programs.wireshark.enable = true;
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
   environment.systemPackages = let
     systemPackages = with pkgs;
