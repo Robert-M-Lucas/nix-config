@@ -264,6 +264,7 @@ in {
   # };
 
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   services.openssh = {
     enable = true;
@@ -283,14 +284,14 @@ in {
   };
 
   # Programs
-
-  systemd.services.NetworkManager-wait-online.enable = false;
-
+  
   services.tailscale = {
     enable = !is-worktop;
     useRoutingFeatures = "client"; # acts as client only
     openFirewall = true; # open Tailscale ports
   };
+
+  programs.wireshark.enable = true;
 
   environment.systemPackages = let
     systemPackages = with pkgs;
@@ -343,7 +344,7 @@ in {
   in
     systemPackages ++ unstableSystemPackages;
 
-  programs.wireshark.enable = true;
+  
 
   programs.gnome-terminal.enable = false;
   console.enable = false;
