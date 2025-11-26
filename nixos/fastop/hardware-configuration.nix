@@ -35,6 +35,8 @@
     SUBSYSTEM=="dri", KERNEL=="card[0-9]*", TAG+="uaccess"
   '';
 
+  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linuxKernel.kernels.linux_rt_6_1;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
