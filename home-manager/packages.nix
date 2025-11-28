@@ -46,7 +46,7 @@ in {
   home.packages = let
     x = with pkgs; [
       # ====== GUI Apps ======
-      onlyoffice-bin
+      onlyoffice-desktopeditors
       gnome-solanum
       qalculate-gtk
       insomnia
