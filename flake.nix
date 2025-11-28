@@ -6,7 +6,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-25.05";
+      ref = "nixos-25.11";
       # rev = "34627c90f062da515ea358360f448da57769236e";
     };
     nixpkgs-unstable = {
@@ -23,7 +23,7 @@
       ref = "nixos-unstable";
     };
     # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
