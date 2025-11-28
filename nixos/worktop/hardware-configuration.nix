@@ -24,6 +24,20 @@
     ddcci-driver
   ];
 
+  
+
+  # boot.kernelPatches = lib.singleton {
+  #   name = "rt";
+  #   patch = null;
+  #   structuredExtraConfig = {
+  #     EXPERT = lib.kernel.yes;
+  #     PREEMPT_RT = lib.kernel.yes;
+  #     PREEMPT_VOLUNTARY = lib.kernel.unset;
+  #     PREEMPT_DYNAMIC = lib.kernel.unset;
+  #   };
+  # };
+
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/38000cb8-9c8f-4922-bd8e-538a50e24c19";
     fsType = "ext4";
