@@ -162,7 +162,12 @@ in
     };
     # services.immich.accelerationDevices = null;
 
-    users.users.immich.extraGroups = ["video" "render"];
+    users.users.immich = {
+      home = "/var/lib/immich";
+      createHome = true;
+      extraGroups = ["video" "render"];
+    };
+
     hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
