@@ -307,6 +307,8 @@ in {
         gcc
         gdb
         usbutils
+        nettools
+        nmap
 
         wget
         gnumake
