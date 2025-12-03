@@ -94,7 +94,7 @@ in {
       neo
       wineWowPackages.stableFull
       winetricks
-      diff-so-fancy
+      delta
 
       # ====== Scripts ======
 

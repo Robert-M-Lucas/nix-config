@@ -14,8 +14,10 @@
     userEmail = "100799838+Robert-M-Lucas@users.noreply.github.com";
     lfs.enable = true;
     extraConfig = {
-      core.pager = "diff-so-fancy | less --tabs=4 -RF";
-      interactive.diffFilter = "diff-so-fancy --patch";
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only";
+      delta.navigate = true;
+      merge.conflictStyle = "zdiff3";
     };
   };
 
