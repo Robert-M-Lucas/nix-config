@@ -10,14 +10,18 @@
 }: {
   programs.git = {
     enable = true;
-    userName = "Robert-M-Lucas";
-    userEmail = "100799838+Robert-M-Lucas@users.noreply.github.com";
+    user.name = "Robert-M-Lucas";
+    user.email = "100799838+Robert-M-Lucas@users.noreply.github.com";
     lfs.enable = true;
     extraConfig = {
       core.pager = "delta";
       interactive.diffFilter = "delta --color-only";
-      delta.navigate = true;
       merge.conflictStyle = "zdiff3";
+      delta = {
+        navigate = true;
+        side-by-side = true;
+        line-numbers = true;
+      };
     };
   };
 
