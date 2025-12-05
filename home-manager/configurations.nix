@@ -10,10 +10,11 @@
 }: {
   programs.git = {
     enable = true;
-    user.name = "Robert-M-Lucas";
-    user.email = "100799838+Robert-M-Lucas@users.noreply.github.com";
+    
     lfs.enable = true;
     extraConfig = {
+      user.name = "Robert-M-Lucas";
+      user.email = "100799838+Robert-M-Lucas@users.noreply.github.com";
       core.pager = "delta";
       interactive.diffFilter = "delta --color-only";
       merge.conflictStyle = "zdiff3";

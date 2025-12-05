@@ -324,6 +324,8 @@ in {
         libreoffice
         thunderbird-bin
         ddcutil
+        krita
+        gimp
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
@@ -331,8 +333,6 @@ in {
         if is-worktop
         then []
         else [
-          krita
-          gimp
           obs-studio
           blender
           musescore

@@ -38,6 +38,8 @@
           pyautogui
           keyboard
           websockets
+          west
+          jsonschema
         ]
       else with ps; [numpy matplotlib]
     )
