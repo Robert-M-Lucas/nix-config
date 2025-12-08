@@ -40,6 +40,8 @@
           websockets
           west
           jsonschema
+          tree-sitter
+          tree-sitter-c
         ]
       else with ps; [numpy matplotlib]
     )
@@ -61,6 +63,7 @@ in {
       impression
       smile
       resources
+      hieroglyphic
 
       # ====== IDEs ======
       arduino-ide

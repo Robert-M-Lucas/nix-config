@@ -12,7 +12,7 @@
     enable = true;
     
     lfs.enable = true;
-    extraConfig = {
+    settings = {
       user.name = "Robert-M-Lucas";
       user.email = "100799838+Robert-M-Lucas@users.noreply.github.com";
       core.pager = "delta";
