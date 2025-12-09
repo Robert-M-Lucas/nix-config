@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker stop $(docker ps -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q -a)  
+docker ps -a --format '{{.Names}}' | grep -v persist | xargs -r docker rm -f && docker image prune -a -f
