@@ -38,12 +38,15 @@
           pyautogui
           keyboard
           websockets
-          west
-          jsonschema
-          tree-sitter
-          tree-sitter-c
         ]
-      else with ps; [numpy matplotlib]
+      else with ps; [
+        numpy
+        matplotlib
+        west
+        jsonschema
+        tree-sitter
+        tree-sitter-grammars.tree-sitter-c
+      ]
     )
   );
 in {
