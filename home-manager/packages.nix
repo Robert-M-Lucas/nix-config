@@ -101,6 +101,7 @@ in {
       wineWowPackages.stableFull
       winetricks
       delta
+      distrobox
 
       # ====== Scripts ======
 
