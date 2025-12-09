@@ -64,6 +64,7 @@ in {
       smile
       resources
       hieroglyphic
+      boxbuddy
 
       # ====== IDEs ======
       arduino-ide
