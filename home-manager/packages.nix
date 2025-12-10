@@ -120,6 +120,7 @@ in {
       (writeShellScriptBin "where" (builtins.readFile ./scripts/where.sh))
       (writeShellScriptBin "netports" (builtins.readFile ./scripts/netports.sh))
       (writeShellScriptBin "docker-nuke" (builtins.readFile ./scripts/docker-nuke.sh))
+      (writeShellScriptBin "genpass" (builtins.readFile ./scripts/genpass.sh))
 
       (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
       (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
