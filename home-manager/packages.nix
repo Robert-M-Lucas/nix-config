@@ -105,6 +105,7 @@ in {
       winetricks
       delta
       distrobox
+      podman
 
       # ====== Scripts ======
 
