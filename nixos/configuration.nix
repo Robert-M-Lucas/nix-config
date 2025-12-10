@@ -297,6 +297,8 @@ in {
   environment.systemPackages = let
     systemPackages = with pkgs;
       [
+        file-roller
+
         sweet-nova
 
         tmux
