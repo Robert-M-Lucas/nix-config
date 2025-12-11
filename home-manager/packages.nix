@@ -176,6 +176,7 @@ in {
 
     work-only = [
       pkgs.subversion
+      pkgs.gitkraken
     ];
 
     jetbrains-ides = [
