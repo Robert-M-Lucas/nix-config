@@ -106,6 +106,9 @@ in {
       delta
       distrobox
       podman
+      nodejs_22
+      ffmpeg
+      texlive.combined.scheme-full
 
       # ====== Scripts ======
 
@@ -164,9 +167,6 @@ in {
       pkgs-unstable.muse-sounds-manager
 
       # ====== CMD ======
-      pkgs.nodejs_22
-      pkgs.ffmpeg
-      pkgs.texlive.combined.scheme-full
       pkgs.google-cloud-sdk
       pkgs.gradle
       pkgs.diesel-cli
