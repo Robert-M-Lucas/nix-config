@@ -172,6 +172,7 @@ in {
       pkgs.diesel-cli
       pkgs.dotnet-sdk_9
       pkgs.android-tools
+      pkgs.yt-dlp
     ];
 
     work-only = [
