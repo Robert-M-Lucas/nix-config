@@ -28,11 +28,11 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  fileSystems."/var/lib/immich" = {
-    device = "/dev/disk/by-label/immich-data";
-    fsType = "ext4";
-    options = ["noatime"];
-  };
+  # fileSystems."/var/lib/immich" = {
+  #   device = "/dev/disk/by-label/immich-data";
+  #   fsType = "ext4";
+  #   options = ["noatime" "nodiratime"];
+  # };
 
   swapDevices = [
     {
