@@ -114,6 +114,7 @@ in
       htop
       cockpit
       immich
+      usbutils
     ];
 
     services.openssh.enable = true;
