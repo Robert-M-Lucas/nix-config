@@ -39,14 +39,15 @@
           keyboard
           websockets
         ]
-      else with ps; [
-        numpy
-        matplotlib
-        west
-        jsonschema
-        tree-sitter
-        tree-sitter-grammars.tree-sitter-c
-      ]
+      else
+        with ps; [
+          numpy
+          matplotlib
+          west
+          jsonschema
+          tree-sitter
+          tree-sitter-grammars.tree-sitter-c
+        ]
     )
   );
 in {
