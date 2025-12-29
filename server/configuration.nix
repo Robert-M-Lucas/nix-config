@@ -115,6 +115,8 @@ in
       cockpit
       immich
       usbutils
+      ripgrep
+      docker
     ];
 
     services.openssh.enable = true;
