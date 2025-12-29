@@ -184,9 +184,9 @@ in {
       pkgs-jb.jetbrains.rust-rover
       pkgs-jb.jetbrains.webstorm
       pkgs-jb.jetbrains.clion
-      pkgs-jb.jetbrains.pycharm-professional
+      pkgs-jb.jetbrains.pycharm
       pkgs-jb.android-studio
-      pkgs-jb.jetbrains.idea-ultimate
+      pkgs-jb.jetbrains.idea
       pkgs-jb.jetbrains.goland
       pkgs-jb.jetbrains.rider
     ];
