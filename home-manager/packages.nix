@@ -174,6 +174,7 @@ in {
       pkgs.dotnet-sdk_9
       pkgs.android-tools
       pkgs.yt-dlp
+      pkgs.fastchess
     ];
 
     work-only = [
