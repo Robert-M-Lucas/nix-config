@@ -131,11 +131,11 @@ in
       openFirewall = true;
     };
 
-    services.prometheus.enable = true;
-    services.prometheus.port = 9091;
-    services.prometheus.exporters.node.enable = true;
-    services.grafana_reporter.enable = true;
-    services.grafana_reporter.addr = "0.0.0.0";
+    # services.prometheus.enable = true;
+    # services.prometheus.port = 9091;
+    # services.prometheus.exporters.node.enable = true;
+    # services.grafana_reporter.enable = true;
+    # services.grafana_reporter.addr = "0.0.0.0";
 
     services.tlp.enable = true;
     powerManagement.powertop.enable = true;
