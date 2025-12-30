@@ -209,8 +209,8 @@ in
 
     networking.firewall = {
       enable = true;
-      allowedUDPPorts = [41641];
-      allowedTCPPorts = [80 443 2283];
+      allowedUDPPorts = [41641 9090 9100 3000];
+      allowedTCPPorts = [80 443 2283 9090 9100 3000];
       # allowedTCPPorts = [ 111  2049 4000 4001 4002 20048 ];
       # allowedUDPPorts = [ 111 2049 4000 4001  4002 41641 20048 ];
       trustedInterfaces = ["tailscale0"]; # trust VPN
