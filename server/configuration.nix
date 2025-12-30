@@ -131,6 +131,10 @@ in
       openFirewall = true;
     };
 
+    services.prometheus.enable = true;
+    services.prometheus.exporters.node.enable = true;
+    services.grafana.enable = true;
+
     services.tlp.enable = true;
     powerManagement.powertop.enable = true;
 
