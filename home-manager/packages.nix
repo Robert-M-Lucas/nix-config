@@ -39,14 +39,15 @@
           keyboard
           websockets
         ]
-      else with ps; [
-        numpy
-        matplotlib
-        west
-        jsonschema
-        tree-sitter
-        tree-sitter-grammars.tree-sitter-c
-      ]
+      else
+        with ps; [
+          numpy
+          matplotlib
+          west
+          jsonschema
+          tree-sitter
+          tree-sitter-grammars.tree-sitter-c
+        ]
     )
   );
 in {
@@ -172,6 +173,8 @@ in {
       pkgs.diesel-cli
       pkgs.dotnet-sdk_9
       pkgs.android-tools
+      pkgs.yt-dlp
+      pkgs.fastchess
     ];
 
     work-only = [
@@ -183,9 +186,9 @@ in {
       pkgs-jb.jetbrains.rust-rover
       pkgs-jb.jetbrains.webstorm
       pkgs-jb.jetbrains.clion
-      pkgs-jb.jetbrains.pycharm-professional
+      pkgs-jb.jetbrains.pycharm
       pkgs-jb.android-studio
-      pkgs-jb.jetbrains.idea-ultimate
+      pkgs-jb.jetbrains.idea
       pkgs-jb.jetbrains.goland
       pkgs-jb.jetbrains.rider
     ];

@@ -114,6 +114,9 @@ in
       htop
       cockpit
       immich
+      usbutils
+      ripgrep
+      docker
     ];
 
     services.openssh.enable = true;
@@ -127,6 +130,12 @@ in
       enable = true;
       openFirewall = true;
     };
+
+    # services.prometheus.enable = true;
+    # services.prometheus.port = 9091;
+    # services.prometheus.exporters.node.enable = true;
+    # services.grafana_reporter.enable = true;
+    # services.grafana_reporter.addr = "0.0.0.0";
 
     services.tlp.enable = true;
     powerManagement.powertop.enable = true;
@@ -202,8 +211,8 @@ in
 
     networking.firewall = {
       enable = true;
-      allowedUDPPorts = [41641];
-      allowedTCPPorts = [80 443 2283];
+      allowedUDPPorts = [41641 9091 9100 3000 8686];
+      allowedTCPPorts = [80 443 2283 9091 9100 3000 8686];
       # allowedTCPPorts = [ 111  2049 4000 4001 4002 20048 ];
       # allowedUDPPorts = [ 111 2049 4000 4001  4002 41641 20048 ];
       trustedInterfaces = ["tailscale0"]; # trust VPN
