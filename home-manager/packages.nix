@@ -180,6 +180,7 @@ in {
     work-only = [
       pkgs.subversion
       pkgs.gitkraken
+      pkgs.glab
     ];
 
     jetbrains-ides = [
