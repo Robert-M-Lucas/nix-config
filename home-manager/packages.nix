@@ -69,6 +69,7 @@ in {
       resources
       hieroglyphic
       boxbuddy
+      meld
 
       # ====== IDEs ======
       arduino-ide
