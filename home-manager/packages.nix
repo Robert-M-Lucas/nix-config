@@ -70,6 +70,7 @@ in {
       hieroglyphic
       boxbuddy
       meld
+      teams-for-linux
 
       # ====== IDEs ======
       arduino-ide

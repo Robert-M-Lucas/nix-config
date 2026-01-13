@@ -24,7 +24,7 @@
             pkgs.gnomeExtensions.color-picker.extensionUuid
             pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
             pkgs.gnomeExtensions.gsconnect.extensionUuid
-            pkgs.gnomeExtensions.desktop-clock
+            pkgs.gnomeExtensions.desktop-clock.extensionUuid
           ]
           ++ (
             if is-pc
