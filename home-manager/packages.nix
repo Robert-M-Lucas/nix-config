@@ -47,6 +47,7 @@
           jsonschema
           tree-sitter
           tree-sitter-grammars.tree-sitter-c
+          python-docx
         ]
     )
   );
@@ -183,6 +184,7 @@ in {
       pkgs.subversion
       pkgs.gitkraken
       pkgs.glab
+      pkgs-unstable.zensical
     ];
 
     jetbrains-ides = [
