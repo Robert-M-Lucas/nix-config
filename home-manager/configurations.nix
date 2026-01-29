@@ -105,6 +105,7 @@
       set -U fish_pager_color_secondary_description
       set -U fish_pager_color_selected_completion
       direnv hook fish | source
+      fortune
     ";
   };
 
