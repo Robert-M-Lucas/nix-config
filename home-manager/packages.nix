@@ -115,6 +115,8 @@ in {
       nodejs_22
       ffmpeg
       texlive.combined.scheme-full
+      nixd
+      nixfmt
 
       # ====== Scripts ======
 

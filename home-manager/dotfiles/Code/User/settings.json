@@ -1,0 +1,93 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'FiraCode Nerd Font', 'monospace', monospace",
+    "editor.fontWeight": "500",
+    "editor.fontLigatures": true,
+    "C_Cpp.default.compilerPath": "/run/current-system/sw/bin/gcc",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "cmake.autoSelectActiveFolder": false,
+    "cmake.buildToolArgs": [
+        "-k 10000"
+    ],
+    "cmake.parallelJobs": 4,
+    "chat.disableAIFeatures": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+    "debug.console.fontFamily": "'FiraCode Nerd Font', 'monospace', monospace",
+    "python.analysis.typeCheckingMode": "standard",
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "nix.serverSettings": {
+        "nil": {
+            "formatting": {
+                "command": [
+                    "nixfmt"
+                ],
+            },
+        },
+        "nixd": {
+            "formatting": {
+                "command": [
+                    "nixfmt"
+                ],
+            },
+            "options": {
+                "nixos": {
+                    "expr": "(builtins.getFlake \"/absolute/path/to/flake\").nixosConfigurations.<name>.options",
+                },
+                "home-manager": {
+                    "expr": "(builtins.getFlake \"/absolute/path/to/flake\").homeConfigurations.<name>.options",
+                },
+                "nix-darwin": {
+                    "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options",
+                },
+            },
+        }
+    }
+}

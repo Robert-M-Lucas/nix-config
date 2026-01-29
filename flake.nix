@@ -46,7 +46,7 @@
 
     system = "x86_64-linux";
   in
-    with inputs; {
+      {
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
