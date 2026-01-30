@@ -272,9 +272,11 @@ in {
   };
   systemd.services."systemd-backlight@leds:dell::kbd_backlight" = {
     wantedBy = lib.mkForce [];
+    after = lib.mkForce [];
   };
   systemd.services.systemd-backlight = {
     wantedBy = lib.mkForce [];
+    after = lib.mkForce [];
   };
 
   services.openssh = {
