@@ -312,8 +312,15 @@ in {
   environment.systemPackages = let
     systemPackages = with pkgs;
       [
+        # Dolphin
         kdePackages.dolphin
-        qgnomeplatform 
+        kdePackages.qtsvg 
+        kdePackages.kio # needed since 25.11
+        kdePackages.kio-fuse #to mount remote filesystems via FUSE
+        kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+        kdePackages.qt6ct
+        libsForQt5.qt5ct
+        qgnomeplatform
         
         file-roller
 
