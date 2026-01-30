@@ -264,6 +264,19 @@ in {
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  systemd.services.docker = {
+    wantedBy = lib.mkForce [];
+  };
+  systemd.sockets.docker = {
+    wantedBy = lib.mkForce [];
+  };
+  systemd.services."systemd-backlight@leds:dell::kbd_backlight" = {
+    wantedBy = lib.mkForce [];
+  };
+  systemd.services.systemd-backlight = {
+    wantedBy = lib.mkForce [];
+  };
+
   services.openssh = {
     enable = true;
     allowSFTP = true;

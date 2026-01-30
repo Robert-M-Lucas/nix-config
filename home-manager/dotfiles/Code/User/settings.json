@@ -89,5 +89,6 @@
                 },
             },
         }
-    }
+    },
+    "workbench.editor.empty.hint": "hidden"
 }
