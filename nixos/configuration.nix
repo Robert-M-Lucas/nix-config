@@ -312,6 +312,9 @@ in {
   environment.systemPackages = let
     systemPackages = with pkgs;
       [
+        kdePackages.dolphin
+        qgnomeplatform 
+        
         file-roller
 
         sweet-nova
@@ -363,6 +366,8 @@ in {
     ];
   in
     systemPackages ++ unstableSystemPackages;
+
+  environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gnome";
 
   programs.gnome-terminal.enable = false;
   console.enable = false;
