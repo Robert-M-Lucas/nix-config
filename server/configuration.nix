@@ -1,5 +1,8 @@
 let
-  unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+  unstable = builtins.fetchGit {
+    url = "https://github.com/NixOS/nixpkgs";
+    ref = "nixos-unstable";
+  };
 in
   {
     config,
@@ -8,7 +11,7 @@ in
   }: {
     nixpkgs.config = {
       packageOverrides = pkgs: {
-        unstable = import unstableTarball {
+        unstable = import unstable {
           config = config.nixpkgs.config;
         };
       };
