@@ -79,6 +79,7 @@ in
         boxbuddy
         meld
         teams-for-linux
+        upscayl
 
         # ====== IDEs ======
         arduino-ide
