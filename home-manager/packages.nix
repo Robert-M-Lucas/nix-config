@@ -79,7 +79,6 @@ in
         boxbuddy
         meld
         teams-for-linux
-        upscayl
 
         # ====== IDEs ======
         arduino-ide
@@ -179,6 +178,7 @@ in
         pkgs-unstable.discord
         pkgs-unstable.darktable
         pkgs-unstable.muse-sounds-manager
+        pkgs-unstable.upscayl
 
         # ====== CMD ======
         pkgs.google-cloud-sdk
