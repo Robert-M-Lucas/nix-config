@@ -118,10 +118,10 @@ in {
       if is-worktop
       then [23 3240 10000 41100 10001 3241 502 8081]
       else [8081 5173 22];
-    trustedInterfaces =
-      if is-worktop
-      then []
-      else ["tailscale0"];
+    trustedInterfaces = ["tailscale0"];
+      # if is-worktop
+      # then []
+      # else ["tailscale0"];
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
@@ -299,7 +299,8 @@ in {
   # Programs
 
   services.tailscale = {
-    enable = !is-worktop;
+    # enable = !is-worktop;
+    enable = true;
     useRoutingFeatures = "client"; # acts as client only
     openFirewall = true; # open Tailscale ports
   };

@@ -69,7 +69,7 @@ in {
     "$HOME/RustroverProjects/rss/target/release"
   ];
 
-  home.file.".background-image".source = ./assets/wallpaper-tatry.JPG;
+  home.file.".background-image".source = ./assets/wallpaper-budapest.JPG;
 
   # Enable GTK and apply Neuwaita icons
   gtk = {
