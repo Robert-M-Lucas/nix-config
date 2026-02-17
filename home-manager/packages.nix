@@ -13,28 +13,6 @@
   ...
 }:
 let
-  telnetlib3 = pkgs.python312Packages.buildPythonPackage rec {
-    pname = "telnetlib3";
-    version = "2.5.0";
-    pyproject = true;
-    
-    src = pkgs.fetchPypi {
-      inherit pname version;
-      sha256 = "pb8K4oEoAVTqGE1r9oTNRgMTOaBjZsSiRF09tV0TAg0=";
-    };
-
-    build-system = with pkgs.python312Packages; [
-      setuptools
-    ];
-    
-    propagatedBuildInputs = with pkgs.python312Packages; [
-      hatchling
-      wcwidth
-    ];
-    
-    doCheck = false;
-  };
-
   pythonEnv = pkgs.python312.withPackages (
     ps:
     (
@@ -62,6 +40,7 @@ let
           pyautogui
           keyboard
           websockets
+          standard-telnetlib
         ]
       else
         with ps;
@@ -76,7 +55,6 @@ let
           minify-html
           beautifulsoup4
           textual
-          telnetlib3
         ]
     )
   );
