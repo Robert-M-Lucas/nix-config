@@ -337,6 +337,9 @@ in {
         usbutils
         nettools
         nmap
+        inetutils
+        netcat-gnu
+        hping
 
         wget
         gnumake

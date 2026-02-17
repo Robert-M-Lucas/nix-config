@@ -118,6 +118,10 @@
 
   programs.vscode = {
     enable = true;
+    # commandLineArgs = [
+    #   "--enable-features=WaylandWindowDecorations"
+    #   "--ozone-platform-hint=auto"
+    # ];
     profiles.default.extensions = with pkgs.vscode-extensions;
       [
         jnoortheen.nix-ide
