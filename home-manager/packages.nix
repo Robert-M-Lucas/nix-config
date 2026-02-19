@@ -130,6 +130,8 @@ in
         (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
         (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
 
+        (writeShellScriptBin "flake" (builtins.readFile ./scripts/flake.sh))
+        
         (writeShellScriptBin "rust-shell" (builtins.readFile ./scripts/rust-shell.sh))
         (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
         (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
