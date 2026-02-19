@@ -346,7 +346,7 @@ in {
         go
         dig
         ripgrep
-        config.boot.kernelPackages.perf
+        perf
 
         firefox-bin # No, we don't need another package built from source
 
