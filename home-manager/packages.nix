@@ -178,7 +178,7 @@ in
         pkgs.legendary-gl
         pkgs.cutechess
 
-        pkgs-unstable.calibre
+        pkgs.calibre
         pkgs-unstable.discord
         pkgs-unstable.darktable
         pkgs-unstable.muse-sounds-manager
