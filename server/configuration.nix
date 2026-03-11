@@ -119,8 +119,9 @@ in
       immich
       usbutils
       ripgrep
-      docker
     ];
+
+    virtualisation.docker.enable = true;
 
     services.openssh.enable = true;
     services.openssh.settings = {
