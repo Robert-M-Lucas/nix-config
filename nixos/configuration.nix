@@ -217,7 +217,6 @@ in {
   programs.virt-manager.enable = true;
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_25;
 
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
@@ -264,12 +263,12 @@ in {
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  systemd.services.docker = {
-    wantedBy = lib.mkForce [];
-  };
-  systemd.sockets.docker = {
-    wantedBy = lib.mkForce [];
-  };
+  # systemd.services.docker = {
+  #   wantedBy = lib.mkForce [];
+  # };
+  # systemd.sockets.docker = {
+  #   wantedBy = lib.mkForce [];
+  # };
   systemd.services."systemd-backlight@leds:dell::kbd_backlight" = {
     wantedBy = lib.mkForce [];
     after = lib.mkForce [];
