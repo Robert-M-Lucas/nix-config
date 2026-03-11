@@ -81,6 +81,7 @@ in
         boxbuddy
         meld
         teams-for-linux
+        winboat
 
         # ====== IDEs ======
         arduino-ide
