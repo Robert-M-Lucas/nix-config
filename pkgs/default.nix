@@ -2,4 +2,5 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   # rss = pkgs.callPackage ./rss { };
+  winboat-fix = pkgs.callPackage ./winboat-fix { };
 }

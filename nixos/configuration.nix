@@ -312,6 +312,7 @@ in {
   environment.systemPackages = let
     systemPackages = with pkgs;
       [
+        winboat-fix
         # Dolphin
         kdePackages.dolphin
         kdePackages.qtsvg 
