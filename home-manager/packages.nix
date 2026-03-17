@@ -198,6 +198,9 @@ in
         pkgs.subversion
         pkgs.gitkraken
         pkgs.glab
+        pkgs.go-configure
+        pkgs.gtkwave
+        pkgs.iverilog
         pkgs-unstable.zensical
       ];
 

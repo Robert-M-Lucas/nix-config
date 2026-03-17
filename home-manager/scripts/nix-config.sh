@@ -65,10 +65,10 @@ git add -A
 
 if [ "$light_mode" == "true" ]; then
   echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3"
-  sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3 |& nom
+  sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3 --impure |& nom
 else
   echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch"
-  sudo nixos-rebuild --flake .#$hostname switch |& nom
+  sudo nixos-rebuild --flake .#$hostname switch --impure |& nom
 fi
 
 

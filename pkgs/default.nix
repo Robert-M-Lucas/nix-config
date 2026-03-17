@@ -3,4 +3,5 @@
 pkgs: {
   # rss = pkgs.callPackage ./rss { };
   winboat-fix = pkgs.callPackage ./winboat-fix { };
+  go-configure = pkgs.callPackage ./go-configure { };
 }
