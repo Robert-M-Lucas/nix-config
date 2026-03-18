@@ -86,6 +86,7 @@
             use-cuda = false;
             is-pc = true;
             is-worktop = false;
+            is-wsl = false;
           };
           modules = [
             # > Our main nixos configuration file <
@@ -110,6 +111,7 @@
             use-cuda = false;
             is-pc = false;
             is-worktop = false;
+            is-wsl = false;
           };
           modules = [
             # > Our main nixos configuration file <
@@ -136,6 +138,31 @@
             use-cuda = false;
             is-pc = false;
             is-worktop = true;
+            is-wsl = false;
+          };
+          modules = [
+            # > Our main nixos configuration file <
+            # catppuccin.nixosModules.catppuccin
+            ./nixos/configuration.nix
+          ];
+        };
+        wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs system;
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+              android_sdk.accept_license = true;
+            };
+            pkgs-jb = import nixpkgs-jb {
+              inherit system;
+              config.allowUnfree = true;
+              android_sdk.accept_license = true;
+            };
+            use-cuda = false;
+            is-pc = false;
+            is-worktop = false;
+            is-wsl = true;
           };
           modules = [
             # > Our main nixos configuration file <

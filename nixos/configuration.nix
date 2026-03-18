@@ -13,6 +13,7 @@
   use-cuda,
   is-pc,
   is-worktop,
+  is-wsl,
   overlays,
   overlays-unstable,
   ...
@@ -22,7 +23,7 @@ in {
   # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
-
+  ] ++ if is-wsl then [] else [
     ./${hardware-config}/hardware-configuration.nix
   ];
 
