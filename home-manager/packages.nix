@@ -40,6 +40,7 @@ let
           pyautogui
           keyboard
           websockets
+          standard-telnetlib
         ]
       else
         with ps;
@@ -53,6 +54,7 @@ let
           python-docx
           minify-html
           beautifulsoup4
+          textual
         ]
     )
   );
@@ -128,6 +130,8 @@ in
         (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
         (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
 
+        (writeShellScriptBin "flake" (builtins.readFile ./scripts/flake.sh))
+        
         (writeShellScriptBin "rust-shell" (builtins.readFile ./scripts/rust-shell.sh))
         (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
         (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
@@ -174,10 +178,11 @@ in
         pkgs.legendary-gl
         pkgs.cutechess
 
-        pkgs-unstable.calibre
+        pkgs.calibre
         pkgs-unstable.discord
         pkgs-unstable.darktable
         pkgs-unstable.muse-sounds-manager
+        pkgs-unstable.upscayl
 
         # ====== CMD ======
         pkgs.google-cloud-sdk
@@ -193,6 +198,9 @@ in
         pkgs.subversion
         pkgs.gitkraken
         pkgs.glab
+        pkgs.go-configure
+        pkgs.gtkwave
+        pkgs.iverilog
         pkgs-unstable.zensical
       ];
 

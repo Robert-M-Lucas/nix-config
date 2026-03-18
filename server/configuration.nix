@@ -120,6 +120,8 @@ in
       nix-output-monitor
     ];
 
+    virtualisation.docker.enable = true;
+
     services.openssh.enable = true;
     services.openssh.settings = {
       PermitRootLogin = "no";

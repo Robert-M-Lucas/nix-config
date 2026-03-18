@@ -84,21 +84,21 @@ in {
       set locale_dir=
     '';
 
-    # theme =
-    #   if is-worktop
-    #   then null
-    #   else
-    #     pkgs.stdenv.mkDerivation {
-    #       pname = "distro-grub-themes";
-    #       version = "3.2";
-    #       src = pkgs.fetchFromGitHub {
-    #         owner = "AdisonCavani";
-    #         repo = "distro-grub-themes";
-    #         rev = "v3.1";
-    #         hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-    #       };
-    #       installPhase = "cp -r customize/nixos $out";
-    #     };
+    theme =
+      # if is-worktop
+      # then null
+      # else
+        pkgs.stdenv.mkDerivation {
+          pname = "distro-grub-themes";
+          version = "3.2";
+          src = pkgs.fetchFromGitHub {
+            owner = "AdisonCavani";
+            repo = "distro-grub-themes";
+            rev = "v3.1";
+            hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+          };
+          installPhase = "cp -r customize/nixos $out";
+        };
   };
 
   swapDevices = [
@@ -118,10 +118,10 @@ in {
       if is-worktop
       then [23 3240 10000 41100 10001 3241 502 8081]
       else [8081 5173 22];
-    trustedInterfaces =
-      if is-worktop
-      then []
-      else ["tailscale0"];
+    trustedInterfaces = ["tailscale0"];
+      # if is-worktop
+      # then []
+      # else ["tailscale0"];
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
@@ -217,7 +217,6 @@ in {
   programs.virt-manager.enable = true;
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.package = pkgs.docker_25;
 
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
@@ -264,12 +263,12 @@ in {
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  systemd.services.docker = {
-    wantedBy = lib.mkForce [];
-  };
-  systemd.sockets.docker = {
-    wantedBy = lib.mkForce [];
-  };
+  # systemd.services.docker = {
+  #   wantedBy = lib.mkForce [];
+  # };
+  # systemd.sockets.docker = {
+  #   wantedBy = lib.mkForce [];
+  # };
   systemd.services."systemd-backlight@leds:dell::kbd_backlight" = {
     wantedBy = lib.mkForce [];
     after = lib.mkForce [];
@@ -299,7 +298,8 @@ in {
   # Programs
 
   services.tailscale = {
-    enable = !is-worktop;
+    # enable = !is-worktop;
+    enable = true;
     useRoutingFeatures = "client"; # acts as client only
     openFirewall = true; # open Tailscale ports
   };
@@ -312,6 +312,7 @@ in {
   environment.systemPackages = let
     systemPackages = with pkgs;
       [
+        winboat-fix
         # Dolphin
         kdePackages.dolphin
         kdePackages.qtsvg 
@@ -336,13 +337,16 @@ in {
         usbutils
         nettools
         nmap
+        inetutils
+        netcat-gnu
+        hping
 
         wget
         gnumake
         go
         dig
         ripgrep
-        config.boot.kernelPackages.perf
+        perf
 
         firefox-bin # No, we don't need another package built from source
 
