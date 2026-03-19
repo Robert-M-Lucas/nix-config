@@ -6,6 +6,7 @@
   pkgs,
   pkgs-unstable,
   is-worktop,
+  is-wsl,
   ...
 }: {
   programs.git = {
@@ -38,7 +39,7 @@
   #   package = pkgs.gnomeExtensions.gsconnect;
   # };
 
-  services.flameshot.enable = true;
+  services.flameshot.enable = !is-wsl;
 
   programs.fish = {
     enable = true;
@@ -117,7 +118,7 @@
   };
 
   programs.vscode = {
-    enable = true;
+    enable = !is-wsl;
     # commandLineArgs = [
     #   "--enable-features=WaylandWindowDecorations"
     #   "--ozone-platform-hint=auto"
@@ -150,12 +151,12 @@
   };
 
   programs.chromium = {
-    enable = true;
+    enable = !is-wsl;
     package = pkgs.google-chrome;
   };
 
   programs.zoxide = {
-    enable = true;
+    enable = !is-wsl;
     enableFishIntegration = true;
   };
 }

@@ -16,16 +16,16 @@
   is-wsl,
   overlays,
   overlays-unstable,
+  stateVersion,
   ...
 }: let
   # spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in {
   # You can import other NixOS modules here
   imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ] ++ if is-wsl then [] else [
     ./${hardware-config}/hardware-configuration.nix
-  ];
+    inputs.home-manager.nixosModules.home-manager
+  ] ++ (if is-wsl then [<nixos-wsl/modules>] else []);
 
   nixpkgs = {
     # You can add overlays here
@@ -45,7 +45,7 @@ in {
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable pkgs-jb use-cuda overlays overlays-unstable is-pc is-worktop;};
+    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable stateVersion pkgs-jb use-cuda overlays overlays-unstable is-pc is-worktop is-wsl;};
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
@@ -58,7 +58,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["nfs"];
 
-  boot.loader.grub = {
+  boot.loader.grub = if is-wsl then {} else {
     splashImage = null;
     enable = true;
     useOSProber = true;
@@ -102,14 +102,14 @@ in {
         };
   };
 
-  swapDevices = [
+  swapDevices = if is-wsl then [] else [
     {
       device = "/swapfile";
       size = 24 * 1024;
     }
   ];
 
-  networking.firewall = {
+  networking.firewall = if is-wsl then {} else {
     enable = true;
     allowedTCPPorts =
       if is-worktop
@@ -172,11 +172,11 @@ in {
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = !is-wsl;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = !is-wsl;
+  services.desktopManager.gnome.enable = !is-wsl;
   services.xserver.excludePackages = [pkgs.xterm];
 
   # Enable plasma
@@ -185,7 +185,7 @@ in {
   # services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
+  services.xserver.xkb = if is-wsl then {} else {
     layout = "gb";
     variant = "";
   };
@@ -194,7 +194,7 @@ in {
   console.keyMap = "uk";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = !is-wsl;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -213,14 +213,14 @@ in {
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = !is-wsl;
 
-  programs.virt-manager.enable = true;
+  programs.virt-manager.enable = !is-wsl;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = !is-wsl;
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.libvirtd.enable = !is-wsl;
+  virtualisation.spiceUSBRedirection.enable = !is-wsl;
 
   fonts.packages = [
     pkgs.nerd-fonts.fira-code
@@ -248,8 +248,8 @@ in {
 
   users.groups.libvirtd.members = ["robert"];
 
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
+  services.fprintd.enable = !is-wsl;
+  services.fprintd.tod.enable = !is-wsl;
   # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
@@ -298,7 +298,7 @@ in {
 
   # Programs
 
-  services.tailscale = {
+  services.tailscale = if is-wsl then {} else {
     # enable = !is-worktop;
     enable = true;
     useRoutingFeatures = "client"; # acts as client only
@@ -306,28 +306,12 @@ in {
   };
 
   programs.wireshark = {
-    enable = true;
+    enable = !is-wsl;
     package = pkgs.wireshark;
   };
 
   environment.systemPackages = let
-    systemPackages = with pkgs;
-      [
-        winboat-fix
-        # Dolphin
-        kdePackages.dolphin
-        kdePackages.qtsvg 
-        kdePackages.kio # needed since 25.11
-        kdePackages.kio-fuse #to mount remote filesystems via FUSE
-        kdePackages.kio-extras #extra protocols support (sftp, fish and more)
-        kdePackages.qt6ct
-        libsForQt5.qt5ct
-        qgnomeplatform
-        
-        file-roller
-
-        sweet-nova
-
+    systemPackages = with pkgs; [
         tmux
         fprintd
         fastfetch
@@ -341,13 +325,29 @@ in {
         inetutils
         netcat-gnu
         hping
-
+        nix-output-monitor
         wget
         gnumake
         go
         dig
         ripgrep
         perf
+
+        (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
+      ]
+      ++ (if is-wsl then [] else [
+        winboat-fix
+        # Dolphin
+        kdePackages.dolphin
+        kdePackages.qtsvg 
+        kdePackages.kio # needed since 25.11
+        kdePackages.kio-fuse #to mount remote filesystems via FUSE
+        kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+        kdePackages.qt6ct
+        libsForQt5.qt5ct
+        qgnomeplatform
+        
+        file-roller
 
         firefox-bin # No, we don't need another package built from source
 
@@ -358,9 +358,7 @@ in {
         ddcutil
         krita
         gimp
-
-        (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
-      ]
+      ])
       ++ (
         if is-worktop
         then []
@@ -401,7 +399,7 @@ in {
   };
 
   programs.steam = {
-    enable = !is-worktop;
+    enable = !is-worktop && !is-wsl;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
@@ -503,9 +501,8 @@ in {
     '';
   };
 
-  programs.captive-browser.enable = true;
+  programs.captive-browser.enable = !is-wsl;
   programs.captive-browser.interface = "wlp2s0";
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = stateVersion;
 }

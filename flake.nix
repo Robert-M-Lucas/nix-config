@@ -87,6 +87,8 @@
             is-pc = true;
             is-worktop = false;
             is-wsl = false;
+            # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+            state-version = "24.05";
           };
           modules = [
             # > Our main nixos configuration file <
@@ -112,6 +114,8 @@
             is-pc = false;
             is-worktop = false;
             is-wsl = false;
+            # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+            state-version = "24.05";
           };
           modules = [
             # > Our main nixos configuration file <
@@ -139,6 +143,8 @@
             is-pc = false;
             is-worktop = true;
             is-wsl = false;
+            # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+            stateVersion = "24.05";
           };
           modules = [
             # > Our main nixos configuration file <
@@ -159,10 +165,12 @@
               config.allowUnfree = true;
               android_sdk.accept_license = true;
             };
+            hardware-config = "wsl";
             use-cuda = false;
             is-pc = false;
             is-worktop = false;
             is-wsl = true;
+            stateVersion = "25.11";
           };
           modules = [
             # > Our main nixos configuration file <
