@@ -5,7 +5,45 @@
   is-worktop,
   ...
 }
-: {
+: let
+  # Define Neuwaita icon theme package inline
+  neuwaita-icon-theme = pkgs.stdenv.mkDerivation {
+    pname = "neuwaita-icon-theme";
+    version = "latest";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "RusticBard";
+      repo = "Neuwaita";
+      rev = "7a54beb43cb7862597ce56cf284caeedd2b1ee65";
+      sha256 = "sha256-/noUKfsQpukpZmgaEKQ5UBrrsTTjkreLT8EGEksx74A=";
+    };
+
+    installPhase = ''
+      mkdir -p $out/share/icons/Neuwaita
+      cp -r * $out/share/icons/Neuwaita
+    '';
+
+    meta = with pkgs.lib; {
+      description = "Neuwaita GNOME icon theme (Adwaita variant)";
+      homepage = "https://github.com/RusticBard/Neuwaita";
+      license = licenses.gpl3;
+      platforms = platforms.all;
+    };
+  };
+in {
+  home.file.".background-image".source = ./assets/wallpaper-budapest.JPG;
+
+  # Enable GTK and apply Neuwaita icons
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = neuwaita-icon-theme;
+      name = "Neuwaita";
+    };
+  };
+
+  
+
   dconf = {
     enable = true;
     settings = {

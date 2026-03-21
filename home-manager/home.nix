@@ -11,40 +11,16 @@
   use-cuda,
   is-pc,
   is-worktop,
+  is-wsl,
+  stateVersion,
   ...
-}: let
-  # Define Neuwaita icon theme package inline
-  neuwaita-icon-theme = pkgs.stdenv.mkDerivation {
-    pname = "neuwaita-icon-theme";
-    version = "latest";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "RusticBard";
-      repo = "Neuwaita";
-      rev = "7a54beb43cb7862597ce56cf284caeedd2b1ee65";
-      sha256 = "sha256-/noUKfsQpukpZmgaEKQ5UBrrsTTjkreLT8EGEksx74A=";
-    };
-
-    installPhase = ''
-      mkdir -p $out/share/icons/Neuwaita
-      cp -r * $out/share/icons/Neuwaita
-    '';
-
-    meta = with pkgs.lib; {
-      description = "Neuwaita GNOME icon theme (Adwaita variant)";
-      homepage = "https://github.com/RusticBard/Neuwaita";
-      license = licenses.gpl3;
-      platforms = platforms.all;
-    };
-  };
-in {
+}: {
   # You can import other home-manager modules here
   imports = [
     ./packages.nix
     ./configurations.nix
-    ./gnome.nix
     ./dotconfig.nix
-  ];
+  ] ++ (if is-wsl then [] else [./gnome.nix]);
 
   nixpkgs = {
     overlays = [
@@ -69,17 +45,6 @@ in {
     "$HOME/RustroverProjects/rss/target/release"
   ];
 
-  home.file.".background-image".source = ./assets/wallpaper-budapest.JPG;
-
-  # Enable GTK and apply Neuwaita icons
-  gtk = {
-    enable = true;
-    iconTheme = {
-      package = neuwaita-icon-theme;
-      name = "Neuwaita";
-    };
-  };
-
   programs.nix-index = {
     enable = true;
     enableFishIntegration = true;
@@ -88,6 +53,5 @@ in {
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.05";
+  home.stateVersion = stateVersion;
 }

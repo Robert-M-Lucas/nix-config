@@ -1,8 +1,5 @@
 let
-  unstable = builtins.fetchGit {
-    url = "https://github.com/NixOS/nixpkgs";
-    ref = "nixos-unstable";
-  };
+  unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
 in
   {
     config,
@@ -119,6 +116,8 @@ in
       immich
       usbutils
       ripgrep
+      docker
+      nix-output-monitor
     ];
 
     virtualisation.docker.enable = true;

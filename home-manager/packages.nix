@@ -10,6 +10,7 @@
   home,
   is-pc,
   is-worktop,
+  is-wsl,
   ...
 }:
 let
@@ -62,32 +63,9 @@ in
 {
   home.packages =
     let
-      x = with pkgs; [
-        # ====== GUI Apps ======
-        onlyoffice-desktopeditors
-        gnome-solanum
-        qalculate-gtk
-        insomnia
-        alacarte
-        gthumb
-        amberol
-        emblem
-        spotify
-        gnome-clocks
-        impression
-        smile
-        resources
-        hieroglyphic
-        boxbuddy
-        meld
-        teams-for-linux
-
-        # ====== IDEs ======
-        arduino-ide
-
+      minimal = with pkgs; [
         # ====== CMD ======
         pythonEnv
-        platformio-core
         clang-tools
         cmake
         ninja
@@ -98,32 +76,26 @@ in
         fortune
         zip
         unzip
-        xclip
         libqalculate
         pkg-config
         libudev-zero
         dconf2nix
-        qemu
-        spotdl
         lcov
         poetry
-        nix-output-monitor
         valgrind
         pipes-rs
         cbonsai
         asciiquarium
         nyancat
         neo
-        wineWowPackages.stableFull
-        winetricks
         delta
-        distrobox
         podman
         nodejs_22
         ffmpeg
-        texlive.combined.scheme-full
         nixd
         nixfmt
+        glab
+        subversion
 
         # ====== Scripts ======
 
@@ -149,6 +121,39 @@ in
         (writeShellScriptBin "wbb" (builtins.readFile ./scripts/wbb.sh))
         (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
         (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
+      ];
+      general = with pkgs; [
+        # ====== CMD ======
+        platformio-core
+        qemu
+        spotdl
+        winetricks
+        distrobox
+        texlive.combined.scheme-full
+        wineWowPackages.stableFull
+        xclip
+
+        # ====== GUI Apps ======
+        onlyoffice-desktopeditors
+        gnome-solanum
+        qalculate-gtk
+        insomnia
+        alacarte
+        gthumb
+        amberol
+        emblem
+        spotify
+        gnome-clocks
+        impression
+        smile
+        resources
+        hieroglyphic
+        boxbuddy
+        meld
+        teams-for-linux
+
+        # ====== IDEs ======
+        arduino-ide
 
         # ====== Extensions ======
         gnome-shell-extensions
@@ -161,13 +166,12 @@ in
         gnomeExtensions.color-picker
       ];
 
-      y = with pkgs-unstable; [
-      ];
-
       pc-only = [
+
       ];
 
       fastop-only = [
+
       ];
 
       non-work = [
@@ -195,9 +199,7 @@ in
       ];
 
       work-only = [
-        pkgs.subversion
         pkgs.gitkraken
-        pkgs.glab
         pkgs.go-configure
         pkgs.gtkwave
         pkgs.iverilog
@@ -215,9 +217,10 @@ in
         pkgs-jb.jetbrains.rider
       ];
     in
-    x
-    ++ y
-    ++ (if !is-worktop then jetbrains-ides else [ ])
-    ++ (if is-worktop then work-only else non-work)
-    ++ (if is-pc then pc-only else fastop-only);
+    (if is-wsl then minimal else minimal ++ general)
+    ++ (if !is-worktop && !is-wsl then jetbrains-ides else [ ])
+    ++ (if is-wsl then [] else (if is-worktop then work-only else non-work))
+    ++ (if !is-worktop && !is-wsl then 
+      (if is-pc then pc-only else fastop-only) else []
+    );
 }
