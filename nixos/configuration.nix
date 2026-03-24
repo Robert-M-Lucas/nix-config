@@ -41,6 +41,9 @@ in {
       allowUnfree = true;
       cudaSupport = use-cuda;
       android_sdk.accept_license = true;
+      # permittedInsecurePackages = [
+      #   "dotnet-sdk-6.0.428"
+      # ];
     };
   };
 

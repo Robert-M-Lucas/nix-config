@@ -192,10 +192,12 @@ in
         pkgs.google-cloud-sdk
         pkgs.gradle
         pkgs.diesel-cli
-        pkgs.dotnet-sdk_9
+        pkgs.dotnet-sdk
         pkgs.android-tools
         pkgs.yt-dlp
         pkgs.fastchess
+
+        # pkgs.Chess-Coding-Adventure
       ];
 
       work-only = [

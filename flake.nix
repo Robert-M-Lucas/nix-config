@@ -74,6 +74,7 @@
               inherit system;
               config.allowUnfree = true;
               config.cudaSupport = false;
+              
               android_sdk.accept_license = true;
             };
             pkgs-jb = import nixpkgs-jb {
