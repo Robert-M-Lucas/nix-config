@@ -16,11 +16,17 @@
   ...
 }: {
   # You can import other home-manager modules here
-  imports = [
-    ./packages.nix
-    ./configurations.nix
-    ./dotconfig.nix
-  ] ++ (if is-wsl then [] else [./gnome.nix]);
+  imports =
+    [
+      ./packages.nix
+      ./configurations.nix
+      ./dotconfig.nix
+    ]
+    ++ (
+      if is-wsl
+      then []
+      else [./gnome.nix]
+    );
 
   nixpkgs = {
     overlays = [

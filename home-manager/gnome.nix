@@ -42,8 +42,6 @@ in {
     };
   };
 
-  
-
   dconf = {
     enable = true;
     settings = {
