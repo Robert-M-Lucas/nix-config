@@ -115,7 +115,7 @@
           is-worktop = false;
           is-wsl = false;
           # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-          state-version = "24.05";
+          stateVersion = "24.05";
         };
         modules = [
           # > Our main nixos configuration file <
