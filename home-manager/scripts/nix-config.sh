@@ -2,7 +2,7 @@
 
 cd /home/robert/nix-config
 
-echo "v2"
+echo "v3"
 
 echo "Pre-acquiring sudo"
 echo "| [sudo] echo \"Sudo acquired\""
@@ -31,6 +31,10 @@ do
   if [[ "$arg" == "--shutdown" ]]; then
     echo "Shutdown mode"
     shutdown_mode=true
+  fi
+  if [[ "$arg" == "--build" ]]; then
+    echo "Build-only mode (activates next boot)"
+    build_mode=true
   fi
 done
 
@@ -63,13 +67,19 @@ fi
 echo "| git add"
 git add -A
 
-if [ "$light_mode" == "true" ]; then
-  echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3"
-  sudo nixos-rebuild --flake .#$hostname switch --cores 3 --max-jobs 3 --impure |& nom
-else
-  echo "| [sudo] sudo nixos-rebuild --flake .#$hostname switch"
-  sudo nixos-rebuild --flake .#$hostname switch --impure |& nom
+action="switch"
+if [[ "$build_mode" == "true" ]]; then
+  action="boot"
 fi
+
+cmd=(sudo nixos-rebuild --flake .#$hostname "$action" --impure)
+
+if [[ "$light_mode" == "true" ]]; then
+  cmd+=(--cores 3 --max-jobs 3)
+fi
+
+echo "| ${cmd[*]}"
+"${cmd[@]}" |& nom
 
 
 if [[ -z "$full_mode" ]]; then
