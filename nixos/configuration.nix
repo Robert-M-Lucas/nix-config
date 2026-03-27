@@ -335,6 +335,7 @@ in {
         dig
         ripgrep
         perf
+        btop
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
