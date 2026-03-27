@@ -45,140 +45,139 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
     system = "x86_64-linux";
-  in
-      {
-      # Your custom packages
-      # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  in {
+    # Your custom packages
+    # Accessible through 'nix build', 'nix shell', etc
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    # Formatter for your nix files, available through 'nix fmt'
+    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays {inherit inputs nixpkgs;};
+    # Your custom packages and modifications, exported as overlays
+    overlays = import ./overlays {inherit inputs nixpkgs;};
 
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
+    # Reusable nixos modules you might want to export
+    # These are usually stuff you would upstream into nixpkgs
+    nixosModules = import ./modules/nixos;
+    # Reusable home-manager modules you might want to export
+    # These are usually stuff you would upstream into home-manager
+    homeManagerModules = import ./modules/home-manager;
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        pc = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs system;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              config.cudaSupport = false;
-              
-              android_sdk.accept_license = true;
-            };
-            pkgs-jb = import nixpkgs-jb {
-              inherit system;
-              config.allowUnfree = true;
-              config.cudaSupport = false;
-              android_sdk.accept_license = true;
-            };
-            hardware-config = "pc";
-            use-cuda = false;
-            is-pc = true;
-            is-worktop = false;
-            is-wsl = false;
-            # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-            stateVersion = "24.05";
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild --flake .#your-hostname'
+    nixosConfigurations = {
+      pc = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+            config.cudaSupport = false;
+
+            android_sdk.accept_license = true;
           };
-          modules = [
-            # > Our main nixos configuration file <
-            # catppuccin.nixosModules.catppuccin
-            ./nixos/configuration.nix
-          ];
-        };
-        fastop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs system;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            pkgs-jb = import nixpkgs-jb {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            hardware-config = "fastop";
-            use-cuda = false;
-            is-pc = false;
-            is-worktop = false;
-            is-wsl = false;
-            # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-            state-version = "24.05";
+          pkgs-jb = import nixpkgs-jb {
+            inherit system;
+            config.allowUnfree = true;
+            config.cudaSupport = false;
+            android_sdk.accept_license = true;
           };
-          modules = [
-            # > Our main nixos configuration file <
-            # catppuccin.nixosModules.catppuccin
-            ./nixos/configuration.nix
-            # spicetify-nix.nixosModules.default
-            # minegrub-theme.nixosModules.default
-          ];
+          hardware-config = "pc";
+          use-cuda = false;
+          is-pc = true;
+          is-worktop = false;
+          is-wsl = false;
+          # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+          stateVersion = "24.05";
         };
-        worktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs system;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            pkgs-jb = import nixpkgs-jb {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            hardware-config = "worktop";
-            use-cuda = false;
-            is-pc = false;
-            is-worktop = true;
-            is-wsl = false;
-            # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-            stateVersion = "24.05";
+        modules = [
+          # > Our main nixos configuration file <
+          # catppuccin.nixosModules.catppuccin
+          ./nixos/configuration.nix
+        ];
+      };
+      fastop = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+            android_sdk.accept_license = true;
           };
-          modules = [
-            # > Our main nixos configuration file <
-            # catppuccin.nixosModules.catppuccin
-            ./nixos/configuration.nix
-          ];
-        };
-        wsl = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs system;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            pkgs-jb = import nixpkgs-jb {
-              inherit system;
-              config.allowUnfree = true;
-              android_sdk.accept_license = true;
-            };
-            hardware-config = "wsl";
-            use-cuda = false;
-            is-pc = false;
-            is-worktop = false;
-            is-wsl = true;
-            stateVersion = "25.11";
+          pkgs-jb = import nixpkgs-jb {
+            inherit system;
+            config.allowUnfree = true;
+            android_sdk.accept_license = true;
           };
-          modules = [
-            # > Our main nixos configuration file <
-            # catppuccin.nixosModules.catppuccin
-            ./nixos/configuration.nix
-          ];
+          hardware-config = "fastop";
+          use-cuda = false;
+          is-pc = false;
+          is-worktop = false;
+          is-wsl = false;
+          # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+          stateVersion = "24.05";
         };
+        modules = [
+          # > Our main nixos configuration file <
+          # catppuccin.nixosModules.catppuccin
+          ./nixos/configuration.nix
+          # spicetify-nix.nixosModules.default
+          # minegrub-theme.nixosModules.default
+        ];
+      };
+      worktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+            android_sdk.accept_license = true;
+          };
+          pkgs-jb = import nixpkgs-jb {
+            inherit system;
+            config.allowUnfree = true;
+            android_sdk.accept_license = true;
+          };
+          hardware-config = "worktop";
+          use-cuda = false;
+          is-pc = false;
+          is-worktop = true;
+          is-wsl = false;
+          # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+          stateVersion = "24.05";
+        };
+        modules = [
+          # > Our main nixos configuration file <
+          # catppuccin.nixosModules.catppuccin
+          ./nixos/configuration.nix
+        ];
+      };
+      wsl = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs system;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+            android_sdk.accept_license = true;
+          };
+          pkgs-jb = import nixpkgs-jb {
+            inherit system;
+            config.allowUnfree = true;
+            android_sdk.accept_license = true;
+          };
+          hardware-config = "wsl";
+          use-cuda = false;
+          is-pc = false;
+          is-worktop = false;
+          is-wsl = true;
+          stateVersion = "25.11";
+        };
+        modules = [
+          # > Our main nixos configuration file <
+          # catppuccin.nixosModules.catppuccin
+          ./nixos/configuration.nix
+        ];
       };
     };
+  };
 }

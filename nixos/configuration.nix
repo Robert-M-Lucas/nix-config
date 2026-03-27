@@ -22,10 +22,16 @@
   # spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in {
   # You can import other NixOS modules here
-  imports = [
-    ./${hardware-config}/hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
-  ] ++ (if is-wsl then [<nixos-wsl/modules>] else []);
+  imports =
+    [
+      ./${hardware-config}/hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
+    ]
+    ++ (
+      if is-wsl
+      then [<nixos-wsl/modules>]
+      else []
+    );
 
   nixpkgs = {
     # You can add overlays here
@@ -61,37 +67,40 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["nfs"];
 
-  boot.loader.grub = if is-wsl then {} else {
-    splashImage = null;
-    enable = true;
-    useOSProber = true;
-    devices = ["nodev"];
-    efiSupport = true;
-    configurationLimit =
-      if is-worktop
-      then 2
-      else 100;
+  boot.loader.grub =
+    if is-wsl
+    then {}
+    else {
+      splashImage = null;
+      enable = true;
+      useOSProber = true;
+      devices = ["nodev"];
+      efiSupport = true;
+      configurationLimit =
+        if is-worktop
+        then 2
+        else 100;
 
-    extraEntries = ''
-      menuentry "UEFI Settings" {
-          fwsetup
-      }
+      extraEntries = ''
+        menuentry "UEFI Settings" {
+            fwsetup
+        }
 
-      menuentry "Shutdown" {
-          halt
-      }
-    '';
+        menuentry "Shutdown" {
+            halt
+        }
+      '';
 
-    extraConfig = ''
-      set lang=en
-      export lang
-      set locale_dir=
-    '';
+      extraConfig = ''
+        set lang=en
+        export lang
+        set locale_dir=
+      '';
 
-    theme =
-      # if is-worktop
-      # then null
-      # else
+      theme =
+        # if is-worktop
+        # then null
+        # else
         pkgs.stdenv.mkDerivation {
           pname = "distro-grub-themes";
           version = "3.2";
@@ -103,30 +112,36 @@ in {
           };
           installPhase = "cp -r customize/nixos $out";
         };
-  };
+    };
 
-  swapDevices = if is-wsl then [] else [
-    {
-      device = "/swapfile";
-      size = 24 * 1024;
-    }
-  ];
+  swapDevices =
+    if is-wsl
+    then []
+    else [
+      {
+        device = "/swapfile";
+        size = 24 * 1024;
+      }
+    ];
 
-  networking.firewall = if is-wsl then {} else {
-    enable = true;
-    allowedTCPPorts =
-      if is-worktop
-      then [23 3240 10000 41100 10001 3241 502 8081]
-      else [8081 5173 22];
-    allowedUDPPorts =
-      if is-worktop
-      then [23 3240 10000 41100 10001 3241 502 8081]
-      else [8081 5173 22];
-    trustedInterfaces = ["tailscale0"];
+  networking.firewall =
+    if is-wsl
+    then {}
+    else {
+      enable = true;
+      allowedTCPPorts =
+        if is-worktop
+        then [23 3240 10000 41100 10001 3241 502 8081]
+        else [8081 5173 22];
+      allowedUDPPorts =
+        if is-worktop
+        then [23 3240 10000 41100 10001 3241 502 8081]
+        else [8081 5173 22];
+      trustedInterfaces = ["tailscale0"];
       # if is-worktop
       # then []
       # else ["tailscale0"];
-  };
+    };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
 
@@ -188,10 +203,13 @@ in {
   # services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = if is-wsl then {} else {
-    layout = "gb";
-    variant = "";
-  };
+  services.xserver.xkb =
+    if is-wsl
+    then {}
+    else {
+      layout = "gb";
+      variant = "";
+    };
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -301,12 +319,15 @@ in {
 
   # Programs
 
-  services.tailscale = if is-wsl then {} else {
-    # enable = !is-worktop;
-    enable = true;
-    useRoutingFeatures = "client"; # acts as client only
-    openFirewall = true; # open Tailscale ports
-  };
+  services.tailscale =
+    if is-wsl
+    then {}
+    else {
+      # enable = !is-worktop;
+      enable = true;
+      useRoutingFeatures = "client"; # acts as client only
+      openFirewall = true; # open Tailscale ports
+    };
 
   programs.wireshark = {
     enable = !is-wsl;
@@ -314,7 +335,8 @@ in {
   };
 
   environment.systemPackages = let
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs;
+      [
         tmux
         fprintd
         fastfetch
@@ -339,30 +361,34 @@ in {
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
-      ++ (if is-wsl then [] else [
-        winboat-fix
-        # Dolphin
-        kdePackages.dolphin
-        kdePackages.qtsvg 
-        kdePackages.kio # needed since 25.11
-        kdePackages.kio-fuse #to mount remote filesystems via FUSE
-        kdePackages.kio-extras #extra protocols support (sftp, fish and more)
-        kdePackages.qt6ct
-        libsForQt5.qt5ct
-        qgnomeplatform
-        
-        file-roller
+      ++ (
+        if is-wsl
+        then []
+        else [
+          winboat-fix
+          # Dolphin
+          kdePackages.dolphin
+          kdePackages.qtsvg
+          kdePackages.kio # needed since 25.11
+          kdePackages.kio-fuse #to mount remote filesystems via FUSE
+          kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+          kdePackages.qt6ct
+          libsForQt5.qt5ct
+          qgnomeplatform
 
-        firefox-bin # No, we don't need another package built from source
+          file-roller
 
-        protonvpn-gui
-        google-chrome
-        libreoffice
-        thunderbird-bin
-        ddcutil
-        krita
-        gimp
-      ])
+          firefox-bin # No, we don't need another package built from source
+
+          protonvpn-gui
+          google-chrome
+          libreoffice
+          thunderbird-bin
+          ddcutil
+          krita
+          gimp
+        ]
+      )
       ++ (
         if is-worktop
         then []
@@ -375,9 +401,17 @@ in {
         ]
       );
 
-    unstableSystemPackages = with pkgs-unstable; [
-      obsidian
-    ];
+    unstableSystemPackages = with pkgs-unstable;
+      [
+      ]
+      ++ (
+        if is-wsl
+        then with pkgs-unstable; []
+        else
+          with pkgs-unstable; [
+            obsidian
+          ]
+      );
   in
     systemPackages ++ unstableSystemPackages;
 

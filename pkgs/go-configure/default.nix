@@ -1,5 +1,12 @@
-{ pkgs, stdenv, dpkg, autoPatchelfHook, copyDesktopItems, makeDesktopItem, ... }:
-
+{
+  pkgs,
+  stdenv,
+  dpkg,
+  autoPatchelfHook,
+  copyDesktopItems,
+  makeDesktopItem,
+  ...
+}:
 stdenv.mkDerivation {
   pname = "go-compare";
   version = "6.52.002";
@@ -10,7 +17,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-bwD8DgEL0Pkoq9ANaa7A3LK0VVthiN1UTFlfhH13EOc=";
   };
 
-  nativeBuildInputs = [ dpkg autoPatchelfHook copyDesktopItems ];
+  nativeBuildInputs = [dpkg autoPatchelfHook copyDesktopItems];
 
   dontWrapQtApps = true;
 
@@ -21,8 +28,8 @@ stdenv.mkDerivation {
       icon = "slg7";
       desktopName = "Go Configure Software Hub";
       comment = "Go Configure Software Hub.";
-      keywords = [ "GreenPAK" "Designer" "SLG5100X" "Development" ];
-      categories = [ "Utility" "Application" ];
+      keywords = ["GreenPAK" "Designer" "SLG5100X" "Development"];
+      categories = ["Utility" "Application"];
       terminal = false;
       mimeTypes = [
         "application/gp3-extension"
@@ -41,7 +48,7 @@ stdenv.mkDerivation {
     })
   ];
 
-  buildInputs = with pkgs; [ 
+  buildInputs = with pkgs; [
     stdenv.cc.cc.lib
     libGL
     libxkbcommon
@@ -50,16 +57,16 @@ stdenv.mkDerivation {
     qt5.qtquickcontrols2
     # xorg.libxcb-cursor
     xcb-util-cursor
-    nss         
-    nspr         
-    xorg.libXdamage      
-    xorg.libXrandr       
-    xorg.libXtst         
-    alsa-lib     
-    xorg.libxshmfence    
-    xorg.libxkbfile      
-    graphviz     
-    cups    
+    nss
+    nspr
+    xorg.libXdamage
+    xorg.libXrandr
+    xorg.libXtst
+    alsa-lib
+    xorg.libxshmfence
+    xorg.libxkbfile
+    graphviz
+    cups
   ];
 
   unpackPhase = ''

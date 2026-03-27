@@ -1,5 +1,4 @@
-{ lib, ... } :
-{
+{lib, ...}: {
   wsl.enable = true;
   wsl.defaultUser = "robert";
 
