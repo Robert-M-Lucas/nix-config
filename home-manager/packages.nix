@@ -178,6 +178,7 @@ in {
       pkgs-unstable.darktable
       pkgs-unstable.muse-sounds-manager
       pkgs-unstable.upscayl
+      pkgs-unstable.davinci-resolve
 
       # ====== CMD ======
       pkgs.google-cloud-sdk
