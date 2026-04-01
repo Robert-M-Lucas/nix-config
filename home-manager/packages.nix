@@ -144,6 +144,9 @@ in {
       boxbuddy
       meld
       teams-for-linux
+      libusb1
+      glib
+      krb5
 
       # ====== IDEs ======
       arduino-ide
