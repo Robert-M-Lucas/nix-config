@@ -45,7 +45,7 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      mesa.opencl
+      rocmPackages.clr.icd
     ];
 
   };
@@ -62,7 +62,7 @@
     # LIBVA_DRIVER_NAME = "radeonsi";
     # VDPAU via Mesa
     # VDPAU_DRIVER = "radeonsi";
-    RUSTICL_ENABLE = "radeonsi";
+    # RUSTICL_ENABLE = "radeonsi";
   };
 
   fileSystems."/" = {
