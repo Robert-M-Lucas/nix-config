@@ -39,10 +39,11 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      rocmPackages.clr
-      rocmPackages.rocminfo
-      rocmPackages.rocm-runtime
+      # rocmPackages.clr.icd
+      # rocmPackages.clr
+      # rocmPackages.rocminfo
+      # rocmPackages.rocm-runtime
+      mesa.opencl
     ];
   };
 

@@ -358,6 +358,8 @@ in {
         ripgrep
         perf
         btop
+        clinfo
+        pciutils
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
