@@ -234,7 +234,7 @@ in {
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = !is-wsl;
+  services.libinput.enable = !is-wsl;
 
   programs.virt-manager.enable = !is-wsl;
 
@@ -360,6 +360,11 @@ in {
         btop
         clinfo
         pciutils
+        libva-utils
+         vulkan-tools
+        radeontop
+        lm_sensors
+        mesa-demos 
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
