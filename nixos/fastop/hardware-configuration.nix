@@ -15,11 +15,13 @@
   networking.hostName = "artemis";
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci"];
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [
+    # "amdgpu"
+    ];
   boot.kernelModules = ["kvm-amd" "v4l2loopback" "i2c-dev" "ddcci_backlight"];
   boot.kernelParams = [
-    "amd_pstate=active"        # AMD P-State driver (better freq scaling on Zen 3+)
-    "amdgpu.ppfeaturemask=0xffffffff"  # Unlock all power-play features
+    # "amd_pstate=active"        # AMD P-State driver (better freq scaling on Zen 3+)
+    # "amdgpu.ppfeaturemask=0xffffffff"  # Unlock all power-play features
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -43,24 +45,24 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      rocmPackages.clr          # OpenCL / ROCm compute (replaces rocm-opencl-icd)
-      mesa                     # Mesa (radeonsi — your primary OpenGL/Vulkan driver)
+      mesa.opencl
     ];
 
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "schedutil";  # best for AMD P-State
-  };
+  # powerManagement = {
+  #   enable = true;
+  #   cpuFreqGovernor = "schedutil";  # best for AMD P-State
+  # };
 
   environment.variables = {
     # Force Mesa radeonsi over amdvlk for Vulkan (more stable for iGPU)
-    AMD_VULKAN_ICD = "RADV";
+    # AMD_VULKAN_ICD = "RADV";
     # VA-API backend
-    LIBVA_DRIVER_NAME = "radeonsi";
+    # LIBVA_DRIVER_NAME = "radeonsi";
     # VDPAU via Mesa
-    VDPAU_DRIVER = "radeonsi";
+    # VDPAU_DRIVER = "radeonsi";
+    RUSTICL_ENABLE = "radeonsi";
   };
 
   fileSystems."/" = {
@@ -86,5 +88,5 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  hardware.amdgpu.opencl.enable = true;
+  # hardware.amdgpu.opencl.enable = true;
 }
