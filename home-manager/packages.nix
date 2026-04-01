@@ -197,6 +197,7 @@ in {
       pkgs.gtkwave
       pkgs.iverilog
       pkgs-unstable.zensical
+      pkgs.gcc-arm-embedded
     ];
 
     jetbrains-ides = [
