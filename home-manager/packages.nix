@@ -90,6 +90,7 @@ in {
       glab
       subversion
       musl
+      musl.dev
 
       # ====== Scripts ======
 
