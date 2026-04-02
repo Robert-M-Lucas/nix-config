@@ -89,6 +89,7 @@ in {
       nixfmt
       glab
       subversion
+      musl
 
       # ====== Scripts ======
 

@@ -365,6 +365,7 @@ in {
         radeontop
         lm_sensors
         mesa-demos 
+        file
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
