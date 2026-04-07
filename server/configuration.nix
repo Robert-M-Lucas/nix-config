@@ -150,6 +150,10 @@ in
       };
     };
 
+    systemd.tmpfiles.rules = [
+      "d /robert/data 0755 robert users -"
+    ];
+
     services.immich = {
       package = pkgs.unstable.immich;
       enable = true;
