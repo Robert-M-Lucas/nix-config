@@ -130,8 +130,8 @@ in
 
           # Since you're on Tailscale, bind only to that interface
           # Replace 'tailscale0' if your interface name differs
-          "interfaces" = "tailscale0 lo";
-          "bind interfaces only" = "yes";
+          # "interfaces" = "tailscale0 lo";
+          # "bind interfaces only" = "yes";
 
           # Performance & compatibility
           "min protocol" = "SMB2";
