@@ -45,24 +45,6 @@ in
     };
     console.keyMap = "uk";
 
-    # services.xserver.enable = true;
-    # services.xserver.displayManager.gdm.enable = true;
-    # services.xserver.desktopManager.gnome.enable = true;
-    # services.xserver.displayManager.gdm.autoSuspend = false;
-
-    # programs.dconf.enable = true;
-
-    # services.printing.enable = true;
-
-    # hardware.pulseaudio.enable = false;
-    # security.rtkit.enable = true;
-    # services.pipewire = {
-    #   enable = true;
-    #   alsa.enable = true;
-    #   alsa.support32Bit = true;
-    #   pulse.enable = true;
-    # };
-
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
     users.users.robert = {
@@ -89,17 +71,6 @@ in
       '';
     };
 
-    # environment.gnome.excludePackages = with pkgs; [
-    #   gnome-tour
-    #   gnome-connections
-    #   epiphany
-    #   geary
-    #   yelp
-    #   seahorse
-    #   gnome-clocks
-    #   gnome-maps
-    #   gnome-weather
-    # ];
     environment.systemPackages = with pkgs; [
       wget
       git
@@ -134,12 +105,6 @@ in
       openFirewall = true;
     };
 
-    # services.prometheus.enable = true;
-    # services.prometheus.port = 9091;
-    # services.prometheus.exporters.node.enable = true;
-    # services.grafana_reporter.enable = true;
-    # services.grafana_reporter.addr = "0.0.0.0";
-
     services.tlp.enable = true;
     powerManagement.powertop.enable = true;
 
@@ -151,16 +116,36 @@ in
 
     services.samba = {
       enable = true;
-      openFirewall = true; # still needed for LAN/Tailscale access
+      openFirewall = true;  # Opens TCP 445, 139 and UDP 137, 138
+
       settings = {
-        data = {
-          path = "/home/robert/data";
-          browseable = true;
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "NixOS Samba Server";
+          "server role" = "standalone server";
+
+          # Security - require authentication
+          "security" = "user";
+          "map to guest" = "never";
+
+          # Since you're on Tailscale, bind only to that interface
+          # Replace 'tailscale0' if your interface name differs
+          "interfaces" = "tailscale0 lo";
+          "bind interfaces only" = "yes";
+
+          # Performance & compatibility
+          "min protocol" = "SMB2";
+        };
+
+        "data" = {
+          "path" = "/robert/data";
+          "browseable" = "yes";
+          "read only" = "no";
+          "writable" = "yes";
           "valid users" = "robert";
-          "read only" = false;
-          "guest ok" = false;
           "create mask" = "0644";
           "directory mask" = "0755";
+          "force user" = "robert";
         };
       };
     };
@@ -172,7 +157,6 @@ in
       openFirewall = true;
       host = "0.0.0.0";
     };
-    # services.immich.accelerationDevices = null;
 
     users.users.immich = {
       home = "/var/lib/immich";
