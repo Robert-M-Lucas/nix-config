@@ -138,7 +138,7 @@ in
         };
 
         "data" = {
-          "path" = "/robert/data";
+          "path" = "/home/robert/data";
           "browseable" = "yes";
           "read only" = "no";
           "writable" = "yes";
