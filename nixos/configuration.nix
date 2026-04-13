@@ -133,6 +133,12 @@ in {
         if is-worktop
         then [23 3240 10000 41100 10001 3241 502 8081]
         else [8081 5173 22];
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
       allowedUDPPorts =
         if is-worktop
         then [23 3240 10000 41100 10001 3241 502 8081]
@@ -388,7 +394,7 @@ in {
 
           firefox-bin # No, we don't need another package built from source
 
-          pkgs-unstable.rquickshare
+          # pkgs-unstable.rquickshare # Doesn't work
 
           protonvpn-gui
           google-chrome
@@ -454,12 +460,6 @@ in {
   };
 
   programs.git.enable = true;
-
-  # TODO reenable
-  # programs.kdeconnect = {
-  #   enable = true;
-  #   package = pkgs.gnomeExtensions.gsconnect;
-  # };
 
   programs.neovim = {
     enable = true;
