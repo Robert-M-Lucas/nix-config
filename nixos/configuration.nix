@@ -388,6 +388,8 @@ in {
 
           firefox-bin # No, we don't need another package built from source
 
+          pkgs-unstable.rquickshare
+
           protonvpn-gui
           google-chrome
           libreoffice
