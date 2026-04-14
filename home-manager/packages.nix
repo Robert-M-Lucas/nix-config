@@ -58,6 +58,7 @@ in {
   home.packages = let
     minimal = with pkgs; [
       # ====== CMD ======
+      home-manager
       pythonEnv
       clang-tools
       cmake
