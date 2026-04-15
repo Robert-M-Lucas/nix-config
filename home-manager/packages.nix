@@ -13,6 +13,24 @@
   is-wsl,
   ...
 }: let
+  mdx-spanner = pkgs.python312Packages.buildPythonPackage rec {
+    pname = "mdx_spanner";
+    version = "0.1.0";
+
+    src = pkgs.python312Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-5yNFgAqbhnQS3Dy3scU9vy7TJ72vVZkX+RB69i6sE7M=";
+    };
+
+    pyproject = true;
+
+    build-system = with pkgs.python312Packages; [
+      setuptools
+    ];
+
+    doCheck = false;
+  };
+
   pythonEnv = pkgs.python312.withPackages (
     ps: (
       if !is-worktop
@@ -51,6 +69,7 @@
         minify-html
         beautifulsoup4
         textual
+        mdx-spanner
       ]
     )
   );
