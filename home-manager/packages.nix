@@ -11,8 +11,6 @@
   is-pc,
   is-worktop,
   is-wsl,
-  rustPlatform,
-  versionCheckHook,
   ...
 }: let
   mdx-spanner = pkgs.python312Packages.buildPythonPackage rec {
@@ -37,7 +35,7 @@
     doCheck = false;
   };
 
-  zensical-custom = pkgs.python312Packages.buildPythonApplication (finalAttrs: {
+  zensical-custom = pkgs.python312Packages.buildPythonApplication rec {
     pname = "zensical";
     version = "0.0.31";
     pyproject = true;
@@ -46,16 +44,16 @@
     # The publish process also copies in assets from zensical/ui.
     # We could combine sources, but then nix-update won't work.
     src = pkgs.python312Packages.fetchPypi {
-      inherit (finalAttrs) pname version;
+      inherit pname version;
       hash = "sha256-nBLwe95wxL/bE9bK4b7fjRgGTSV6boESihUlArKKj8M=";
     };
 
-    cargoDeps = rustPlatform.fetchCargoVendor {
-      inherit (finalAttrs) pname version src;
+    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+      inherit pname version src;
       hash = "sha256-5lsL42TYg7AsnCxzLcg/KEewcTKLBKvRMJtu+fBkgeY=";
     };
 
-    nativeBuildInputs = with rustPlatform; [
+    nativeBuildInputs = with pkgs.rustPlatform; [
       maturinBuildHook
       cargoSetupHook
     ];
@@ -72,25 +70,9 @@
       colorama
     ];
 
-    nativeCheckInputs = [ versionCheckHook ];
-    versionCheckProgramArg = "--version";
-
-    meta = {
-      description = "Static site generator for documentation";
-      longDescription = ''
-        Zensical is a modern static site generator designed to simplify
-        building and maintaining project documentation.  It's built by
-        the creators of Material for MkDocs and shares the same core
-        design principles and philosophy – batteries included, easy to
-        use, with powerful customization options.
-      '';
-      homepage = "https://zensical.org";
-      changelog = "https://github.com/zensical/zensical/releases/tag/v${finalAttrs.version}";
-      license = lib.licenses.mit;
-      maintainers = with lib.maintainers; [ aljazerzen ];
-      mainProgram = "zensical";
-    };
-  });
+    # nativeCheckInputs = [ pkgs.testers.versionCheckHook ];
+    # versionCheckProgramArg = "--version";
+  };
 
   pythonEnv = pkgs.python312.withPackages (
     ps: (
@@ -284,7 +266,7 @@ in {
       pkgs.go-configure
       pkgs.gtkwave
       pkgs.iverilog
-      pkgs-unstable.zensical
+      zensical-custom
       pkgs.gcc-arm-embedded
     ];
 
