@@ -125,29 +125,18 @@ in {
     ];
 
   networking.firewall =
-    if is-wsl
-    then {}
-    else {
+    {
       enable = true;
-      allowedTCPPorts =
-        if is-worktop
-        then [23 3240 10000 41100 10001 3241 502 8081]
-        else [8081 5173 22];
+      allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
       allowedTCPPortRanges = [
         {
           from = 1714;
           to = 1764;
         }
       ];
-      allowedUDPPorts =
-        if is-worktop
-        then [23 3240 10000 41100 10001 3241 502 8081]
-        else [8081 5173 22];
+      allowedUDPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
       trustedInterfaces = ["tailscale0"];
-      # if is-worktop
-      # then []
-      # else ["tailscale0"];
-    };
+  };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
 
