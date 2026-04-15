@@ -70,6 +70,7 @@
         beautifulsoup4
         textual
         mdx-spanner
+        markdown
       ]
     )
   );
