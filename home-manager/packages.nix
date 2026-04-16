@@ -1,18 +1,32 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   pkgs-unstable,
   pkgs-jb,
-  use-cuda,
-  home,
   is-pc,
   is-worktop,
   is-wsl,
   ...
 }: let
+  Trio-UnifiedApi = pkgs.python312Packages.buildPythonPackage rec {
+    pname = "Trio-UnifiedApi";
+    version = "1.2.0";
+
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/94/06/910cb52a894279c59de4c7fc3f082807541cce2ae4ed1fe79fc906ac8fb2/trio_unifiedapi-1.2.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl";
+      sha256 = "sha256-RyhD6+j+s7rHiDK16arZbxQ9nMsrSJftvFXJ8302tWY=";
+    };
+
+    format = "wheel";
+
+    build-system = with pkgs.python312Packages; [
+    ];
+
+    propagatedBuildInputs = with pkgs.python312Packages; [
+    ];
+
+    doCheck = false;
+  };
+
   mdx-spanner = pkgs.python312Packages.buildPythonPackage rec {
     pname = "mdx_spanner";
     version = "0.1.0";
@@ -114,6 +128,7 @@
         textual
         markdown
         mdx-spanner
+        Trio-UnifiedApi
       ]
     )
   );
