@@ -9,7 +9,7 @@
 }: let
   Trio-UnifiedApi = pkgs.python312Packages.buildPythonPackage rec {
     pname = "Trio-UnifiedApi";
-    version = "1.2.0";
+    version = "1.2.1rc1";
 
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/94/06/910cb52a894279c59de4c7fc3f082807541cce2ae4ed1fe79fc906ac8fb2/trio_unifiedapi-1.2.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl";
