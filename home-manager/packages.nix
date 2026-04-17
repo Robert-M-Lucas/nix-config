@@ -13,7 +13,7 @@
 
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/d9/b0/2ede950a6a7f50fa622c7164ef67fa723d7d75c628de93c184fb60289b7b/trio_unifiedapi-1.2.1rc1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl";
-      sha256 = "sha256-RyhD6+j+s7rHiDK16arZbxQ9nMsrSJftvFXJ8302tWY=";
+      sha256 = "sha256-g0U9tUvZXkIUs47iCX8378IXPVDW/Y/35bkVxJr+H9g=";
     };
 
     format = "wheel";
@@ -89,9 +89,7 @@
   };
 
   pythonEnv = pkgs.python312.withPackages (
-    ps: (
-      if !is-worktop
-      then with ps; [
+    ps: (with ps; [
         numpy
         scikit-learn
         jupyter
@@ -114,8 +112,6 @@
         keyboard
         websockets
         standard-telnetlib
-      ]
-      else with ps; [
         numpy
         matplotlib
         west
