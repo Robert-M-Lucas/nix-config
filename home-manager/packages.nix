@@ -9,10 +9,10 @@
 }: let
   Trio-UnifiedApi = pkgs.python312Packages.buildPythonPackage rec {
     pname = "Trio-UnifiedApi";
-    version = "1.2.0";
+    version = "1.2.1rc1";
 
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/94/06/910cb52a894279c59de4c7fc3f082807541cce2ae4ed1fe79fc906ac8fb2/trio_unifiedapi-1.2.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl";
+      url = "https://files.pythonhosted.org/packages/d9/b0/2ede950a6a7f50fa622c7164ef67fa723d7d75c628de93c184fb60289b7b/trio_unifiedapi-1.2.1rc1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl";
       sha256 = "sha256-RyhD6+j+s7rHiDK16arZbxQ9nMsrSJftvFXJ8302tWY=";
     };
 
