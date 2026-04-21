@@ -125,23 +125,18 @@ in {
     ];
 
   networking.firewall =
-    if is-wsl
-    then {}
-    else {
+    {
       enable = true;
-      allowedTCPPorts =
-        if is-worktop
-        then [23 3240 10000 41100 10001 3241 502 8081]
-        else [8081 5173 22];
-      allowedUDPPorts =
-        if is-worktop
-        then [23 3240 10000 41100 10001 3241 502 8081]
-        else [8081 5173 22];
+      allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
       trustedInterfaces = ["tailscale0"];
-      # if is-worktop
-      # then []
-      # else ["tailscale0"];
-    };
+  };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
 
@@ -373,7 +368,6 @@ in {
         if is-wsl
         then []
         else [
-          winboat
           # Dolphin
           kdePackages.dolphin
           kdePackages.qtsvg
@@ -387,6 +381,8 @@ in {
           file-roller
 
           firefox-bin # No, we don't need another package built from source
+
+          # pkgs-unstable.rquickshare # Doesn't work
 
           protonvpn-gui
           google-chrome
@@ -452,12 +448,6 @@ in {
   };
 
   programs.git.enable = true;
-
-  # TODO reenable
-  # programs.kdeconnect = {
-  #   enable = true;
-  #   package = pkgs.gnomeExtensions.gsconnect;
-  # };
 
   programs.neovim = {
     enable = true;

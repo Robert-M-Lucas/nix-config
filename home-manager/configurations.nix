@@ -34,10 +34,9 @@
     };
   };
 
-  # services.kdeconnect = {
-  #   enable = true;
-  #   package = pkgs.gnomeExtensions.gsconnect;
-  # };
+  services.kdeconnect = {
+    enable = true;
+  };
 
   services.flameshot.enable = !is-wsl;
 

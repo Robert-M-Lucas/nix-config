@@ -1,22 +1,95 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   pkgs-unstable,
   pkgs-jb,
-  use-cuda,
-  home,
   is-pc,
   is-worktop,
   is-wsl,
   ...
 }: let
+  Trio-UnifiedApi = pkgs.python312Packages.buildPythonPackage rec {
+    pname = "Trio-UnifiedApi";
+    version = "1.2.1rc1";
+
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/d9/b0/2ede950a6a7f50fa622c7164ef67fa723d7d75c628de93c184fb60289b7b/trio_unifiedapi-1.2.1rc1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl";
+      sha256 = "sha256-g0U9tUvZXkIUs47iCX8378IXPVDW/Y/35bkVxJr+H9g=";
+    };
+
+    format = "wheel";
+
+    build-system = with pkgs.python312Packages; [
+    ];
+
+    propagatedBuildInputs = with pkgs.python312Packages; [
+    ];
+
+    doCheck = false;
+  };
+
+  mdx-spanner = pkgs.python312Packages.buildPythonPackage rec {
+    pname = "mdx_spanner";
+    version = "0.1.0";
+
+    src = pkgs.python312Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-5yNFgAqbhnQS3Dy3scU9vy7TJ72vVZkX+RB69i6sE7M=";
+    };
+
+    pyproject = true;
+
+    build-system = with pkgs.python312Packages; [
+      setuptools
+    ];
+
+    propagatedBuildInputs = with pkgs.python312Packages; [
+      markdown
+    ];
+
+    doCheck = false;
+  };
+
+  zensical-custom = pkgs.python312Packages.buildPythonApplication rec {
+    pname = "zensical";
+    version = "0.0.31";
+    pyproject = true;
+
+    # We fetch from PyPi, because GitHub repo does not contain all sources.
+    # The publish process also copies in assets from zensical/ui.
+    # We could combine sources, but then nix-update won't work.
+    src = pkgs.python312Packages.fetchPypi {
+      inherit pname version;
+      hash = "sha256-nBLwe95wxL/bE9bK4b7fjRgGTSV6boESihUlArKKj8M=";
+    };
+
+    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+      inherit pname version src;
+      hash = "sha256-5lsL42TYg7AsnCxzLcg/KEewcTKLBKvRMJtu+fBkgeY=";
+    };
+
+    nativeBuildInputs = with pkgs.rustPlatform; [
+      maturinBuildHook
+      cargoSetupHook
+    ];
+
+    dependencies = with pkgs.python312Packages; [
+      click
+      deepmerge
+      markdown
+      pygments
+      pymdown-extensions
+      pyyaml
+      mdx-spanner
+      mdx-truly-sane-lists
+      colorama
+    ];
+
+    # nativeCheckInputs = [ pkgs.testers.versionCheckHook ];
+    # versionCheckProgramArg = "--version";
+  };
+
   pythonEnv = pkgs.python312.withPackages (
-    ps: (
-      if !is-worktop
-      then with ps; [
+    ps: (with ps; [
         numpy
         scikit-learn
         jupyter
@@ -39,8 +112,6 @@
         keyboard
         websockets
         standard-telnetlib
-      ]
-      else with ps; [
         numpy
         matplotlib
         west
@@ -51,6 +122,9 @@
         minify-html
         beautifulsoup4
         textual
+        markdown
+        mdx-spanner
+        Trio-UnifiedApi
       ]
     )
   );
@@ -58,6 +132,7 @@ in {
   home.packages = let
     minimal = with pkgs; [
       # ====== CMD ======
+      home-manager
       pythonEnv
       clang-tools
       cmake
@@ -202,7 +277,7 @@ in {
       pkgs.go-configure
       pkgs.gtkwave
       pkgs.iverilog
-      pkgs-unstable.zensical
+      zensical-custom
       pkgs.gcc-arm-embedded
     ];
 
