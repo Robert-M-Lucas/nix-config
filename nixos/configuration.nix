@@ -373,7 +373,7 @@ in {
         if is-wsl
         then []
         else [
-          winboat-fix
+          winboat
           # Dolphin
           kdePackages.dolphin
           kdePackages.qtsvg
