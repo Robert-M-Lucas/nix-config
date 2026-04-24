@@ -7,6 +7,29 @@
   is-wsl,
   ...
 }: let
+  ethernetip = pkgs.python312Packages.buildPythonPackage rec {
+    pname = "ethernetip";
+    version = "1.1.2";
+
+    src = pkgs.python312Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-i2LM6UWlIZhiOldido15N2V1yq2ygweXrSB+vWGxbF8=";
+    };
+
+    pyproject = true;
+
+    build-system = with pkgs.python312Packages; [
+      setuptools
+      dpkt
+    ];
+
+    propagatedBuildInputs = with pkgs.python312Packages; [
+      dpkt
+    ];
+
+    doCheck = false;
+  };
+
   Trio-UnifiedApi = pkgs.python312Packages.buildPythonPackage rec {
     pname = "Trio-UnifiedApi";
     version = "1.2.1rc1";
@@ -124,6 +147,7 @@
         textual
         markdown
         mdx-spanner
+        ethernetip
         Trio-UnifiedApi
       ]
     )
