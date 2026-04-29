@@ -124,18 +124,17 @@ in {
       }
     ];
 
-  networking.firewall =
-    {
-      enable = true;
-      allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
-      allowedTCPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-      ];
-      allowedUDPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
-      trustedInterfaces = ["tailscale0"];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
+    trustedInterfaces = ["tailscale0"];
   };
 
   security.pam.services.sshd.googleAuthenticator.enable = true;
@@ -356,10 +355,10 @@ in {
         clinfo
         pciutils
         libva-utils
-         vulkan-tools
+        vulkan-tools
         radeontop
         lm_sensors
-        mesa-demos 
+        mesa-demos
         file
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))

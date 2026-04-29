@@ -47,6 +47,14 @@
     propagatedBuildInputs = with pkgs.python312Packages; [
     ];
 
+    nativeBuildInputs = [
+      pkgs.autoPatchelfHook
+    ];
+
+    buildInputs = [
+      pkgs.libcxx
+    ];
+
     doCheck = false;
   };
 
@@ -112,7 +120,8 @@
   };
 
   pythonEnv = pkgs.python312.withPackages (
-    ps: (with ps; [
+    ps: (
+      with ps; [
         numpy
         scikit-learn
         jupyter

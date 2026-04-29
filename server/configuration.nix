@@ -116,7 +116,7 @@ in
 
     services.samba = {
       enable = true;
-      openFirewall = true;  # Opens TCP 445, 139 and UDP 137, 138
+      openFirewall = true; # Opens TCP 445, 139 and UDP 137, 138
 
       settings = {
         global = {

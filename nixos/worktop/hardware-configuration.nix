@@ -28,7 +28,7 @@
     SUBSYSTEM=="dri", KERNEL=="card[0-9]*", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="XXXX", ATTRS{idProduct}=="YYYY", TAG+="uaccess"
   '';
-  services.udev.packages = [ pkgs.stlink ];
+  services.udev.packages = [pkgs.stlink];
 
   # boot.kernelPatches = lib.singleton {
   #   name = "rt";
