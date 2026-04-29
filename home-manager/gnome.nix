@@ -31,7 +31,8 @@
     };
   };
 in {
-  home.file.".background-image".source = ./assets/wallpaper-budapest.JPG;
+  home.file.".background-image".source = ./assets/wallpaper-tatry.JPG;
+  home.file.".background-image-dark".source = ./assets/wallpaper-budapest.JPG;
 
   # Enable GTK and apply Neuwaita icons
   gtk = {
@@ -105,7 +106,7 @@ in {
         color-shading-type = "solid";
         picture-options = "zoom";
         picture-uri = "file:///home/robert/.background-image";
-        picture-uri-dark = "file:///home/robert/.background-image";
+        picture-uri-dark = "file:///home/robert/.background-image-dark";
       };
       "org/gnome/desktop/screensaver" = {
         color-shading-type = "solid";
