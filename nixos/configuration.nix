@@ -395,7 +395,7 @@ in {
         ]
       )
       ++ (
-        if is-worktop
+        if is-worktop || is-wsl
         then []
         else [
           obs-studio
