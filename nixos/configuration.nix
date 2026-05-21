@@ -128,14 +128,14 @@ in {
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
+    allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22 44818 2222];
     allowedTCPPortRanges = [
       {
         from = 1714;
         to = 1764;
       }
     ];
-    allowedUDPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22];
+    allowedUDPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22 44818 2222];
     trustedInterfaces = ["tailscale0"];
   };
 
