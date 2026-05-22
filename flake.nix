@@ -6,7 +6,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-25.11";
+      ref = "staging-26.05";
       # rev = "34627c90f062da515ea358360f448da57769236e";
     };
     nixpkgs-unstable = {
@@ -87,7 +87,7 @@
           is-pc = true;
           is-worktop = false;
           is-wsl = false;
-          # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+          is-fastop = false;
           stateVersion = "24.05";
         };
         modules = [
@@ -114,7 +114,7 @@
           is-pc = false;
           is-worktop = false;
           is-wsl = false;
-          # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+          is-fastop = true;
           stateVersion = "24.05";
         };
         modules = [
@@ -143,7 +143,7 @@
           is-pc = false;
           is-worktop = true;
           is-wsl = false;
-          # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+          is-fastop = false;
           stateVersion = "24.05";
         };
         modules = [
@@ -170,6 +170,7 @@
           is-pc = false;
           is-worktop = false;
           is-wsl = true;
+          is-fastop = false;
           stateVersion = "25.11";
         };
         modules = [

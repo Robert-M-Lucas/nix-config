@@ -14,6 +14,7 @@
   is-pc,
   is-worktop,
   is-wsl,
+  is-fastop,
   overlays,
   overlays-unstable,
   stateVersion,
@@ -243,13 +244,40 @@ in {
     pkgs.nerd-fonts.fira-code
   ];
 
+  services.howdy = {
+    enable = is-fastop || is-worktop;
+
+    settings.core.device_path = "/dev/video0";
+
+    settings.core.use_cnn = true;
+    settings.core.detection_notice = false;
+
+    # Fall through to password silently when no face is enrolled for this user.
+    settings.core.suppress_unknown = true;
+    settings.core.ignore_ssh = true;
+    settings.core.ignore_closed_lid = true;
+
+    # Confidence threshold (lower = stricter match required).
+    # Range: 0.0 (very strict) to 10.0 (very loose).  3.5 is a safe default.
+    settings.core.certainty = 3.5;
+  };
+
+  security.pam.howdy.enable = is-fastop || is-worktop;
+  security.pam.services = {
+    gdm-password.howdy.enable = is-fastop || is-worktop;
+    login.howdy.enable = is-fastop || is-worktop;
+    sudo.howdy.enable = is-fastop || is-worktop;
+    polkit-1.howdy.enable = is-fastop || is-worktop;
+  };
+
+  users.groups.video = {};
   users.users = {
     robert = {
       description = "Robert Lucas";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
       ];
-      extraGroups = ["wheel" "networkmanager" "docker" "i2c"];
+      extraGroups = ["wheel" "networkmanager" "docker" "i2c" "video"];
     };
     guest = {
       description = "Guest";
@@ -362,6 +390,7 @@ in {
         lm_sensors
         mesa-demos
         file
+        v4l-utils
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
@@ -385,7 +414,7 @@ in {
 
           # pkgs-unstable.rquickshare # Doesn't work
 
-          protonvpn-gui
+          proton-vpn
           google-chrome
           libreoffice
           thunderbird-bin
@@ -404,6 +433,8 @@ in {
 
           jdk17
         ]
+      ) ++ (
+        if is-fastop || is-worktop then [ howdy ] else []
       );
 
     unstableSystemPackages = with pkgs-unstable;

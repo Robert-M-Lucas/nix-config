@@ -233,7 +233,7 @@ in {
       winetricks
       distrobox
       texlive.combined.scheme-full
-      wineWowPackages.stableFull
+      wineWow64Packages.stableFull
       xclip
 
       # ====== GUI Apps ======
