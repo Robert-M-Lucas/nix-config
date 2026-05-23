@@ -148,8 +148,8 @@
         matplotlib
         west
         jsonschema
-        tree-sitter
-        tree-sitter-grammars.tree-sitter-c
+        # tree-sitter
+        # tree-sitter-grammars.tree-sitter-c
         python-docx
         minify-html
         beautifulsoup4
