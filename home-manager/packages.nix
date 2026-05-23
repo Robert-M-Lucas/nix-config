@@ -157,8 +157,7 @@
         markdown
         mdx-spanner
         ethernetip
-        Trio-UnifiedApi
-      ]
+      ] ++ (if is-worktop [Trio-UnifiedApi] else [])
     )
   );
 in {
