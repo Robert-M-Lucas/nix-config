@@ -6,7 +6,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "staging-26.05";
+      ref = "nixos-26.05";
       # rev = "34627c90f062da515ea358360f448da57769236e";
     };
     nixpkgs-unstable = {
