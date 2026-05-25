@@ -132,8 +132,8 @@
         tamasfe.even-better-toml
         rust-lang.rust-analyzer
         fill-labs.dependi
-        ms-python.python
-        ms-python.vscode-pylance
+        # ms-python.python # TODO
+        # ms-python.vscode-pylance # TODO
         ms-vscode-remote.remote-ssh
         ms-vscode.cpptools
         ms-vscode.cmake-tools
