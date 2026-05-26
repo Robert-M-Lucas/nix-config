@@ -247,28 +247,17 @@ in {
   services.howdy = {
     enable = is-fastop || is-worktop;
 
-    settings.core.device_path = "/dev/video0";
-
-    settings.core.use_cnn = true;
-    settings.core.detection_notice = false;
-
-    # Fall through to password silently when no face is enrolled for this user.
-    settings.core.suppress_unknown = true;
-    settings.core.ignore_ssh = true;
-    settings.core.ignore_closed_lid = true;
-
-    # Confidence threshold (lower = stricter match required).
-    # Range: 0.0 (very strict) to 10.0 (very loose).  3.5 is a safe default.
-    settings.core.certainty = 3.5;
+    settings.core.device_path = "/dev/video2";
+    settings.core.save_failed = true;
   };
 
-  security.pam.howdy.enable = is-fastop || is-worktop;
-  security.pam.services = {
-    gdm-password.howdy.enable = is-fastop || is-worktop;
-    login.howdy.enable = is-fastop || is-worktop;
-    sudo.howdy.enable = is-fastop || is-worktop;
-    polkit-1.howdy.enable = is-fastop || is-worktop;
-  };
+  # security.pam.howdy.enable = is-fastop || is-worktop;
+  # security.pam.services = {
+  #   gdm-password.howdy.enable = is-fastop || is-worktop;
+  #   login.howdy.enable = is-fastop || is-worktop;
+  #   sudo.howdy.enable = is-fastop || is-worktop;
+  #   polkit-1.howdy.enable = is-fastop || is-worktop;
+  # };
 
   users.groups.video = {};
   users.users = {
@@ -391,6 +380,7 @@ in {
         mesa-demos
         file
         v4l-utils
+        cheese
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
