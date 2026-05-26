@@ -251,7 +251,7 @@ in {
     settings.core.save_failed = true;
   };
 
-  # security.pam.howdy.enable = is-fastop || is-worktop;
+  security.pam.howdy.enable = is-fastop || is-worktop;
   # security.pam.services = {
   #   gdm-password.howdy.enable = is-fastop || is-worktop;
   #   login.howdy.enable = is-fastop || is-worktop;
