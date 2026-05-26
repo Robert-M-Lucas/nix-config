@@ -264,7 +264,7 @@ in {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
       ];
-      extraGroups = ["wheel" "networkmanager" "docker" "i2c" "video"];
+      extraGroups = ["wheel" "networkmanager" "docker" "i2c" "video" "wireshark"];
     };
     guest = {
       description = "Guest";
