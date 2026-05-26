@@ -249,15 +249,13 @@ in {
 
     settings.core.device_path = "/dev/video2";
     settings.core.save_failed = true;
+
+    control = "sufficient";
   };
 
-  security.pam.howdy.enable = is-fastop || is-worktop;
-  # security.pam.services = {
-  #   gdm-password.howdy.enable = is-fastop || is-worktop;
-  #   login.howdy.enable = is-fastop || is-worktop;
-  #   sudo.howdy.enable = is-fastop || is-worktop;
-  #   polkit-1.howdy.enable = is-fastop || is-worktop;
-  # };
+  security.pam.services = {
+    polkit-1.howdy.enable = false;
+  };
 
   users.groups.video = {};
   users.users = {
