@@ -247,8 +247,8 @@ in {
   services.howdy = {
     enable = is-fastop || is-worktop;
 
-    settings.core.device_path = "/dev/video2";
-    settings.core.save_failed = true;
+    settings.video.device_path = if is-worktop then "/dev/video2" else "/dev/video0";
+    settings.snapshots.save_failed = true;
 
     control = "sufficient";
   };
