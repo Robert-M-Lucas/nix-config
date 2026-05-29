@@ -405,7 +405,7 @@ in {
           proton-vpn
           google-chrome
           libreoffice
-          thunderbird-bin
+          # thunderbird-bin
           ddcutil
           krita
           gimp
