@@ -59,6 +59,35 @@
     doCheck = false;
   };
 
+  pylogix = pkgs.python312Packages.buildPythonPackage rec {
+    pname = "pylogix";
+    version = "1.1.5";
+
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/18/87/a186c61d724326daa1cd8e43df46efbb2f19dcad17f437a74d3672e0ba11/pylogix-1.1.5-py2.py3-none-any.whl";
+      sha256 = "sha256-a/KrC06/9OUIVxfLEx76SP61R9hoxhdqR8P1D3ratW4=";
+    };
+
+    format = "wheel";
+
+    build-system = with pkgs.python312Packages; [
+      # numpy
+    ];
+
+    propagatedBuildInputs = with pkgs.python312Packages; [
+    ];
+
+    nativeBuildInputs = [
+      # pkgs.autoPatchelfHook
+    ];
+
+    buildInputs = [
+      # pkgs.libcxx
+    ];
+
+    doCheck = false;
+  };
+
   mdx-spanner = pkgs.python312Packages.buildPythonPackage rec {
     pname = "mdx_spanner";
     version = "0.1.0";
@@ -149,16 +178,19 @@
         matplotlib
         west
         jsonschema
-        tree-sitter
-        tree-sitter-grammars.tree-sitter-c
-        python-docx
         minify-html
         beautifulsoup4
         textual
+      ] ++ (if is-worktop then [
+        Trio-UnifiedApi
+        pylogix
+        ethernetip
         markdown
         mdx-spanner
-        ethernetip
-      ] ++ (if is-worktop then [Trio-UnifiedApi] else [])
+        tree-sitter
+        tree-sitter-grammars.tree-sitter-c
+        python-docx
+      ] else [])
     )
   );
 in {
