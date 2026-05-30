@@ -245,7 +245,7 @@ in {
   ];
 
   services.howdy = {
-    enable = is-fastop || is-worktop;
+    enable = is-worktop;
 
     settings.video.device_path = if is-worktop then "/dev/video2" else "/dev/video0";
     settings.snapshots.save_failed = true;
@@ -422,7 +422,7 @@ in {
           jdk17
         ]
       ) ++ (
-        if is-fastop || is-worktop then [ howdy ] else []
+        if is-worktop then [ howdy ] else []
       );
 
     unstableSystemPackages = with pkgs-unstable;
