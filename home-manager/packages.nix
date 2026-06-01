@@ -190,6 +190,7 @@
         tree-sitter
         tree-sitter-grammars.tree-sitter-c
         python-docx
+        pymodbus
       ] else [])
     )
   );
