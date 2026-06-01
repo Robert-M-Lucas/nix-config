@@ -15,7 +15,7 @@ EOF
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-25.11";
+      ref = "nixos-26.05";
     };
     flake-utils.url = "github:numtide/flake-utils";
   };

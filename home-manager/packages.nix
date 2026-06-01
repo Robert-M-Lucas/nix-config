@@ -344,7 +344,7 @@ in {
       pkgs.iverilog
       zensical-custom
       pkgs.gcc-arm-embedded
-      pkgs.bambu-studio
+      # pkgs.bambu-studio
     ];
 
     jetbrains-ides = [
