@@ -70,6 +70,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["nfs"];
 
+  boot.loader.timeout = -1;
   boot.loader.grub =
     if is-wsl
     then {}
