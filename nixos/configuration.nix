@@ -128,6 +128,7 @@ in {
       }
     ];
 
+  networking.resolvconf.enable = false;
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [23 3240 10000 41100 10001 3241 502 8081 5173 22 44818 2222];
