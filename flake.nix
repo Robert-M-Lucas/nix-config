@@ -121,7 +121,6 @@
           # > Our main nixos configuration file <
           # catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
-          # spicetify-nix.nixosModules.default
           # minegrub-theme.nixosModules.default
         ];
       };

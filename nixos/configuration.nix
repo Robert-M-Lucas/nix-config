@@ -19,9 +19,7 @@
   overlays-unstable,
   stateVersion,
   ...
-}: let
-  # spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in {
+}:  {
   # You can import other NixOS modules here
   imports =
     [
@@ -190,16 +188,25 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = !is-wsl;
+  services.xserver.excludePackages = [pkgs.xterm];
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = !is-wsl;
   services.desktopManager.gnome.enable = !is-wsl;
-  services.xserver.excludePackages = [pkgs.xterm];
+  
+  # === KDE SPECIALISATION ===
+  specialisation.kde.configuration = if is-wsl then {} else {
+    system.nixos.tags = [ "kde" ];
 
-  # Enable plasma
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  # services.desktopManager.plasma6.enable = true;
+    services.displayManager.gdm.enable = lib.mkForce false;
+    services.desktopManager.gnome.enable = lib.mkForce false;
+    
+    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.wayland.enable = true;
+    services.desktopManager.plasma6.enable = true;
+
+    environment.sessionVariables.QT_QPA_PLATFORMTHEME = lib.mkForce null;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb =
@@ -396,6 +403,7 @@ in {
           kdePackages.kio-extras #extra protocols support (sftp, fish and more)
           kdePackages.qt6ct
           libsForQt5.qt5ct
+
           qgnomeplatform
 
           file-roller
@@ -442,6 +450,7 @@ in {
     systemPackages ++ unstableSystemPackages;
 
   environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gnome";
+
 
   programs.gnome-terminal.enable = false;
   console.enable = false;
