@@ -204,8 +204,11 @@
     services.displayManager.sddm.enable = true;
     services.displayManager.sddm.wayland.enable = true;
     services.desktopManager.plasma6.enable = true;
-
-    environment.sessionVariables.QT_QPA_PLATFORMTHEME = lib.mkForce null;
+    
+    environment.sessionVariables = {
+      QT_QPA_PLATFORMTHEME = lib.mkForce null;
+      DCONF_PROFILE = lib.mkForce "kde";
+    };
   };
 
   # Configure keymap in X11
