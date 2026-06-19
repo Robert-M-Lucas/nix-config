@@ -200,6 +200,10 @@
 
     services.displayManager.gdm.enable = lib.mkForce false;
     services.desktopManager.gnome.enable = lib.mkForce false;
+
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.login.enableGnomeKeyring = true;
+    security.pam.services.sddm.enableGnomeKeyring = true;
     
     services.displayManager.sddm.enable = true;
     services.displayManager.sddm.wayland.enable = true;
@@ -391,6 +395,7 @@
         file
         v4l-utils
         cheese
+        seahorse
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
