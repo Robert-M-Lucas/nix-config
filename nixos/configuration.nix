@@ -289,6 +289,9 @@
       extraGroups = ["networkmanager"];
     };
   };
+  services.AccountsService.users.temp = {
+    SystemAccount = true;
+  };
 
   users.groups.libvirtd.members = ["robert"];
 
