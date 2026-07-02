@@ -59,12 +59,12 @@ stdenv.mkDerivation {
     xcb-util-cursor
     nss
     nspr
-    xorg.libXdamage
-    xorg.libXrandr
-    xorg.libXtst
+    libxdamage
+    libxrandr
+    libxtst
     alsa-lib
-    xorg.libxshmfence
-    xorg.libxkbfile
+    libxshmfence
+    libxkbfile
     graphviz
     cups
   ];

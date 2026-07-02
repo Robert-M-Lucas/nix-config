@@ -260,18 +260,18 @@
     pkgs.nerd-fonts.fira-code
   ];
 
-  services.howdy = {
-    enable = is-worktop;
+  # services.howdy = {
+  #   enable = is-worktop;
 
-    settings.video.device_path = if is-worktop then "/dev/video2" else "/dev/video0";
-    settings.snapshots.save_failed = true;
+  #   settings.video.device_path = if is-worktop then "/dev/video2" else "/dev/video0";
+  #   settings.snapshots.save_failed = true;
 
-    control = "sufficient";
-  };
+  #   control = "sufficient";
+  # };
 
-  security.pam.services = {
-    polkit-1.howdy.enable = false;
-  };
+  # security.pam.services = {
+  #   polkit-1.howdy.enable = false;
+  # };
 
   users.groups.video = {};
   users.users = {
@@ -440,7 +440,9 @@
           jdk17
         ]
       ) ++ (
-        if is-worktop then [ howdy ] else []
+        if is-worktop then [ 
+          # howdy 
+          ] else []
       );
 
     unstableSystemPackages = with pkgs-unstable;
