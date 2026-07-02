@@ -195,7 +195,7 @@
   services.desktopManager.gnome.enable = !is-wsl;
   
   # === KDE SPECIALISATION ===
-  specialisation.kde.configuration = if is-wsl then {} else {
+  specialisation.kde.configuration = if is-wsl || is-worktop then {} else {
     system.nixos.tags = [ "kde" ];
 
     services.displayManager.gdm.enable = lib.mkForce false;
