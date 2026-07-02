@@ -292,6 +292,7 @@ in {
       libusb1
       glib
       krb5
+      winboat
 
       # ====== IDEs ======
       arduino-ide
