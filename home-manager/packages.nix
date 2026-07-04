@@ -1,7 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
-  pkgs-jb,
+  # pkgs-jb,
   is-pc,
   is-worktop,
   is-wsl,
@@ -322,11 +322,11 @@ in {
       pkgs.cutechess
 
       pkgs.calibre
-      pkgs-unstable.discord
-      pkgs-unstable.darktable
-      pkgs-unstable.muse-sounds-manager
-      pkgs-unstable.upscayl
-      pkgs-unstable.davinci-resolve
+      pkgs.discord
+      pkgs.darktable
+      pkgs.muse-sounds-manager
+      pkgs.upscayl
+      pkgs.davinci-resolve
 
       # ====== CMD ======
       pkgs.google-cloud-sdk
@@ -351,14 +351,14 @@ in {
     ];
 
     jetbrains-ides = [
-      pkgs-jb.jetbrains.rust-rover
-      pkgs-jb.jetbrains.webstorm
-      pkgs-jb.jetbrains.clion
-      pkgs-jb.jetbrains.pycharm
-      pkgs-jb.android-studio
-      pkgs-jb.jetbrains.idea
-      pkgs-jb.jetbrains.goland
-      pkgs-jb.jetbrains.rider
+      pkgs.jetbrains.rust-rover
+      pkgs.jetbrains.webstorm
+      pkgs.jetbrains.clion
+      pkgs.jetbrains.pycharm
+      pkgs.android-studio
+      pkgs.jetbrains.idea
+      pkgs.jetbrains.goland
+      pkgs.jetbrains.rider
     ];
   in
     (

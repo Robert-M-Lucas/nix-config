@@ -7,7 +7,7 @@
   config,
   pkgs,
   pkgs-unstable,
-  pkgs-jb,
+  # pkgs-jb,
   system,
   hardware-config,
   use-cuda,
@@ -53,7 +53,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable stateVersion pkgs-jb use-cuda overlays overlays-unstable is-pc is-worktop is-wsl;};
+    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable stateVersion use-cuda overlays overlays-unstable is-pc is-worktop is-wsl;};
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
@@ -293,34 +293,14 @@
       extraGroups = ["networkmanager"];
     };
   };
-  services.AccountsService.users.temp = {
-    SystemAccount = true;
-  };
 
   users.groups.libvirtd.members = ["robert"];
 
   services.fprintd.enable = !is-wsl;
-  services.fprintd.tod.enable = !is-wsl;
-  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #     enable = true;
-  #     enableSSHSupport = true;
-  # };
 
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  # systemd.services.docker = {
-  #   wantedBy = lib.mkForce [];
-  # };
-  # systemd.sockets.docker = {
-  #   wantedBy = lib.mkForce [];
-  # };
   systemd.services."systemd-backlight@leds:dell::kbd_backlight" = {
     wantedBy = lib.mkForce [];
     after = lib.mkForce [];
