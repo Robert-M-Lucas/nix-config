@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo echo Sudo acquired
 
 cd ~/nix-config
@@ -12,7 +14,7 @@ echo "| sudo cp /home/robert/nix-config/server/hardware-configuration.nix /etc/n
 sudo cp /home/robert/nix-config/server/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
 echo "| sudo nixos-rebuild switch"
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch |& nom
 
 echo "| git add -A"
 git add -A
