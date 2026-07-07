@@ -73,7 +73,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-jb": "nixpkgs-jb",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }

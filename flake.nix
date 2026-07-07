@@ -16,12 +16,12 @@
       ref = "nixos-unstable";
       # rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
     };
-    nixpkgs-jb = {
-      type = "github";
-      owner = "NixOS";
-      repo = "nixpkgs";
-      ref = "nixos-unstable";
-    };
+    # nixpkgs-jb = {
+    #   type = "github";
+    #   owner = "NixOS";
+    #   repo = "nixpkgs";
+    #   ref = "nixos-unstable";
+    # };
     # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +31,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    nixpkgs-jb,
+    # nixpkgs-jb,
     home-manager,
     ...
   }: let
@@ -76,12 +76,12 @@
 
             android_sdk.accept_license = true;
           };
-          pkgs-jb = import nixpkgs-jb {
-            inherit system;
-            config.allowUnfree = true;
-            config.cudaSupport = false;
-            android_sdk.accept_license = true;
-          };
+          # pkgs-jb = import nixpkgs-jb {
+          #   inherit system;
+          #   config.allowUnfree = true;
+          #   config.cudaSupport = false;
+          #   android_sdk.accept_license = true;
+          # };
           hardware-config = "pc";
           use-cuda = false;
           is-pc = true;
@@ -104,11 +104,11 @@
             config.allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          pkgs-jb = import nixpkgs-jb {
-            inherit system;
-            config.allowUnfree = true;
-            android_sdk.accept_license = true;
-          };
+          # pkgs-jb = import nixpkgs-jb {
+          #   inherit system;
+          #   config.allowUnfree = true;
+          #   android_sdk.accept_license = true;
+          # };
           hardware-config = "fastop";
           use-cuda = false;
           is-pc = false;
@@ -132,11 +132,11 @@
             config.allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          pkgs-jb = import nixpkgs-jb {
-            inherit system;
-            config.allowUnfree = true;
-            android_sdk.accept_license = true;
-          };
+          # pkgs-jb = import nixpkgs-jb {
+          #   inherit system;
+          #   config.allowUnfree = true;
+          #   android_sdk.accept_license = true;
+          # };
           hardware-config = "worktop";
           use-cuda = false;
           is-pc = false;
@@ -159,11 +159,11 @@
             config.allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          pkgs-jb = import nixpkgs-jb {
-            inherit system;
-            config.allowUnfree = true;
-            android_sdk.accept_license = true;
-          };
+          # pkgs-jb = import nixpkgs-jb {
+          #   inherit system;
+          #   config.allowUnfree = true;
+          #   android_sdk.accept_license = true;
+          # };
           hardware-config = "wsl";
           use-cuda = false;
           is-pc = false;

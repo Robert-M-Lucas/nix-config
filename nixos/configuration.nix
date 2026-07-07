@@ -7,7 +7,7 @@
   config,
   pkgs,
   pkgs-unstable,
-  pkgs-jb,
+  # pkgs-jb,
   system,
   hardware-config,
   use-cuda,
@@ -53,7 +53,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable stateVersion pkgs-jb use-cuda overlays overlays-unstable is-pc is-worktop is-wsl;};
+    extraSpecialArgs = {inherit inputs outputs system pkgs-unstable stateVersion use-cuda overlays overlays-unstable is-pc is-worktop is-wsl;};
     users = {
       # Import your home-manager configuration
       robert = import ../home-manager/home.nix;
@@ -195,7 +195,7 @@
   services.desktopManager.gnome.enable = !is-wsl;
   
   # === KDE SPECIALISATION ===
-  specialisation.kde.configuration = if is-wsl then {} else {
+  specialisation.kde.configuration = if is-wsl || is-worktop then {} else {
     system.nixos.tags = [ "kde" ];
 
     services.displayManager.gdm.enable = lib.mkForce false;
@@ -260,18 +260,18 @@
     pkgs.nerd-fonts.fira-code
   ];
 
-  services.howdy = {
-    enable = is-worktop;
+  # services.howdy = {
+  #   enable = is-worktop;
 
-    settings.video.device_path = if is-worktop then "/dev/video2" else "/dev/video0";
-    settings.snapshots.save_failed = true;
+  #   settings.video.device_path = if is-worktop then "/dev/video2" else "/dev/video0";
+  #   settings.snapshots.save_failed = true;
 
-    control = "sufficient";
-  };
+  #   control = "sufficient";
+  # };
 
-  security.pam.services = {
-    polkit-1.howdy.enable = false;
-  };
+  # security.pam.services = {
+  #   polkit-1.howdy.enable = false;
+  # };
 
   users.groups.video = {};
   users.users = {
@@ -297,27 +297,10 @@
   users.groups.libvirtd.members = ["robert"];
 
   services.fprintd.enable = !is-wsl;
-  services.fprintd.tod.enable = !is-wsl;
-  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #     enable = true;
-  #     enableSSHSupport = true;
-  # };
 
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  # systemd.services.docker = {
-  #   wantedBy = lib.mkForce [];
-  # };
-  # systemd.sockets.docker = {
-  #   wantedBy = lib.mkForce [];
-  # };
   systemd.services."systemd-backlight@leds:dell::kbd_backlight" = {
     wantedBy = lib.mkForce [];
     after = lib.mkForce [];
@@ -440,7 +423,9 @@
           jdk17
         ]
       ) ++ (
-        if is-worktop then [ howdy ] else []
+        if is-worktop then [ 
+          # howdy 
+          ] else []
       );
 
     unstableSystemPackages = with pkgs-unstable;
