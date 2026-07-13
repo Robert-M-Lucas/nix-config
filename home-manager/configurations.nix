@@ -35,7 +35,7 @@
   };
 
   services.kdeconnect = {
-    enable = true;
+    enable = !is-wsl;
   };
 
   services.flameshot.enable = !is-wsl;
