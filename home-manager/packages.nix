@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgs-unstable,
-  # pkgs-jb,
   is-pc,
   is-worktop,
   is-wsl,

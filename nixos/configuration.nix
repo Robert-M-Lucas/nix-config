@@ -7,7 +7,6 @@
   config,
   pkgs,
   pkgs-unstable,
-  # pkgs-jb,
   system,
   hardware-config,
   use-cuda,

@@ -7,7 +7,6 @@
   config,
   pkgs,
   pkgs-unstable,
-  # pkgs-jb,
   use-cuda,
   is-pc,
   is-worktop,
