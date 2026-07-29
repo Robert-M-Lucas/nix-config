@@ -269,6 +269,7 @@ in {
       texlive.combined.scheme-full
       wineWow64Packages.stableFull
       xclip
+      krb5
 
       # ====== GUI Apps ======
       onlyoffice-desktopeditors
@@ -276,25 +277,23 @@ in {
       qalculate-gtk
       insomnia
       alacarte
-      gthumb
       amberol
       emblem
       spotify
-      gnome-clocks
       impression
       smile
-      resources
       hieroglyphic
       boxbuddy
       meld
       teams-for-linux
-      libusb1
-      glib
-      krb5
-      winboat
+      # winboat
 
       # ====== IDEs ======
       arduino-ide
+
+      # ====== Libs ======
+      libusb1
+      glib
 
       # ====== Extensions ======
       gnome-shell-extensions

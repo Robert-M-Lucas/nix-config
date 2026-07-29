@@ -346,6 +346,7 @@
   environment.systemPackages = let
     systemPackages = with pkgs;
       [
+        # All configs utils
         tmux
         fprintd
         fastfetch
@@ -376,15 +377,14 @@
         mesa-demos
         file
         v4l-utils
-        cheese
-        seahorse
+        cowsay
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./nonixenv.sh))
       ]
       ++ (
         if is-wsl
         then []
-        else [
+        else [ # --- Non-wsl ---
           # Dolphin
           kdePackages.dolphin
           kdePackages.qtsvg
@@ -394,21 +394,24 @@
           kdePackages.qt6ct
           libsForQt5.qt5ct
 
+          # Util
           qgnomeplatform
+          ddcutil
 
+          # GUI
           file-roller
-
           firefox-bin # No, we don't need another package built from source
-
-          # pkgs-unstable.rquickshare # Doesn't work
-
+          cheese
+          seahorse
           proton-vpn
           google-chrome
           libreoffice
-          # thunderbird-bin
-          ddcutil
+          thunderbird-bin
           krita
           gimp
+          gthumb
+          gnome-clocks
+          resources
         ]
       )
       ++ (
