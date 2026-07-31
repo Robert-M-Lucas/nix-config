@@ -150,47 +150,53 @@
 
   pythonEnv = pkgs.python312.withPackages (
     ps: (
-      with ps; [
-        numpy
-        scikit-learn
-        jupyter
-        matplotlib
-        pooch
-        opencv4
-        ffmpeg-python
-        pygobject3
-        pygame
-        scikit-image
-        trimesh
-        notebook
-        beautifulsoup4
-        lxml
-        requests
-        termcolor
-        flask
-        pynput
-        pyautogui
-        keyboard
-        websockets
-        standard-telnetlib
-        numpy
-        matplotlib
-        west
-        jsonschema
-        minify-html
-        beautifulsoup4
-        textual
-      ] ++ (if is-worktop then [
-        Trio-UnifiedApi
-        pylogix
-        ethernetip
-        markdown
-        mdx-spanner
-        tree-sitter
-        tree-sitter-grammars.tree-sitter-c
-        python-docx
-        pymodbus
-      ] else [])
+      with ps;
+        [
+          numpy
+          scikit-learn
+          jupyter
+          matplotlib
+          pooch
+          opencv4
+          ffmpeg-python
+          pygobject3
+          pygame
+          scikit-image
+          trimesh
+          notebook
+          beautifulsoup4
+          lxml
+          requests
+          termcolor
+          flask
+          pynput
+          pyautogui
+          keyboard
+          websockets
+          standard-telnetlib
+          numpy
+          matplotlib
+          west
+          jsonschema
+          minify-html
+          beautifulsoup4
+          textual
+        ]
+        ++ (
+          if is-worktop
+          then [
+            Trio-UnifiedApi
+            pylogix
+            ethernetip
+            markdown
+            mdx-spanner
+            tree-sitter
+            tree-sitter-grammars.tree-sitter-c
+            python-docx
+            pymodbus
+          ]
+          else []
+        )
     )
   );
 in {

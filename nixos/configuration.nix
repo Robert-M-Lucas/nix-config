@@ -18,7 +18,7 @@
   overlays-unstable,
   stateVersion,
   ...
-}:  {
+}: {
   # You can import other NixOS modules here
   imports =
     [
@@ -192,27 +192,30 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = !is-wsl;
   services.desktopManager.gnome.enable = !is-wsl;
-  
+
   # === KDE SPECIALISATION ===
-  specialisation.kde.configuration = if is-wsl || is-worktop then {} else {
-    system.nixos.tags = [ "kde" ];
+  specialisation.kde.configuration =
+    if is-wsl || is-worktop
+    then {}
+    else {
+      system.nixos.tags = ["kde"];
 
-    services.displayManager.gdm.enable = lib.mkForce false;
-    services.desktopManager.gnome.enable = lib.mkForce false;
+      services.displayManager.gdm.enable = lib.mkForce false;
+      services.desktopManager.gnome.enable = lib.mkForce false;
 
-    services.gnome.gnome-keyring.enable = true;
-    security.pam.services.login.enableGnomeKeyring = true;
-    security.pam.services.sddm.enableGnomeKeyring = true;
-    
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
-    services.desktopManager.plasma6.enable = true;
-    
-    environment.sessionVariables = {
-      QT_QPA_PLATFORMTHEME = lib.mkForce null;
-      DCONF_PROFILE = lib.mkForce "kde";
+      services.gnome.gnome-keyring.enable = true;
+      security.pam.services.login.enableGnomeKeyring = true;
+      security.pam.services.sddm.enableGnomeKeyring = true;
+
+      services.displayManager.sddm.enable = true;
+      services.displayManager.sddm.wayland.enable = true;
+      services.desktopManager.plasma6.enable = true;
+
+      environment.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = lib.mkForce null;
+        DCONF_PROFILE = lib.mkForce "kde";
+      };
     };
-  };
 
   # Configure keymap in X11
   services.xserver.xkb =
@@ -384,7 +387,8 @@
       ++ (
         if is-wsl
         then []
-        else [ # --- Non-wsl ---
+        else [
+          # --- Non-wsl ---
           # Dolphin
           kdePackages.dolphin
           kdePackages.qtsvg
@@ -424,10 +428,13 @@
 
           jdk17
         ]
-      ) ++ (
-        if is-worktop then [ 
-          # howdy 
-          ] else []
+      )
+      ++ (
+        if is-worktop
+        then [
+          # howdy
+        ]
+        else []
       );
 
     unstableSystemPackages = with pkgs-unstable;
@@ -445,7 +452,6 @@
     systemPackages ++ unstableSystemPackages;
 
   environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gnome";
-
 
   programs.gnome-terminal.enable = false;
   console.enable = false;
