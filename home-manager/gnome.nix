@@ -52,7 +52,7 @@ in {
         enabled-extensions =
           [
             pkgs.gnomeExtensions.light-style.extensionUuid
-            pkgs.gnomeExtensions.hide-top-bar.extensionUuid
+            # pkgs.gnomeExtensions.hide-top-bar.extensionUuid
             pkgs.gnomeExtensions.ddterm.extensionUuid
             pkgs.gnomeExtensions.caffeine.extensionUuid
             pkgs.gnomeExtensions.vitals.extensionUuid
