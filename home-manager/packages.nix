@@ -87,44 +87,44 @@
     doCheck = false;
   };
 
-  mdx-spanner = pkgs.python312Packages.buildPythonPackage rec {
+  mdx-spanner = pkgs-unstable.python314Packages.buildPythonPackage rec {
     pname = "mdx_spanner";
     version = "0.1.0";
 
-    src = pkgs.python312Packages.fetchPypi {
+    src = pkgs-unstable.python314Packages.fetchPypi {
       inherit pname version;
       sha256 = "sha256-5yNFgAqbhnQS3Dy3scU9vy7TJ72vVZkX+RB69i6sE7M=";
     };
 
     pyproject = true;
 
-    build-system = with pkgs.python312Packages; [
+    build-system = with pkgs-unstable.python314Packages; [
       setuptools
     ];
 
-    propagatedBuildInputs = with pkgs.python312Packages; [
+    propagatedBuildInputs = with pkgs-unstable.python314Packages; [
       markdown
     ];
 
     doCheck = false;
   };
 
-  zensical-custom = pkgs.python312Packages.buildPythonApplication rec {
+  zensical-custom = pkgs-unstable.python314Packages.buildPythonApplication rec {
     pname = "zensical";
-    version = "0.0.31";
+    version = "0.0.51";
     pyproject = true;
 
     # We fetch from PyPi, because GitHub repo does not contain all sources.
     # The publish process also copies in assets from zensical/ui.
     # We could combine sources, but then nix-update won't work.
-    src = pkgs.python312Packages.fetchPypi {
+    src = pkgs-unstable.python314Packages.fetchPypi {
       inherit pname version;
-      hash = "sha256-nBLwe95wxL/bE9bK4b7fjRgGTSV6boESihUlArKKj8M=";
+      hash = "sha256-3iXeBnvt+hj5FtfzZv1kp/vwm/zGFbRNHdvjtf4Cq0k=";
     };
 
     cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
       inherit pname version src;
-      hash = "sha256-5lsL42TYg7AsnCxzLcg/KEewcTKLBKvRMJtu+fBkgeY=";
+      hash = "sha256-QalP0MW52BOyoh4AlUbUM3OvVXyBFaywM7ST46hqQv0=";
     };
 
     nativeBuildInputs = with pkgs.rustPlatform; [
@@ -132,7 +132,7 @@
       cargoSetupHook
     ];
 
-    dependencies = with pkgs.python312Packages; [
+    dependencies = with pkgs-unstable.python314Packages; [
       click
       deepmerge
       markdown
@@ -142,6 +142,8 @@
       mdx-spanner
       mdx-truly-sane-lists
       colorama
+      jinja2
+      tomli
     ];
 
     # nativeCheckInputs = [ pkgs.testers.versionCheckHook ];
