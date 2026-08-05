@@ -1,4 +1,4 @@
-cd ~/nix-config/shells
+cd ~/nix-config/nixos/home-manager/scripts/shells
 git pull
 codium -w .
 read -p "Press enter to git diff"

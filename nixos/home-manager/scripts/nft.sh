@@ -3,6 +3,6 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-cp -r "/home/robert/nix-config/dev-flakes/$1/." .
+cp -r "/home/robert/nix-config/nixos/home-manager/scripts/dev-flakes/$1/." .
 direnv allow
 echo -e "\n/.direnv" >> .gitignore

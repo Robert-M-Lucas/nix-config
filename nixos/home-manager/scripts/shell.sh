@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-nix-shell "/home/robert/nix-config/shells/$1.nix"
+nix-shell "/home/robert/nix-config/nixos/home-manager/scripts/shells/$1.nix"
