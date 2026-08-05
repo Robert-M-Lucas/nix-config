@@ -1,1 +1,0 @@
-echo "Don't use nix-env!"

@@ -4,6 +4,7 @@
   is-pc,
   is-worktop,
   is-fastop,
+  lib,
   ...
 }
 : let
@@ -61,7 +62,8 @@ in {
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
-          pkgs.gnomeExtensions.desktop-clock.extensionUuid
+          # pkgs.gnomeExtensions.desktop-clock.extensionUuid
+          pkgs.gnomeExtensions.advanced-media-controller.extensionUuid
         ] ++ (
           if is-fastop then [ pkgs.gnomeExtensions.keyboard-toggle.extensionUuid ] else []
         );
@@ -149,6 +151,7 @@ in {
         hide-icons = false;
         icon-style = 0;
         menu-centered = false;
+        network-public-ip-interval = lib.mkIf (!is-worktop) 15;
         position-in-panel = 0;
         use-higher-precision = true;
         fixed-widths = false;
@@ -176,7 +179,7 @@ in {
         verbose-debugging = false;
       };
       # Configure individual extensions
-      # dconf dump /
+      # dconf dump / > ~/temp/dconf.txt
       "com/github/amezin/ddterm" = {
         background-color = "rgb(31,31,31)";
         background-opacity = 1.0;
@@ -205,6 +208,7 @@ in {
           "rgb(51,199,222)"
           "rgb(255,255,255)"
         ];
+        panel-icon-type="none";
         shortcut-win-new-tab = ["<Primary>t"];
         show-animation = "disable";
         show-scrollbar = false;
@@ -219,6 +223,19 @@ in {
       "org/gnome/shell/extensions/hidetopbar" = {
         enable-active-window = false;
         enable-intellihide = false;
+      };
+      "org/gnome/shell/extensions/advanced-media-controller" = {
+        enable-panel-scroll=false;
+        monochrome-icons=false;
+        panel-font-bold=false;
+        panel-font-color="";
+        panel-font-size=14;
+        panel-icon-size=18;
+        panel-index=0;
+        panel-label-width=400;
+        popup-width=280;
+        scroll-speed=3;
+        show-artist=true;
       };
     };
   };

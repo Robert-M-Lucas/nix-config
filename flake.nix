@@ -16,13 +16,6 @@
       ref = "nixos-unstable";
       # rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
     };
-    # nixpkgs-jb = {
-    #   type = "github";
-    #   owner = "NixOS";
-    #   repo = "nixpkgs";
-    #   ref = "nixos-unstable";
-    # };
-    # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -31,7 +24,6 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    # nixpkgs-jb,
     home-manager,
     ...
   }: let
@@ -40,8 +32,6 @@
     systems = [
       "x86_64-linux"
     ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
     system = "x86_64-linux";
@@ -49,22 +39,19 @@
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
     # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs nixpkgs;};
 
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
     nixosModules = import ./modules/nixos;
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
+
     nixosConfigurations = {
       pc = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -76,12 +63,6 @@
 
             android_sdk.accept_license = true;
           };
-          # pkgs-jb = import nixpkgs-jb {
-          #   inherit system;
-          #   config.allowUnfree = true;
-          #   config.cudaSupport = false;
-          #   android_sdk.accept_license = true;
-          # };
           hardware-config = "pc";
           use-cuda = false;
           is-pc = true;
@@ -91,8 +72,6 @@
           stateVersion = "24.05";
         };
         modules = [
-          # > Our main nixos configuration file <
-          # catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
@@ -104,11 +83,6 @@
             config.allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          # pkgs-jb = import nixpkgs-jb {
-          #   inherit system;
-          #   config.allowUnfree = true;
-          #   android_sdk.accept_license = true;
-          # };
           hardware-config = "fastop";
           use-cuda = false;
           is-pc = false;
@@ -118,10 +92,7 @@
           stateVersion = "24.05";
         };
         modules = [
-          # > Our main nixos configuration file <
-          # catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
-          # minegrub-theme.nixosModules.default
         ];
       };
       worktop = nixpkgs.lib.nixosSystem {
@@ -132,11 +103,6 @@
             config.allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          # pkgs-jb = import nixpkgs-jb {
-          #   inherit system;
-          #   config.allowUnfree = true;
-          #   android_sdk.accept_license = true;
-          # };
           hardware-config = "worktop";
           use-cuda = false;
           is-pc = false;
@@ -146,8 +112,6 @@
           stateVersion = "24.05";
         };
         modules = [
-          # > Our main nixos configuration file <
-          # catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
@@ -159,11 +123,6 @@
             config.allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          # pkgs-jb = import nixpkgs-jb {
-          #   inherit system;
-          #   config.allowUnfree = true;
-          #   android_sdk.accept_license = true;
-          # };
           hardware-config = "wsl";
           use-cuda = false;
           is-pc = false;
@@ -173,8 +132,6 @@
           stateVersion = "25.11";
         };
         modules = [
-          # > Our main nixos configuration file <
-          # catppuccin.nixosModules.catppuccin
           ./nixos/configuration.nix
         ];
       };
