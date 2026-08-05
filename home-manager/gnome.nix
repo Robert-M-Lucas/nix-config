@@ -127,8 +127,15 @@ in {
             "_memory_swap_free_"
             "_storage_free_"
           ]
-          else [
+          else if !is-worktop then [
             "_network_public_ip_"
+            "_processor_usage_"
+            "__temperature_max__"
+            "_memory_available_"
+            "_memory_swap_free_"
+            "_storage_free_"
+            "_battery_time_left_"
+          ] else [
             "_processor_usage_"
             "__temperature_max__"
             "_memory_available_"

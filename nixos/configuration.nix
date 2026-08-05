@@ -194,10 +194,8 @@
   services.desktopManager.gnome.enable = !is-wsl;
 
   # === KDE SPECIALISATION ===
-  specialisation.kde.configuration =
-    if is-wsl || is-worktop
-    then {}
-    else {
+  specialisation = lib.optionalAttrs (!is-wsl && !is-worktop) {
+    kde.configuration = {
       system.nixos.tags = ["kde"];
 
       services.displayManager.gdm.enable = lib.mkForce false;
@@ -216,6 +214,7 @@
         DCONF_PROFILE = lib.mkForce "kde";
       };
     };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb =
