@@ -1,9 +1,12 @@
 {
   pkgs,
   pkgs-unstable,
+  lib,
+  config,
   is-pc,
   is-worktop,
   is-wsl,
+  is-fastop,
   ...
 }: let
   ethernetip = pkgs.python312Packages.buildPythonPackage rec {
@@ -202,200 +205,187 @@
     )
   );
 in {
-  home.packages = let
-    minimal = with pkgs; [
-      # ====== CMD ======
-      home-manager
-      pythonEnv
-      clang-tools
-      cmake
-      ninja
-      sl
-      rustup
-      cloc
-      nasm
-      fortune
-      zip
-      unzip
-      libqalculate
-      pkg-config
-      libudev-zero
-      dconf2nix
-      lcov
-      poetry
-      valgrind
-      pipes-rs
-      cbonsai
-      asciiquarium
-      nyancat
-      neo
-      delta
-      podman
-      nodejs_22
-      ffmpeg
-      nixd
-      nixfmt
-      glab
-      subversion
-      musl
-      musl.dev
+  options = {
+    # Expose a custom option to hold GNOME extension packages
+    my.gnomeExtensionPackages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [];
+      description = "List of GNOME extensions to be installed and enabled";
+    };
+  };
 
-      # ====== Scripts ======
+  config = {
+    home.packages = let
+      minimal = with pkgs; [
+        # ====== CMD ======
+        home-manager
+        pythonEnv
+        clang-tools
+        cmake
+        ninja
+        sl
+        rustup
+        cloc
+        nasm
+        fortune
+        zip
+        unzip
+        libqalculate
+        pkg-config
+        libudev-zero
+        dconf2nix
+        lcov
+        poetry
+        valgrind
+        pipes-rs
+        cbonsai
+        asciiquarium
+        nyancat
+        neo
+        delta
+        podman
+        nodejs_22
+        ffmpeg
+        nixd
+        nixfmt
+        glab
+        subversion
+        musl
+        musl.dev
 
-      (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
-      (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
+        # ====== Scripts ======
 
-      (writeShellScriptBin "flake" (builtins.readFile ./scripts/flake.sh))
+        (writeShellScriptBin "nix-config" (builtins.readFile ./scripts/nix-config.sh))
+        (writeShellScriptBin "nix-clean" (builtins.readFile ./scripts/nix-clean.sh))
 
-      (writeShellScriptBin "rust-shell" (builtins.readFile ./scripts/rust-shell.sh))
-      (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
-      (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
-      (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
-      (writeShellScriptBin "chx" (builtins.readFile ./scripts/chx.sh))
-      (writeShellScriptBin "where" (builtins.readFile ./scripts/where.sh))
-      (writeShellScriptBin "netports" (builtins.readFile ./scripts/netports.sh))
-      (writeShellScriptBin "docker-nuke" (builtins.readFile ./scripts/docker-nuke.sh))
-      (writeShellScriptBin "genpass" (builtins.readFile ./scripts/genpass.sh))
+        (writeShellScriptBin "flake" (builtins.readFile ./scripts/flake.sh))
 
-      (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
-      (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
-      (writeShellScriptBin "nft" (builtins.readFile ./scripts/nft.sh))
+        (writeShellScriptBin "rust-shell" (builtins.readFile ./scripts/rust-shell.sh))
+        (writeShellScriptBin "shell-config" (builtins.readFile ./scripts/shell-config.sh))
+        (writeShellScriptBin "neofetch" (builtins.readFile ./scripts/unneofetch.sh))
+        (writeShellScriptBin "gitf" (builtins.readFile ./scripts/gitf.sh))
+        (writeShellScriptBin "chx" (builtins.readFile ./scripts/chx.sh))
+        (writeShellScriptBin "where" (builtins.readFile ./scripts/where.sh))
+        (writeShellScriptBin "netports" (builtins.readFile ./scripts/netports.sh))
+        (writeShellScriptBin "docker-nuke" (builtins.readFile ./scripts/docker-nuke.sh))
+        (writeShellScriptBin "genpass" (builtins.readFile ./scripts/genpass.sh))
 
-      (writeShellScriptBin "wbb" (builtins.readFile ./scripts/wbb.sh))
-      (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
-      (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
+        (writeShellScriptBin "prores" (builtins.readFile ./scripts/prores.sh))
+        (writeShellScriptBin "mp4" (builtins.readFile ./scripts/mp4.sh))
+        (writeShellScriptBin "nft" (builtins.readFile ./scripts/nft.sh))
 
-      (writeShellScriptBin "unkde" (builtins.readFile ./scripts/unkde.sh))
-    ];
-    general = with pkgs; [
-      # ====== CMD ======
-      platformio-core
-      qemu
-      spotdl
-      winetricks
-      distrobox
-      texlive.combined.scheme-full
-      wineWow64Packages.stableFull
-      xclip
-      krb5
+        (writeShellScriptBin "wbb" (builtins.readFile ./scripts/wbb.sh))
+        (writeShellScriptBin "exp" (builtins.readFile ./scripts/exp.sh))
+        (writeShellScriptBin "flameshot-gui" (builtins.readFile ./scripts/flameshot-gui.sh))
 
-      # ====== GUI Apps ======
-      onlyoffice-desktopeditors
-      gnome-solanum
-      qalculate-gtk
-      insomnia
-      alacarte
-      amberol
-      emblem
-      spotify
-      impression
-      smile
-      hieroglyphic
-      boxbuddy
-      meld
-      teams-for-linux
-      # winboat
+        (writeShellScriptBin "unkde" (builtins.readFile ./scripts/unkde.sh))
+      ];
 
-      # ====== IDEs ======
-      arduino-ide
+      general = with pkgs;
+        [
+          # ====== CMD ======
+          platformio-core
+          qemu
+          spotdl
+          winetricks
+          distrobox
+          texlive.combined.scheme-full
+          wineWow64Packages.stableFull
+          xclip
+          krb5
 
-      # ====== Libs ======
-      libusb1
-      glib
+          # ====== GUI Apps ======
+          onlyoffice-desktopeditors
+          gnome-solanum
+          qalculate-gtk
+          insomnia
+          alacarte
+          amberol
+          emblem
+          spotify
+          impression
+          smile
+          hieroglyphic
+          boxbuddy
+          meld
+          teams-for-linux
+          # winboat
 
-      # ====== Extensions ======
-      gnome-shell-extensions
-      gnomeExtensions.ddterm
-      gnomeExtensions.hide-top-bar
-      gnomeExtensions.caffeine
-      gnomeExtensions.vitals
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.appindicator
-      gnomeExtensions.color-picker
-    ];
+          # ====== IDEs ======
+          arduino-ide
 
-    pc-only = [
-    ];
+          # ====== Libs ======
+          libusb1
+          glib
+        ]
+        ++ config.my.gnomeExtensionPackages; # Defaults to [] for no Gnome
 
-    fastop-only = [
-    ];
+      pc-only = [
+      ];
 
-    non-work = [
-      # ====== GUI Apps ======
-      pkgs.prismlauncher
-      pkgs.keypunch
-      pkgs.unityhub
-      pkgs.legendary-gl
-      pkgs.cutechess
+      fastop-only = [
+      ];
 
-      pkgs.calibre
-      pkgs.discord
-      pkgs.darktable
-      pkgs.muse-sounds-manager
-      pkgs.upscayl
-      pkgs.davinci-resolve
+      non-work = [
+        # ====== GUI Apps ======
+        pkgs.prismlauncher
+        pkgs.keypunch
+        pkgs.unityhub
+        pkgs.legendary-gl
+        pkgs.cutechess
 
-      # ====== CMD ======
-      pkgs.google-cloud-sdk
-      pkgs.gradle
-      pkgs.diesel-cli
-      pkgs.dotnet-sdk
-      pkgs.android-tools
-      pkgs.yt-dlp
-      pkgs.fastchess
+        pkgs.calibre
+        pkgs.discord
+        pkgs.darktable
+        pkgs.muse-sounds-manager
+        pkgs.upscayl
+        pkgs.davinci-resolve
 
-      # pkgs.Chess-Coding-Adventure
-    ];
+        # ====== CMD ======
+        pkgs.google-cloud-sdk
+        pkgs.gradle
+        pkgs.diesel-cli
+        pkgs.dotnet-sdk
+        pkgs.android-tools
+        pkgs.yt-dlp
+        pkgs.fastchess
 
-    work-only = [
-      pkgs.gitkraken
-      pkgs.go-configure
-      pkgs.gtkwave
-      pkgs.iverilog
-      zensical-custom
-      pkgs.gcc-arm-embedded
-      # pkgs.bambu-studio
-    ];
+        # pkgs.Chess-Coding-Adventure
+      ];
 
-    jetbrains-ides = [
-      pkgs.jetbrains.rust-rover
-      pkgs.jetbrains.webstorm
-      pkgs.jetbrains.clion
-      pkgs.jetbrains.pycharm
-      pkgs.android-studio
-      pkgs.jetbrains.idea
-      pkgs.jetbrains.goland
-      pkgs.jetbrains.rider
-    ];
-  in
-    (
+      work-only = [
+        pkgs.gitkraken
+        pkgs.go-configure
+        pkgs.gtkwave
+        pkgs.iverilog
+        zensical-custom
+        pkgs.gcc-arm-embedded
+        # pkgs.bambu-studio
+      ];
+
+      jetbrains-ides = [
+        pkgs.jetbrains.rust-rover
+        pkgs.jetbrains.webstorm
+        pkgs.jetbrains.clion
+        pkgs.jetbrains.pycharm
+        pkgs.android-studio
+        pkgs.jetbrains.idea
+        pkgs.jetbrains.goland
+        pkgs.jetbrains.rider
+      ];
+    in
       if is-wsl
       then minimal
-      else minimal ++ general
-    )
-    ++ (
-      if !is-worktop && !is-wsl
-      then jetbrains-ides
-      else []
-    )
-    ++ (
-      if is-wsl
-      then []
-      else
-        (
-          if is-worktop
-          then work-only
-          else non-work
-        )
-    )
-    ++ (
-      if !is-worktop && !is-wsl
-      then
-        (
-          if is-pc
-          then pc-only
-          else fastop-only
-        )
-      else []
-    );
+      # - - - -
+      else if is-worktop
+      then minimal ++ general ++ work-only
+      # - - - -
+      else if is-pc
+      then minimal ++ general ++ jetbrains-ides ++ non-work ++ pc-only
+      # - - - -
+      else if is-fastop
+      then minimal ++ general ++ jetbrains-ides ++ non-work ++ fastop-only
+      # - - - -
+      else throw "Unknown environment: unable to evaluate system package profile.";
+  };
 }

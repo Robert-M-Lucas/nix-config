@@ -69,9 +69,9 @@
       ];
     };
     # Opinionated: disable channels
-    # channel.enable = false;
+    channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
+    # Opinionated: make flake registry and nix path match flake inputs - instead of channels
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };

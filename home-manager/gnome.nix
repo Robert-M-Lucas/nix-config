@@ -1,10 +1,11 @@
 {
   pkgs,
   pkgs-unstable,
+  lib,
+  config,
   is-pc,
   is-worktop,
   is-fastop,
-  lib,
   ...
 }
 : let
@@ -33,6 +34,25 @@
     };
   };
 in {
+  my.gnomeExtensionPackages = with pkgs.gnomeExtensions;
+    [
+      light-style
+      ddterm
+      caffeine
+      vitals
+      blur-my-shell
+      appindicator
+      color-picker
+      brightness-control-using-ddcutil
+      gsconnect
+      advanced-media-controller
+    ]
+    ++ (
+      if is-fastop
+      then [keyboard-toggle]
+      else []
+    );
+
   home.file.".background-image".source = ./assets/wallpaper-tatry.JPG;
   home.file.".background-image-dark".source = ./assets/wallpaper-budapest.JPG;
 
@@ -51,31 +71,7 @@ in {
       "org/gnome/shell" = {
         disable-user-extensions = false; # enables user extensions
         disable-extension-version-validation = true;
-        enabled-extensions =
-          [
-            pkgs.gnomeExtensions.light-style.extensionUuid
-            # pkgs.gnomeExtensions.hide-top-bar.extensionUuid
-            pkgs.gnomeExtensions.ddterm.extensionUuid
-            pkgs.gnomeExtensions.caffeine.extensionUuid
-            pkgs.gnomeExtensions.vitals.extensionUuid
-            pkgs.gnomeExtensions.blur-my-shell.extensionUuid
-            pkgs.gnomeExtensions.appindicator.extensionUuid
-            pkgs.gnomeExtensions.color-picker.extensionUuid
-            pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
-            pkgs.gnomeExtensions.gsconnect.extensionUuid
-            # pkgs.gnomeExtensions.desktop-clock.extensionUuid
-            pkgs.gnomeExtensions.advanced-media-controller.extensionUuid
-          ]
-          ++ (
-            if is-fastop
-            then [pkgs.gnomeExtensions.keyboard-toggle.extensionUuid]
-            else []
-          );
-        # ++ (
-        #   if is-pc
-        #   then []
-        #   else [pkgs.gnomeExtensions.custom-command-toggle.extensionUuid]
-        # );
+        enabled-extensions = map (pkg: pkg.extensionUuid) config.my.gnomeExtensionPackages;
       };
       # "org/gnome/shell/extensions/custom-command-toggle" = {
       #   checkexitcode1-setting = true;
