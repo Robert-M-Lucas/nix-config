@@ -329,6 +329,11 @@
   };
 
   # Programs
+  services.ananicy = {
+    enable = !is-wsl;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-cpp;
+  };
 
   services.tailscale =
     if is-wsl
