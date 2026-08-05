@@ -47,7 +47,7 @@
     extraSpecialArgs = {inherit inputs outputs system pkgs-unstable stateVersion use-cuda overlays overlays-unstable is-pc is-worktop is-fastop is-wsl;};
     users = {
       # Import your home-manager configuration
-      robert = import ../home-manager/home.nix;
+      robert = import ./home-manager/home.nix;
     };
     backupFileExtension = "backup_v2";
   };

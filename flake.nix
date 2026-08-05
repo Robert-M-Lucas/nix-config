@@ -50,16 +50,16 @@
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = forAllSystems (system: import ./nixos/pkgs nixpkgs.legacyPackages.${system});
 
     # Formatter for your nix files, available through 'nix fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs nixpkgs;};
+    overlays = import ./nixos/overlays {inherit inputs nixpkgs;};
 
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+    # nixosModules = import ./modules/nixos;
+    # homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
