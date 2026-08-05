@@ -2,20 +2,9 @@
   description = "Nix Config";
 
   inputs = {
-    nixpkgs = {
-      type = "github";
-      owner = "NixOS";
-      repo = "nixpkgs";
-      ref = "nixos-26.05";
-      # rev = "34627c90f062da515ea358360f448da57769236e";
-    };
-    nixpkgs-unstable = {
-      type = "github";
-      owner = "NixOS";
-      repo = "nixpkgs";
-      ref = "nixos-unstable";
-      # rev = "3016b4b15d13f3089db8a41ef937b13a9e33a8df";
-    };
+    # Expand to add 'rev' if a specific commit is needed
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -32,9 +21,32 @@
     systems = [
       "x86_64-linux"
     ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-
     system = "x86_64-linux";
+    
+    pkgs-unstable = import nixpkgs-unstable {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        cudaSupport = false;
+        android_sdk.accept_license = true;
+      };
+    };
+
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+    mkSystem = host: stateVersion: nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs outputs system pkgs-unstable;
+        hardware-config = host;
+        use-cuda = false;
+        is-pc = host == "pc";
+        is-worktop = host == "worktop";
+        is-wsl = host == "wsl";
+        is-fastop = host == "fastop";
+        inherit stateVersion;
+      };
+      modules = [ ./nixos/configuration.nix ];
+    };
+    
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
@@ -53,88 +65,10 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
 
     nixosConfigurations = {
-      pc = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs system;
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-            config.cudaSupport = false;
-
-            android_sdk.accept_license = true;
-          };
-          hardware-config = "pc";
-          use-cuda = false;
-          is-pc = true;
-          is-worktop = false;
-          is-wsl = false;
-          is-fastop = false;
-          stateVersion = "24.05";
-        };
-        modules = [
-          ./nixos/configuration.nix
-        ];
-      };
-      fastop = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs system;
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-            android_sdk.accept_license = true;
-          };
-          hardware-config = "fastop";
-          use-cuda = false;
-          is-pc = false;
-          is-worktop = false;
-          is-wsl = false;
-          is-fastop = true;
-          stateVersion = "24.05";
-        };
-        modules = [
-          ./nixos/configuration.nix
-        ];
-      };
-      worktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs system;
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-            android_sdk.accept_license = true;
-          };
-          hardware-config = "worktop";
-          use-cuda = false;
-          is-pc = false;
-          is-worktop = true;
-          is-wsl = false;
-          is-fastop = false;
-          stateVersion = "24.05";
-        };
-        modules = [
-          ./nixos/configuration.nix
-        ];
-      };
-      wsl = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs outputs system;
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-            android_sdk.accept_license = true;
-          };
-          hardware-config = "wsl";
-          use-cuda = false;
-          is-pc = false;
-          is-worktop = false;
-          is-wsl = true;
-          is-fastop = false;
-          stateVersion = "25.11";
-        };
-        modules = [
-          ./nixos/configuration.nix
-        ];
-      };
+      pc = mkSystem "pc" "24.05";
+      fastop = mkSystem "fastop" "24.05";
+      worktop = mkSystem "worktop" "24.05";
+      wsl = mkSystem "wsl" "25.11";
     };
   };
 }
