@@ -3,6 +3,7 @@
   pkgs-unstable,
   is-pc,
   is-worktop,
+  is-fastop,
   ...
 }
 : let
@@ -61,7 +62,9 @@ in {
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
           pkgs.gnomeExtensions.desktop-clock.extensionUuid
-        ];
+        ] ++ (
+          if is-fastop then [ pkgs.gnomeExtensions.keyboard-toggle.extensionUuid ] else []
+        );
         # ++ (
         #   if is-pc
         #   then []
