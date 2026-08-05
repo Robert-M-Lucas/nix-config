@@ -2,7 +2,7 @@
   outputs,
   use-cuda,
   ...
-} : {
+}: {
   nixpkgs = {
     # You can add overlays here
     overlays = [

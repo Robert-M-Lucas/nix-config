@@ -1,7 +1,4 @@
-{
-  is-wsl,
-  ...
-} : {
+{is-wsl, ...}: {
   swapDevices =
     if is-wsl
     then []
@@ -10,5 +7,5 @@
         device = "/swapfile";
         size = 24 * 1024;
       }
-    ];  
+    ];
 }

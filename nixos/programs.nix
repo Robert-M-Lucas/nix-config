@@ -4,7 +4,7 @@
   is-worktop,
   is-wsl,
   ...
-} : {
+}: {
   # Programs
   environment.systemPackages = let
     systemPackages = with pkgs;
@@ -118,7 +118,7 @@
   };
 
   programs.gnome-terminal.enable = false;
-  
+
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     epiphany # web browser

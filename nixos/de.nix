@@ -4,7 +4,7 @@
   is-wsl,
   is-worktop,
   ...
-} : {
+}: {
   # Enable the X11 windowing system.
   services.xserver.enable = !is-wsl;
   services.xserver.excludePackages = [pkgs.xterm];

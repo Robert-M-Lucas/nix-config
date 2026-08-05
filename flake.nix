@@ -22,7 +22,7 @@
       "x86_64-linux"
     ];
     system = "x86_64-linux";
-    
+
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
       config = {
@@ -33,20 +33,20 @@
     };
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
-    mkSystem = host: stateVersion: nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs outputs system pkgs-unstable;
-        hardware-config = host;
-        use-cuda = false;
-        is-pc = host == "pc";
-        is-worktop = host == "worktop";
-        is-wsl = host == "wsl";
-        is-fastop = host == "fastop";
-        inherit stateVersion;
+    mkSystem = host: stateVersion:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs system pkgs-unstable;
+          hardware-config = host;
+          use-cuda = false;
+          is-pc = host == "pc";
+          is-worktop = host == "worktop";
+          is-wsl = host == "wsl";
+          is-fastop = host == "fastop";
+          inherit stateVersion;
+        };
+        modules = [./nixos/configuration.nix];
       };
-      modules = [ ./nixos/configuration.nix ];
-    };
-    
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc

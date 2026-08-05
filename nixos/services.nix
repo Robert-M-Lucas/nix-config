@@ -1,9 +1,9 @@
-{ 
+{
   pkgs,
   lib,
   is-wsl,
   ...
-} : {
+}: {
   # Network services settings in networking.nix, including tailscale and openssh
   # DE services in de.nix
 
@@ -45,7 +45,6 @@
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-cpp;
   };
-
 
   # services.howdy = {
   #   enable = is-worktop;

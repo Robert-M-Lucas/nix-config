@@ -1,8 +1,4 @@
-{
-  is-wsl,
-  ...
-} : {
-
+{is-wsl, ...}: {
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 

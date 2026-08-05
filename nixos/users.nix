@@ -1,6 +1,4 @@
-{
-  ...
-} : {
+{...}: {
   users.groups.video = {};
   users.users = {
     robert = {

@@ -51,22 +51,26 @@ in {
       "org/gnome/shell" = {
         disable-user-extensions = false; # enables user extensions
         disable-extension-version-validation = true;
-        enabled-extensions = [
-          pkgs.gnomeExtensions.light-style.extensionUuid
-          # pkgs.gnomeExtensions.hide-top-bar.extensionUuid
-          pkgs.gnomeExtensions.ddterm.extensionUuid
-          pkgs.gnomeExtensions.caffeine.extensionUuid
-          pkgs.gnomeExtensions.vitals.extensionUuid
-          pkgs.gnomeExtensions.blur-my-shell.extensionUuid
-          pkgs.gnomeExtensions.appindicator.extensionUuid
-          pkgs.gnomeExtensions.color-picker.extensionUuid
-          pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
-          pkgs.gnomeExtensions.gsconnect.extensionUuid
-          # pkgs.gnomeExtensions.desktop-clock.extensionUuid
-          pkgs.gnomeExtensions.advanced-media-controller.extensionUuid
-        ] ++ (
-          if is-fastop then [ pkgs.gnomeExtensions.keyboard-toggle.extensionUuid ] else []
-        );
+        enabled-extensions =
+          [
+            pkgs.gnomeExtensions.light-style.extensionUuid
+            # pkgs.gnomeExtensions.hide-top-bar.extensionUuid
+            pkgs.gnomeExtensions.ddterm.extensionUuid
+            pkgs.gnomeExtensions.caffeine.extensionUuid
+            pkgs.gnomeExtensions.vitals.extensionUuid
+            pkgs.gnomeExtensions.blur-my-shell.extensionUuid
+            pkgs.gnomeExtensions.appindicator.extensionUuid
+            pkgs.gnomeExtensions.color-picker.extensionUuid
+            pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
+            pkgs.gnomeExtensions.gsconnect.extensionUuid
+            # pkgs.gnomeExtensions.desktop-clock.extensionUuid
+            pkgs.gnomeExtensions.advanced-media-controller.extensionUuid
+          ]
+          ++ (
+            if is-fastop
+            then [pkgs.gnomeExtensions.keyboard-toggle.extensionUuid]
+            else []
+          );
         # ++ (
         #   if is-pc
         #   then []
@@ -132,7 +136,8 @@ in {
             "_memory_swap_free_"
             "_storage_free_"
           ]
-          else if !is-worktop then [
+          else if !is-worktop
+          then [
             "_network_public_ip_"
             "_processor_usage_"
             "__temperature_max__"
@@ -140,7 +145,8 @@ in {
             "_memory_swap_free_"
             "_storage_free_"
             "_battery_time_left_"
-          ] else [
+          ]
+          else [
             "_processor_usage_"
             "__temperature_max__"
             "_memory_available_"
@@ -208,7 +214,7 @@ in {
           "rgb(51,199,222)"
           "rgb(255,255,255)"
         ];
-        panel-icon-type="none";
+        panel-icon-type = "none";
         shortcut-win-new-tab = ["<Primary>t"];
         show-animation = "disable";
         show-scrollbar = false;
@@ -225,17 +231,17 @@ in {
         enable-intellihide = false;
       };
       "org/gnome/shell/extensions/advanced-media-controller" = {
-        enable-panel-scroll=false;
-        monochrome-icons=false;
-        panel-font-bold=false;
-        panel-font-color="";
-        panel-font-size=14;
-        panel-icon-size=18;
-        panel-index=0;
-        panel-label-width=400;
-        popup-width=280;
-        scroll-speed=3;
-        show-artist=true;
+        enable-panel-scroll = false;
+        monochrome-icons = false;
+        panel-font-bold = false;
+        panel-font-color = "";
+        panel-font-size = 14;
+        panel-icon-size = 18;
+        panel-index = 0;
+        panel-label-width = 400;
+        popup-width = 280;
+        scroll-speed = 3;
+        show-artist = true;
       };
     };
   };
