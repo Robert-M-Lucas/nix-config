@@ -129,7 +129,7 @@ in {
             "_processor_usage_"
             "__temperature_max__"
             "_memory_available_"
-            "_memory_swap_free_"
+            "_memory_swap_used_"
             "_storage_free_"
           ]
           else if !is-worktop
@@ -138,7 +138,7 @@ in {
             "_processor_usage_"
             "__temperature_max__"
             "_memory_available_"
-            "_memory_swap_free_"
+            "_memory_swap_used_"
             "_storage_free_"
             "_battery_time_left_"
           ]
@@ -146,7 +146,7 @@ in {
             "_processor_usage_"
             "__temperature_max__"
             "_memory_available_"
-            "_memory_swap_free_"
+            "_memory_swap_used_"
             "_storage_free_"
             "_battery_time_left_"
           ];
