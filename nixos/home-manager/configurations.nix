@@ -155,4 +155,77 @@
     enable = !is-wsl;
     enableFishIntegration = true;
   };
+
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
+      
+      nvim-cmp         # Completion engine
+      cmp-nvim-lsp     # LSP completion source for nvim-cmp
+      cmp-buffer       # Buffer words completion source
+      cmp-path         # Path completion source
+    ];
+    initLua = ''
+      -- 1. Setup nvim-cmp (auto-completion window)
+      local cmp = require('cmp')
+
+      cmp.setup({
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(), -- Manually trigger pop-up
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept completion with Enter
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+        }),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+        }, {
+          { name = 'buffer' },
+          { name = 'path' },
+        }),
+      })
+
+      -- 2. Tell Neovim LSP to advertise completion capabilities to rust-analyzer
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      vim.lsp.config('rust_analyzer', {
+        capabilities = capabilities,
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = {
+              allFeatures = true,
+            },
+            checkOnSave = true,
+            check = {
+              command = "clippy",
+            },
+          },
+        },
+      })
+
+      vim.lsp.enable('rust_analyzer')
+
+      -- Keybindings
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover documentation" })
+      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
+    '';
+    withRuby = false;
+    withPython3 = false;
+  };
 }

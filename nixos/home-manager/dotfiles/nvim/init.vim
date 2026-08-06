@@ -4,7 +4,7 @@
 "
 "   Last updated 2024-04-18
 "
-"   Significatly improved by Robert Lucas
+"   Significantly improved by Robert Lucas
 "
 " -------------------------------------
 

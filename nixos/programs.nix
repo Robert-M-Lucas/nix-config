@@ -41,6 +41,7 @@
         file
         v4l-utils
         cowsay
+        neovim
 
         (writeShellScriptBin "nix-env" (builtins.readFile ./scripts/nonixenv.sh))
       ]
@@ -156,77 +157,6 @@
     viAlias = true;
     vimAlias = true;
     defaultEditor = false;
-    configure = {
-      customRC = ''
-        syntax on                       " Enable syntax highlighting
-        filetype plugin indent on       " Indent based of file type
-        let mapleader = " "
-        set nocompatible
-        set showcmd
-        set noswapfile
-        set noerrorbells
-        set laststatus=2
-        set mouse=a                     " Allow mouse to move the cursor
-        set cursorline                  " Highlight the line under the cursor
-        set clipboard+=unnamedplus      " Use system clipboard as primary register
-        set shortmess=I                 " Prevent Vim startup screen
-        set backspace=indent,eol,start  " Fix backspace in Insert mode
-        set nowrap                      " Do not wrap lines
-        set ic
-        set sc
-        set tabstop=4
-        set shiftwidth=4
-        set softtabstop=4
-        set expandtab                   " Expand a tab key into spaces
-        set autoindent                  " Simple indentation for text files
-        set number                      " Display line number
-        set relativenumber              " Display line numbers relative to cursor
-        set hidden                      " Allow hidden buffers (more than one tab)
-        set exrc                        " Execute .vimrc in project directory
-        set secure                      " .vimrc in project directory can not run system commands
-        set textwidth=100
-        set completeopt-=preview
-        set nobackup                    " Recommended by CoC
-        set nowritebackup
-        set wildchar=<Tab>
-        set wildmenu
-        set wildmode=full
-        set shell=fish
-        set background=dark
-        colorscheme gruvbox
-
-        nnoremap ff <cmd>Telescope find_files<cr>
-        nnoremap fg <cmd>Telescope live_grep<cr>
-        nnoremap fb <cmd>Telescope buffers<cr>
-        nnoremap fh <cmd>Telescope help_tags<cr>
-      '';
-
-      packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [
-          nerdtree
-          coc-nvim
-          coc-rust-analyzer
-          plenary-nvim
-          telescope-nvim
-          telescope-fzf-native-nvim
-          vista-vim
-          project-nvim
-          vim-polyglot
-          wgsl-vim
-          vim-commentary
-          nvim-surround
-          quick-scope
-          auto-pairs
-          vim-signature
-          vim-airline
-          vim-airline-themes
-          rainbow #
-          vim-devicons
-          vim-nerdtree-syntax-highlight
-          gruvbox-nvim
-        ];
-      };
-    };
   };
 
   programs.bash = {
